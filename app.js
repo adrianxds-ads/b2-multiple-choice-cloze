@@ -100,7 +100,7 @@ function submit(choice,timeout){
  setTimeout(()=>{session.index++;renderSegments();nextQuestion();},ok?555:1050);
 }
 function finishSession(){
- clearInterval(timerHandle);state.sessions++;state.history.push({at:Date.now(),score:session.correct,total:SESSION_SIZE,avg:session.times.reduce((a,b)=>a+b,0)/session.times.length});state.history=state.history.slice(-200);save();
+ clearInterval(timerHandle);state.sessions++;const learning=window.AdaptiveLanguageDashboard?.snapshot?.()?.learning;state.history.push({at:Date.now(),score:session.correct,total:SESSION_SIZE,avg:session.times.reduce((a,b)=>a+b,0)/session.times.length,learning:Number.isFinite(learning)?learning:null});state.history=state.history.slice(-200);save();
  playLevelScore(session.correct,SESSION_SIZE);renderEnd();show("endScreen");
 }
 function catRows(source){
@@ -132,7 +132,7 @@ function goHome(){clearInterval(timerHandle);renderHome();show("startScreen");}
 $("startBtn").addEventListener("click",startSession);$("nextBtn").addEventListener("click",startSession);$("homeBtn").addEventListener("click",goHome);
 $("abortBtn").addEventListener("click",goHome);$("reviewBtn").addEventListener("click",()=>{renderErrors();show("errorsScreen");});
 $("errorsBackBtn").addEventListener("click",()=>show("endScreen"));$("errorsHomeBtn").addEventListener("click",goHome);
-$("statsBtn").addEventListener("click",()=>{renderStats();show("statsScreen");});$("statsBackBtn").addEventListener("click",goHome);$("statsHomeBtn").addEventListener("click",goHome);
+$("statsBtn").addEventListener("click",()=>{if(window.AdaptiveLanguageDashboard)return window.AdaptiveLanguageDashboard.open();renderStats();show("statsScreen");});$("statsBackBtn").addEventListener("click",goHome);$("statsHomeBtn").addEventListener("click",goHome);
 $("soundBtn").addEventListener("click",async()=>{soundOn=!soundOn;if(soundOn){await ensureAudio();tone(760,.06,.025,"sine");}refreshSoundButton();});
 document.addEventListener("visibilitychange",()=>{if(document.hidden)clearInterval(timerHandle);else if(session&&current&&!locked&&!$("gameScreen").classList.contains("hidden")){const left=parseFloat($("timerText").textContent)||TIME_LIMIT;deadline=Date.now()+left*1000;lastTickShown=Math.ceil(left)+1;lastUrgentBeat=-1;timerHandle=setInterval(tick,50);}});
 refreshSoundButton();renderHome();show("startScreen");
