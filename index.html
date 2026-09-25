@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10271d">
+<meta name="mcc-version" content="0.1.0">
+<title>B2 Multiple-Choice Cloze · v0.1.0</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./styles.css?v=0.1.0">
+<style>
+:root{--ai-color:#b78b3c;--ai-rgb:183,139,60}
+.answer{display:flex;align-items:center;justify-content:center;gap:10px}.answer .letter{opacity:.72;font-size:.58em}
+.question h2{max-width:680px}.category-pill{font-size:12px;font-weight:950;letter-spacing:.09em;color:#e9d59d;text-align:right}
+.error-card{margin:12px 0;padding:15px;border-radius:13px;background:rgba(0,0,0,.17);border:1px solid rgba(255,255,255,.09)}
+.error-card h3{margin:0 0 8px;font-size:18px}.error-card p{margin:6px 0;font-size:15px;line-height:1.5}.error-card .why{color:#f1da9e;font-weight:850}
+.catrow{display:grid;grid-template-columns:minmax(120px,1fr) 1fr 48px;gap:9px;align-items:center;margin:9px 0;font-size:13px}.catrow b{font-size:13px}.catrow .track{height:8px}
+@media(max-width:520px){.question h2{font-size:clamp(24px,6.4vw,32px)}.answer{min-height:102px;font-size:clamp(21px,5.5vw,28px)}.category-pill{font-size:10px}.error-card p{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="app">
+<section id="startScreen" class="screen start"><div class="panel">
+<div class="kicker">CAMBRIDGE B2 · PART 1</div>
+<h1>MULTIPLE-CHOICE<br>CLOZE</h1>
+<p class="subtitle">Lexical precision under time pressure.</p>
+<div class="meta">120 questions · 15 per session · fixed 20-second clock</div>
+<div class="hero-progress"><div class="progress-label"><span>Coverage</span><strong id="coverageText">0 / 120</strong></div><div class="track"><div id="coverageFill" class="fill"></div></div></div>
+<div class="grid">
+<div class="card"><b id="startAllAccuracy">—</b><span>Overall accuracy</span></div>
+<div class="card"><b id="startRecentAccuracy">—</b><span>Recent accuracy</span></div>
+<div class="card"><b id="startAvg">—</b><span>Avg response</span></div>
+<div class="card"><b id="startTotal">0</b><span>Total answers</span></div>
+<div class="card"><b id="startSessions">0</b><span>Sessions</span></div>
+<div class="card"><b id="startTimeouts">0</b><span>Timeouts</span></div>
+</div>
+<div id="startStatus" class="statusbox"></div>
+<div class="actions"><button id="startBtn" class="primary">START SESSION</button></div>
+<div class="dashboard-menu"><button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Coverage · categories · accuracy</span></button></div>
+<div class="footerline">B2 Multiple-Choice Cloze · v0.1.0</div>
+</div></section>
+<section id="gameScreen" class="screen game hidden">
+<div class="top"><div class="toprow">
+<div id="timer" class="timer"><strong id="timerText">20.0</strong></div>
+<div class="qnum"><span>QUESTION</span><b id="qIndex">1</b><span id="qTotal">/ 15</span></div>
+<div class="hudright"><button id="soundBtn" class="soundbtn" aria-label="Sound off">🔇</button><div id="category" class="category-pill">COLLOCATION</div></div>
+</div></div>
+<div class="playfield">
+<div class="question"><h2 id="questionText"></h2></div>
+<div class="answer-stage"><div id="answers" class="answers"></div><div id="feedback" class="feedback" aria-live="polite"></div></div>
+<div id="segments" class="segments segments-bottom"></div>
+</div>
+<button id="abortBtn" class="emergency-exit" type="button">↩ EXIT</button>
+</section>
+<section id="endScreen" class="screen end hidden"><div class="panel">
+<div class="resulttitle"><div class="kicker">SESSION COMPLETE</div><h1 id="endScore">0/15</h1><p id="endSub"></p></div>
+<div class="grid">
+<div class="card"><b id="endAvg">0.0s</b><span>Avg time</span></div>
+<div class="card"><b id="endAccuracy">0%</b><span>Accuracy</span></div>
+<div class="card"><b id="endCoverage">0%</b><span>Coverage</span></div>
+<div class="card"><b id="endTimeouts">0</b><span>Timeouts</span></div>
+</div>
+<div id="endCategory" class="section"><h3>This session</h3><div id="sessionCats"></div></div>
+<div class="actions"><button id="nextBtn" class="primary">NEXT SESSION</button><button id="reviewBtn" class="secondary">REVIEW ERRORS</button><button id="homeBtn" class="ghost">DASHBOARD</button></div>
+<div class="footerline">Explanations appear only in Error Review.</div>
+</div></section>
+<section id="errorsScreen" class="screen review hidden"><div class="panel">
+<div class="top-dashboard-nav"><button id="errorsHomeBtn" class="ghost">DASHBOARD</button></div>
+<div class="resulttitle"><div class="kicker">ERROR REVIEW</div><h1>Latest mistakes</h1><p id="errorsCount"></p></div>
+<div id="errorsList"></div>
+<div class="actions"><button id="errorsBackBtn" class="primary">BACK TO RESULTS</button></div>
+</div></section>
+<section id="statsScreen" class="screen dashboard-screen hidden"><div class="panel">
+<div class="top-dashboard-nav"><button id="statsHomeBtn" class="ghost">DASHBOARD</button></div>
+<div class="resulttitle"><div class="kicker">DASHBOARD</div><h1>Statistics</h1><p>Your closed-bank Cambridge Part 1 training.</p></div>
+<div class="grid">
+<div class="card"><b id="statsCoverage">0%</b><span>Coverage</span></div>
+<div class="card"><b id="statsOverall">0%</b><span>Overall accuracy</span></div>
+<div class="card"><b id="statsRecent">0%</b><span>Recent accuracy</span></div>
+<div class="card"><b id="statsAvg">0.0s</b><span>Avg response</span></div>
+<div class="card"><b id="statsTotal">0</b><span>Total answers</span></div>
+<div class="card"><b id="statsSessions">0</b><span>Sessions</span></div>
+</div>
+<div class="section"><h3>Accuracy by category</h3><div id="categoryStats"></div></div>
+<div class="section"><h3>Weakest questions</h3><div id="weakQuestions"></div></div>
+<div class="screen-nav"><button id="statsBackBtn" class="primary">BACK TO DASHBOARD</button></div>
+</div></section>
+</div>
+<div id="particles" class="particles" aria-hidden="true"></div>
+<script src="./adrian-visual-system.js?v=0.1.0"></script>
+<script src="./bank.js?v=0.1.0"></script>
+<script src="./app.js?v=0.1.0"></script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js"));}</script>
+</body></html>

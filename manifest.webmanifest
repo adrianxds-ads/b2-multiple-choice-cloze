@@ -1,0 +1,9 @@
+{
+  "name":"B2 Multiple-Choice Cloze",
+  "short_name":"B2 Cloze",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#10271d",
+  "theme_color":"#10271d",
+  "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
