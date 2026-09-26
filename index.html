@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#10271d">
-<meta name="ae-version" content="3.20">
-<title>Adaptive B2 Cloze - Campaign 1 - v1.1</title>
+<meta name="ae-version" content="1.1.1">
+<title>Adaptive B2 Cloze - Campaign 1 - v1.1.1</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -655,16 +655,16 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 
 <section id="missionOverlay" class="mission-overlay hidden" aria-hidden="true"><div class="mission-card"><div id="missionBody"></div><div id="missionCount" class="mission-count"></div></div></section>
 <div id="particles" class="particles" aria-hidden="true"></div>
-<script src="./adrian-visual-system.js?v=3.20"></script>
-<script src="./lessons.js?v=3.20"></script>
-<script src="./keys.js?v=3.20"></script>
-<script src="./error-coach.js?v=3.20"></script>
-<script src="./app.js?v=3.20"></script>
+<script src="./adrian-visual-system.js?v=1.1.1"></script>
+<script src="./lessons.js?v=1.1.1"></script>
+<script src="./keys.js?v=1.1.1"></script>
+<script src="./error-coach.js?v=1.1.1"></script>
+<script src="./app.js?v=1.1.1"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
   let aeReloading=false;
   navigator.serviceWorker.addEventListener('controllerchange',()=>{if(aeReloading)return;aeReloading=true;location.reload();});
-  navigator.serviceWorker.register('./service-worker.js?v=3.20',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=1.1.1',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=6"></script>
