@@ -309,7 +309,7 @@ function graduationEvidence(st){
   const now=Date.now(),day=86400000,hist=state.history||[],training=hist.filter(r=>r.sessionMode!=="final"),reviews=training.filter(r=>r.review).slice(-300);
   const retentionAccuracy=reviews.length?reviews.filter(r=>r.correct).length/reviews.length:0;
   const firstTs=hist.find(r=>Number.isFinite(r.ts))?.ts||state.createdAt||now,spanDays=Math.max(0,(now-firstTs)/day);
-  const recentSessions=(state.sessionHistory||[]).filter(x=>x.mode==="training").slice(-8),stableAccuracy=recentSessions.length?mean(recentSessions.map(x=>Number(x.accuracy)||0)):0,stableTimeMs=recentSessions.length?mean(recentSessions.map(x=>Number(x.avgMs)||0)):0;
+  const recentSessions=(state.sessionHistory||[]).filter(x=>!x.mode||x.mode==="training").slice(-8),stableAccuracy=recentSessions.length?mean(recentSessions.map(x=>Number(x.accuracy)||0)):0,stableTimeMs=recentSessions.length?mean(recentSessions.map(x=>Number(x.avgMs)||0)):0;
   const fluencyPass=st.auto>=.04||(st.accuracy>=.80&&st.avgMs>0&&st.avgMs<=5500);
   const gates={coverage:st.coverage>=.999,mastery:st.mastery>=.85,minSkill:st.minSkill>=.70,keys:st.keysUnlocked>=25,calendar:spanDays>=14,retentionEvidence:reviews.length>=150,retention:retentionAccuracy>=.72,stabilityEvidence:recentSessions.length>=8,stability:stableAccuracy>=.68,fluency:fluencyPass};
   return {eligible:Object.values(gates).every(Boolean),gates,reviewCount:reviews.length,retentionAccuracy,spanDays,recentSessions:recentSessions.length,stableAccuracy,stableTimeMs};
@@ -802,7 +802,7 @@ function observedRate(rows,valueFn,current,start){
   return {rate:clamp(blended,floor,ceiling),longRate,recentRate,totalHours};
 }
 function campaignPracticeEstimate(){
-  const c=campaign2Readiness(),st=overallStats(),g=c.graduation,hist=state.history||[],sessions=(state.sessionHistory||[]).filter(x=>x.mode==="training"),now=Date.now(),day=86400000,focus=focusSummary(),lp=campaignLearningProgress(st);
+  const c=campaign2Readiness(),st=overallStats(),g=c.graduation,hist=state.history||[],sessions=(state.sessionHistory||[]).filter(x=>!x.mode||x.mode==="training"),now=Date.now(),day=86400000,focus=focusSummary(),lp=campaignLearningProgress(st);
   const firstTs=hist.find(x=>Number.isFinite(x.ts))?.ts||state.createdAt||now,spanDays=Math.max(.25,(now-firstTs)/day),todayMin=focus.todayMs/60000,recommendedMin=Math.max(1,focus.target.recommended||15);
   const due=activeSeenRows().filter(x=>x?.lastTs&&now>=(x.nextDueTs||x.lastTs+(x.intervalDays||1)*day)).length,dueRatio=activeSeenCount()?due/activeSeenCount():1;
   const progressForRow=x=>clamp(((.65*(x.mastery??lp.initialMastery)+.25*(x.coverage??0)+.10*(x.automatic??0))-lp.baseline)/Math.max(.001,lp.target-lp.baseline));
@@ -1052,7 +1052,7 @@ function renderGrowthTree(){
 
 const RELEASE_NOTES=["v1.2.0 locks the 3,000-question B2 Part 1/2 bank around greater sentence variety","Every skill now uses 10 real templates × 12 contexts instead of 5 templates × 24 cosmetic variants","The bank keeps roughly half of the previous questions and replaces the other half with new B2 First-style lexical and function-word patterns informed by the existing adaptive-exam corpus","New-question selection prefers unseen templates before recycling a pattern, while due spaced reviews can still return an exact question","Questions remain short for the fixed 15-second clock; names and contexts are more varied","Per-question feedback now shows question repetitions, pattern repetitions, correct and wrong counts","Coverage counts only questions that still belong to the active 3,000-question bank","The timer display now initializes from the real 15-second TIME_LIMIT instead of the inherited 10.0 label"];
 function renderReleaseInfo(){const host=$("releaseInfo"),online=location.protocol.startsWith("http"),build=`${online?"ONLINE":"LOCAL"} BUILD · v${APP_VERSION} · BANK ${CAMPAIGN?.version||"—"}`;if(host)host.innerHTML=`<details class="release-info"><summary><b>Adaptive B2 Cloze v${APP_VERSION}</b><span>WHAT’S NEW</span></summary><ul>${RELEASE_NOTES.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></details>`;if($("buildVersion"))$("buildVersion").textContent=build;if($("endBuildVersion"))$("endBuildVersion").textContent=build;const meta=document.querySelector('meta[name="ae-version"]');if(meta)meta.setAttribute("content",APP_VERSION);document.title=`Adaptive B2 Cloze - Campaign 1 - v${APP_VERSION}`;}
-function medalCounts(){const rows=(state.sessionHistory||[]).filter(x=>x.mode==="training");return window.AdrianAchievements?.countsFromHistory?.(rows)||{blue:0,violet:0,gold:0};}
+function medalCounts(){const rows=(state.sessionHistory||[]).filter(x=>!x.mode||x.mode==="training");return window.AdrianAchievements?.countsFromHistory?.(rows)||{blue:0,violet:0,gold:0};}
 function renderMedalSummary(){const html=window.AdrianAchievements?.medalStripHtml?.(medalCounts(),{context:"summary"})||"";const a=$("startMedals"),b=$("endMedals");if(a)a.innerHTML=html;if(b)b.innerHTML=html;}
 function renderStart(){
   ensureDailyKey();
