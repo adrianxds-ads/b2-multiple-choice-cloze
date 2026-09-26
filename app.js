@@ -1094,7 +1094,6 @@ async function showLevelIntro(finalMode,target){
   el.className="mission-overlay intro";const rank=finalMode?14:valueLevel((target||0)/15);el.style.setProperty("--mission-accent",valueColor(rank/15));
   const lastDelta=last&&Number.isFinite(last.target)?last.correct-last.target:null,lastLine=last?`LAST ${last.correct}/15${lastDelta==null?"":` · ${lastDelta>=0?"+":""}${lastDelta.toFixed(1)} VS TARGET`}`:"FIRST LEVEL";
   $("missionBody").innerHTML=`<div class="mission-eyebrow">${finalMode?"FINAL CHALLENGE":`LEVEL ${state.level}`}</div><div class="mission-title">${finalMode?"FINAL RUN":"TARGET"}</div><div class="mission-score" style="color:${finalMode?valueTextColor(13/15):valueTextColor((target||0)/15)}">${finalMode?"READY":`${target.toFixed(1)}<small>/15</small>`}</div><div class="mission-meta">${lastLine}</div><div class="mission-rules">15 QUESTIONS · 10s</div>`;
-  $("missionBody").insertAdjacentHTML("beforeend",window.AdrianAchievements?.legendHtml?.(medalCounts())||"");
   for(const n of [3,2,1]){$("missionCount").textContent=String(n);$("missionCount").classList.remove("pop");void $("missionCount").offsetWidth;$("missionCount").classList.add("pop");playCountdownStep(n);await wait(820);}
   $("missionCount").textContent="GO";tone(1318.5,.09,.022,"sine");await wait(320);missionOverlay(false);
 }
@@ -1112,6 +1111,7 @@ async function showLevelResolution(s,before){
   const d=s.target==null?null:s.correct-s.target,aiChange=before&&Number.isFinite(before.aiLevel)&&before.aiLevel!==s.aiLevel?`<div class="mission-change" style="color:${valueTextColor(s.aiLevel/15)}">AI RANK ${before.aiLevel} → ${s.aiLevel}</div>`:"",leagueChange=leagueFlashHtml(s);
   $("missionBody").innerHTML=`<div class="mission-eyebrow">${s.mode==="final"?(hit?"FINAL CLEARED":"FINAL NOT CLEARED"):(hit?"TARGET CLEARED":"TARGET MISSED")}</div><div class="mission-score">${s.correct}<small>/${s.total}</small></div>${s.target==null?"":`<div class="mission-targetline">TARGET ${s.target.toFixed(1)} · <b>${d>=0?"+":""}${d.toFixed(1)}</b></div>`}<div class="mission-meta">${s.mode==="training"?`LEVEL ${s.level} → ${state.level}`:`${Math.round(s.accuracy*100)}% · ${fmtSec(s.avgMs)}`}</div>${aiChange}${leagueChange}`;
   if(achievement)$("missionBody").insertAdjacentHTML("beforeend",window.AdrianAchievements?.badgeHtml?.(s.correct,s.total)||"");
+  $("missionBody").insertAdjacentHTML("beforeend",window.AdrianAchievements?.legendHtml?.(medalCounts())||"");
   $("missionCount").textContent=hit?"CLEAR":"REVIEW";playLevelScore(s.correct,s.total);window.AdrianAchievements?.play?.(tone,s.correct,s.total);await wait(3900);missionOverlay(false);
 }
 function adaptiveLevelTarget(plan){
