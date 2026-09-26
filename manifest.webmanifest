@@ -1,5 +1,5 @@
 {
-  "name": "Adaptive B2 Multiple-Choice Cloze \u00b7 Campaign 1",
+  "name": "Adaptive B2 Multiple-Choice Cloze · Campaign 1",
   "short_name": "B2 Cloze",
   "start_url": "./",
   "display": "standalone",
@@ -12,5 +12,11 @@
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "id": "./",
+  "scope": "./",
+  "orientation": "portrait",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
 }

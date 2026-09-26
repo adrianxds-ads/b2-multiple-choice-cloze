@@ -4,8 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#10271d">
-<meta name="ae-version" content="1.2.0">
-<title>Adaptive B2 Cloze - Campaign 1 - v1.2.0</title>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="ae-version" content="1.5.0">
+<title>Adaptive B2 Cloze - Campaign 1 - v1.5.0</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -488,6 +490,24 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 .answer.option-c3:not(.good):not(.bad){background:#50617c}
 .answer.option-c4:not(.good):not(.bad){background:#6b5366}
 </style>
+
+<style id="mobile-product-polish">
+.answer.option-c1:not(.good):not(.bad){--option-base:#665a3c;background:var(--option-base)}
+.answer.option-c2:not(.good):not(.bad){--option-base:#3f6360;background:var(--option-base)}
+.answer.option-c3:not(.good):not(.bad){--option-base:#50617c;background:var(--option-base)}
+.answer.option-c4:not(.good):not(.bad){--option-base:#6b5366;background:var(--option-base)}
+.answer.option-tone-1:not(.good):not(.bad){background:color-mix(in srgb,var(--option-base) 94%,white 6%)}
+.answer.option-tone-2:not(.good):not(.bad){background:var(--option-base)}
+.answer.option-tone-3:not(.good):not(.bad){background:color-mix(in srgb,var(--option-base) 93%,black 7%)}
+.memory-echo{top:22dvh!important;width:min(86vw,500px)!important;padding:10px 14px!important}
+.memory-echo b{font-size:clamp(21px,5.4vw,30px)!important}
+#gameScreen .feedback .feedback-record b{font-size:clamp(46px,13vw,70px)!important}
+@media(max-width:520px){
+  .memory-echo{top:21dvh!important;width:min(90vw,470px)!important}
+  .memory-echo b{font-size:clamp(20px,5.8vw,27px)!important}
+  #gameScreen .feedback .feedback-record b{font-size:clamp(44px,14vw,64px)!important}
+}
+</style>
 </head>
 <body>
 <div class="app">
@@ -668,7 +688,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./lessons.js?v=1.2.2"></script>
 <script src="./keys.js?v=1.2.2"></script>
 <script src="./error-coach.js?v=1.2.2"></script>
-<script src="./app.js?v=1.4.0"></script>
+<script src="./app.js?v=1.5.0"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
   navigator.serviceWorker.register('./service-worker.js?v=1.2.2',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});

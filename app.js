@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.4.0";
+const APP_VERSION = "1.5.0";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -19,9 +19,9 @@ let focusLastActivityTs=Date.now(),focusLastTickTs=Date.now(),focusSaveMs=0,focu
 
 const $=id=>document.getElementById(id);
 function shuffledAnswerColorClasses(){
-  const a=["option-c1","option-c2","option-c3","option-c4"];
+  const a=["option-c1","option-c2","option-c3","option-c4"],tones=["option-tone-1","option-tone-2","option-tone-3"];
   for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
-  return a;
+  return a.map(c=>c+" "+tones[Math.floor(Math.random()*tones.length)]);
 }
 function applyVisualSystemTokens(){const r=document.documentElement;AVS_RANKS.forEach((x,i)=>{r.style.setProperty(`--rank-${i+1}`,x.color);r.style.setProperty(`--rank-${i+1}-surface`,x.surface||x.color);r.style.setProperty(`--rank-${i+1}-band`,x.band||x.color);r.style.setProperty(`--rank-${i+1}-text`,x.text||x.color);});r.style.setProperty("--reward-gold",COLOR_BANDS_15[14]);r.style.setProperty("--reward-gold-text",AVS_TEXT_BANDS_15[14]);r.style.setProperty("--elite-violet",COLOR_BANDS_15[13]);r.style.setProperty("--negative-wine",COLOR_BANDS_15[3]);}
 function storedGlobalLevel(){try{return Math.max(1,Math.floor(Number(localStorage.getItem(GLOBAL_LEVEL_KEY))||1));}catch(e){return 1;}}
@@ -139,7 +139,7 @@ function showMemoryEcho(cat,correctAnswer=""){
   const el=$("memoryEcho"),x=memoryEchoFor(cat,correctAnswer);if(!el||!x)return;
   el.innerHTML=`<b>${escapeHtml(x.title)}</b><span>${escapeHtml(x.artist)}</span>`;
   el.classList.remove("show");void el.offsetWidth;el.classList.add("show");
-  clearTimeout(showMemoryEcho._timer);showMemoryEcho._timer=setTimeout(()=>el.classList.remove("show"),1350);
+  clearTimeout(showMemoryEcho._timer);showMemoryEcho._timer=setTimeout(()=>el.classList.remove("show"),720);
 }
 function playKeyFlip(revealed=true,soft=false){
   const notes=revealed?[[659.25,0],[987.77,.045],[1318.5,.095]]:[[987.77,0],[783.99,.045],[587.33,.09]],gain=soft?.006:.011;
@@ -1176,8 +1176,8 @@ function nextQuestion(){
 function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect=0,phraseWrong=0,cat="",trigger=""){
   const f=$("feedback"),skill=skillLabel(cat);f.className="feedback "+(ok?"ok":"no");
   f.innerHTML=`<div class="feedback-record" aria-label="${phraseCorrect} correctas y ${phraseWrong} incorrectas"><span class="record-good"><i>✓</i><b>${phraseCorrect}</b></span><span class="record-bad"><i>×</i><b>${phraseWrong}</b></span><small>PREGUNTA ×${appearance} · PATRÓN ×${patternAppearance} · ${sec.toFixed(2)}s</small></div>${trigger?`<div class="feedback-skill-tag"><b>${escapeHtml(trigger)}</b><span> · ✓${phraseCorrect} · ×${phraseWrong}</span></div>`:skill?`<div class="feedback-skill-tag">${escapeHtml(skill)}</div>`:""}`;
-  requestAnimationFrame(()=>f.classList.add("show"));
-  const hold=ok?510:(type==="fast-wrong"?1165:type==="timeout"?1060:1020);setTimeout(()=>f.classList.remove("show"),hold);
+  const showDelay=ok?55:95;setTimeout(()=>f.classList.add("show"),showDelay);
+  const hold=ok?430:720;setTimeout(()=>f.classList.remove("show"),showDelay+hold);
 }
 function answer(pos,timeout=false){
   if(locked)return;locked=true;clearInterval(timerHandle);
@@ -1194,7 +1194,7 @@ function answer(pos,timeout=false){
   state.seen[current.fingerprint]={count:appearance,lastLevel:state.level,lastTs:now,lastCorrect:ok,lapses,intervalDays,nextDueTs:now+intervalDays*86400000,masteredRewarded:!!(previousSeen?.masteredRewarded||masteredReward)};state.templateLast[current.templateId]=state.level;state.templateSeen[current.templateId]={count:patternAppearance,lastLevel:state.level,lastTs:now};
   const shownQuestion=current.visibleQuestion||current.q,shownOptions=current.visibleOptions||current.display,load=promptLoadMeta(shownQuestion);
   const rec={level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:pos>=0?shownOptions[pos]:"No answer",correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:current.targetTime||3.6,timeLimitSec:TIME_LIMIT,sessionMode:session.mode};
-  if(!ok){hideCorrectReveal();showMemoryEcho(current.cat,rec.correctAnswer);}else hideCorrectReveal();
+  if(!ok){hideCorrectReveal();const echoCat=current.cat,echoAnswer=rec.correctAnswer;setTimeout(()=>{if(session)showMemoryEcho(echoCat,echoAnswer);},260);}else hideCorrectReveal();
   try{flashGrammarFocus(shownQuestion,rec.correctAnswer,current.visibleFocus||current.focus||[]);}catch(e){console.error("Grammar focus flash failed",e);}
   state.history.push(rec);state.history=state.history.slice(-12000);state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
   const answeredIndex=session.index,delay=ok?555:(type==="fast-wrong"?1200:type==="timeout"?1095:1060);setTimeout(()=>{if(!session||session.index!==answeredIndex)return;session.index++;try{nextQuestion();}catch(e){console.error("Question advance recovered",e);locked=false;setTimeout(nextQuestion,120);}},delay);
