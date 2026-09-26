@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.1.1";
+const APP_VERSION = "1.2.0";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -182,7 +182,7 @@ function newState(){
   const metrics={}; CAMPAIGN.skills.forEach(s=>metrics[s.id]=seedMetric(s.id));
   return {
     schemaVersion:1,campaignId:CAMPAIGN.campaignId,level:Math.max(CAMPAIGN.startingLevel||1,storedGlobalLevel()),sessions:0,totalAttempts:0,totalCorrect:0,
-    metrics,seen:{},templateLast:{},templateSeen:{},history:[],sessionHistory:[],finalAttempts:0,completed:false,contentRevision:4,
+    metrics,seen:{},templateLast:{},templateSeen:{},history:[],sessionHistory:[],finalAttempts:0,completed:false,contentRevision:5,
     dailyKey:{date:"",cat:""},keyring:[],keyJourneyStart:"",personalBestFluency:0,activeTrainingMs:0,focusTimeByDate:{},focusTargetsByDate:{},focusTrackingStartedAt:Date.now(),createdAt:Date.now(),updatedAt:Date.now()
   };
 }
@@ -201,6 +201,7 @@ function normaliseProgressState(s){
   s.focusTimeByDate=s.focusTimeByDate&&typeof s.focusTimeByDate==="object"?s.focusTimeByDate:{};s.focusTargetsByDate=s.focusTargetsByDate&&typeof s.focusTargetsByDate==="object"?s.focusTargetsByDate:{};if(!Number.isFinite(s.focusTrackingStartedAt))s.focusTrackingStartedAt=Date.now();
   s.sessionHistory=Array.isArray(s.sessionHistory)?s.sessionHistory.slice(-SESSION_HISTORY_LIMIT):[];
   s.seen=s.seen&&typeof s.seen==="object"?s.seen:{};s.templateLast=s.templateLast&&typeof s.templateLast==="object"?s.templateLast:{};s.templateSeen=s.templateSeen&&typeof s.templateSeen==="object"?s.templateSeen:{};
+  {const activeFp=new Set(CAMPAIGN.questions.map(q=>q.fingerprint));for(const [fp,info] of Object.entries(s.seen))if(info&&typeof info==="object")info.retired=!activeFp.has(fp);}
   s.dailyKey=s.dailyKey&&typeof s.dailyKey==="object"?s.dailyKey:{date:"",cat:""};s.keyring=Array.isArray(s.keyring)?s.keyring.filter(x=>x&&typeof x.cat==="string").slice(0,25):[];const firstKeyDate=s.keyring.map(x=>x.firstDate).filter(Boolean).sort()[0]||s.dailyKey.date||"";s.keyJourneyStart=typeof s.keyJourneyStart==="string"&&s.keyJourneyStart?s.keyJourneyStart:firstKeyDate;s.keyring.forEach((x,i)=>x.number=i+1);const rebuildTemplateSeen=!Object.keys(s.templateSeen).length;
   for(const skill of CAMPAIGN.skills){const m=s.metrics[skill.id];if(!Number.isFinite(m.intervalDays))m.intervalDays=1;if(!Number.isFinite(m.lastTs))m.lastTs=0;}
   for(const r of s.history){const m=s.metrics[r.cat];if(m&&Number.isFinite(r.ts)&&r.ts>(m.lastTs||0))m.lastTs=r.ts;if(rebuildTemplateSeen&&r.templateId){const g=s.templateSeen[r.templateId]||(s.templateSeen[r.templateId]={count:0,lastTs:0,lastLevel:-99});g.count++;if((r.ts||0)>g.lastTs){g.lastTs=r.ts||0;g.lastLevel=r.level??g.lastLevel;}}}
@@ -227,6 +228,11 @@ function normaliseProgressState(s){
     for(const t of Object.keys(s.templateSeen))if([...repurposedCats].some(cat=>t.startsWith(cat+"-")))delete s.templateSeen[t];
     s.keyring=s.keyring.filter(x=>!repurposedCats.has(x.cat));if(repurposedCats.has(s.dailyKey?.cat))s.dailyKey={date:"",cat:""};
     s.contentRevision=4;
+  }
+  if((s.contentRevision||4)<5){
+    const activeFp=new Set(CAMPAIGN.questions.map(q=>q.fingerprint));
+    for(const [fp,info] of Object.entries(s.seen))if(info&&typeof info==="object")info.retired=!activeFp.has(fp);
+    s.contentRevision=5;
   }
   return s;
 }
@@ -280,7 +286,7 @@ function catPriority(cat){
 }
 function overallStats(){
   const metrics=Object.values(state.metrics),history=recentRows(75);
-  const coverage=Object.keys(state.seen).length/CAMPAIGN.questions.length;
+  const coverage=activeSeenCount()/CAMPAIGN.questions.length;
   const mastery=mean(metrics.map(metricMastery));
   const minSkill=Math.min(...metrics.map(metricMastery));
   const allTimeAttempts=Number(state.totalAttempts)||0;
@@ -308,7 +314,7 @@ function graduationEvidence(st){
   const gates={coverage:st.coverage>=.999,mastery:st.mastery>=.85,minSkill:st.minSkill>=.70,keys:st.keysUnlocked>=25,calendar:spanDays>=14,retentionEvidence:reviews.length>=150,retention:retentionAccuracy>=.72,stabilityEvidence:recentSessions.length>=8,stability:stableAccuracy>=.68,fluency:fluencyPass};
   return {eligible:Object.values(gates).every(Boolean),gates,reviewCount:reviews.length,retentionAccuracy,spanDays,recentSessions:recentSessions.length,stableAccuracy,stableTimeMs};
 }
-function phraseExposureStats(){const rows=Object.values(state.seen||{}),unique=rows.length,repeatedUnique=rows.filter(x=>(x?.count||1)>1).length,repeatAttempts=rows.reduce((n,x)=>n+Math.max(0,(x?.count||1)-1),0);return {unique,repeatedUnique,repeatAttempts};}
+function phraseExposureStats(){const rows=activeSeenRows(),unique=rows.length,repeatedUnique=rows.filter(x=>(x?.count||1)>1).length,repeatAttempts=rows.reduce((n,x)=>n+Math.max(0,(x?.count||1)-1),0);return {unique,repeatedUnique,repeatAttempts};}
 function campaign2Readiness(){
   const st=overallStats(),metrics=Object.values(state.metrics),learning=learningScoreStats(),g=st.graduation;
   const breadth=metrics.filter(m=>metricMastery(m)>=.55).length/metrics.length,strong=metrics.filter(m=>metricMastery(m)>=.70).length/metrics.length,weak=metrics.filter(m=>metricMastery(m)<.40).length;
@@ -317,7 +323,7 @@ function campaign2Readiness(){
   const ready=g.eligible&&score>=.82;
   const stage=ready?"Campaign 2 gate achieved":score>=.72?"Late consolidation":score>=.55?"Building graduation evidence":"Building foundation";
   const blockers=[];
-  if(!g.gates.coverage)blockers.push(`${Math.max(0,Math.ceil(CAMPAIGN.questions.length*.999)-Object.keys(state.seen).length).toLocaleString()} more unique questions`);
+  if(!g.gates.coverage)blockers.push(`${Math.max(0,Math.ceil(CAMPAIGN.questions.length*.999)-activeSeenCount()).toLocaleString()} more unique questions`);
   if(!g.gates.mastery)blockers.push(`mastery ${pct(st.mastery)}% → 85%`);
   if(!g.gates.minSkill)blockers.push(`weakest Key ${pct(st.minSkill)}% → 70%`);
   if(!g.gates.calendar)blockers.push(`${Math.max(0,Math.ceil(14-g.spanDays))} more calendar days of longitudinal evidence`);
@@ -333,7 +339,7 @@ function campaign2Brief(){
   return `Adaptive B2 Cloze recommends preparing Campaign 2. I will attach/export my Campaign 1 progress JSON. Use that export as the primary diagnostic. Build Campaign 2 as a separate 3,000-question bank that preserves Campaign 1 and the existing app architecture. Prioritize genuinely new C1 material plus targeted transfer for my remaining weak patterns; avoid duplicate questions and retain 15 questions per level, 15-second timing, adaptive selection, dynamic names, micro-lessons, AI Valoration and the long-term Learning Curve. Current handoff: readiness ${pct(r.score)}%, coverage ${pct(st.coverage)}%, mastery ${pct(st.mastery)}%, weakest Key ${pct(st.minSkill)}%, review retention ${pct(r.graduation.retentionAccuracy)}% across ${r.graduation.reviewCount} recent review answers, automatic ${pct(st.auto)}%, 8-level stability ${pct(r.graduation.stableAccuracy)}%, real evidence span ${r.graduation.spanDays.toFixed(1)} days, Key Journey ${st.keysUnlocked}/25. Campaign 2 must remain locked until every graduation gate and the final challenge are passed. First analyze my export and propose the Campaign 2 skill map before generating the new 3,000 questions.`;
 }
 function stageInfo(coverage){
-  const seen=Object.keys(state.seen).length;
+  const seen=activeSeenCount();
   const index=Math.min(5,Math.floor(Math.min(2999,seen)/500));
   return {index,name:stageNames[index],from:index*500,to:(index+1)*500,seen};
 }
@@ -377,7 +383,9 @@ function reviewIntervalDays(info,type){
   if(type==="secure")return Math.min(21,Math.max(2,Math.round(prev*1.7)));
   return Math.min(10,Math.max(1,Math.round(prev*1.25)));
 }
-function seenInfo(q){return state.seen[q.fingerprint]||null;}
+function seenInfo(q){const x=state.seen[q.fingerprint]||null;return x?.retired?null:x;}
+function activeSeenRows(){const active=new Set(CAMPAIGN.questions.map(q=>q.fingerprint));return Object.entries(state.seen||{}).filter(([fp,v])=>active.has(fp)&&!v?.retired).map(([,v])=>v);}
+function activeSeenCount(){return activeSeenRows().length;}
 const DISPLAY_NAMES={
   Marta:{kind:"f",pool:["Ana","Eva","Mia","Zoe","Lea","Sara","Emma","Nora","Lisa","Luna","Amy","Ava","Ivy","May","Lia","Noa","Iris","Elsa","Alma","Lucy"]},
   Nina:{kind:"f",pool:["Ana","Eva","Mia","Zoe","Lea","Sara","Emma","Nora","Lisa","Luna","Amy","Ava","Ivy","May","Lia","Noa","Iris","Elsa","Alma","Lucy"]},
@@ -443,7 +451,7 @@ function qScore(q,sessionCats,sessionTemplates,mode){
   const ta=state.templateLast[q.templateId];
   if(ta!=null){
     const ago=state.level-ta;
-    if(ago<4)s-=2.0;else if(ago<10)s-=.65;
+    if(ago<6)s-=3.2;else if(ago<12)s-=1.2;else if(ago<18)s-=.35;
   }
   const cc=sessionCats[q.cat]||0,tc=sessionTemplates[q.templateId]||0;
   if(cc>=2)s-=20; else if(cc===1)s-=.20;
@@ -455,7 +463,8 @@ function chooseOne(pool,chosen,sessionCats,sessionTemplates,mode,allowedCats=nul
   const chosenFp=new Set(chosen.map(q=>q.fingerprint));
   let cand=pool.filter(q=>!chosenFp.has(q.fingerprint));
   if(allowedCats) cand=cand.filter(q=>allowedCats.has(q.cat));
-  if(state.sessions<40){const short=cand.filter(q=>q.q.trim().split(/\s+/).length<=12);if(short.length)cand=short;}
+  if(state.sessions<40){const short=cand.filter(q=>q.q.trim().split(/\s+/).length<=14);if(short.length)cand=short;}
+  if(mode!=="review"){const unseenTemplates=cand.filter(q=>!state.templateSeen[q.templateId]);if(unseenTemplates.length)cand=unseenTemplates;}
   cand=cand.filter(q=>(sessionCats[q.cat]||0)<2 && (sessionTemplates[q.templateId]||0)<1);
   if(!cand.length)return null;
   cand.sort((a,b)=>qScore(b,sessionCats,sessionTemplates,mode)-qScore(a,sessionCats,sessionTemplates,mode));
@@ -668,8 +677,8 @@ function coachSkillMovement(limit=5){
 }
 function coachSnapshot(){
   const st=overallStats(),ai=aiValorationStats(),learning=learningScoreStats(),peer=typicalLearnerStats(),c2=campaign2Readiness(),estimate=campaignPracticeEstimate(),focus=coachSkillStats().slice(0,5),mistakes=commonMistakeGroups(8),trend=coachTrendSummary(),moves=coachSkillMovement(),targetPerf=targetPerformanceStats(),readingLoad=readingLoadStats(),focusTime=focusSummary();
-  const firstTs=state.history.find(r=>Number.isFinite(r.ts))?.ts||state.createdAt||Date.now(),studySpanDays=Math.max(0,(Date.now()-firstTs)/86400000),dueQuestionCount=Object.values(state.seen).filter(x=>x?.lastTs&&Date.now()>=(x.nextDueTs||x.lastTs+(x.intervalDays||1)*86400000)).length;
-  return {appVersion:APP_VERSION,campaign:CAMPAIGN.campaignId||CAMPAIGN.id||"AE-C1",level:state.level,sessions:state.sessions,totalAnswers:state.totalAttempts,uniqueSeen:Object.keys(state.seen).length,bankSize:BANK.length,studySpanDays:+studySpanDays.toFixed(1),focusTime:{todayMin:+(focusTime.todayMs/60000).toFixed(1),weekMin:+(focusTime.weekMs/60000).toFixed(1),totalMin:+(focusTime.totalMs/60000).toFixed(1),dailyTargetMin:focusTime.target.recommended,minimumMin:focusTime.target.minimum,stretchMin:focusTime.target.stretch},dueQuestionCount,coveragePct:+(st.coverage*100).toFixed(1),masteryPct:+(st.mastery*100).toFixed(1),allTimeAccuracyPct:+(st.allTimeAccuracy*100).toFixed(1),allTimeCorrect:st.allTimeCorrect,avgHitsPerLevel:+(lifetimeLevelScoreStats().avgHits??0).toFixed(2),completedTrainingLevels:lifetimeLevelScoreStats().levels,recentAccuracyPct:+(st.accuracy*100).toFixed(1),recentAutomaticPct:+(st.auto*100).toFixed(1),avgResponseSec:+(st.avgMs/1000).toFixed(2),aeRating:+(st.rating*100).toFixed(1),learningScore:learning.current==null?null:+learning.current.toFixed(1),learningTrendDelta:learning.delta==null?null:+learning.delta.toFixed(1),aiLevel:ai.level,aiConfidencePct:+(ai.confidence*100).toFixed(1),typicalLearner:{you:peer.actual==null?null:+peer.actual.toFixed(1),healthyMin:+peer.healthyMin.toFixed(1),typical:+peer.typical.toFixed(1),strongPace:+peer.strongPace.toFixed(1),paceDelta:peer.delta==null?null:+peer.delta.toFixed(1),label:peer.label},graduationReadinessPct:+(c2.score*100).toFixed(1),campaignLearningProgressPct:+(estimate.learningProgress*100).toFixed(1),campaign2PracticeEstimate:{practiceHours:+estimate.hours.toFixed(1),rangeHours:[+estimate.hoursLow.toFixed(1),+estimate.hoursHigh.toFixed(1)],daysAtCurrentPace:estimate.days,dailyPaceMin:+estimate.paceMinutes.toFixed(1),paceBasis:estimate.paceBasis,calendarFloorDays:estimate.calendarFloor,mainGate:estimate.mainGate,confidence:estimate.confidenceLabel,hourDriver:estimate.hourDriver,gateHours:estimate.gateHours,dailyPlan:estimate.dailyPlan},targetPerformance:targetPerf.n?{levels:targetPerf.n,avgTarget:+targetPerf.avgTarget.toFixed(2),avgActual:+targetPerf.avgActual.toFixed(2),avgDelta:+targetPerf.avgDelta.toFixed(2),hitRatePct:+(targetPerf.hitRate*100).toFixed(1),abovePct:+(targetPerf.aboveRate*100).toFixed(1),exactPct:+(targetPerf.onRate*100).toFixed(1),belowPct:+(targetPerf.belowRate*100).toFixed(1)}:null,readingLoad:{windowAnswers:readingLoad.windowAnswers,short:readingLoadBucketForCoach(readingLoad.short),medium:readingLoadBucketForCoach(readingLoad.medium),long:readingLoadBucketForCoach(readingLoad.long),longVsShort:{accuracyDeltaPts:readingLoad.longVsShort.accuracyDeltaPts==null?null:+readingLoad.longVsShort.accuracyDeltaPts.toFixed(1),timeDeltaSec:readingLoad.longVsShort.timeDeltaMs==null?null:+(readingLoad.longVsShort.timeDeltaMs/1000).toFixed(2),timeoutDeltaPts:readingLoad.longVsShort.timeoutDeltaPts==null?null:+readingLoad.longVsShort.timeoutDeltaPts.toFixed(1)},evidence:readingLoad.evidence.label,lengthSensitiveSkills:readingLoad.sensitiveSkills.map(x=>({skill:x.skill,shortN:x.shortN,longN:x.longN,longVsShortAccuracyPts:+x.accuracyDeltaPts.toFixed(1),longVsShortTimeSec:+(x.timeDeltaMs/1000).toFixed(2)}))},recentTrend:trend,focus:focus.map(x=>({skill:x.name,masteryPct:+(x.mastery*100).toFixed(1),recentErrorPct:+(x.wrongRate*100).toFixed(1),attempts:x.m.attempts||0})),skillMovement:moves.map(x=>({skill:x.skill,deltaAccuracyPts:+x.delta.toFixed(1),recentAccuracyPct:+x.recent.toFixed(1),recentN:x.n})),commonMistakes:mistakes.map(g=>({skill:skillLabel(g.cat),recentMisses:g.count,question:g.record.question||g.record.originalQuestion||"",yourAnswer:g.record.userAnswer||"",correct:g.record.correctAnswer||"",rule:learningTerminology(g.record.rule||"")})),allSkills:[...rankedSkills()].reverse().map(x=>({skill:x.name,masteryPct:+(x.mastery*100).toFixed(1),attempts:x.m.attempts||0}))};
+  const firstTs=state.history.find(r=>Number.isFinite(r.ts))?.ts||state.createdAt||Date.now(),studySpanDays=Math.max(0,(Date.now()-firstTs)/86400000),dueQuestionCount=activeSeenRows().filter(x=>x?.lastTs&&Date.now()>=(x.nextDueTs||x.lastTs+(x.intervalDays||1)*86400000)).length;
+  return {appVersion:APP_VERSION,campaign:CAMPAIGN.campaignId||CAMPAIGN.id||"AE-C1",level:state.level,sessions:state.sessions,totalAnswers:state.totalAttempts,uniqueSeen:activeSeenCount(),bankSize:BANK.length,studySpanDays:+studySpanDays.toFixed(1),focusTime:{todayMin:+(focusTime.todayMs/60000).toFixed(1),weekMin:+(focusTime.weekMs/60000).toFixed(1),totalMin:+(focusTime.totalMs/60000).toFixed(1),dailyTargetMin:focusTime.target.recommended,minimumMin:focusTime.target.minimum,stretchMin:focusTime.target.stretch},dueQuestionCount,coveragePct:+(st.coverage*100).toFixed(1),masteryPct:+(st.mastery*100).toFixed(1),allTimeAccuracyPct:+(st.allTimeAccuracy*100).toFixed(1),allTimeCorrect:st.allTimeCorrect,avgHitsPerLevel:+(lifetimeLevelScoreStats().avgHits??0).toFixed(2),completedTrainingLevels:lifetimeLevelScoreStats().levels,recentAccuracyPct:+(st.accuracy*100).toFixed(1),recentAutomaticPct:+(st.auto*100).toFixed(1),avgResponseSec:+(st.avgMs/1000).toFixed(2),aeRating:+(st.rating*100).toFixed(1),learningScore:learning.current==null?null:+learning.current.toFixed(1),learningTrendDelta:learning.delta==null?null:+learning.delta.toFixed(1),aiLevel:ai.level,aiConfidencePct:+(ai.confidence*100).toFixed(1),typicalLearner:{you:peer.actual==null?null:+peer.actual.toFixed(1),healthyMin:+peer.healthyMin.toFixed(1),typical:+peer.typical.toFixed(1),strongPace:+peer.strongPace.toFixed(1),paceDelta:peer.delta==null?null:+peer.delta.toFixed(1),label:peer.label},graduationReadinessPct:+(c2.score*100).toFixed(1),campaignLearningProgressPct:+(estimate.learningProgress*100).toFixed(1),campaign2PracticeEstimate:{practiceHours:+estimate.hours.toFixed(1),rangeHours:[+estimate.hoursLow.toFixed(1),+estimate.hoursHigh.toFixed(1)],daysAtCurrentPace:estimate.days,dailyPaceMin:+estimate.paceMinutes.toFixed(1),paceBasis:estimate.paceBasis,calendarFloorDays:estimate.calendarFloor,mainGate:estimate.mainGate,confidence:estimate.confidenceLabel,hourDriver:estimate.hourDriver,gateHours:estimate.gateHours,dailyPlan:estimate.dailyPlan},targetPerformance:targetPerf.n?{levels:targetPerf.n,avgTarget:+targetPerf.avgTarget.toFixed(2),avgActual:+targetPerf.avgActual.toFixed(2),avgDelta:+targetPerf.avgDelta.toFixed(2),hitRatePct:+(targetPerf.hitRate*100).toFixed(1),abovePct:+(targetPerf.aboveRate*100).toFixed(1),exactPct:+(targetPerf.onRate*100).toFixed(1),belowPct:+(targetPerf.belowRate*100).toFixed(1)}:null,readingLoad:{windowAnswers:readingLoad.windowAnswers,short:readingLoadBucketForCoach(readingLoad.short),medium:readingLoadBucketForCoach(readingLoad.medium),long:readingLoadBucketForCoach(readingLoad.long),longVsShort:{accuracyDeltaPts:readingLoad.longVsShort.accuracyDeltaPts==null?null:+readingLoad.longVsShort.accuracyDeltaPts.toFixed(1),timeDeltaSec:readingLoad.longVsShort.timeDeltaMs==null?null:+(readingLoad.longVsShort.timeDeltaMs/1000).toFixed(2),timeoutDeltaPts:readingLoad.longVsShort.timeoutDeltaPts==null?null:+readingLoad.longVsShort.timeoutDeltaPts.toFixed(1)},evidence:readingLoad.evidence.label,lengthSensitiveSkills:readingLoad.sensitiveSkills.map(x=>({skill:x.skill,shortN:x.shortN,longN:x.longN,longVsShortAccuracyPts:+x.accuracyDeltaPts.toFixed(1),longVsShortTimeSec:+(x.timeDeltaMs/1000).toFixed(2)}))},recentTrend:trend,focus:focus.map(x=>({skill:x.name,masteryPct:+(x.mastery*100).toFixed(1),recentErrorPct:+(x.wrongRate*100).toFixed(1),attempts:x.m.attempts||0})),skillMovement:moves.map(x=>({skill:x.skill,deltaAccuracyPts:+x.delta.toFixed(1),recentAccuracyPct:+x.recent.toFixed(1),recentN:x.n})),commonMistakes:mistakes.map(g=>({skill:skillLabel(g.cat),recentMisses:g.count,question:g.record.question||g.record.originalQuestion||"",yourAnswer:g.record.userAnswer||"",correct:g.record.correctAnswer||"",rule:learningTerminology(g.record.rule||"")})),allSkills:[...rankedSkills()].reverse().map(x=>({skill:x.name,masteryPct:+(x.mastery*100).toFixed(1),attempts:x.m.attempts||0}))};
 }
 const AI_ANALYSIS_CONTRACT={
   language:"Answer mainly in Spanish; keep English examples in English.",
@@ -795,7 +804,7 @@ function observedRate(rows,valueFn,current,start){
 function campaignPracticeEstimate(){
   const c=campaign2Readiness(),st=overallStats(),g=c.graduation,hist=state.history||[],sessions=(state.sessionHistory||[]).filter(x=>x.mode==="training"),now=Date.now(),day=86400000,focus=focusSummary(),lp=campaignLearningProgress(st);
   const firstTs=hist.find(x=>Number.isFinite(x.ts))?.ts||state.createdAt||now,spanDays=Math.max(.25,(now-firstTs)/day),todayMin=focus.todayMs/60000,recommendedMin=Math.max(1,focus.target.recommended||15);
-  const due=Object.values(state.seen||{}).filter(x=>x?.lastTs&&now>=(x.nextDueTs||x.lastTs+(x.intervalDays||1)*day)).length,dueRatio=Object.keys(state.seen||{}).length?due/Object.keys(state.seen||{}).length:1;
+  const due=activeSeenRows().filter(x=>x?.lastTs&&now>=(x.nextDueTs||x.lastTs+(x.intervalDays||1)*day)).length,dueRatio=activeSeenCount()?due/activeSeenCount():1;
   const progressForRow=x=>clamp(((.65*(x.mastery??lp.initialMastery)+.25*(x.coverage??0)+.10*(x.automatic??0))-lp.baseline)/Math.max(.001,lp.target-lp.baseline));
   const learningRate=observedRate(sessions,progressForRow,lp.progress,0),masteryRate=observedRate(sessions,x=>Number(x.mastery),st.mastery,lp.initialMastery),coverageRate=observedRate(sessions,x=>Number(x.coverage),st.coverage,0);
   const hoursLearning=Math.max(0,(1-lp.progress)/Math.max(.0015,learningRate.rate)),hoursMastery=Math.max(0,(.85-st.mastery)/Math.max(.0015,masteryRate.rate)),hoursCoverage=Math.max(0,(.999-st.coverage)/Math.max(.002,coverageRate.rate));
@@ -1041,7 +1050,7 @@ function renderGrowthTree(){
   host.innerHTML=`<div class="growth-tree-canvas" data-tree-stage="${stage}"><svg viewBox="0 0 420 300" role="img" aria-label="Practice tree, growth stage ${stage} of 200"><defs><linearGradient id="treeTrunk" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5d3827"/><stop offset=".55" stop-color="#76503a"/><stop offset="1" stop-color="#957258"/></linearGradient></defs><ellipse class="tree-ground" cx="210" cy="282" rx="78" ry="7"/> <g class="tree-branches" fill="none" stroke="url(#treeTrunk)" stroke-linecap="round" stroke-linejoin="round">${branch}</g><g class="tree-leaves">${leaf}</g></svg></div><div class="growth-tree-count"><b>${level.toLocaleString()}</b><span>LEVEL</span></div>`;
 }
 
-const RELEASE_NOTES=["v1.1.1 refocuses Campaign 1 on B2 First Part 1 + Part 2","720 redundant Grammar/Phrasal items are now lexical-choice and Open-Cloze training","Part 1 now emphasizes near-synonyms, collocations and contextual vocabulary; Part 2 emphasizes function words, articles, connectors and prepositions","Phrasal verbs remain only as an exam-essential minority because intensive phrasal practice has its own app","Existing level, sessions, all-time results and historical coverage are preserved; only the six repurposed skill models restart with neutral evidence","The 3,000-question bank, 15-question levels, fixed 15-second clock, Adaptive scheduler, music and visual system remain unchanged"];
+const RELEASE_NOTES=["v1.2.0 locks the 3,000-question B2 Part 1/2 bank around greater sentence variety","Every skill now uses 10 real templates × 12 contexts instead of 5 templates × 24 cosmetic variants","The bank keeps roughly half of the previous questions and replaces the other half with new B2 First-style lexical and function-word patterns informed by the existing adaptive-exam corpus","New-question selection prefers unseen templates before recycling a pattern, while due spaced reviews can still return an exact question","Questions remain short for the fixed 15-second clock; names and contexts are more varied","Per-question feedback now shows question repetitions, pattern repetitions, correct and wrong counts","Coverage counts only questions that still belong to the active 3,000-question bank","The timer display now initializes from the real 15-second TIME_LIMIT instead of the inherited 10.0 label"];
 function renderReleaseInfo(){const host=$("releaseInfo"),online=location.protocol.startsWith("http"),build=`${online?"ONLINE":"LOCAL"} BUILD · v${APP_VERSION} · BANK ${CAMPAIGN?.version||"—"}`;if(host)host.innerHTML=`<details class="release-info"><summary><b>Adaptive B2 Cloze v${APP_VERSION}</b><span>WHAT’S NEW</span></summary><ul>${RELEASE_NOTES.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></details>`;if($("buildVersion"))$("buildVersion").textContent=build;if($("endBuildVersion"))$("endBuildVersion").textContent=build;const meta=document.querySelector('meta[name="ae-version"]');if(meta)meta.setAttribute("content",APP_VERSION);document.title=`Adaptive B2 Cloze - Campaign 1 - v${APP_VERSION}`;}
 function renderStart(){
   ensureDailyKey();
@@ -1052,7 +1061,7 @@ function renderStart(){
   $("startKicker").textContent=`CAMPAIGN 1 · ${currentStageText()}`;
   $("startLevel").textContent=`LEVEL ${state.level}`;
   $("startBtn").textContent=state.sessions?`CONTINUE · LEVEL ${state.level}`:`START · LEVEL ${state.level}`;
-  $("coverageText").textContent=`${Object.keys(state.seen).length.toLocaleString()} / ${BANK.length.toLocaleString()}`;
+  $("coverageText").textContent=`${activeSeenCount().toLocaleString()} / ${BANK.length.toLocaleString()}`;
   $("coverageFill").style.width=pct(st.coverage)+"%";paintFill("coverageFill",st.coverage);paintText("coverageText",st.coverage);
   $("masteryText").textContent=pct(st.mastery)+"%";$("masteryFill").style.width=pct(st.mastery)+"%";paintFill("masteryFill",st.mastery);paintText("masteryText",st.mastery);
   $("startFluency").textContent=st.rating?pct(st.rating):"—";paintText("startFluency",st.rating);
@@ -1149,11 +1158,11 @@ function nextQuestion(){
   $("questionText").classList.remove("focus-active");$("questionText").textContent=view.question;
   const wrap=$("answers");wrap.innerHTML="";
   current.display.forEach((txt,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=view.options[i];b.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"){e.preventDefault();answer(i,false);}});b.addEventListener("click",()=>answer(i,false));wrap.appendChild(b);});
-  $("timerText").textContent="10.0";$("timer").classList.remove("urgent");renderSegments(10);startTimer();
+  $("timerText").textContent=TIME_LIMIT.toFixed(1);$("timer").classList.remove("urgent");renderSegments(TIME_LIMIT);startTimer();
 }
-function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect=0,phraseWrong=0,cat=""){
+function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect=0,phraseWrong=0,cat="",trigger=""){
   const f=$("feedback"),skill=skillLabel(cat);f.className="feedback "+(ok?"ok":"no");
-  f.innerHTML=`<div class="feedback-record" aria-label="${phraseCorrect} correctas y ${phraseWrong} incorrectas"><span class="record-good"><i>V</i><b>${phraseCorrect}</b></span><span class="record-bad"><i>?</i><b>${phraseWrong}</b></span><small>${appearance} intentos · ${sec.toFixed(2)}s</small></div>${skill?`<div class="feedback-skill-tag">${escapeHtml(skill)}</div>`:""}`;
+  f.innerHTML=`<div class="feedback-record" aria-label="${phraseCorrect} correctas y ${phraseWrong} incorrectas"><span class="record-good"><i>✓</i><b>${phraseCorrect}</b></span><span class="record-bad"><i>×</i><b>${phraseWrong}</b></span><small>PREGUNTA ×${appearance} · PATRÓN ×${patternAppearance} · ${sec.toFixed(2)}s</small></div>${trigger?`<div class="feedback-skill-tag"><b>${escapeHtml(trigger)}</b><span> · ✓${phraseCorrect} · ×${phraseWrong}</span></div>`:skill?`<div class="feedback-skill-tag">${escapeHtml(skill)}</div>`:""}`;
   requestAnimationFrame(()=>f.classList.add("show"));
   const hold=ok?510:(type==="fast-wrong"?1165:type==="timeout"?1060:1020);setTimeout(()=>f.classList.remove("show"),hold);
 }
@@ -1174,7 +1183,7 @@ function answer(pos,timeout=false){
   try{flashGrammarFocus(shownQuestion,rec.correctAnswer,current.visibleFocus||current.focus||[]);}catch(e){console.error("Grammar focus flash failed",e);}
   state.history.push(rec);state.history=state.history.slice(-12000);state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
   const answeredIndex=session.index,delay=ok?555:(type==="fast-wrong"?1200:type==="timeout"?1095:1060);setTimeout(()=>{if(!session||session.index!==answeredIndex)return;session.index++;try{nextQuestion();}catch(e){console.error("Question advance recovered",e);locked=false;setTimeout(nextQuestion,120);}},delay);
-  try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect();else playWrong();}catch(e){console.error("Audio failed",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat);}catch(e){console.error("Feedback failed",e);}
+  try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect();else playWrong();}catch(e){console.error("Audio failed",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat,current.trigger);}catch(e){console.error("Feedback failed",e);}
 }
 async function finishSession(){
   clearInterval(timerHandle);
@@ -1206,7 +1215,7 @@ function renderEnd(s,before){
   const targetHit=s.target==null?null:s.correct>=s.target,targetDelta=s.target==null?null:s.correct-s.target;
   $("endScore").textContent=`${s.correct}/${s.total} · ${pct(s.accuracy)}%`;$("endScore").style.color=valueTextColor(s.accuracy);
   const targetEl=$("endTarget");if(targetEl){targetEl.className=`target-result ${targetHit==null?"hidden":targetHit?"hit":"miss"}`;targetEl.innerHTML=targetHit==null?"":`<span>TARGET ${s.target.toFixed(1)}</span><b>${targetDelta>=0?"+":""}${targetDelta.toFixed(1)}</b><small>${targetHit?"TARGET BEATEN":"TARGET MISSED"}</small>`;}
-  $("endSub").textContent=`AE RATING ${pct(st.rating)} · ${rb.name} · ${sg.name} · ${Object.keys(state.seen).length.toLocaleString()}/${BANK.length.toLocaleString()} explored`;
+  $("endSub").textContent=`AE RATING ${pct(st.rating)} · ${rb.name} · ${sg.name} · ${activeSeenCount().toLocaleString()}/${BANK.length.toLocaleString()} explored`;
   $("eAvg").textContent=fmtSec(s.avgMs);$("eAuto").textContent=pct(s.automatic)+"%";paintText("eAuto",s.automatic);$("eFluency").textContent=pct(st.rating);paintText("eFluency",st.rating);
   $("eCoverage").textContent=pct(st.coverage)+"%";paintText("eCoverage",st.coverage);$("eMastery").textContent=pct(st.mastery)+"%";paintText("eMastery",st.mastery);$("eMastered").textContent=`${st.mastered}/${CAMPAIGN.skills.length}`;paintText("eMastered",st.mastered/CAMPAIGN.skills.length);
   $("dAcc").innerHTML=before?deltaText((s.accuracy-before.accuracy)*100,true," pts"):'<span class="delta neutral">First level</span>';
