@@ -482,6 +482,12 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 .ai-handoff-card{margin:12px 0 15px;padding:14px 15px;border-radius:14px;border:1px solid rgba(231,191,87,.28);background:linear-gradient(135deg,rgba(231,191,87,.10),rgba(var(--ai-rgb),.10));display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}.ai-handoff-card span{display:block;font-size:12px;font-weight:950;letter-spacing:.1em;color:#d8c47f}.ai-handoff-card b{display:block;margin-top:4px;font-size:18px;line-height:1.2;color:#f5f0df}.ai-handoff-card small{display:block;margin-top:5px;font-size:12px;line-height:1.45;color:#9fb2a8}.ai-handoff-card.copied{border-color:rgba(130,230,169,.42);background:linear-gradient(135deg,rgba(72,164,101,.15),rgba(var(--ai-rgb),.08))}.ai-handoff-card.copied b{color:#b8f1cb}.ai-handoff-card button{min-width:150px}.error-session-handoff{margin:0 0 14px;padding:12px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}.error-session-handoff small{display:block;margin-top:7px;font-size:12px;line-height:1.45;color:#90a399}.coach-prompt-section>.primary{width:100%}#endScreen .learning-score-box{min-width:0}#endScreen .learning-score-box>div:first-child{min-width:0}#endScreen .learning-direction{min-width:0;max-width:48%;text-align:right;white-space:normal;overflow-wrap:anywhere}
 @media(max-width:520px){.ai-handoff-card{grid-template-columns:1fr;padding:13px}.ai-handoff-card button{width:100%}.ai-handoff-card span{font-size:11px}.ai-handoff-card b{font-size:17px}.ai-handoff-card small{font-size:12px}.error-session-handoff button{width:100%}#endScreen .learning-score-box{gap:8px}#endScreen .learning-direction{font-size:clamp(23px,7vw,30px);max-width:46%}}
 </style>
+<style id="dynamic-answer-palette">
+.answer.option-c1:not(.good):not(.bad){background:#665a3c}
+.answer.option-c2:not(.good):not(.bad){background:#3f6360}
+.answer.option-c3:not(.good):not(.bad){background:#50617c}
+.answer.option-c4:not(.good):not(.bad){background:#6b5366}
+</style>
 </head>
 <body>
 <div class="app">
@@ -662,7 +668,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./lessons.js?v=1.2.2"></script>
 <script src="./keys.js?v=1.2.2"></script>
 <script src="./error-coach.js?v=1.2.2"></script>
-<script src="./app.js?v=1.3.0"></script>
+<script src="./app.js?v=1.4.0"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
   navigator.serviceWorker.register('./service-worker.js?v=1.2.2',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
