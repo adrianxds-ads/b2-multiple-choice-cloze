@@ -215,9 +215,9 @@ body.feedback-correct .game{animation:none!important}body.feedback-wrong .game{a
 
 <style id="v200-style">
 /* v2.4 · Adrián Visual System + level mission transitions */
-.mission-overlay{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--mission-accent,#E7BF57) 24%,transparent),transparent 42%),linear-gradient(180deg,#101814 0%,#09100d 100%);color:#fff;pointer-events:auto}.mission-overlay.hidden{display:none!important}.mission-overlay.resolution.hit{background:radial-gradient(circle at 50% 34%,color-mix(in srgb,var(--rank-15,#E7BF57) 34%,transparent),transparent 38%),linear-gradient(180deg,#30250c,#0e0d08 78%)}.mission-overlay.resolution.miss{background:radial-gradient(circle at 50% 34%,color-mix(in srgb,var(--rank-4,#762F32) 38%,transparent),transparent 40%),linear-gradient(180deg,#2b1718,#0d0b0b 78%)}
+.mission-overlay{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--mission-accent,#E7BF57) 24%,transparent),transparent 42%),linear-gradient(180deg,#101814 0%,#09100d 100%);color:#fff;pointer-events:auto}.mission-overlay.hidden{display:none!important}.mission-overlay.resolution.hit{background:radial-gradient(circle at 50% 34%,color-mix(in srgb,var(--mission-accent,#E7BF57) 34%,transparent),transparent 38%),linear-gradient(180deg,#30250c,#0e0d08 78%)}.mission-overlay.resolution.miss{background:radial-gradient(circle at 50% 34%,color-mix(in srgb,var(--rank-4,#762F32) 38%,transparent),transparent 40%),linear-gradient(180deg,#2b1718,#0d0b0b 78%)}
 .mission-card{width:min(92vw,520px);padding:30px 22px 26px;border:1px solid color-mix(in srgb,var(--mission-accent,#E7BF57) 58%,white 8%);border-radius:20px;background:rgba(8,14,11,.80);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 28px 80px rgba(0,0,0,.45),0 0 42px color-mix(in srgb,var(--mission-accent,#E7BF57) 18%,transparent);text-align:center}.mission-eyebrow{font-size:12px;font-weight:950;letter-spacing:.16em;color:var(--mission-accent,#E7BF57)}.mission-title{margin-top:13px;font-size:clamp(28px,8vw,44px);font-weight:950;letter-spacing:-.035em}.mission-score{margin:8px 0 5px;font-size:clamp(58px,17vw,94px);line-height:.9;font-weight:950;color:#fff;text-shadow:0 0 20px color-mix(in srgb,var(--mission-accent,#E7BF57) 40%,transparent)}.mission-score small{font-size:.32em;opacity:.74;margin-left:4px}.mission-targetline{font-size:18px;font-weight:900;color:#efe8d7}.mission-targetline b{color:var(--mission-accent,#E7BF57)}.mission-meta{margin-top:13px;font-size:15px;font-weight:900;color:#dbe6df}.mission-rules{margin-top:6px;font-size:10px;letter-spacing:.14em;color:#91a39a;font-weight:900}.mission-change{margin-top:9px;font-size:15px;font-weight:950;letter-spacing:.06em}
-.mission-count{margin-top:22px;font-size:clamp(72px,22vw,124px);line-height:.8;font-weight:950;color:var(--mission-accent,#E7BF57);text-shadow:0 0 30px color-mix(in srgb,var(--mission-accent,#E7BF57) 54%,transparent)}.mission-count.pop{animation:missionPop .32s cubic-bezier(.2,.9,.25,1.28)}.resolution .mission-count{font-size:clamp(31px,9vw,48px);letter-spacing:.10em;margin-top:20px}.resolution.hit .mission-card{border-color:color-mix(in srgb,var(--rank-15,#E7BF57) 72%,transparent)}.resolution.miss .mission-card{border-color:color-mix(in srgb,var(--rank-4,#762F32) 78%,transparent)}.resolution.miss .mission-eyebrow,.resolution.miss .mission-count,.resolution.miss .mission-targetline b{color:color-mix(in srgb,var(--mission-accent) 68%,white 32%)}@keyframes missionPop{0%{transform:scale(.72);opacity:.35}70%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
+.mission-count{margin-top:22px;font-size:clamp(72px,22vw,124px);line-height:.8;font-weight:950;color:var(--mission-accent,#E7BF57);text-shadow:0 0 30px color-mix(in srgb,var(--mission-accent,#E7BF57) 54%,transparent)}.mission-count.pop{animation:missionPop .32s cubic-bezier(.2,.9,.25,1.28)}.resolution .mission-count{font-size:clamp(31px,9vw,48px);letter-spacing:.10em;margin-top:20px}.resolution.hit .mission-card{border-color:color-mix(in srgb,var(--mission-accent,#E7BF57) 72%,transparent)}.resolution.miss .mission-card{border-color:color-mix(in srgb,var(--rank-4,#762F32) 78%,transparent)}.resolution.miss .mission-eyebrow,.resolution.miss .mission-count,.resolution.miss .mission-targetline b{color:color-mix(in srgb,var(--mission-accent) 68%,white 32%)}@keyframes missionPop{0%{transform:scale(.72);opacity:.35}70%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
 @media(max-width:520px){.mission-card{padding:26px 16px 22px;border-radius:16px}.mission-meta{font-size:13px}.mission-targetline{font-size:16px}}@media(prefers-reduced-motion:reduce){.mission-count.pop{animation:none!important}}
 </style>
 
@@ -651,20 +651,19 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
   </div>
 </section>
 </div>
-<section id="scoreModal" class="score-modal hidden"><div class="score-modal-card"><div class="chart-title-row"><div><div class="kicker">PERFORMANCE OVER TIME</div><h2>Correct answers · /15</h2></div><button id="scoreCloseBtn" class="secondary">CLOSE</button></div><div id="scoreExpandedChart"></div><p class="meta">Each point is one 15-question level. Solid + filled = your actual score; dashed + hollow = the adaptive TARGET. Both use the AVS 1–15 colour of the value they represent. 15 correct is Gold; 0 is the minimum. Higher is better. The horizontal axis uses real time: hours for short spans, calendar days for longer spans.</p></div></section>
+<section id="scoreModal" class="score-modal hidden"><div class="score-modal-card"><div class="chart-title-row"><div><div class="kicker">PERFORMANCE OVER TIME</div><h2>Correct answers · /15</h2></div><button id="scoreCloseBtn" class="secondary">CLOSE</button></div><div id="scoreExpandedChart"></div><p class="meta">Each point is one 15-question level. Solid + filled = your actual score; dashed + hollow = the adaptive TARGET. Both use the AVS 1–15 colour of the value they represent. 13 = Blue Medal; 14 = Violet Medal; 15 = Gold Medal; 0 is the minimum. Higher is better. The horizontal axis uses real time: hours for short spans, calendar days for longer spans.</p></div></section>
 
 <section id="missionOverlay" class="mission-overlay hidden" aria-hidden="true"><div class="mission-card"><div id="missionBody"></div><div id="missionCount" class="mission-count"></div></div></section>
 <div id="particles" class="particles" aria-hidden="true"></div>
-<script src="./adrian-visual-system.js?v=1.2.0"></script>
-<script src="./lessons.js?v=1.2.0"></script>
-<script src="./keys.js?v=1.2.0"></script>
-<script src="./error-coach.js?v=1.2.0"></script>
-<script src="./app.js?v=1.2.0"></script>
+<script src="./adrian-visual-system.js?v=1.2.1"></script>
+<script src="./adrian-achievements.js?v=1.2.1"></script>
+<script src="./lessons.js?v=1.2.1"></script>
+<script src="./keys.js?v=1.2.1"></script>
+<script src="./error-coach.js?v=1.2.1"></script>
+<script src="./app.js?v=1.2.1"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  let aeReloading=false;
-  navigator.serviceWorker.addEventListener('controllerchange',()=>{if(aeReloading)return;aeReloading=true;location.reload();});
-  navigator.serviceWorker.register('./service-worker.js?v=1.2.0',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=1.2.1',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=6"></script>
