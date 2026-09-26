@@ -48,30 +48,30 @@ B("{person} is interested ___ {activity}.",["in","on","at","for"],0,"Interested 
 SKILLS["verb_ing"]=("Part 1 · point / aim / purpose / reason",[
 B("There's no ___ in discussing {topic} again.",["point","aim","purpose","reason"],0,"The fixed pattern is there is no point in + -ing.","NO POINT IN + -ING",("topic",)),
 B("{person}'s main ___ is to improve their English.",["aim","point","reason","profit"],0,"Aim is a goal or objective someone wants to achieve.","MAIN AIM",("person",)),
-B("{agent} introduced the change for the ___ of improving {topic}.",["purpose","point","aim","profit"],0,"For the purpose of means with the intention of doing something.","FOR THE PURPOSE OF",("agent","topic")),
+B("{agent} introduced the change for the ___ of improving {area}.",["purpose","point","aim","profit"],0,"For the purpose of means with the intention of doing something.","FOR THE PURPOSE OF",("agent","area")),
 B("For this ___, {person} checked {thing} twice.",["reason","aim","point","purpose"],0,"For this reason introduces the cause or explanation for an action.","FOR THIS REASON",("person","thing")),
 B("The whole ___ of {thing} is to make the process easier.",["point","profit","reason","cause"],0,"The point of something is its main purpose.","THE POINT OF",("thing",))])
 SKILLS["verb_to"]=("Part 1 · experience / knowledge / awareness / understanding",[
-B("{person} gained valuable ___ while working for {agent}.",["experience","knowledge","awareness","understanding"],0,"Gain experience is the natural collocation for practical learning through doing.","GAIN EXPERIENCE",("person","agent")),
+B("{person} gained valuable ___ while working abroad.",["experience","knowledge","awareness","understanding"],0,"Gain experience is the natural collocation for practical learning through doing.","GAIN EXPERIENCE",("person",)),
 B("{agent} wants to raise ___ of {topic}.",["awareness","experience","knowledge","understanding"],0,"Raise awareness is the fixed collocation for making people more conscious of an issue.","RAISE AWARENESS",("agent","topic")),
 B("{person} has a good ___ of how {thing} works.",["understanding","experience","awareness","occasion"],0,"Have a good understanding of means comprehend how something works.","UNDERSTANDING OF",("person","thing")),
-B("{person} has detailed ___ of {topic}.",["knowledge","experience","awareness","feeling"],0,"Knowledge of refers to information or understanding someone possesses about a subject.","KNOWLEDGE OF",("person","topic")),
+B("{person} has detailed ___ of {area}.",["knowledge","experience","awareness","feeling"],0,"Knowledge of refers to information or understanding someone possesses about a subject.","KNOWLEDGE OF",("person","area")),
 B("{person} has no previous ___ of working with visitors.",["experience","knowledge","awareness","sense"],0,"Experience of + -ing refers to practical previous involvement.","EXPERIENCE OF + -ING",("person",))])
 SKILLS["bare_infinitive"]=("Part 1 · detail / aspect / issue / matter",[
 B("{person} remembered every ___ of {thing}.",["detail","aspect","issue","matter"],0,"A detail is a small individual fact or feature.","EVERY DETAIL",("person","thing")),
-B("The report examines several ___ of {topic}.",["aspects","details","issues","matters"],0,"An aspect is one particular part or feature of a subject.","ASPECTS OF",("topic",)),
-B("{topic} has become a major ___ for {agent}.",["issue","detail","aspect","subject"],0,"A major issue is an important problem or matter for discussion.","MAJOR ISSUE",("topic","agent")),
+B("The report examines several ___ of {area}.",["aspects","details","issues","matters"],0,"An aspect is one particular part or feature of a subject.","ASPECTS OF",("area",)),
+B("For {person}, {topic} has become a major ___.",["issue","detail","aspect","subject"],0,"A major issue is an important problem or matter for discussion.","MAJOR ISSUE",("person","topic")),
 B("That's a private ___ for {person}.",["matter","aspect","detail","topic"],0,"A private matter is a personal subject or situation.","PRIVATE MATTER",("person",)),
 B("The guide went into great ___ about {topic}.",["detail","matter","issue","aspect"],0,"Go into detail means explain something thoroughly.","GO INTO DETAIL",("topic",))])
 SKILLS["phrasal_get_take"]=("Part 1 · chance / opportunity / prospect / occasion",[
-B("{person} was given the ___ to work for {agent}.",["opportunity","chance","occasion","prospect"],0,"Be given the opportunity to means receive a suitable chance to do something.","OPPORTUNITY TO",("person","agent")),
+B("{person} was given the ___ to work on a local project.",["opportunity","chance","occasion","prospect"],0,"Be given the opportunity to means receive a suitable chance to do something.","OPPORTUNITY TO",("person",)),
 B("By any ___, did {person} mention {topic}?",["chance","opportunity","occasion","prospect"],0,"By any chance is a fixed expression used when asking whether something might be true.","BY ANY CHANCE",("person","topic")),
-B("{person} was excited by the ___ of working for {agent}.",["prospect","occasion","chance","opportunity"],0,"The prospect of something is the possibility of it happening, especially when it causes a feeling.","THE PROSPECT OF",("person","agent")),
+B("{person} was excited by the ___ of working abroad.",["prospect","occasion","chance","opportunity"],0,"The prospect of something is the possibility of it happening, especially when it causes a feeling.","THE PROSPECT OF",("person",)),
 B("On this ___, {person} decided to visit {place}.",["occasion","chance","opportunity","prospect"],0,"On this occasion refers to a particular event or instance.","ON THIS OCCASION",("person","place")),
 B("{person} took the ___ to ask about {topic}.",["opportunity","occasion","prospect","possibility"],0,"Take the opportunity to means use a suitable moment to do something.","TAKE THE OPPORTUNITY TO",("person","topic"))])
 SKILLS["phrasal_put_set"]=("Part 1 · habit / tendency / trend / custom",[
 B("{person} has a ___ to speak too quickly when nervous.",["tendency","habit","custom","trend"],0,"Have a tendency to means be likely to behave in a particular way.","TENDENCY TO",("person",)),
-B("It is a ___ at {agent} to welcome visitors in this way.",["custom","habit","trend","tendency"],0,"A custom is an established traditional way of behaving in a group or place.","LOCAL CUSTOM",("agent",)),
+B("For {person}, welcoming visitors in this way is a ___.",["custom","habit","trend","tendency"],0,"A custom is an established traditional way of behaving in a group or place.","LOCAL CUSTOM",("person",)),
 B("{person} is in the ___ of checking every booking twice.",["habit","custom","trend","tendency"],0,"Be in the habit of + -ing describes a regular personal behaviour.","IN THE HABIT OF",("person",)),
 B("There is a growing ___ towards shorter trips to {place}.",["trend","custom","habit","tendency"],0,"A trend towards something is a general direction in which behaviour is changing.","TREND TOWARDS",("place",)),
 B("{person} checked {thing} again out of ___.",["habit","custom","trend","tendency"],0,"Out of habit means because something is done automatically and regularly.","OUT OF HABIT",("person","thing"))])
