@@ -1,5 +1,5 @@
 const CACHE_PREFIX='b2mcc-campaign1-';
-const CACHE='b2mcc-campaign1-v1.2.1';
+const CACHE='b2mcc-campaign1-v1.2.2';
 const ASSETS=['./','./index.html','./adrian-visual-system.js','./adrian-achievements.js','./lessons.js','./keys.js','./error-coach.js','./app.js','./campaign-01.json','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith(CACHE_PREFIX)&&k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});

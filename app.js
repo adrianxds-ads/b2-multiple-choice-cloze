@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.2.1";
+const APP_VERSION = "1.2.2";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -1052,6 +1052,8 @@ function renderGrowthTree(){
 
 const RELEASE_NOTES=["v1.2.0 locks the 3,000-question B2 Part 1/2 bank around greater sentence variety","Every skill now uses 10 real templates × 12 contexts instead of 5 templates × 24 cosmetic variants","The bank keeps roughly half of the previous questions and replaces the other half with new B2 First-style lexical and function-word patterns informed by the existing adaptive-exam corpus","New-question selection prefers unseen templates before recycling a pattern, while due spaced reviews can still return an exact question","Questions remain short for the fixed 15-second clock; names and contexts are more varied","Per-question feedback now shows question repetitions, pattern repetitions, correct and wrong counts","Coverage counts only questions that still belong to the active 3,000-question bank","The timer display now initializes from the real 15-second TIME_LIMIT instead of the inherited 10.0 label"];
 function renderReleaseInfo(){const host=$("releaseInfo"),online=location.protocol.startsWith("http"),build=`${online?"ONLINE":"LOCAL"} BUILD · v${APP_VERSION} · BANK ${CAMPAIGN?.version||"—"}`;if(host)host.innerHTML=`<details class="release-info"><summary><b>Adaptive B2 Cloze v${APP_VERSION}</b><span>WHAT’S NEW</span></summary><ul>${RELEASE_NOTES.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></details>`;if($("buildVersion"))$("buildVersion").textContent=build;if($("endBuildVersion"))$("endBuildVersion").textContent=build;const meta=document.querySelector('meta[name="ae-version"]');if(meta)meta.setAttribute("content",APP_VERSION);document.title=`Adaptive B2 Cloze - Campaign 1 - v${APP_VERSION}`;}
+function medalCounts(){const rows=(state.sessionHistory||[]).filter(x=>x.mode==="training");return window.AdrianAchievements?.countsFromHistory?.(rows)||{blue:0,violet:0,gold:0};}
+function renderMedalSummary(){const html=window.AdrianAchievements?.medalStripHtml?.(medalCounts(),{context:"summary"})||"";const a=$("startMedals"),b=$("endMedals");if(a)a.innerHTML=html;if(b)b.innerHTML=html;}
 function renderStart(){
   ensureDailyKey();
   const st=overallStats(),sg=stageInfo(st.coverage),rb=ratingBand(st.rating),ai=aiValorationStats();
@@ -1082,6 +1084,7 @@ function renderStart(){
   renderGrowthTree();
   renderReleaseInfo();
   renderFocusWidgets();
+  renderMedalSummary();
 }
 function showScreen(id){["startScreen","statsScreen","leagueScreen","coachScreen","gameScreen","endScreen","errorsScreen"].forEach(x=>$(x).classList.toggle("hidden",x!==id));window.scrollTo(0,0);}
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
@@ -1091,7 +1094,7 @@ async function showLevelIntro(finalMode,target){
   el.className="mission-overlay intro";const rank=finalMode?14:valueLevel((target||0)/15);el.style.setProperty("--mission-accent",valueColor(rank/15));
   const lastDelta=last&&Number.isFinite(last.target)?last.correct-last.target:null,lastLine=last?`LAST ${last.correct}/15${lastDelta==null?"":` · ${lastDelta>=0?"+":""}${lastDelta.toFixed(1)} VS TARGET`}`:"FIRST LEVEL";
   $("missionBody").innerHTML=`<div class="mission-eyebrow">${finalMode?"FINAL CHALLENGE":`LEVEL ${state.level}`}</div><div class="mission-title">${finalMode?"FINAL RUN":"TARGET"}</div><div class="mission-score" style="color:${finalMode?valueTextColor(13/15):valueTextColor((target||0)/15)}">${finalMode?"READY":`${target.toFixed(1)}<small>/15</small>`}</div><div class="mission-meta">${lastLine}</div><div class="mission-rules">15 QUESTIONS · 10s</div>`;
-  $("missionBody").insertAdjacentHTML("beforeend",window.AdrianAchievements?.legendHtml?.()||"");
+  $("missionBody").insertAdjacentHTML("beforeend",window.AdrianAchievements?.legendHtml?.(medalCounts())||"");
   for(const n of [3,2,1]){$("missionCount").textContent=String(n);$("missionCount").classList.remove("pop");void $("missionCount").offsetWidth;$("missionCount").classList.add("pop");playCountdownStep(n);await wait(820);}
   $("missionCount").textContent="GO";tone(1318.5,.09,.022,"sine");await wait(320);missionOverlay(false);
 }
@@ -1206,6 +1209,7 @@ async function finishSession(){
   save();lastSessionHandoffText=sessionHandoffJsonText(snap,session?.records||[]);renderEnd(snap,before);setEndHandoffStatus(false,false);await showLevelResolution(snap,before);showScreen("endScreen");
 }
 function renderEnd(s,before){
+  renderMedalSummary();
   const st=overallStats(),sg=stageInfo(st.coverage),rb=ratingBand(st.rating),ai=aiValorationStats();
   setEndHandoffStatus(false,false);
   applyRatingTheme(st.rating);applyAiTheme(ai);

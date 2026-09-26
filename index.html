@@ -518,6 +518,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <div class="peer-box"><div class="peer-head"><span>TYPICAL LEARNER · PACE</span><b id="startPeerDelta" class="peer-delta neutral">—</b></div><small id="startPeerStatus">Model-based typical range · not measured users</small></div>
     <div id="campaign2Box" class="next-campaign-box"><div class="next-campaign-head"><div><span>GRADUATION READINESS</span><b id="campaign2Score">0%</b></div><em id="campaign2Stage">Building foundation</em></div><div class="track"><div id="campaign2Fill" class="fill" style="width:0%"></div></div><p id="campaign2Status">Keep training to build evidence.</p><div id="campaign2PracticeEstimate" class="campaign-eta-mini"></div><button id="campaign2Copy" class="ghost small hidden">COPY PROGRESS JSON</button></div>
     <div id="campaignStatus" class="statusbox"></div>
+    <div id="startMedals" class="medal-summary-host"></div>
     <div class="actions"><button id="startBtn" class="primary">START</button></div>
     <div class="dashboard-menu">
       <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs · progress · keys</span></button>
@@ -602,7 +603,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <div class="resulttitle">
       <div id="endKicker" class="kicker">LEVEL COMPLETE</div>
       <h1 id="endScore">0/15</h1>
-      <p id="endSub"></p><div id="endTarget" class="target-result hidden"></div>
+      <p id="endSub"></p><div id="endTarget" class="target-result hidden"></div><div id="endMedals" class="medal-summary-host"></div>
     </div>
     <div class="end-quick-actions" aria-label="Quick result actions"><button id="topContinueBtn" class="primary">NEXT LEVEL</button><button id="topHomeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="topErrorsBtn" class="secondary hidden">REVIEW ERRORS</button><button id="topFinalBtn" class="secondary hidden">FINAL CHALLENGE</button></div>
     <div id="endAiHandoff" class="ai-handoff-card" aria-live="polite"><div><span>PROGRESS JSON · OPTIONAL</span><b id="endHandoffStatus">PROGRESS JSON READY · OPTIONAL</b><small id="endHandoffMeta">Learning progress + this level + session errors. Nothing is copied automatically.</small></div><button id="endCopyHandoffBtn" class="secondary">COPY PROGRESS JSON</button></div>
@@ -655,17 +656,17 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 
 <section id="missionOverlay" class="mission-overlay hidden" aria-hidden="true"><div class="mission-card"><div id="missionBody"></div><div id="missionCount" class="mission-count"></div></div></section>
 <div id="particles" class="particles" aria-hidden="true"></div>
-<script src="./adrian-visual-system.js?v=1.2.1"></script>
-<script src="./adrian-achievements.js?v=1.2.1"></script>
-<script src="./lessons.js?v=1.2.1"></script>
-<script src="./keys.js?v=1.2.1"></script>
-<script src="./error-coach.js?v=1.2.1"></script>
-<script src="./app.js?v=1.2.1"></script>
+<script src="./adrian-visual-system.js?v=1.2.2"></script>
+<script src="./adrian-achievements.js?v=1.2.2"></script>
+<script src="./lessons.js?v=1.2.2"></script>
+<script src="./keys.js?v=1.2.2"></script>
+<script src="./error-coach.js?v=1.2.2"></script>
+<script src="./app.js?v=1.2.2"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=1.2.1',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=1.2.2',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
-<script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=7"></script>
+<script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=8"></script>
 </body>
 </html>
