@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.0";
+const APP_VERSION = "1.1";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -181,8 +181,8 @@ function seedMetric(cat){
 function newState(){
   const metrics={}; CAMPAIGN.skills.forEach(s=>metrics[s.id]=seedMetric(s.id));
   return {
-    schemaVersion:1,campaignId:CAMPAIGN.campaignId,level:Math.max(CAMPAIGN.startingLevel||1,storedGlobalLevel()),sessions:0,totalAttempts:0,
-    metrics,seen:{},templateLast:{},templateSeen:{},history:[],sessionHistory:[],finalAttempts:0,completed:false,contentRevision:3,
+    schemaVersion:1,campaignId:CAMPAIGN.campaignId,level:Math.max(CAMPAIGN.startingLevel||1,storedGlobalLevel()),sessions:0,totalAttempts:0,totalCorrect:0,
+    metrics,seen:{},templateLast:{},templateSeen:{},history:[],sessionHistory:[],finalAttempts:0,completed:false,contentRevision:4,
     dailyKey:{date:"",cat:""},keyring:[],keyJourneyStart:"",personalBestFluency:0,activeTrainingMs:0,focusTimeByDate:{},focusTargetsByDate:{},focusTrackingStartedAt:Date.now(),createdAt:Date.now(),updatedAt:Date.now()
   };
 }
@@ -194,6 +194,7 @@ function validProgressState(s){
 }
 function normaliseProgressState(s){
   s.level=syncGlobalLevel(s.level);
+  if(!Number.isFinite(s.totalCorrect))s.totalCorrect=Object.values(s.metrics||{}).reduce((n,m)=>n+(Number(m?.correct)||0),0);
   for(const skill of CAMPAIGN.skills)if(!s.metrics[skill.id])s.metrics[skill.id]=seedMetric(skill.id);
   s.history=Array.isArray(s.history)?s.history.slice(-HISTORY_LIMIT):[];
   if(!Number.isFinite(s.activeTrainingMs))s.activeTrainingMs=s.history.reduce((sum,r)=>sum+(Number.isFinite(r?.ms)?r.ms:0),0);
@@ -216,6 +217,17 @@ function normaliseProgressState(s){
     for(const t of Object.keys(s.templateSeen))if(t.startsWith("mixed-")||t.startsWith("deduct-"))delete s.templateSeen[t];
     s.contentRevision=3;
   }
+  if((s.contentRevision||3)<4){
+    const repurposedCats=new Set(["verb_ing","verb_to","bare_infinitive","phrasal_get_take","phrasal_put_set","phrasal_look_come"]);
+    s.legacyRepurposedMetrics=s.legacyRepurposedMetrics&&typeof s.legacyRepurposedMetrics==="object"?s.legacyRepurposedMetrics:{};
+    for(const cat of repurposedCats){if(s.metrics[cat])s.legacyRepurposedMetrics[cat]=s.metrics[cat];s.metrics[cat]=seedMetric(cat);}
+    const moved=s.history.filter(r=>repurposedCats.has(r.cat));s.legacyHistory=(Array.isArray(s.legacyHistory)?s.legacyHistory:[]).concat(moved).slice(-1500);s.history=s.history.filter(r=>!repurposedCats.has(r.cat));
+    for(const fp of Object.keys(s.seen)){const cat=fp.split("|")[0];if(repurposedCats.has(cat)&&s.seen[fp])s.seen[fp].retired=true;}
+    for(const t of Object.keys(s.templateLast))if([...repurposedCats].some(cat=>t.startsWith(cat+"-")))delete s.templateLast[t];
+    for(const t of Object.keys(s.templateSeen))if([...repurposedCats].some(cat=>t.startsWith(cat+"-")))delete s.templateSeen[t];
+    s.keyring=s.keyring.filter(x=>!repurposedCats.has(x.cat));if(repurposedCats.has(s.dailyKey?.cat))s.dailyKey={date:"",cat:""};
+    s.contentRevision=4;
+  }
   return s;
 }
 function loadState(){
@@ -230,7 +242,7 @@ function save(){
 
 function formatStudyTime(ms){const total=Math.max(0,Math.round((ms||0)/1000)),h=Math.floor(total/3600),m=Math.floor((total%3600)/60),s=total%60;return h?`${h}h ${String(m).padStart(2,"0")}m`:m?`${m}m ${String(s).padStart(2,"0")}s`:`${s}s`;}
 function localDayKey(ts=Date.now()){const d=new Date(ts),p=n=>String(n).padStart(2,"0");return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;}
-function dueQuestionCountNow(){const now=Date.now();return Object.values(state?.seen||{}).filter(x=>x?.lastTs&&now>=(x.nextDueTs||x.lastTs+(x.intervalDays||1)*86400000)).length;}
+function dueQuestionCountNow(){const now=Date.now();return Object.values(state?.seen||{}).filter(x=>!x?.retired&&x?.lastTs&&now>=(x.nextDueTs||x.lastTs+(x.intervalDays||1)*86400000)).length;}
 function focusPlanModel(){
   const due=dueQuestionCountNow(),weak=Object.values(state?.metrics||{}).filter(m=>metricMastery(m)<.45).length,recent=(state?.sessionHistory||[]).filter(x=>x.mode==="training").slice(-4);
   const dueBonus=due>=700?5:due>=350?4:due>=150?2:due>=50?1:0,weakBonus=weak>=6?4:weak>=3?2:weak>=1?1:0;
@@ -271,8 +283,8 @@ function overallStats(){
   const coverage=Object.keys(state.seen).length/CAMPAIGN.questions.length;
   const mastery=mean(metrics.map(metricMastery));
   const minSkill=Math.min(...metrics.map(metricMastery));
-  const allTimeAttempts=metrics.reduce((n,m)=>n+(Number(m.attempts)||0),0);
-  const allTimeCorrect=metrics.reduce((n,m)=>n+(Number(m.correct)||0),0);
+  const allTimeAttempts=Number(state.totalAttempts)||0;
+  const allTimeCorrect=Number(state.totalCorrect)||0;
   const allTimeAccuracy=allTimeAttempts?allTimeCorrect/allTimeAttempts:0;
   const accuracy=history.length?history.filter(r=>r.correct).length/history.length:0;
   const auto=history.length?history.filter(r=>r.type==="automatic").length/history.length:0;
@@ -1160,7 +1172,7 @@ function answer(pos,timeout=false){
   const rec={level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:pos>=0?shownOptions[pos]:"No answer",correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:current.targetTime||3.6,timeLimitSec:TIME_LIMIT,sessionMode:session.mode};
   if(!ok){hideCorrectReveal();showMemoryEcho(current.cat,rec.correctAnswer);}else hideCorrectReveal();
   try{flashGrammarFocus(shownQuestion,rec.correctAnswer,current.visibleFocus||current.focus||[]);}catch(e){console.error("Grammar focus flash failed",e);}
-  state.history.push(rec);state.history=state.history.slice(-12000);state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
+  state.history.push(rec);state.history=state.history.slice(-12000);state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
   const answeredIndex=session.index,delay=ok?555:(type==="fast-wrong"?1200:type==="timeout"?1095:1060);setTimeout(()=>{if(!session||session.index!==answeredIndex)return;session.index++;try{nextQuestion();}catch(e){console.error("Question advance recovered",e);locked=false;setTimeout(nextQuestion,120);}},delay);
   try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect();else playWrong();}catch(e){console.error("Audio failed",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat);}catch(e){console.error("Feedback failed",e);}
 }
