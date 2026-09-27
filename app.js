@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.5.0";
+const APP_VERSION = "1.6.0";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -174,9 +174,21 @@ function refreshSoundButton(){const b=$("soundBtn");if(!b)return;if(!audioSuppor
 
 async function loadCampaign(){
   if(window.__AE_CAMPAIGN__) return window.__AE_CAMPAIGN__;
-  const r=await fetch(`./campaign-01.json?v=${encodeURIComponent(APP_VERSION)}`,{cache:"no-store"});
+  const [r,coreR]=await Promise.all([
+    fetch(`./campaign-01.json?v=${encodeURIComponent(APP_VERSION)}`,{cache:"no-store"}),
+    fetch(`./exam-part1-core.json?v=${encodeURIComponent(APP_VERSION)}`,{cache:"no-store"})
+  ]);
   if(!r.ok) throw new Error("Cannot load campaign");
-  return r.json();
+  const campaign=await r.json();
+  if(coreR.ok){
+    const core=await coreR.json(),coreQuestions=Array.isArray(core?.questions)?core.questions:[];
+    if(coreQuestions.length){
+      campaign.questions=[...coreQuestions,...campaign.questions.filter(q=>q.sourceType!=="exam-core")];
+      if(!campaign.skills.some(s=>s.id==="exam_core"))campaign.skills.unshift({id:"exam_core",name:"Part 1 · Real exam vocabulary"});
+      campaign.realExamCoreCount=coreQuestions.length;campaign.version="2026-09-27.1";
+    }
+  }
+  return campaign;
 }
 
 function seedMetric(cat){
@@ -478,67 +490,33 @@ function chooseOne(pool,chosen,sessionCats,sessionTemplates,mode,allowedCats=nul
 function buildTrainingPlan(){
   const chosen=[],cats={},temps={};
   const addQ=q=>{if(!q)return false;chosen.push(q);cats[q.cat]=(cats[q.cat]||0)+1;temps[q.templateId]=(temps[q.templateId]||0)+1;return true;};
-  const newPool=BANK.filter(q=>!seenInfo(q)),reviewPool=BANK.filter(q=>!!seenInfo(q));
-  const skills=CAMPAIGN.skills.map(s=>({id:s.id,m:state.metrics[s.id],priority:catPriority(s.id)}));
-
-  // Deliberate interleaving: a weak pattern can never swallow the session.
-  // Early sessions are deliberately broad diagnostics; later sessions consolidate more deeply.
-  const surveyMode=state.sessions<8;
-  const focusGoal=surveyMode?4:6, exploreGoal=surveyMode?7:4, reviewGoal=surveyMode?3:4;
-  const focusCats=skills.slice().sort((a,b)=>b.priority-a.priority).slice(0,surveyMode?4:3).map(x=>x.id);
-  let focusSlots=focusGoal;
-  for(let round=0;round<2&&focusSlots>0;round++){
-    for(const cat of focusCats){
-      if(focusSlots<=0)break;
-      const q=chooseOne(newPool.length?newPool:BANK,chosen,cats,temps,"focus",new Set([cat])) || chooseOne(BANK,chosen,cats,temps,"focus",new Set([cat]));
-      if(addQ(q))focusSlots--;
-    }
-  }
-
-  const exploreCats=skills.slice().sort((a,b)=>{
-    const evidence=(a.m.attempts-b.m.attempts);
-    if(evidence)return evidence;
-    return a.m.lastLevel-b.m.lastLevel;
-  }).map(x=>x.id);
-  let exploreSlots=exploreGoal;
-  for(const cat of exploreCats){
-    if(exploreSlots<=0)break;
-    if((cats[cat]||0)>0)continue;
-    const q=chooseOne(newPool,chosen,cats,temps,"explore",new Set([cat]));
-    if(addQ(q))exploreSlots--;
-  }
-
-  const dueCats=skills.filter(x=>x.m.attempts>0&&((state.level-x.m.lastLevel)>=x.m.interval||skillTimeDue(x.m).due))
-    .sort((a,b)=>{const bt=skillTimeDue(b.m),at=skillTimeDue(a.m);return (bt.overdue-at.overdue)||(((state.level-b.m.lastLevel)-b.m.interval)-((state.level-a.m.lastLevel)-a.m.interval));})
-    .map(x=>x.id);
-  let reviewSlots=reviewGoal;
-  for(const cat of dueCats){
-    if(reviewSlots<=0)break;
-    const q=chooseOne(reviewPool,chosen,cats,temps,"review",new Set([cat]));
-    if(addQ(q))reviewSlots--;
-  }
-  while(reviewSlots>0){
-    const q=chooseOne(reviewPool,chosen,cats,temps,"review");
-    if(!q)break;addQ(q);reviewSlots--;
-  }
-
-  const wild=chooseOne(newPool.length?newPool:BANK,chosen,cats,temps,"wild");
-  addQ(wild);
-
-  while(chosen.length<SESSION_SIZE){
-    const q=chooseOne(BANK,chosen,cats,temps,"explore");
-    if(!q)break;addQ(q);
-  }
-
-  // Shuffle, then repair adjacent same-skill pairs when possible.
+  const retiredSupportCats=new Set(["articles","quantifiers","phrasal_look_come","connectors"]);
+  const corePool=BANK.filter(q=>q.sourceType==="exam-core"),supportPool=BANK.filter(q=>q.sourceType!=="exam-core"&&!retiredSupportCats.has(q.cat));
+  const coreSeen=corePool.filter(q=>!!seenInfo(q)),coreNew=corePool.filter(q=>!seenInfo(q));
+  const usedAnswers=new Set(),usedOptionWords=new Set();
+  const addCore=q=>{if(!addQ(q))return false;usedAnswers.add(String(q.a[q.c]).toLowerCase());q.a.forEach(x=>usedOptionWords.add(String(x).toLowerCase()));return true;};
+  const chooseCore=(pool,mode="explore")=>{
+    const chosenFp=new Set(chosen.map(q=>q.fingerprint));
+    let cand=pool.filter(q=>!chosenFp.has(q.fingerprint));if(!cand.length)return null;
+    cand=cand.map(q=>{const ans=String(q.a[q.c]).toLowerCase(),overlap=q.a.reduce((n,x)=>n+(usedOptionWords.has(String(x).toLowerCase())?1:0),0),info=seenInfo(q);let score=qScore(q,{},temps,mode);if(!usedAnswers.has(ans))score+=1.05;else score-=1.4;score-=overlap*.32;if(info?.lastCorrect===false)score+=.45;return {q,score};}).sort((a,b)=>b.score-a.score);
+    return cand[Math.floor(Math.random()*Math.min(6,cand.length))]?.q||null;
+  };
+  const dueCore=coreSeen.filter(q=>{const x=seenInfo(q),levelGap=x?state.level-x.lastLevel:0;return x&&((x.lastCorrect===false&&levelGap>=2)||Date.now()>=(x.nextDueTs||((x.lastTs||0)+(x.intervalDays||1)*86400000)));});
+  let reviewCoreSlots=Math.min(2,dueCore.length);
+  while(reviewCoreSlots-->0){const q=chooseCore(dueCore,"review");if(!q)break;addCore(q);}
+  while(chosen.filter(q=>q.sourceType==="exam-core").length<9){const q=chooseCore(coreNew.length?coreNew:corePool,"explore")||chooseCore(corePool,"review");if(!q)break;addCore(q);}
+  const newPool=supportPool.filter(q=>!seenInfo(q)),reviewPool=supportPool.filter(q=>!!seenInfo(q));
+  const skills=CAMPAIGN.skills.filter(s=>s.id!=="exam_core").map(s=>({id:s.id,m:state.metrics[s.id],priority:catPriority(s.id)}));
+  const focusCats=skills.slice().sort((a,b)=>b.priority-a.priority).slice(0,3).map(x=>x.id);
+  for(const cat of focusCats){if(chosen.length>=12)break;addQ(chooseOne(newPool.length?newPool:supportPool,chosen,cats,temps,"focus",new Set([cat]))||chooseOne(supportPool,chosen,cats,temps,"focus",new Set([cat])));}
+  const exploreCats=skills.slice().sort((a,b)=>(a.m.attempts-b.m.attempts)||(a.m.lastLevel-b.m.lastLevel)).map(x=>x.id);
+  for(const cat of exploreCats){if(chosen.length>=14)break;if((cats[cat]||0)>0)continue;addQ(chooseOne(newPool,chosen,cats,temps,"explore",new Set([cat])));}
+  const dueCats=skills.filter(x=>x.m.attempts>0&&((state.level-x.m.lastLevel)>=x.m.interval||skillTimeDue(x.m).due)).sort((a,b)=>skillTimeDue(b.m).overdue-skillTimeDue(a.m).overdue).map(x=>x.id);
+  for(const cat of dueCats){if(chosen.length>=15)break;addQ(chooseOne(reviewPool,chosen,cats,temps,"review",new Set([cat])));}
+  while(chosen.length<15){const q=chooseOne(newPool.length?newPool:supportPool,chosen,cats,temps,"explore")||chooseOne(supportPool,chosen,cats,temps,"review");if(!q)break;addQ(q);}
   for(let i=chosen.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[chosen[i],chosen[j]]=[chosen[j],chosen[i]];}
-  for(let k=0;k<80;k++){
-    let bad=-1;
-    for(let i=1;i<chosen.length;i++)if(chosen[i].cat===chosen[i-1].cat){bad=i;break;}
-    if(bad<0)break;
-    const j=[...Array(chosen.length).keys()].find(x=>Math.abs(x-bad)>1&&chosen[x].cat!==chosen[bad].cat&&(x===0||chosen[x-1].cat!==chosen[bad].cat));
-    if(j!=null)[chosen[bad],chosen[j]]=[chosen[j],chosen[bad]];else break;
-  }
+  const group=q=>q.sourceType==="exam-core"?`exam-${q.sourceExam}`:q.cat;
+  for(let k=0;k<100;k++){let bad=-1;for(let i=1;i<chosen.length;i++)if(group(chosen[i])===group(chosen[i-1])){bad=i;break;}if(bad<0)break;const j=[...Array(chosen.length).keys()].find(x=>Math.abs(x-bad)>1&&group(chosen[x])!==group(chosen[bad])&&(x===0||group(chosen[x-1])!==group(chosen[bad])));if(j!=null)[chosen[bad],chosen[j]]=[chosen[j],chosen[bad]];else break;}
   return chosen.slice(0,SESSION_SIZE);
 }
 function buildFinalPlan(){
