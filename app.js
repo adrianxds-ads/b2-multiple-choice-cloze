@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.8.0";
+const APP_VERSION = "1.8.1";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -72,8 +72,16 @@ function tone(freq,dur=.035,gain=.018,type='sine',delay=0){
 }
 function playTick(strong=false,step=0){const f=strong?(step%2?1540:1260):(step%2?1280:980);tone(f,strong?.034:.026,strong?.026:.016,'square');}
 function playUrgentTimerPulse(left,beat=0){const final=left<=2,f=final?(beat%2?1660:1450):(beat%2?1360:1160);tone(f,final?.034:.028,final?.016:.012,final?'square':'triangle');if(left<=.55)tone(1960,.042,.010,'sine',.014);}
-function playCorrect(){const notes=[440,587.33,783.99,1046.5];notes.forEach((f,i)=>{tone(f,i===3?.11:.052,i===3?.024:.020,i%2?'sine':'triangle',i*.047);if(i>0)tone(f*2,.032,.007,'sine',i*.047+.012);});}
-function playWrong(){tone(311.13,.050,.020,'triangle');tone(220,.070,.017,'sine',.042);}
+function playCorrect(sec=0){
+  // Four positive speed signatures for the fixed 15-second clock.
+  // Faster answers sound brighter/higher; late correct answers stay positive but settle lower.
+  const s=Math.max(0,Number(sec)||0);
+  if(s<=3.5){[[1046.5,0],[1318.5,.04],[1567.98,.08],[2093,.125]].forEach(([f,d],i)=>tone(f,i===3?.12:.05,i===3?.024:.019,i%2?'sine':'triangle',d));return;}
+  if(s<=6.5){[[659.25,0],[830.61,.05],[987.77,.10],[1318.5,.155]].forEach(([f,d],i)=>tone(f,i===3?.12:.055,i===3?.022:.018,i%2?'triangle':'sine',d));return;}
+  if(s<=10){[[523.25,0],[659.25,.065],[783.99,.13]].forEach(([f,d],i)=>tone(f,i===2?.13:.065,i===2?.020:.016,'triangle',d));return;}
+  [[392,0],[493.88,.085],[587.33,.17]].forEach(([f,d],i)=>tone(f,i===2?.14:.075,i===2?.017:.014,i===1?'sine':'triangle',d));
+}
+function playWrong(){tone(246.94,.070,.023,'square');tone(174.61,.095,.021,'triangle',.055);tone(116.54,.120,.018,'sine',.125);}
 function playComplete(){tone(392,.075,.022,'sine');tone(523.25,.085,.024,'triangle',.070);tone(659.25,.100,.026,'sine',.145);tone(783.99,.155,.028,'sine',.230);}
 function playCountdownStep(n){tone(n===1?1046.5:783.99,.055,.018,'triangle');}
 const LEVEL_SCORE_ROOTS=[146.83,155.56,164.81,174.61,196.00,220.00,246.94,261.63,293.66,329.63,349.23,392.00,440.00,493.88,523.25];
@@ -402,6 +410,10 @@ function lexicalTargetKey(q){
 }
 function leechInfo(q){const key=lexicalTargetKey(q);return key&&state?.leechTargets?state.leechTargets[key]||null:null;}
 function leechStage(info){return info?.status==="leech"?"leech":info?.status==="warning"||((info?.pressure||0)>=LEECH_WARNING_LAPSES)?"warning":"normal";}
+function leechCounts(){
+  const rows=Object.values(state?.leechTargets||{});
+  return {leeches:rows.filter(x=>leechStage(x)==="leech").length,warnings:rows.filter(x=>leechStage(x)==="warning").length};
+}
 function leechCooldownPassed(info){return !info||info.status!=="leech"||state.level>=(info.cooldownUntilLevel||0)||Date.now()>=(info.cooldownUntilTs||0);}
 function leechReserveQuestion(q,blocked=new Set()){
   const info=leechInfo(q);if(leechStage(info)!=="leech")return q;const key=lexicalTargetKey(q);
@@ -1087,7 +1099,7 @@ function renderGrowthTree(){
   host.innerHTML=`<div class="growth-tree-canvas" data-tree-stage="${stage}"><svg viewBox="0 0 420 300" role="img" aria-label="Practice tree, growth stage ${stage} of 200"><defs><linearGradient id="treeTrunk" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5d3827"/><stop offset=".55" stop-color="#76503a"/><stop offset="1" stop-color="#957258"/></linearGradient></defs><ellipse class="tree-ground" cx="210" cy="282" rx="78" ry="7"/> <g class="tree-branches" fill="none" stroke="url(#treeTrunk)" stroke-linecap="round" stroke-linejoin="round">${branch}</g><g class="tree-leaves">${leaf}</g></svg></div><div class="growth-tree-count"><b>${level.toLocaleString()}</b><span>LEVEL</span></div>`;
 }
 
-const RELEASE_NOTES=["v1.8.0 · B2 Territorio 1","Sistema LEECH por objetivo léxico, separado de la estadística de cada frase","WARNING al acumular presión de error y LEECH desde 4 fallos activos; la LEECH descansa 8 niveles o 3 días","Máximo una LEECH por nivel para que ningún objetivo monopolice la sesión","Cuando una LEECH vuelve, rota a otro contexto disponible del mismo objetivo antes de repetir la frase anterior","La marca LEECH es visual y no revela respuesta, traducción ni pista","Se conserva el algoritmo existente: 15 preguntas, 15 s, exploración, spaced review, estadísticas y gamificación"];
+const RELEASE_NOTES=["v1.8.1 · B2 Territorio 1","Nuevo contador anónimo de LEECHES en portada y resultados: muestra cuántas hay, nunca cuáles son","Cuatro sonidos positivos de acierto según velocidad: cuanto más rápida la respuesta, más brillante y agudo el feedback","Los aciertos tardíos siguen sonando positivos, pero con una resolución más grave","El sonido de error ahora es más claramente descendente y distinto de cualquier acierto","El sistema LEECH mantiene sus reglas: 4 fallos activos, descanso de 8 niveles o 3 días y máximo una LEECH por nivel","No cambia el algoritmo de selección, el banco, las estadísticas ni el reloj fijo de 15 segundos"];
 function renderReleaseInfo(){const host=$("releaseInfo"),online=location.protocol.startsWith("http"),build=`${online?"ONLINE":"LOCAL"} BUILD · v${APP_VERSION} · BANK ${CAMPAIGN?.version||"—"}`;if(host)host.innerHTML=`<details class="release-info"><summary><b>B2 Territorio 1 v${APP_VERSION}</b><span>WHAT’S NEW</span></summary><ul>${RELEASE_NOTES.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></details>`;if($("buildVersion"))$("buildVersion").textContent=build;if($("endBuildVersion"))$("endBuildVersion").textContent=build;const meta=document.querySelector('meta[name="ae-version"]');if(meta)meta.setAttribute("content",APP_VERSION);document.title=`B2 Territorio 1 - v${APP_VERSION}`;}
 function medalCounts(){const rows=(state.sessionHistory||[]).filter(x=>!x.mode||x.mode==="training");return window.AdrianAchievements?.countsFromHistory?.(rows)||{blue:0,violet:0,gold:0};}
 function renderMedalSummary(){const html=window.AdrianAchievements?.medalStripHtml?.(medalCounts(),{context:"summary"})||"";const a=$("startMedals"),b=$("endMedals");if(a)a.innerHTML=html;if(b)b.innerHTML=html;}
@@ -1109,7 +1121,7 @@ function renderStart(){
   {const life=lifetimeLevelScoreStats();$("startAllAccuracy").textContent=life.avgHits==null?"-":`${life.avgHits.toFixed(1)} /15`;if(life.avgHits!=null)paintScore("startAllAccuracy",life.avgHits);}
   $("startAuto").textContent=st.auto?pct(st.auto)+"%":"—";paintText("startAuto",st.auto);
   $("startMastered").textContent=`${st.mastered}/${CAMPAIGN.skills.length}`;paintText("startMastered",st.mastered/CAMPAIGN.skills.length);
-  $("startTotal").textContent=(state.totalAttempts||0).toLocaleString();$("startStudyTime").textContent=formatStudyTime(state.activeTrainingMs||0);const phraseStats=phraseExposureStats();$("startPhrasesDone").textContent=phraseStats.unique.toLocaleString();$("startRepeatedPhrases").textContent=phraseStats.repeatedUnique.toLocaleString();
+  $("startTotal").textContent=(state.totalAttempts||0).toLocaleString();$("startStudyTime").textContent=formatStudyTime(state.activeTrainingMs||0);const phraseStats=phraseExposureStats(),leechStats=leechCounts();$("startPhrasesDone").textContent=phraseStats.unique.toLocaleString();$("startRepeatedPhrases").textContent=phraseStats.repeatedUnique.toLocaleString();$("startLeeches").textContent=leechStats.leeches.toLocaleString();
   const peer=typicalLearnerStats(),spd=$("startPeerDelta");spd.textContent=peer.delta==null?"—":`${peer.delta>=0?"+":""}${peer.delta.toFixed(1)}`;spd.className=`peer-delta ${peer.delta==null||Math.abs(peer.delta)<2?"neutral":peer.delta>0?"good":"bad"}`;$("startPeerStatus").textContent=`${peer.label} · typical ${peer.typical.toFixed(1)} · range ${peer.healthyMin.toFixed(1)}–${peer.strongPace.toFixed(1)}`;
   let status=`AE RATING ${pct(st.rating)} · ${rb.name} · ${sg.name} · ${Math.max(0,sg.to-sg.seen)} new exercises until the next stage.`;
   if(st.coverage>=.999&&!st.eligible){const gate=campaign2Readiness();status=`All territory cards explored. GRADUATION GATE pending · ${gate.blockers[0]||"keep consolidating longitudinal evidence"}.`;}
@@ -1197,8 +1209,8 @@ function nextQuestion(){
   current=session.plan[session.index];
   if(!current||!Array.isArray(current.display)||current.display.length!==4||!Number.isInteger(current.correctPos)||current.correctPos<0||current.correctPos>3){console.error("Skipping invalid question",current);session.index++;setTimeout(nextQuestion,0);return;}
   $("qIndex").textContent=session.index+1;
-  const rewardPrior=state.seen[current.fingerprint]||null,rewardGap=rewardPrior?state.level-rewardPrior.lastLevel:null,rewardSpecial=rewardPrior?.lapses>0&&!rewardPrior.masteredRewarded&&rewardPrior.lastCorrect===true&&rewardPrior.count>=2&&rewardGap>=2?"MASTER CHANCE":rewardPrior?.lapses>0&&rewardPrior.lastCorrect===false?"RECOVERY":rewardPrior?"SPACED REVIEW":session.index===session.plan.length-1?"FINAL":"",leechMark=leechStage(leechInfo(current))==="leech"?"LEECH":"";
-  $("qTotal").textContent="/ "+session.plan.length+(leechMark?" · "+leechMark:rewardSpecial?" · "+rewardSpecial:"");
+  const rewardPrior=state.seen[current.fingerprint]||null,rewardGap=rewardPrior?state.level-rewardPrior.lastLevel:null,rewardSpecial=rewardPrior?.lapses>0&&!rewardPrior.masteredRewarded&&rewardPrior.lastCorrect===true&&rewardPrior.count>=2&&rewardGap>=2?"MASTER CHANCE":rewardPrior?.lapses>0&&rewardPrior.lastCorrect===false?"RECOVERY":rewardPrior?"SPACED REVIEW":session.index===session.plan.length-1?"FINAL":"";
+  $("qTotal").textContent="/ "+session.plan.length+(rewardSpecial?" · "+rewardSpecial:"");
   const view=visibleCard(current);current.visibleQuestion=view.question;current.visibleOptions=view.options;current.visibleFocus=view.focus;current.visibleNames=view.names;
   $("questionText").classList.remove("focus-active");$("questionText").textContent=view.question;
   const wrap=$("answers");wrap.innerHTML="";const answerColors=shuffledAnswerColorClasses();
@@ -1230,7 +1242,7 @@ function answer(pos,timeout=false){
   try{flashGrammarFocus(shownQuestion,rec.correctAnswer,current.visibleFocus||current.focus||[]);}catch(e){console.error("Grammar focus flash failed",e);}
   state.history.push(rec);state.history=state.history.slice(-12000);state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
   const answeredIndex=session.index,delay=ok?555:(type==="fast-wrong"?1200:type==="timeout"?1095:1060);setTimeout(()=>{if(!session||session.index!==answeredIndex)return;session.index++;try{nextQuestion();}catch(e){console.error("Question advance recovered",e);locked=false;setTimeout(nextQuestion,120);}},delay);
-  try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect();else playWrong();if(ok&&session.lastReward==="MASTERED ✦"){tone(1046.5,.07,.010,"sine",.18);tone(1567.98,.10,.010,"sine",.24);}else if(ok&&session.lastReward==="RECOVERED"){tone(659.25,.055,.008,"triangle",.17);tone(987.77,.075,.009,"sine",.22);}else if(ok&&[3,5,10,15].includes(session.combo)){tone(session.combo>=10?987.77:740,.065,.008,"triangle",.18);}}catch(e){console.error("Audio failed",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat,current.trigger);}catch(e){console.error("Feedback failed",e);}
+  try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect(sec);else playWrong();if(ok&&session.lastReward==="MASTERED ✦"){tone(1046.5,.07,.010,"sine",.18);tone(1567.98,.10,.010,"sine",.24);}else if(ok&&session.lastReward==="RECOVERED"){tone(659.25,.055,.008,"triangle",.17);tone(987.77,.075,.009,"sine",.22);}else if(ok&&[3,5,10,15].includes(session.combo)){tone(session.combo>=10?987.77:740,.065,.008,"triangle",.18);}}catch(e){console.error("Audio failed",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat,current.trigger);}catch(e){console.error("Feedback failed",e);}
 }
 async function finishSession(){
   clearInterval(timerHandle);
@@ -1280,9 +1292,10 @@ function renderEnd(s,before){
   const trend=state.sessionHistory.filter(x=>x.mode==="training");
   $("accuracyChart").innerHTML=sessionScoreChart(trend,false);
   $("learningTrendChart").innerHTML=sparkline(learningCurveSeries(),v=>`${v.toFixed(1)}`,false,learning.start,"Start");
-  const phraseStats=phraseExposureStats();
+  const phraseStats=phraseExposureStats(),leechStats=leechCounts();
   $("ePhrasesDone").textContent=phraseStats.unique.toLocaleString();paintText("ePhrasesDone",st.coverage);
   $("eRepeats").textContent=phraseStats.repeatedUnique.toLocaleString();
+  $("eLeeches").textContent=leechStats.leeches.toLocaleString();
   $("eBankTotal").textContent=BANK.length.toLocaleString();
   $("weakSkills").innerHTML=skillLeagueHtml(rankedSkills(),true);
   const wrong=session.records.filter(r=>!r.correct),errorGroups=levelErrorGroups(wrong),labToggle=$("endErrorLabToggle");
