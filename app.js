@@ -1,10 +1,15 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.6.0";
+const APP_VERSION = "1.8.0";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
 const TIME_LIMIT = 15;
+const LEECH_WARNING_LAPSES = 3;
+const LEECH_LAPSES = 4;
+const LEECH_LEVEL_COOLDOWN = 8;
+const LEECH_DAY_COOLDOWN = 3;
+const LEECH_PER_SESSION = 1;
 const HISTORY_LIMIT = 6000;
 const SESSION_HISTORY_LIMIT = 1000;
 const VISUAL_SYSTEM=window.ADRIAN_VISUAL_SYSTEM||null;
@@ -174,21 +179,9 @@ function refreshSoundButton(){const b=$("soundBtn");if(!b)return;if(!audioSuppor
 
 async function loadCampaign(){
   if(window.__AE_CAMPAIGN__) return window.__AE_CAMPAIGN__;
-  const [r,coreR]=await Promise.all([
-    fetch(`./campaign-01.json?v=${encodeURIComponent(APP_VERSION)}`,{cache:"no-store"}),
-    fetch(`./exam-part1-core.json?v=${encodeURIComponent(APP_VERSION)}`,{cache:"no-store"})
-  ]);
-  if(!r.ok) throw new Error("Cannot load campaign");
-  const campaign=await r.json();
-  if(coreR.ok){
-    const core=await coreR.json(),coreQuestions=Array.isArray(core?.questions)?core.questions:[];
-    if(coreQuestions.length){
-      campaign.questions=[...coreQuestions,...campaign.questions.filter(q=>q.sourceType!=="exam-core")];
-      if(!campaign.skills.some(s=>s.id==="exam_core"))campaign.skills.unshift({id:"exam_core",name:"Part 1 · Real exam vocabulary"});
-      campaign.realExamCoreCount=coreQuestions.length;campaign.version="2026-09-27.1";
-    }
-  }
-  return campaign;
+  const r=await fetch(`./territory-01.json?v=${encodeURIComponent(APP_VERSION)}`,{cache:"no-store"});
+  if(!r.ok) throw new Error("Cannot load B2 Territorio 1");
+  return r.json();
 }
 
 function seedMetric(cat){
@@ -199,7 +192,7 @@ function newState(){
   const metrics={}; CAMPAIGN.skills.forEach(s=>metrics[s.id]=seedMetric(s.id));
   return {
     schemaVersion:1,campaignId:CAMPAIGN.campaignId,level:Math.max(CAMPAIGN.startingLevel||1,storedGlobalLevel()),sessions:0,totalAttempts:0,totalCorrect:0,
-    metrics,seen:{},templateLast:{},templateSeen:{},history:[],sessionHistory:[],finalAttempts:0,completed:false,contentRevision:5,
+    metrics,seen:{},templateLast:{},templateSeen:{},leechTargets:{},history:[],sessionHistory:[],finalAttempts:0,completed:false,contentRevision:6,
     dailyKey:{date:"",cat:""},keyring:[],keyJourneyStart:"",personalBestFluency:0,activeTrainingMs:0,focusTimeByDate:{},focusTargetsByDate:{},focusTrackingStartedAt:Date.now(),createdAt:Date.now(),updatedAt:Date.now()
   };
 }
@@ -217,7 +210,7 @@ function normaliseProgressState(s){
   if(!Number.isFinite(s.activeTrainingMs))s.activeTrainingMs=s.history.reduce((sum,r)=>sum+(Number.isFinite(r?.ms)?r.ms:0),0);
   s.focusTimeByDate=s.focusTimeByDate&&typeof s.focusTimeByDate==="object"?s.focusTimeByDate:{};s.focusTargetsByDate=s.focusTargetsByDate&&typeof s.focusTargetsByDate==="object"?s.focusTargetsByDate:{};if(!Number.isFinite(s.focusTrackingStartedAt))s.focusTrackingStartedAt=Date.now();
   s.sessionHistory=Array.isArray(s.sessionHistory)?s.sessionHistory.slice(-SESSION_HISTORY_LIMIT):[];
-  s.seen=s.seen&&typeof s.seen==="object"?s.seen:{};s.templateLast=s.templateLast&&typeof s.templateLast==="object"?s.templateLast:{};s.templateSeen=s.templateSeen&&typeof s.templateSeen==="object"?s.templateSeen:{};
+  s.seen=s.seen&&typeof s.seen==="object"?s.seen:{};s.templateLast=s.templateLast&&typeof s.templateLast==="object"?s.templateLast:{};s.templateSeen=s.templateSeen&&typeof s.templateSeen==="object"?s.templateSeen:{};s.leechTargets=s.leechTargets&&typeof s.leechTargets==="object"?s.leechTargets:{};
   {const activeFp=new Set(CAMPAIGN.questions.map(q=>q.fingerprint));for(const [fp,info] of Object.entries(s.seen))if(info&&typeof info==="object")info.retired=!activeFp.has(fp);}
   s.dailyKey=s.dailyKey&&typeof s.dailyKey==="object"?s.dailyKey:{date:"",cat:""};s.keyring=Array.isArray(s.keyring)?s.keyring.filter(x=>x&&typeof x.cat==="string").slice(0,25):[];const firstKeyDate=s.keyring.map(x=>x.firstDate).filter(Boolean).sort()[0]||s.dailyKey.date||"";s.keyJourneyStart=typeof s.keyJourneyStart==="string"&&s.keyJourneyStart?s.keyJourneyStart:firstKeyDate;s.keyring.forEach((x,i)=>x.number=i+1);const rebuildTemplateSeen=!Object.keys(s.templateSeen).length;
   for(const skill of CAMPAIGN.skills){const m=s.metrics[skill.id];if(!Number.isFinite(m.intervalDays))m.intervalDays=1;if(!Number.isFinite(m.lastTs))m.lastTs=0;}
@@ -251,6 +244,7 @@ function normaliseProgressState(s){
     for(const [fp,info] of Object.entries(s.seen))if(info&&typeof info==="object")info.retired=!activeFp.has(fp);
     s.contentRevision=5;
   }
+  if((s.contentRevision||5)<6){s.leechTargets=rebuildLeechTargetsFromSeen(s);s.contentRevision=6;}
   return s;
 }
 function loadState(){
@@ -338,7 +332,7 @@ function campaign2Readiness(){
   const evidence=clamp((state.totalAttempts||0)/4500),curve=clamp((learning.current??st.mastery*100)/100),minSkillScore=clamp(st.minSkill/.70),retentionScore=g.reviewCount?clamp(g.retentionAccuracy/.72):0,stabilityScore=g.recentSessions?clamp(g.stableAccuracy/.75):0,autoScore=clamp(st.auto/.12),calendarScore=clamp(g.spanDays/14);
   const score=clamp(.15*st.coverage+.19*st.mastery+.09*breadth+.07*strong+.10*minSkillScore+.14*retentionScore+.08*stabilityScore+.05*autoScore+.05*calendarScore+.03*evidence+.05*curve);
   const ready=g.eligible&&score>=.82;
-  const stage=ready?"Campaign 2 gate achieved":score>=.72?"Late consolidation":score>=.55?"Building graduation evidence":"Building foundation";
+  const stage=ready?"Territorio 2 gate achieved":score>=.72?"Late consolidation":score>=.55?"Building graduation evidence":"Building foundation";
   const blockers=[];
   if(!g.gates.coverage)blockers.push(`${Math.max(0,Math.ceil(CAMPAIGN.questions.length*.999)-activeSeenCount()).toLocaleString()} more unique questions`);
   if(!g.gates.mastery)blockers.push(`mastery ${pct(st.mastery)}% → 85%`);
@@ -353,12 +347,12 @@ function campaign2Readiness(){
 }
 function campaign2Brief(){
   const r=campaign2Readiness(),st=overallStats();
-  return `Adaptive B2 Cloze recommends preparing Campaign 2. I will attach/export my Campaign 1 progress JSON. Use that export as the primary diagnostic. Build Campaign 2 as a separate 3,000-question bank that preserves Campaign 1 and the existing app architecture. Prioritize genuinely new C1 material plus targeted transfer for my remaining weak patterns; avoid duplicate questions and retain 15 questions per level, 15-second timing, adaptive selection, dynamic names, micro-lessons, AI Valoration and the long-term Learning Curve. Current handoff: readiness ${pct(r.score)}%, coverage ${pct(st.coverage)}%, mastery ${pct(st.mastery)}%, weakest Key ${pct(st.minSkill)}%, review retention ${pct(r.graduation.retentionAccuracy)}% across ${r.graduation.reviewCount} recent review answers, automatic ${pct(st.auto)}%, 8-level stability ${pct(r.graduation.stableAccuracy)}%, real evidence span ${r.graduation.spanDays.toFixed(1)} days, Key Journey ${st.keysUnlocked}/25. Campaign 2 must remain locked until every graduation gate and the final challenge are passed. First analyze my export and propose the Campaign 2 skill map before generating the new 3,000 questions.`;
+  return `B2 Territorio 1 progress handoff. Prepare B2 Territorio 2 as a separate future quiz, preserving this territory and its progress. Territorio 2 should focus on the next B2 First task rather than repeat Territorio 1. Keep 15-question levels, the 15-second rhythm, exploration-first scheduling and spaced review. Current handoff: readiness ${pct(r.score)}%, coverage ${pct(st.coverage)}%, mastery ${pct(st.mastery)}%, recent accuracy ${pct(st.accuracy)}%. First analyse my export before designing Territorio 2.`;
 }
 function stageInfo(coverage){
-  const seen=activeSeenCount();
-  const index=Math.min(5,Math.floor(Math.min(2999,seen)/500));
-  return {index,name:stageNames[index],from:index*500,to:(index+1)*500,seen};
+  const seen=activeSeenCount(),size=Math.max(1,BANK.length),step=Math.ceil(size/6);
+  const index=Math.min(5,Math.floor(Math.min(size-1,seen)/step));
+  return {index,name:stageNames[index],from:index*step,to:Math.min(size,(index+1)*step),seen};
 }
 
 function outcomeType(ok,sec,target,timeout){
@@ -401,6 +395,33 @@ function reviewIntervalDays(info,type){
   return Math.min(10,Math.max(1,Math.round(prev*1.25)));
 }
 function seenInfo(q){const x=state.seen[q.fingerprint]||null;return x?.retired?null:x;}
+function lexicalTargetKey(q){
+  if(!q||!Array.isArray(q.a)||!Number.isInteger(q.c)||q.c<0||q.c>=q.a.length)return "";
+  const answer=String(q.a[q.c]??"").toLowerCase().trim().replace(/\s+/g," "),family=q.networkFamily||q.templateId||q.cat||"unknown";
+  return `${family}::${answer}`;
+}
+function leechInfo(q){const key=lexicalTargetKey(q);return key&&state?.leechTargets?state.leechTargets[key]||null:null;}
+function leechStage(info){return info?.status==="leech"?"leech":info?.status==="warning"||((info?.pressure||0)>=LEECH_WARNING_LAPSES)?"warning":"normal";}
+function leechCooldownPassed(info){return !info||info.status!=="leech"||state.level>=(info.cooldownUntilLevel||0)||Date.now()>=(info.cooldownUntilTs||0);}
+function leechReserveQuestion(q,blocked=new Set()){
+  const info=leechInfo(q);if(leechStage(info)!=="leech")return q;const key=lexicalTargetKey(q);
+  const pool=BANK.filter(x=>lexicalTargetKey(x)===key&&!blocked.has(x.fingerprint));if(pool.length<2)return q;
+  const alternate=pool.filter(x=>x.fingerprint!==info.lastFingerprint);const candidates=alternate.length?alternate:pool;
+  candidates.sort((a,b)=>(seenInfo(a)?.lastTs||0)-(seenInfo(b)?.lastTs||0));return candidates[0]||q;
+}
+function updateLeechTarget(q,ok,now=Date.now()){
+  const key=lexicalTargetKey(q);if(!key)return null;state.leechTargets=state.leechTargets&&typeof state.leechTargets==="object"?state.leechTargets:{};
+  const prev=state.leechTargets[key]||{attempts:0,correct:0,lapses:0,pressure:0,recoveryStreak:0,status:"normal",lastTs:0,lastLevel:-99,lastFingerprint:""};
+  const next={...prev,attempts:(prev.attempts||0)+1,correct:(prev.correct||0)+(ok?1:0),lapses:(prev.lapses||0)+(ok?0:1),lastTs:now,lastLevel:state.level,lastCorrect:ok,lastFingerprint:q.fingerprint};
+  if(ok){next.recoveryStreak=(prev.recoveryStreak||0)+1;next.pressure=Math.max(0,(prev.pressure||0)-1);if(prev.status==="leech"){next.status="warning";next.pressure=Math.max(LEECH_WARNING_LAPSES,next.pressure);next.cooldownUntilLevel=0;next.cooldownUntilTs=0;}else if(next.recoveryStreak>=2&&next.pressure<LEECH_WARNING_LAPSES){next.status="normal";}}
+  else{next.recoveryStreak=0;next.pressure=(prev.pressure||0)+1;if(next.pressure>=LEECH_LAPSES){next.status="leech";next.activatedAt=prev.activatedAt||now;next.cooldownUntilLevel=state.level+LEECH_LEVEL_COOLDOWN;next.cooldownUntilTs=now+LEECH_DAY_COOLDOWN*86400000;}else if(next.pressure>=LEECH_WARNING_LAPSES)next.status="warning";}
+  state.leechTargets[key]=next;return next;
+}
+function rebuildLeechTargetsFromSeen(s){
+  const rebuilt={};for(const q of BANK){const info=s.seen?.[q.fingerprint];if(!info||info.retired)continue;const key=lexicalTargetKey(q),row=rebuilt[key]||(rebuilt[key]={attempts:0,correct:0,lapses:0,pressure:0,recoveryStreak:0,status:"normal",lastTs:0,lastLevel:-99,lastFingerprint:""});row.attempts+=info.count||0;row.lapses+=info.lapses||0;row.correct+=Math.max(0,(info.count||0)-(info.lapses||0));if((info.lastTs||0)>=(row.lastTs||0)){row.lastTs=info.lastTs||0;row.lastLevel=info.lastLevel??-99;row.lastCorrect=info.lastCorrect;row.lastFingerprint=q.fingerprint;}}
+  for(const row of Object.values(rebuilt)){row.pressure=Math.min(LEECH_LAPSES,row.lapses||0);if((row.lapses||0)>=LEECH_LAPSES&&row.lastCorrect===false){row.status="leech";row.cooldownUntilLevel=(row.lastLevel||0)+LEECH_LEVEL_COOLDOWN;row.cooldownUntilTs=(row.lastTs||0)+LEECH_DAY_COOLDOWN*86400000;}else if((row.lapses||0)>=LEECH_WARNING_LAPSES){row.status="warning";row.pressure=LEECH_WARNING_LAPSES;}else row.status="normal";}
+  return rebuilt;
+}
 function activeSeenRows(){const active=new Set(CAMPAIGN.questions.map(q=>q.fingerprint));return Object.entries(state.seen||{}).filter(([fp,v])=>active.has(fp)&&!v?.retired).map(([,v])=>v);}
 function activeSeenCount(){return activeSeenRows().length;}
 const DISPLAY_NAMES={
@@ -473,6 +494,7 @@ function qScore(q,sessionCats,sessionTemplates,mode){
   const cc=sessionCats[q.cat]||0,tc=sessionTemplates[q.templateId]||0;
   if(cc>=2)s-=20; else if(cc===1)s-=.20;
   if(tc>=1)s-=12;
+  const lt=leechInfo(q),ls=leechStage(lt);if(ls==="leech")s+=leechCooldownPassed(lt)?-.30:-4.0;else if(ls==="warning")s+=.08;
   if(!m.domains[q.domain])s+=.20;
   return s;
 }
@@ -488,35 +510,67 @@ function chooseOne(pool,chosen,sessionCats,sessionTemplates,mode,allowedCats=nul
   return cand[Math.floor(Math.random()*Math.min(5,cand.length))];
 }
 function buildTrainingPlan(){
-  const chosen=[],cats={},temps={};
-  const addQ=q=>{if(!q)return false;chosen.push(q);cats[q.cat]=(cats[q.cat]||0)+1;temps[q.templateId]=(temps[q.templateId]||0)+1;return true;};
-  const retiredSupportCats=new Set(["articles","quantifiers","phrasal_look_come","connectors"]);
-  const corePool=BANK.filter(q=>q.sourceType==="exam-core"),supportPool=BANK.filter(q=>q.sourceType!=="exam-core"&&!retiredSupportCats.has(q.cat));
-  const coreSeen=corePool.filter(q=>!!seenInfo(q)),coreNew=corePool.filter(q=>!seenInfo(q));
-  const usedAnswers=new Set(),usedOptionWords=new Set();
-  const addCore=q=>{if(!addQ(q))return false;usedAnswers.add(String(q.a[q.c]).toLowerCase());q.a.forEach(x=>usedOptionWords.add(String(x).toLowerCase()));return true;};
-  const chooseCore=(pool,mode="explore")=>{
-    const chosenFp=new Set(chosen.map(q=>q.fingerprint));
-    let cand=pool.filter(q=>!chosenFp.has(q.fingerprint));if(!cand.length)return null;
-    cand=cand.map(q=>{const ans=String(q.a[q.c]).toLowerCase(),overlap=q.a.reduce((n,x)=>n+(usedOptionWords.has(String(x).toLowerCase())?1:0),0),info=seenInfo(q);let score=qScore(q,{},temps,mode);if(!usedAnswers.has(ans))score+=1.05;else score-=1.4;score-=overlap*.32;if(info?.lastCorrect===false)score+=.45;return {q,score};}).sort((a,b)=>b.score-a.score);
-    return cand[Math.floor(Math.random()*Math.min(6,cand.length))]?.q||null;
+  const chosen=[],cats={},temps={},families=new Set(),targets=new Set(),answers=new Set(),optionTerms=new Set(),sourceCount={};
+  const family=q=>q.networkFamily||q.templateId||q.fingerprint;
+  const source=q=>q.sourceType||"legacy-support";
+  const addQ=q=>{
+    const target=lexicalTargetKey(q);if(!q||families.has(family(q))||targets.has(target))return false;
+    chosen.push(q);families.add(family(q));targets.add(target);cats[q.cat]=(cats[q.cat]||0)+1;temps[q.templateId]=(temps[q.templateId]||0)+1;
+    const ans=String(q.a[q.c]).toLowerCase();answers.add(ans);q.a.forEach(x=>optionTerms.add(String(x).toLowerCase()));
+    sourceCount[source(q)]=(sourceCount[source(q)]||0)+1;return true;
   };
-  const dueCore=coreSeen.filter(q=>{const x=seenInfo(q),levelGap=x?state.level-x.lastLevel:0;return x&&((x.lastCorrect===false&&levelGap>=2)||Date.now()>=(x.nextDueTs||((x.lastTs||0)+(x.intervalDays||1)*86400000)));});
-  let reviewCoreSlots=Math.min(2,dueCore.length);
-  while(reviewCoreSlots-->0){const q=chooseCore(dueCore,"review");if(!q)break;addCore(q);}
-  while(chosen.filter(q=>q.sourceType==="exam-core").length<9){const q=chooseCore(coreNew.length?coreNew:corePool,"explore")||chooseCore(corePool,"review");if(!q)break;addCore(q);}
-  const newPool=supportPool.filter(q=>!seenInfo(q)),reviewPool=supportPool.filter(q=>!!seenInfo(q));
-  const skills=CAMPAIGN.skills.filter(s=>s.id!=="exam_core").map(s=>({id:s.id,m:state.metrics[s.id],priority:catPriority(s.id)}));
-  const focusCats=skills.slice().sort((a,b)=>b.priority-a.priority).slice(0,3).map(x=>x.id);
-  for(const cat of focusCats){if(chosen.length>=12)break;addQ(chooseOne(newPool.length?newPool:supportPool,chosen,cats,temps,"focus",new Set([cat]))||chooseOne(supportPool,chosen,cats,temps,"focus",new Set([cat])));}
-  const exploreCats=skills.slice().sort((a,b)=>(a.m.attempts-b.m.attempts)||(a.m.lastLevel-b.m.lastLevel)).map(x=>x.id);
-  for(const cat of exploreCats){if(chosen.length>=14)break;if((cats[cat]||0)>0)continue;addQ(chooseOne(newPool,chosen,cats,temps,"explore",new Set([cat])));}
-  const dueCats=skills.filter(x=>x.m.attempts>0&&((state.level-x.m.lastLevel)>=x.m.interval||skillTimeDue(x.m).due)).sort((a,b)=>skillTimeDue(b.m).overdue-skillTimeDue(a.m).overdue).map(x=>x.id);
-  for(const cat of dueCats){if(chosen.length>=15)break;addQ(chooseOne(reviewPool,chosen,cats,temps,"review",new Set([cat])));}
-  while(chosen.length<15){const q=chooseOne(newPool.length?newPool:supportPool,chosen,cats,temps,"explore")||chooseOne(supportPool,chosen,cats,temps,"review");if(!q)break;addQ(q);}
+  const familyReady=q=>{const last=state.templateLast[q.templateId];return last==null||(state.level-last)>=6;};
+  const reviewReady=q=>{
+    const info=seenInfo(q);if(!info)return false;const lt=leechInfo(q),ls=leechStage(lt);
+    if(ls==="leech")return leechCooldownPassed(lt);
+    const gap=state.level-info.lastLevel,days=elapsedDays(info.lastTs);
+    if(info.lastCorrect===false)return gap>=4||days>=1;
+    const dueTs=info.nextDueTs||((info.lastTs||0)+(info.intervalDays||1)*86400000);
+    return gap>=2&&Date.now()>=dueTs;
+  };
+  const pick=(pool,mode,sourceType=null)=>{
+    const chosenFp=new Set(chosen.map(q=>q.fingerprint)),leechCount=chosen.filter(q=>leechStage(leechInfo(q))==="leech").length;
+    let cand=pool.filter(q=>!chosenFp.has(q.fingerprint)&&!families.has(family(q))&&!targets.has(lexicalTargetKey(q)));
+    if(leechCount>=LEECH_PER_SESSION)cand=cand.filter(q=>leechStage(leechInfo(q))!=="leech");
+    if(sourceType)cand=cand.filter(q=>source(q)===sourceType);
+    if(mode!=="review")cand=cand.filter(q=>leechStage(leechInfo(q))!=="leech");
+    if(mode==="explore")cand=cand.filter(familyReady);
+    if(mode==="review")cand=cand.filter(reviewReady);
+    if(!cand.length)return null;
+    cand=cand.map(q=>{
+      const ans=String(q.a[q.c]).toLowerCase();
+      const overlap=q.a.reduce((n,x)=>n+(optionTerms.has(String(x).toLowerCase())?1:0),0);
+      const info=seenInfo(q);
+      let score=qScore(q,cats,temps,mode==="review"?"review":"explore");
+      score+=answers.has(ans)?-.9:.72;
+      score-=overlap*.28;
+      score-=Math.max(0,(sourceCount[source(q)]||0)-4)*.15;
+      const ls=leechStage(leechInfo(q));if(ls==="leech")score-=.72;else if(ls==="warning")score-=.08;
+      if(q.q.trim().split(/\s+/).length<=11)score+=.12;
+      return {q,score};
+    }).sort((a,b)=>b.score-a.score);
+    const base=cand[Math.floor(Math.random()*Math.min(6,cand.length))]?.q||null;if(!base)return null;
+    return mode==="review"&&leechStage(leechInfo(base))==="leech"?leechReserveQuestion(base,chosenFp):base;
+  };
+  const unseen=BANK.filter(q=>!seenInfo(q));
+  const due=BANK.filter(q=>seenInfo(q)&&reviewReady(q));
+
+  // Territorio 1: roughly 75% exploration, 25% spaced review.
+  // New material is deliberately mixed: real exam anchors + lexical network + selected legacy support.
+  for(const [src,n] of [["exam-core",4],["territory-network",5],["legacy-support",2]]){
+    for(let i=0;i<n;i++){const q=pick(unseen,"explore",src);if(q)addQ(q);}
+  }
+  while(chosen.length<11){const q=pick(unseen,"explore");if(!q)break;addQ(q);}
+  while(chosen.length<15){const q=pick(due,"review");if(!q)break;addQ(q);}
+  while(chosen.length<15){const q=pick(unseen,"explore");if(!q)break;addQ(q);}
+
+  // Once most of the territory has been explored, keep practising without collapsing into immediate repeats.
+  if(chosen.length<15){
+    const fallback=BANK.filter(q=>{const x=seenInfo(q);return x&&(state.level-x.lastLevel)>=4&&familyReady(q);});
+    while(chosen.length<15){const q=pick(fallback,"fallback");if(!q)break;addQ(q);}
+  }
+
   for(let i=chosen.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[chosen[i],chosen[j]]=[chosen[j],chosen[i]];}
-  const group=q=>q.sourceType==="exam-core"?`exam-${q.sourceExam}`:q.cat;
-  for(let k=0;k<100;k++){let bad=-1;for(let i=1;i<chosen.length;i++)if(group(chosen[i])===group(chosen[i-1])){bad=i;break;}if(bad<0)break;const j=[...Array(chosen.length).keys()].find(x=>Math.abs(x-bad)>1&&group(chosen[x])!==group(chosen[bad])&&(x===0||group(chosen[x-1])!==group(chosen[bad])));if(j!=null)[chosen[bad],chosen[j]]=[chosen[j],chosen[bad]];else break;}
   return chosen.slice(0,SESSION_SIZE);
 }
 function buildFinalPlan(){
@@ -677,7 +731,7 @@ const AI_ANALYSIS_CONTRACT={
 function learningMethodContext(){return {nativeLanguage:"Spanish",preferredTerm:"infinitivo sin to",provenHooks:[{skill:"make + object + infinitivo sin to",hook:"MAKE/MADE → NO TO · MAKE ME FEEL"},{skill:"used to + infinitivo sin to vs get/be used to + -ing",hook:"GOTYE → CORTO · BE/GET → -ING"},{skill:"would rather",hook:"MISMO → INFINITIVO SIN TO · OTRO → PASADO",status:"new; test before calling it consolidated"},{skill:"must have vs should have",hook:"DETECTIVE → MUST HAVE · MADRE REGAÑANDO → SHOULD HAVE",status:"new; test before calling it consolidated"}],method:"Let the learner struggle enough to expose the pattern, then compress it into a short retrieval cue and verify it on later spaced questions."};}
 function globalCoachPayload(){return {schema:"ADAPTIVE_ENGLISH_GLOBAL_V1",task:"analyze_longitudinal_campaign_progress",analysisContract:AI_ANALYSIS_CONTRACT,learningMethod:learningMethodContext(),global:coachSnapshot()};}
 function globalCoachJsonText(){return JSON.stringify(globalCoachPayload(),null,2);}
-function coachPromptText(){const p=globalCoachPayload();return `Analyze this Adaptive B2 Cloze Campaign 1 snapshot as my English coach. Follow the analysisContract in the JSON.\n\nADAPTIVE_ENGLISH_GLOBAL_JSON\n${JSON.stringify(p)}`;}
+function coachPromptText(){const p=globalCoachPayload();return `Analyze this B2 Territorio 1 Territorio 1 snapshot as my English coach. Follow the analysisContract in the JSON.\n\nADAPTIVE_ENGLISH_GLOBAL_JSON\n${JSON.stringify(p)}`;}
 async function writeClipboardText(text){
   try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return true;}}catch(e){}
   try{const t=document.createElement("textarea");t.value=text;t.setAttribute("readonly","");t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();t.setSelectionRange(0,t.value.length);const ok=document.execCommand("copy");t.remove();return !!ok;}catch(e){return false;}
@@ -806,9 +860,9 @@ function campaignPracticeEstimate(){
 function campaignPracticeEstimateHtml(){
   const e=campaignPracticeEstimate(),h=e.hours<10?e.hours.toFixed(1):Math.round(e.hours).toString(),hl=e.hoursLow<10?e.hoursLow.toFixed(1):Math.round(e.hoursLow).toString(),hh=e.hoursHigh<10?e.hoursHigh.toFixed(1):Math.round(e.hoursHigh).toString(),p=e.dailyPlan;
   const headline=e.completed?"CLEARED":e.eligible?"FINAL":`~${h} h`;
-  const sub=e.completed?"Campaign 1 completed.":e.eligible?"Graduation gates passed · final challenge remains.":`RECOMMENDED PLAN · ${Math.round(p.recommended.minutes)} min/day → ~${p.recommended.days} days`;
+  const sub=e.completed?"Territorio 1 completed.":e.eligible?"Graduation gates passed · final challenge remains.":`RECOMMENDED PLAN · ${Math.round(p.recommended.minutes)} min/day → ~${p.recommended.days} days`;
   const scenarios=e.completed||e.eligible?"":`<div class="campaign-plan-scenarios"><span>MIN ${Math.round(p.minimum.minutes)}m → ${p.minimum.days}d</span><span>STRETCH ${Math.round(p.stretch.minutes)}m → ${p.stretch.days}d</span>${p.today?`<span>TODAY ${Math.round(p.today.minutes)}m → ${p.today.days}d</span>`:""}</div>`;
-  return `<article class="campaign-eta"><div><small>CAMPAIGN 2 · ESTIMATED PRACTICE LEFT</small><h2>${headline}</h2><p>${sub}</p>${scenarios}<div class="campaign-eta-range">LEARNING PROGRESS · ${Math.round(e.learningProgress*100)}% · RANGE ${hl}–${hh} h · HOUR DRIVER ${escapeHtml(e.hourDriver)}${e.calendarFloor?` · calendar floor ${e.calendarFloor}d`:""} · confidence ${e.confidenceLabel}</div></div><aside><span>MAIN GATE</span><b>${escapeHtml(e.mainGate)}</b><em>${e.due.toLocaleString()} reviews due</em></aside><footer>The recommended plan uses today's adaptive Focus target. More focused minutes usually shorten the modeled practice horizon; fewer minutes lengthen it. The estimate counts focused app practice, not passive screen time, and calendar/retention gates can still keep Campaign 1 open.</footer></article>`;
+  return `<article class="campaign-eta"><div><small>TERRITORIO 2 · ESTIMATED PRACTICE LEFT</small><h2>${headline}</h2><p>${sub}</p>${scenarios}<div class="campaign-eta-range">LEARNING PROGRESS · ${Math.round(e.learningProgress*100)}% · RANGE ${hl}–${hh} h · HOUR DRIVER ${escapeHtml(e.hourDriver)}${e.calendarFloor?` · calendar floor ${e.calendarFloor}d`:""} · confidence ${e.confidenceLabel}</div></div><aside><span>MAIN GATE</span><b>${escapeHtml(e.mainGate)}</b><em>${e.due.toLocaleString()} reviews due</em></aside><footer>The recommended plan uses today's adaptive Focus target. More focused minutes usually shorten the modeled practice horizon; fewer minutes lengthen it. The estimate counts focused app practice, not passive screen time, and calendar/retention gates can still keep Territorio 1 open.</footer></article>`;
 }
 function localCoachReport(){
   const hist=state.history||[],recent=hist.slice(-120),prev=hist.slice(-240,-120),stats=overallStats(),trend=coachTrendSummary(),focus=coachSkillStats(),top=focus.slice(0,5),due=Object.values(state.seen||{}).filter(x=>x?.lastTs&&Date.now()>=(x.nextDueTs||x.lastTs+(x.intervalDays||1)*86400000)).length;
@@ -906,7 +960,7 @@ function sessionHandoffJsonText(snap,records=session?.records||[]){return JSON.s
 function setEndHandoffStatus(ok,copyFailed=false){const box=$("endAiHandoff"),status=$("endHandoffStatus"),meta=$("endHandoffMeta"),btn=$("endCopyHandoffBtn");if(!box||!status||!btn)return;box.classList.toggle("copied",!!ok);status.textContent=ok?"PROGRESS JSON COPIED":copyFailed?"COPY BLOCKED · TAP AGAIN":"PROGRESS JSON READY · OPTIONAL";if(meta)meta.textContent="Learning progress + this level + session errors. Nothing is copied automatically.";btn.textContent=ok?"COPY PROGRESS AGAIN":"COPY PROGRESS JSON";}
 async function copyEndSessionHandoff(){if(!lastSessionHandoffText){const snap=state.sessionHistory[state.sessionHistory.length-1]||null;lastSessionHandoffText=sessionHandoffJsonText(snap,session?.records||[]);}const ok=await writeClipboardText(lastSessionHandoffText);setEndHandoffStatus(ok,!ok);return ok;}
 async function copySessionErrorsJson(btn=null){const text=JSON.stringify(sessionErrorsPayload(session?.records||[]),null,2),ok=await writeClipboardText(text);if(btn){const old=btn.textContent;btn.textContent=ok?"SESSION ERRORS COPIED":"COPY BLOCKED · TAP AGAIN";setTimeout(()=>btn.textContent=old,1400);}return ok;}
-function errorPromptPayload(r){const fp=errorFingerprint(r),mc=misconceptionFingerprint(r);return {task:"diagnose_one_english_error",app:"Adaptive B2 Cloze",version:APP_VERSION,skill:skillLabel(r.cat),question:r.question||r.originalQuestion||"",my_answer:r.userAnswer||"No answer",correct_answer:r.correctAnswer||"",response_time_sec:+((r.ms||0)/1000).toFixed(2),error_type:r.type||"wrong",level:r.level,error_fingerprint:fp,misconception_fingerprint:mc,instruction:"Diagnose only this error. Explain the likely misconception without pretending certainty. Use the historical pattern as evidence, distinguish conceptual confusion from a possible execution slip, contrast my wrong form with the correct form, and when supported explicitly show Spanish mental pattern/calque → English pattern. Do not force an L1 explanation for a likely speed/attention slip. Give one memorable rule, 3 minimal pairs, and a very short retrieval drill. Use the learner term infinitivo sin to. Answer mainly in Spanish, using English for the examples."};}
+function errorPromptPayload(r){const fp=errorFingerprint(r),mc=misconceptionFingerprint(r);return {task:"diagnose_one_english_error",app:"B2 Territorio 1",version:APP_VERSION,skill:skillLabel(r.cat),question:r.question||r.originalQuestion||"",my_answer:r.userAnswer||"No answer",correct_answer:r.correctAnswer||"",response_time_sec:+((r.ms||0)/1000).toFixed(2),error_type:r.type||"wrong",level:r.level,error_fingerprint:fp,misconception_fingerprint:mc,instruction:"Diagnose only this error. Explain the likely misconception without pretending certainty. Use the historical pattern as evidence, distinguish conceptual confusion from a possible execution slip, contrast my wrong form with the correct form, and when supported explicitly show Spanish mental pattern/calque → English pattern. Do not force an L1 explanation for a likely speed/attention slip. Give one memorable rule, 3 minimal pairs, and a very short retrieval drill. Use the learner term infinitivo sin to. Answer mainly in Spanish, using English for the examples."};}
 async function copyErrorPrompt(btn,index){const records=session?.records||[],groups=levelErrorGroups(records),r=groups[index]?.records?.slice(-1)[0];if(!r)return;const text=JSON.stringify(errorPromptPayload(r),null,2);try{await navigator.clipboard.writeText(text);btn.textContent="COPIED ✓";setTimeout(()=>btn.textContent="COPY ERROR JSON",1300);}catch(e){const t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();btn.textContent="COPIED ✓";}}
 function errorCoachCardHtml(group,index){
   const records=group.records||[],r=records[records.length-1]||{},lesson=(window.AE_LESSONS||{})[group.cat]||{},item=itemCoach(r),title=skillLabel(group.cat),echoes=[];
@@ -960,16 +1014,16 @@ function renderCampaign2Readiness(){
   const r=campaign2Readiness(),estimate=campaignPracticeEstimate(),score=pct(r.score),fill=$("campaign2Fill"),box=$("campaign2Box");
   if(box){
     $("campaign2Score").textContent=`${score}%`;paintText("campaign2Score",r.score);fill.style.width=`${score}%`;paintFill("campaign2Fill",r.score);$("campaign2Stage").textContent=r.stage;
-    $("campaign2Status").textContent=r.ready?"Graduation gate achieved. The final challenge still decides Campaign 1 completion.":`${r.blockers.slice(0,2).join(" · ") || "Keep training to build stronger evidence."}`;
+    $("campaign2Status").textContent=r.ready?"Graduation gate achieved. The final challenge still decides Territorio 1 completion.":`${r.blockers.slice(0,2).join(" · ") || "Keep training to build stronger evidence."}`;
     renderPracticeEstimateMini("campaign2PracticeEstimate",estimate);
     $("campaign2Copy").classList.toggle("hidden",!r.ready);box.classList.toggle("ready",r.ready);
   }
-  const end=$("campaign2End");if(end){const show=r.ready||r.score>=.60;end.classList.toggle("hidden",!show);if(show)end.textContent=r.ready?`GRADUATION GATE ACHIEVED · Readiness ${score}% · Final challenge remains.`:`CAMPAIGN 2 IS GETTING CLOSE · Readiness ${score}% · Keep consolidating Campaign 1.`;}
+  const end=$("campaign2End");if(end){const show=r.ready||r.score>=.60;end.classList.toggle("hidden",!show);if(show)end.textContent=r.ready?`GRADUATION GATE ACHIEVED · Readiness ${score}% · Final challenge remains.`:`TERRITORIO 2 IS GETTING CLOSE · Readiness ${score}% · Keep consolidating Territorio 1.`;}
 }
 async function copyCampaign2Brief(){
   const text=campaign2Brief();
-  try{await navigator.clipboard.writeText(text);alert("Campaign 2 handoff copied. Export your progress too and send both to ChatGPT.");}
-  catch(e){const t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();alert("Campaign 2 handoff copied. Export your progress too and send both to ChatGPT.");}
+  try{await navigator.clipboard.writeText(text);alert("Territorio 2 handoff copied. Export your progress too and send both to ChatGPT.");}
+  catch(e){const t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();alert("Territorio 2 handoff copied. Export your progress too and send both to ChatGPT.");}
 }
 function localDateKey(ts=Date.now()){const d=new Date(ts),p=n=>String(n).padStart(2,"0");return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;}
 function calendarDayNumber(dateKey){const [y,m,d]=String(dateKey).split("-").map(Number);return Math.floor(Date.UTC(y,m-1,d)/86400000);}
@@ -1033,8 +1087,8 @@ function renderGrowthTree(){
   host.innerHTML=`<div class="growth-tree-canvas" data-tree-stage="${stage}"><svg viewBox="0 0 420 300" role="img" aria-label="Practice tree, growth stage ${stage} of 200"><defs><linearGradient id="treeTrunk" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5d3827"/><stop offset=".55" stop-color="#76503a"/><stop offset="1" stop-color="#957258"/></linearGradient></defs><ellipse class="tree-ground" cx="210" cy="282" rx="78" ry="7"/> <g class="tree-branches" fill="none" stroke="url(#treeTrunk)" stroke-linecap="round" stroke-linejoin="round">${branch}</g><g class="tree-leaves">${leaf}</g></svg></div><div class="growth-tree-count"><b>${level.toLocaleString()}</b><span>LEVEL</span></div>`;
 }
 
-const RELEASE_NOTES=["v1.2.0 locks the 3,000-question B2 Part 1/2 bank around greater sentence variety","Every skill now uses 10 real templates × 12 contexts instead of 5 templates × 24 cosmetic variants","The bank keeps roughly half of the previous questions and replaces the other half with new B2 First-style lexical and function-word patterns informed by the existing adaptive-exam corpus","New-question selection prefers unseen templates before recycling a pattern, while due spaced reviews can still return an exact question","Questions remain short for the fixed 15-second clock; names and contexts are more varied","Per-question feedback now shows question repetitions, pattern repetitions, correct and wrong counts","Coverage counts only questions that still belong to the active 3,000-question bank","The timer display now initializes from the real 15-second TIME_LIMIT instead of the inherited 10.0 label"];
-function renderReleaseInfo(){const host=$("releaseInfo"),online=location.protocol.startsWith("http"),build=`${online?"ONLINE":"LOCAL"} BUILD · v${APP_VERSION} · BANK ${CAMPAIGN?.version||"—"}`;if(host)host.innerHTML=`<details class="release-info"><summary><b>Adaptive B2 Cloze v${APP_VERSION}</b><span>WHAT’S NEW</span></summary><ul>${RELEASE_NOTES.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></details>`;if($("buildVersion"))$("buildVersion").textContent=build;if($("endBuildVersion"))$("endBuildVersion").textContent=build;const meta=document.querySelector('meta[name="ae-version"]');if(meta)meta.setAttribute("content",APP_VERSION);document.title=`Adaptive B2 Cloze - Campaign 1 - v${APP_VERSION}`;}
+const RELEASE_NOTES=["v1.8.0 · B2 Territorio 1","Sistema LEECH por objetivo léxico, separado de la estadística de cada frase","WARNING al acumular presión de error y LEECH desde 4 fallos activos; la LEECH descansa 8 niveles o 3 días","Máximo una LEECH por nivel para que ningún objetivo monopolice la sesión","Cuando una LEECH vuelve, rota a otro contexto disponible del mismo objetivo antes de repetir la frase anterior","La marca LEECH es visual y no revela respuesta, traducción ni pista","Se conserva el algoritmo existente: 15 preguntas, 15 s, exploración, spaced review, estadísticas y gamificación"];
+function renderReleaseInfo(){const host=$("releaseInfo"),online=location.protocol.startsWith("http"),build=`${online?"ONLINE":"LOCAL"} BUILD · v${APP_VERSION} · BANK ${CAMPAIGN?.version||"—"}`;if(host)host.innerHTML=`<details class="release-info"><summary><b>B2 Territorio 1 v${APP_VERSION}</b><span>WHAT’S NEW</span></summary><ul>${RELEASE_NOTES.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></details>`;if($("buildVersion"))$("buildVersion").textContent=build;if($("endBuildVersion"))$("endBuildVersion").textContent=build;const meta=document.querySelector('meta[name="ae-version"]');if(meta)meta.setAttribute("content",APP_VERSION);document.title=`B2 Territorio 1 - v${APP_VERSION}`;}
 function medalCounts(){const rows=(state.sessionHistory||[]).filter(x=>!x.mode||x.mode==="training");return window.AdrianAchievements?.countsFromHistory?.(rows)||{blue:0,violet:0,gold:0};}
 function renderMedalSummary(){const html=window.AdrianAchievements?.medalStripHtml?.(medalCounts(),{context:"summary"})||"";const a=$("startMedals"),b=$("endMedals");if(a)a.innerHTML=html;if(b)b.innerHTML=html;}
 function renderStart(){
@@ -1043,7 +1097,7 @@ function renderStart(){
   applyRatingTheme(st.rating);applyAiTheme(ai);applyCoverRankTheme(ai);
   $("startAiLevel").textContent=`${ai.level} / 15`;paintText("startAiLevel",ai.score/100);
   $("startAiConfidence").textContent=`AI Valoration · evidencia ${Math.round(ai.confidence*100)}%`;paintText("startAiConfidence",ai.confidence);
-  $("startKicker").textContent=`CAMPAIGN 1 · ${currentStageText()}`;
+  $("startKicker").textContent=`B2 TERRITORIO 1 · ${currentStageText()}`;
   $("startLevel").textContent=`LEVEL ${state.level}`;
   $("startBtn").textContent=state.sessions?`CONTINUE · LEVEL ${state.level}`:`START · LEVEL ${state.level}`;
   $("coverageText").textContent=`${activeSeenCount().toLocaleString()} / ${BANK.length.toLocaleString()}`;
@@ -1058,9 +1112,9 @@ function renderStart(){
   $("startTotal").textContent=(state.totalAttempts||0).toLocaleString();$("startStudyTime").textContent=formatStudyTime(state.activeTrainingMs||0);const phraseStats=phraseExposureStats();$("startPhrasesDone").textContent=phraseStats.unique.toLocaleString();$("startRepeatedPhrases").textContent=phraseStats.repeatedUnique.toLocaleString();
   const peer=typicalLearnerStats(),spd=$("startPeerDelta");spd.textContent=peer.delta==null?"—":`${peer.delta>=0?"+":""}${peer.delta.toFixed(1)}`;spd.className=`peer-delta ${peer.delta==null||Math.abs(peer.delta)<2?"neutral":peer.delta>0?"good":"bad"}`;$("startPeerStatus").textContent=`${peer.label} · typical ${peer.typical.toFixed(1)} · range ${peer.healthyMin.toFixed(1)}–${peer.strongPace.toFixed(1)}`;
   let status=`AE RATING ${pct(st.rating)} · ${rb.name} · ${sg.name} · ${Math.max(0,sg.to-sg.seen)} new exercises until the next stage.`;
-  if(st.coverage>=.999&&!st.eligible){const gate=campaign2Readiness();status=`All 3,000 exercises explored. GRADUATION GATE pending · ${gate.blockers[0]||"keep consolidating longitudinal evidence"}.`;}
-  if(st.eligible&&!state.completed)status="FINAL CHALLENGE READY · Campaign requirements achieved.";
-  if(state.completed)status="CAMPAIGN 1 COMPLETE · Free practice remains available, or load the next campaign later.";
+  if(st.coverage>=.999&&!st.eligible){const gate=campaign2Readiness();status=`All territory cards explored. GRADUATION GATE pending · ${gate.blockers[0]||"keep consolidating longitudinal evidence"}.`;}
+  if(st.eligible&&!state.completed)status="FINAL CHALLENGE READY · Territory requirements achieved.";
+  if(state.completed)status="TERRITORIO 1 COMPLETE · Free practice remains available, or start Territorio 2 later.";
   $("campaignStatus").textContent=status;
   renderCampaign2Readiness();
   renderDailyKey();
@@ -1076,7 +1130,7 @@ async function showLevelIntro(finalMode,target){
   const el=missionOverlay(true),last=state.sessionHistory.filter(x=>x.mode==="training").slice(-1)[0];if(!el)return;
   el.className="mission-overlay intro";const rank=finalMode?14:valueLevel((target||0)/15);el.style.setProperty("--mission-accent",valueColor(rank/15));
   const lastDelta=last&&Number.isFinite(last.target)?last.correct-last.target:null,lastLine=last?`LAST ${last.correct}/15${lastDelta==null?"":` · ${lastDelta>=0?"+":""}${lastDelta.toFixed(1)} VS TARGET`}`:"FIRST LEVEL";
-  $("missionBody").innerHTML=`<div class="mission-eyebrow">${finalMode?"FINAL CHALLENGE":`LEVEL ${state.level}`}</div><div class="mission-title">${finalMode?"FINAL RUN":"TARGET"}</div><div class="mission-score" style="color:${finalMode?valueTextColor(13/15):valueTextColor((target||0)/15)}">${finalMode?"READY":`${target.toFixed(1)}<small>/15</small>`}</div><div class="mission-meta">${lastLine}</div><div class="mission-rules">15 QUESTIONS · 10s</div>`;
+  $("missionBody").innerHTML=`<div class="mission-eyebrow">${finalMode?"FINAL CHALLENGE":`LEVEL ${state.level}`}</div><div class="mission-title">${finalMode?"FINAL RUN":"TARGET"}</div><div class="mission-score" style="color:${finalMode?valueTextColor(13/15):valueTextColor((target||0)/15)}">${finalMode?"READY":`${target.toFixed(1)}<small>/15</small>`}</div><div class="mission-meta">${lastLine}</div><div class="mission-rules">15 QUESTIONS · 15s</div>`;
   for(const n of [3,2,1]){$("missionCount").textContent=String(n);$("missionCount").classList.remove("pop");void $("missionCount").offsetWidth;$("missionCount").classList.add("pop");playCountdownStep(n);await wait(820);}
   $("missionCount").textContent="GO";tone(1318.5,.09,.022,"sine");await wait(320);missionOverlay(false);
 }
@@ -1143,8 +1197,8 @@ function nextQuestion(){
   current=session.plan[session.index];
   if(!current||!Array.isArray(current.display)||current.display.length!==4||!Number.isInteger(current.correctPos)||current.correctPos<0||current.correctPos>3){console.error("Skipping invalid question",current);session.index++;setTimeout(nextQuestion,0);return;}
   $("qIndex").textContent=session.index+1;
-  const rewardPrior=state.seen[current.fingerprint]||null,rewardGap=rewardPrior?state.level-rewardPrior.lastLevel:null,rewardSpecial=rewardPrior?.lapses>0&&!rewardPrior.masteredRewarded&&rewardPrior.lastCorrect===true&&rewardPrior.count>=2&&rewardGap>=2?"MASTER CHANCE":rewardPrior?.lapses>0&&rewardPrior.lastCorrect===false?"RECOVERY":rewardPrior?"SPACED REVIEW":session.index===session.plan.length-1?"FINAL":"";
-  $("qTotal").textContent="/ "+session.plan.length+(rewardSpecial?" · "+rewardSpecial:"");
+  const rewardPrior=state.seen[current.fingerprint]||null,rewardGap=rewardPrior?state.level-rewardPrior.lastLevel:null,rewardSpecial=rewardPrior?.lapses>0&&!rewardPrior.masteredRewarded&&rewardPrior.lastCorrect===true&&rewardPrior.count>=2&&rewardGap>=2?"MASTER CHANCE":rewardPrior?.lapses>0&&rewardPrior.lastCorrect===false?"RECOVERY":rewardPrior?"SPACED REVIEW":session.index===session.plan.length-1?"FINAL":"",leechMark=leechStage(leechInfo(current))==="leech"?"LEECH":"";
+  $("qTotal").textContent="/ "+session.plan.length+(leechMark?" · "+leechMark:rewardSpecial?" · "+rewardSpecial:"");
   const view=visibleCard(current);current.visibleQuestion=view.question;current.visibleOptions=view.options;current.visibleFocus=view.focus;current.visibleNames=view.names;
   $("questionText").classList.remove("focus-active");$("questionText").textContent=view.question;
   const wrap=$("answers");wrap.innerHTML="";const answerColors=shuffledAnswerColorClasses();
@@ -1164,14 +1218,14 @@ function answer(pos,timeout=false){
   const buttons=[...$("answers").children];
   buttons.forEach((b,i)=>{b.disabled=true;b.classList.remove("good","bad","dim");if(i===current.correctPos)b.classList.add("good");else b.classList.add("dim");});
   if(!ok&&pos>=0){buttons[pos].classList.remove("dim");buttons[pos].classList.add("bad");}
-  const previousSeen=state.seen[current.fingerprint]||null,previousTemplate=state.templateSeen[current.templateId]||null,speedScore=updateMetric(current,ok,sec,type),info=previousSeen||{count:0,lastLevel:-99,lapses:0},gapLevels=previousSeen?state.level-previousSeen.lastLevel:null;
+  const previousSeen=state.seen[current.fingerprint]||null,previousTemplate=state.templateSeen[current.templateId]||null,previousTarget=leechInfo(current),speedScore=updateMetric(current,ok,sec,type),info=previousSeen||{count:0,lastLevel:-99,lapses:0},gapLevels=previousSeen?state.level-previousSeen.lastLevel:null;
   const masteredReward=ok&&previousSeen?.lapses>0&&!previousSeen.masteredRewarded&&previousSeen.lastCorrect===true&&previousSeen.count>=2&&gapLevels>=2,recoveredReward=ok&&!masteredReward&&previousSeen?.lapses>0&&previousSeen.lastCorrect===false;
   session.lastReward="";if(ok){session.combo=(session.combo||0)+1;session.bestCombo=Math.max(session.bestCombo||0,session.combo);let rewardXp=10+(type==="automatic"?2:0)+(previousSeen?2:0);if(masteredReward){session.masteredRewards++;rewardXp+=12;session.lastReward="MASTERED ✦";}else if(recoveredReward){session.recovered++;rewardXp+=6;session.lastReward="RECOVERED";}const comboBonus={3:3,5:5,10:10,15:20}[session.combo]||0;if(comboBonus){rewardXp+=comboBonus;if(!session.lastReward)session.lastReward=`COMBO ×${session.combo}`;}session.learningXp+=rewardXp;}else session.combo=0;
   const appearance=info.count+1,patternAppearance=(previousTemplate?.count||0)+1,lapses=(info.lapses||0)+(ok?0:1),priorPhraseRows=state.history.filter(x=>x.qid===current.id),phraseCorrect=priorPhraseRows.filter(x=>x.correct).length+(ok?1:0),phraseWrong=priorPhraseRows.filter(x=>!x.correct).length+(ok?0:1);
   const now=Date.now(),intervalDays=reviewIntervalDays(previousSeen,type);
-  state.seen[current.fingerprint]={count:appearance,lastLevel:state.level,lastTs:now,lastCorrect:ok,lapses,intervalDays,nextDueTs:now+intervalDays*86400000,masteredRewarded:!!(previousSeen?.masteredRewarded||masteredReward)};state.templateLast[current.templateId]=state.level;state.templateSeen[current.templateId]={count:patternAppearance,lastLevel:state.level,lastTs:now};
+  state.seen[current.fingerprint]={count:appearance,lastLevel:state.level,lastTs:now,lastCorrect:ok,lapses,intervalDays,nextDueTs:now+intervalDays*86400000,masteredRewarded:!!(previousSeen?.masteredRewarded||masteredReward)};state.templateLast[current.templateId]=state.level;state.templateSeen[current.templateId]={count:patternAppearance,lastLevel:state.level,lastTs:now};const targetAfter=updateLeechTarget(current,ok,now);
   const shownQuestion=current.visibleQuestion||current.q,shownOptions=current.visibleOptions||current.display,load=promptLoadMeta(shownQuestion);
-  const rec={level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:pos>=0?shownOptions[pos]:"No answer",correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:current.targetTime||3.6,timeLimitSec:TIME_LIMIT,sessionMode:session.mode};
+  const rec={level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:pos>=0?shownOptions[pos]:"No answer",correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:current.targetTime||3.6,timeLimitSec:TIME_LIMIT,sessionMode:session.mode,leechBefore:leechStage(previousTarget),leechAfter:leechStage(targetAfter),targetLapses:targetAfter?.lapses||0,targetPressure:targetAfter?.pressure||0};
   if(!ok){hideCorrectReveal();const echoCat=current.cat,echoAnswer=rec.correctAnswer;setTimeout(()=>{if(session)showMemoryEcho(echoCat,echoAnswer);},260);}else hideCorrectReveal();
   try{flashGrammarFocus(shownQuestion,rec.correctAnswer,current.visibleFocus||current.focus||[]);}catch(e){console.error("Grammar focus flash failed",e);}
   state.history.push(rec);state.history=state.history.slice(-12000);state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
@@ -1240,18 +1294,18 @@ function renderEnd(s,before){
   const nextLabel=state.completed?"KEEP TRAINING":`NEXT LEVEL · ${state.level}`;$("continueBtn").textContent=nextLabel;$("topContinueBtn").textContent=nextLabel;
   const finalHidden=!(st.eligible&&!state.completed);$("finalBtn").classList.toggle("hidden",finalHidden);$("topFinalBtn").classList.toggle("hidden",finalHidden);
   if(s.mode==="final"&&!state.completed)$("endSub").textContent=`Final challenge not passed yet · ${pct(s.accuracy)}% · ${fmtSec(s.avgMs)}`;
-  if(state.completed)$("endSub").textContent="CAMPAIGN 1 COMPLETE";
+  if(state.completed)$("endSub").textContent="TERRITORIO 1 COMPLETE";
 }
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
 function exportProgress(){
   const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`adaptive-english-progress-${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`b2-territorio-1-progress-${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);
 }
 function importProgress(file){
-  const r=new FileReader();r.onload=()=>{try{const s=JSON.parse(r.result);if(!validProgressState(s))throw Error("Invalid progress schema");state=normaliseProgressState(s);save();renderStart();alert("Progress imported.");}catch(e){console.error("Progress import rejected",e);alert("This progress file is not valid for Campaign 1.");}};r.readAsText(file);
+  const r=new FileReader();r.onload=()=>{try{const s=JSON.parse(r.result);if(!validProgressState(s))throw Error("Invalid progress schema");state=normaliseProgressState(s);save();renderStart();alert("Progress imported.");}catch(e){console.error("Progress import rejected",e);alert("This progress file is not valid for Territorio 1.");}};r.readAsText(file);
 }
 function resetProgress(){
-  if(confirm("Reset all Campaign 1 progress? Export a backup first if you want to keep it.")){localStorage.removeItem(STORAGE_KEY);state=newState();save();renderStart();}
+  if(confirm("Reset all Territorio 1 progress? Export a backup first if you want to keep it.")){localStorage.removeItem(STORAGE_KEY);state=newState();save();renderStart();}
 }
 
 function validQuestion(q){
@@ -1268,7 +1322,7 @@ async function boot(){
   CAMPAIGN.questions=CAMPAIGN.questions.filter(validQuestion);
   for(const skill of CAMPAIGN.skills)skill.name=learningTerminology(skill.name);
   for(const q of CAMPAIGN.questions){q.skill=learningTerminology(q.skill);q.rule=learningTerminology(q.rule);q.trigger=learningTerminology(q.trigger);}
-  if(CAMPAIGN.questions.length!==before)console.warn(`Adaptive B2 Cloze skipped ${before-CAMPAIGN.questions.length} invalid question(s) with duplicate/broken options.`);
+  if(CAMPAIGN.questions.length!==before)console.warn(`B2 Territorio 1 skipped ${before-CAMPAIGN.questions.length} invalid question(s) with duplicate/broken options.`);
   BANK=CAMPAIGN.questions;state=loadState();startFocusTracking();save();
   const seg=$("segments");for(let i=0;i<10;i++){const d=document.createElement("div");d.className="seg";seg.appendChild(d);}
   $("startBtn").onclick=async()=>{await ensureAudio();await startSession(false);};
@@ -1296,4 +1350,4 @@ async function boot(){
   $("errorsBackBtn").onclick=()=>showScreen("endScreen");
   renderStart();showScreen("startScreen");
 }
-boot().catch(err=>{console.error(err);document.body.innerHTML='<div style="padding:30px;color:white;font-family:system-ui"><h1>Adaptive B2 Cloze</h1><p>Could not load Campaign 1.</p></div>';});
+boot().catch(err=>{console.error(err);document.body.innerHTML='<div style="padding:30px;color:white;font-family:system-ui"><h1>B2 Territorio 1</h1><p>Could not load Territorio 1.</p></div>';});

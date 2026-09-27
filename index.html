@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#10271d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="ae-version" content="1.5.0">
-<title>Adaptive B2 Cloze - Campaign 1 - v1.5.0</title>
+<meta name="ae-version" content="1.8.0">
+<title>B2 Territorio 1 - v1.8.0</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -513,14 +513,14 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <div class="app">
 <section id="startScreen" class="screen start">
   <div class="panel">
-    <div id="startKicker" class="kicker">CAMPAIGN 1 · B2 MULTIPLE-CHOICE CLOZE</div>
+    <div id="startKicker" class="kicker">B2 TERRITORIO 1 · PART 1</div>
     <div class="level-title-row"><h1 id="startLevel">LEVEL 42</h1><button type="button" class="level-next-shortcut" onclick="document.getElementById('startBtn')?.click()">NEXT LEVEL</button></div>
     <div id="startMedals" class="medal-summary-host"></div>
-    <p class="subtitle">Adaptive B2 Cloze · B2 First · Multiple-Choice Cloze</p>
+    <p class="subtitle">B2 Territorio 1 · B2 First · Part 1</p>
     <div class="ai-valuation-box hero-ai"><div><span>AI VALORATION</span><b id="startAiLevel">— / 15</b><small id="startAiConfidence">Estimación adaptativa</small></div><em>AI</em></div>
-    <div class="meta">3,000 exercises · 25 keys · 15 questions per level · fixed 15-second clock</div>
+    <div class="meta">1,610 tarjetas · 30 exámenes reales · red léxica · 15 segundos</div>
     <div class="hero-progress">
-      <div class="progress-label"><span>Coverage</span><strong id="coverageText">0 / 3000</strong></div>
+      <div class="progress-label"><span>Coverage</span><strong id="coverageText">0 / 1610</strong></div>
       <div class="track"><div id="coverageFill" class="fill" style="width:0%"></div></div>
     </div>
     <div class="hero-progress">
@@ -609,7 +609,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
   <div id="memoryEcho" class="memory-echo" aria-live="polite" aria-atomic="true"></div>
   <div class="top">
     <div class="toprow">
-      <div id="timer" class="timer"><strong id="timerText">10.0</strong></div>
+      <div id="timer" class="timer"><strong id="timerText">15.0</strong></div>
       <div class="qnum"><span>QUESTION</span><b id="qIndex">1</b><span id="qTotal">/ 15</span></div>
       <div class="hudright"><button id="soundBtn" class="soundbtn" aria-label="Sound on">🔊</button><div id="sessionLevel" class="leveltag">L42</div></div>
     </div>
@@ -656,7 +656,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <div class="grid phrasegrid">
       <div class="card"><b id="ePhrasesDone">0</b><span>Unique phrases done</span></div>
       <div class="card"><b id="eRepeats">0</b><span>Repeated phrases</span></div>
-      <div class="card"><b id="eBankTotal">3000</b><span>Bank total</span></div>
+      <div class="card"><b id="eBankTotal">1610</b><span>Bank total</span></div>
     </div>
     <div class="section"><h3>Skill League · current ranking</h3><div id="weakSkills"></div></div>
     <div class="ai-legend-wrap"><span>CÓDIGO DE COLOR · 1 BAJO → 15 MÁXIMO</span><div id="aiLegend" class="ai-legend"></div></div>
@@ -666,7 +666,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <button id="errorsBtn" class="secondary hidden">REVIEW ERRORS</button>
       <button id="finalBtn" class="secondary hidden">FINAL CHALLENGE</button>
     </div>
-    <div id="endBuildVersion" class="footerline">Adaptive B2 Cloze · checking version…</div>
+    <div id="endBuildVersion" class="footerline">B2 Territorio 1 · checking version…</div>
   </div>
 </section>
 <section id="errorsScreen" class="screen review hidden">
@@ -688,10 +688,10 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./lessons.js?v=1.2.2"></script>
 <script src="./keys.js?v=1.2.2"></script>
 <script src="./error-coach.js?v=1.2.2"></script>
-<script src="./app.js?v=1.5.0"></script>
+<script src="./app.js?v=1.8.0"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=1.2.2',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=1.8.0',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>
