@@ -692,10 +692,11 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./error-coach.js?v=1.2.2"></script>
 <script>window.LANGUAGE_POINTS_CONFIG={appId:"cloze",timeLimit:15};</script>
 <script src="./language-points.js?v=1.2.0"></script>
+<script src="./hub-path-game.js?v=1.0.0"></script>
 <script src="./app.js?v=1.10.0"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=1.8.1',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=1.10.0-path1',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>

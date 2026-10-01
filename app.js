@@ -1154,14 +1154,17 @@ function leagueFlashHtml(s){
 }
 
 async function showLevelResolution(s,before){
-  const el=missionOverlay(true);if(!el)return;const finalClear=s.mode==="final"&&s.accuracy>=.85&&s.avgMs<=6000,hit=s.mode==="final"?finalClear:s.target!=null&&s.correct>=s.target;
+  const el=missionOverlay(true);if(!el)return;
+  const finalClear=s.mode==="final"&&s.accuracy>=.85&&s.avgMs<=6000,hit=s.mode==="final"?finalClear:s.target!=null&&s.correct>=s.target;
   const achievement=window.AdrianAchievements?.tier?.(s.correct,s.total)||null;
-  el.className=`mission-overlay resolution ${hit?"hit":"miss"}`;el.style.setProperty("--mission-accent",achievement?.color||(hit?COLOR_BANDS_15[14]:COLOR_BANDS_15[3]));
-  const d=s.target==null?null:s.correct-s.target,aiChange=before&&Number.isFinite(before.aiLevel)&&before.aiLevel!==s.aiLevel?`<div class="mission-change" style="color:${valueTextColor(s.aiLevel/15)}">AI RANK ${before.aiLevel} → ${s.aiLevel}</div>`:"",leagueChange=leagueFlashHtml(s);
-  $("missionBody").innerHTML=`<div class="mission-eyebrow">${s.mode==="final"?(hit?"FINAL CLEARED":"FINAL NOT CLEARED"):(hit?"TARGET CLEARED":"TARGET MISSED")}</div><div class="mission-score">${s.correct}<small>/${s.total}</small></div>${s.target==null?"":`<div class="mission-targetline">TARGET ${s.target.toFixed(1)} · <b>${d>=0?"+":""}${d.toFixed(1)}</b></div>`}<div class="mission-meta">${s.mode==="training"?`LEVEL ${s.level} → ${state.level}`:`${Math.round(s.accuracy*100)}% · ${fmtSec(s.avgMs)}`}</div>${aiChange}${leagueChange}`;
-  if(achievement)$("missionBody").insertAdjacentHTML("beforeend",window.AdrianAchievements?.badgeHtml?.(s.correct,s.total)||"");
-  $("missionBody").insertAdjacentHTML("beforeend",window.AdrianAchievements?.legendHtml?.(medalCounts())||"");
-  $("missionCount").textContent=hit?"CLEAR":"REVIEW";playLevelScore(s.correct,s.total);window.AdrianAchievements?.play?.(tone,s.correct,s.total);await wait(3900);missionOverlay(false);
+  el.className=`mission-overlay resolution ${hit?"hit":"miss"}`;
+  el.style.setProperty("--mission-accent",achievement?.color||(hit?COLOR_BANDS_15[14]:COLOR_BANDS_15[3]));
+  $("missionCount").textContent="ROUTE";
+  playLevelScore(s.correct,s.total);window.AdrianAchievements?.play?.(tone,s.correct,s.total);
+  const label=s.mode==="final"?(hit?"FINAL CLEARED":"FINAL NOT CLEARED"):(hit?"TARGET CLEARED":"TARGET MISSED");
+  const pathRun=window.HubPathGame?.resolve?.({appId:"b2-cloze",theme:"b2-cloze",correct:s.correct,total:s.total,bestCombo:s.bestCombo||0,mount:$("missionBody"),duration:3200,label,eventId:`b2-cloze:${s.ts||Date.now()}:${s.level}:${s.mode}`});
+  if(pathRun)await pathRun;else await wait(3200);
+  missionOverlay(false);
 }
 function adaptiveLevelTarget(plan){
   if(!Array.isArray(plan)||!plan.length)return null;
