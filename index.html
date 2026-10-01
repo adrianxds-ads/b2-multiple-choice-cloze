@@ -230,7 +230,7 @@ body.feedback-correct .game{animation:none!important}body.feedback-wrong .game{a
 #startScreen .panel{box-shadow:0 22px 60px rgba(0,0,0,.24),0 0 0 1px color-mix(in srgb,var(--cover-rank-color,#762F32) 34%,transparent)!important}
 .emergency-exit{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:24;min-width:54px;height:34px;padding:0 9px;border:1px solid color-mix(in srgb,var(--negative-wine,#762F32) 72%,white 10%);border-radius:9px;background:rgba(8,13,11,.76);color:#d8c8c4;font-size:10px;font-weight:950;letter-spacing:.08em;box-shadow:0 6px 18px rgba(0,0,0,.28);opacity:.72;cursor:pointer;backdrop-filter:blur(6px)}
 .emergency-exit:active{opacity:1;transform:scale(.96);background:color-mix(in srgb,var(--negative-wine,#762F32) 45%,#0a0d0b)}
-@media(max-width:520px){.emergency-exit{right:10px;bottom:calc(10px + env(safe-area-inset-bottom));height:32px;min-width:50px;font-size:9px}}
+@media(max-width:520px){.emergency-exit{right:10px;bottom:calc(76px + env(safe-area-inset-bottom));height:32px;min-width:50px;font-size:9px}}
 @media(prefers-reduced-motion:reduce){#startScreen,.emergency-exit{transition:none!important}}
 </style>
 
@@ -622,7 +622,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div id="feedback" class="feedback" aria-live="polite"></div></div>
     <div id="segments" class="segments segments-bottom"></div>
   </div>
-    <button id="abortSessionBtn" class="emergency-exit" type="button" aria-label="Exit level without saving progress">â†© EXIT</button>
+    <button id="abortSessionBtn" class="emergency-exit" type="button" aria-label="Exit level without saving progress">↩ EXIT</button>
 </section>
 
 <section id="endScreen" class="screen end hidden">
