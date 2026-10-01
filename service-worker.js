@@ -1,5 +1,5 @@
 const CACHE_PREFIX='b2-territorio-1-';
-const CACHE='b2-territorio-1-v1.10.0-path1';
+const CACHE='b2-territorio-1-v1.10.1-path1';
 const ASSETS=['./','./index.html','./adrian-visual-system.js','./adrian-achievements.js','./lessons.js','./keys.js','./error-coach.js','./language-points.js','./hub-path-game.js','./app.js','./territory-01.json','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>(k.startsWith(CACHE_PREFIX)||k.startsWith('b2mcc-campaign1-'))&&k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});

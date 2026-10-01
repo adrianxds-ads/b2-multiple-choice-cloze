@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.10.0";
+const APP_VERSION = "1.10.1";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -213,7 +213,7 @@ function validProgressState(s){
 function normaliseProgressState(s){
   s.level=syncGlobalLevel(s.level);
   if(!Number.isFinite(s.totalCorrect))s.totalCorrect=Object.values(s.metrics||{}).reduce((n,m)=>n+(Number(m?.correct)||0),0);
-  for(const skill of CAMPAIGN.skills)if(!s.metrics[skill.id])s.metrics[skill.id]=seedMetric(skill.id);
+  for(const skill of CAMPAIGN.skills){const seed=seedMetric(skill.id),old=s.metrics[skill.id];const m=old&&typeof old==="object"&&!Array.isArray(old)?{...seed,...old}:seed;for(const [key,value] of Object.entries(seed))if(typeof value==="number"&&!Number.isFinite(m[key]))m[key]=value;m.domains=m.domains&&typeof m.domains==="object"&&!Array.isArray(m.domains)?m.domains:{};s.metrics[skill.id]=m;}
   s.history=Array.isArray(s.history)?s.history.slice(-HISTORY_LIMIT):[];
   if(!Number.isFinite(s.activeTrainingMs))s.activeTrainingMs=s.history.reduce((sum,r)=>sum+(Number.isFinite(r?.ms)?r.ms:0),0);
   s.focusTimeByDate=s.focusTimeByDate&&typeof s.focusTimeByDate==="object"?s.focusTimeByDate:{};s.focusTargetsByDate=s.focusTargetsByDate&&typeof s.focusTargetsByDate==="object"?s.focusTargetsByDate:{};if(!Number.isFinite(s.focusTrackingStartedAt))s.focusTrackingStartedAt=Date.now();
@@ -256,8 +256,8 @@ function normaliseProgressState(s){
   return s;
 }
 function loadState(){
-  try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");return validProgressState(s)?normaliseProgressState(s):newState();}
-  catch(e){return newState();}
+  let raw=null;try{raw=localStorage.getItem(STORAGE_KEY);const s=JSON.parse(raw||"null");if(validProgressState(s))return normaliseProgressState(s);if(raw)localStorage.setItem(STORAGE_KEY+"_recovery_"+Date.now(),raw);if(s&&s.campaignId===CAMPAIGN.campaignId&&s.schemaVersion===1){const recovered={...newState(),...s};for(const key of ["level","sessions","totalAttempts"])if(!Number.isFinite(recovered[key]))recovered[key]=key==="level"?storedGlobalLevel():0;recovered.metrics=s.metrics&&typeof s.metrics==="object"&&!Array.isArray(s.metrics)?s.metrics:{};return normaliseProgressState(recovered);}return newState();}
+  catch(e){try{if(raw)localStorage.setItem(STORAGE_KEY+"_recovery_"+Date.now(),raw);}catch(_){}return newState();}
 }
 function save(){
   state.updatedAt=Date.now();state.history=state.history.slice(-HISTORY_LIMIT);state.sessionHistory=state.sessionHistory.slice(-SESSION_HISTORY_LIMIT);
@@ -1137,6 +1137,7 @@ function renderStart(){
 }
 function showScreen(id){["startScreen","statsScreen","leagueScreen","coachScreen","gameScreen","endScreen","errorsScreen"].forEach(x=>$(x).classList.toggle("hidden",x!==id));window.scrollTo(0,0);}
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function settleUi(promise,ms,label){let t=null;try{return await Promise.race([Promise.resolve(promise),new Promise(resolve=>{t=setTimeout(()=>{console.warn(label+" timed out; continuing safely");resolve(null);},ms);})]);}catch(e){console.error(label+" failed",e);return null;}finally{if(t)clearTimeout(t);}}
 function missionOverlay(show=true){const el=$("missionOverlay");if(!el)return null;el.classList.toggle("hidden",!show);el.setAttribute("aria-hidden",show?"false":"true");return el;}
 async function showLevelIntro(finalMode,target){
   const el=missionOverlay(true),last=state.sessionHistory.filter(x=>x.mode==="training").slice(-1)[0];if(!el)return;
@@ -1163,7 +1164,7 @@ async function showLevelResolution(s,before){
   playLevelScore(s.correct,s.total);window.AdrianAchievements?.play?.(tone,s.correct,s.total);
   const label=s.mode==="final"?(hit?"FINAL CLEARED":"FINAL NOT CLEARED"):(hit?"TARGET CLEARED":"TARGET MISSED");
   const pathRun=window.HubPathGame?.resolve?.({appId:"b2-cloze",theme:"b2-cloze",correct:s.correct,total:s.total,bestCombo:s.bestCombo||0,mount:$("missionBody"),duration:3200,label,eventId:`b2-cloze:${s.ts||Date.now()}:${s.level}:${s.mode}`});
-  if(pathRun)await pathRun;else await wait(3200);
+  if(pathRun)await settleUi(pathRun,5000,"Hub route");else await wait(3200);
   missionOverlay(false);
 }
 function adaptiveLevelTarget(plan){
@@ -1173,14 +1174,17 @@ function adaptiveLevelTarget(plan){
   const planExpected=15*expected/plan.length,baseline=.58*planExpected+.42*recentExpected,stretch=training.length>=4?.55:.35;
   return clamp(Math.round((baseline+stretch)*2)/2,3.5,14.5);
 }
+let sessionStarting=false;
+function secondaryEffect(run){try{Promise.resolve(run()).catch(e=>console.warn("Secondary effect recovered",e));}catch(e){console.warn("Secondary effect recovered",e);}}
 async function startSession(finalMode=false){
+if(sessionStarting)return;sessionStarting=true;try{
   applyRatingTheme(overallStats().rating);
   const raw=finalMode?buildFinalPlan():buildTrainingPlan();
   const target=finalMode?null:adaptiveLevelTarget(raw),abortSnapshot=JSON.stringify(state);
   session={mode:finalMode?"final":"training",level:state.level,index:0,correct:0,automatic:0,times:[],records:[],usedDisplayNames:new Set(),target,plan:raw.map(shuffleOptions),abortSnapshot,rankBefore:skillRankPositions(),combo:0,bestCombo:0,recovered:0,masteredRewards:0,learningXp:0,lastReward:""};
   $("sessionLevel").innerHTML=finalMode?"FINAL":`L${state.level}<small class="level-target">TARGET ${target.toFixed(1)}</small>`;
-  window.LanguagePoints?.beginLevel?.({target,level:state.level});
-  await showLevelIntro(finalMode,target);showScreen("gameScreen");nextQuestion();
+  secondaryEffect(()=>window.LanguagePoints?.beginLevel?.({target,level:state.level}));
+  await settleUi(showLevelIntro(finalMode,target),4500,"Session intro");missionOverlay(false);showScreen("gameScreen");nextQuestion();}finally{sessionStarting=false;}
 }
 function abortSession(){
   if(!session)return;
@@ -1209,7 +1213,7 @@ function startTimer(){
 }
 function nextQuestion(){
   locked=false;hideCorrectReveal();
-  if(session.index>=session.plan.length){finishSession();return;}
+  if(session.index>=session.plan.length){finishSessionSafe();return;}
   current=session.plan[session.index];
   if(!current||!Array.isArray(current.display)||current.display.length!==4||!Number.isInteger(current.correctPos)||current.correctPos<0||current.correctPos>3){console.error("Skipping invalid question",current);session.index++;setTimeout(nextQuestion,0);return;}
   $("qIndex").textContent=session.index+1;
@@ -1245,10 +1249,11 @@ function answer(pos,timeout=false){
   hideCorrectReveal();
   try{flashGrammarFocus(shownQuestion,rec.correctAnswer,current.visibleFocus||current.focus||[]);}catch(e){console.error("Grammar focus flash failed",e);}
   state.history.push(rec);state.history=state.history.slice(-12000);state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
-  window.LanguagePoints?.recordAnswer?.({correct:ok,sec,timeLimit:TIME_LIMIT});
-  const answeredIndex=session.index,delay=ok?555:(type==="fast-wrong"?1200:type==="timeout"?1095:1060);setTimeout(()=>{if(!session||session.index!==answeredIndex)return;session.index++;try{nextQuestion();}catch(e){console.error("Question advance recovered",e);locked=false;setTimeout(nextQuestion,120);}},delay);
+  secondaryEffect(()=>window.LanguagePoints?.recordAnswer?.({correct:ok,sec,timeLimit:TIME_LIMIT}));
+  const answeredSession=session,answeredIndex=session.index,delay=ok?555:(type==="fast-wrong"?1200:type==="timeout"?1095:1060);setTimeout(()=>{if(session!==answeredSession||session.index!==answeredIndex)return;session.index++;try{nextQuestion();}catch(e){console.error("Question advance recovered",e);locked=false;setTimeout(nextQuestion,120);}},delay);
   try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect(sec);else playWrong();if(ok&&session.lastReward==="MASTERED ✦"){tone(1046.5,.07,.010,"sine",.18);tone(1567.98,.10,.010,"sine",.24);}else if(ok&&session.lastReward==="RECOVERED"){tone(659.25,.055,.008,"triangle",.17);tone(987.77,.075,.009,"sine",.22);}else if(ok&&[3,5,10,15].includes(session.combo)){tone(session.combo>=10?987.77:740,.065,.008,"triangle",.18);}}catch(e){console.error("Audio failed",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat,current.trigger);}catch(e){console.error("Feedback failed",e);}
 }
+function finishSessionSafe(){if(!session||session.finishing)return;session.finishing=true;locked=true;Promise.resolve().then(()=>finishSession()).catch(e=>{console.error("Session finish recovered",e);try{missionOverlay(false);}catch(_){}try{const total=session?.records?.length||SESSION_SIZE,score=session?.correct||0;if($("endKicker"))$("endKicker").textContent=`LEVEL ${state?.level||""} COMPLETE`;if($("endScore"))$("endScore").textContent=`${score}/${total}`;if($("endSub"))$("endSub").textContent="Cierre recuperado automáticamente";showScreen("endScreen");}catch(_){}locked=false;});}
 async function finishSession(){
   clearInterval(timerHandle);
   const completedLevel=state.level,n=session.records.length,accuracy=session.correct/n,avgMs=Math.round(mean(session.records.map(r=>r.ms))),auto=session.automatic/n;
@@ -1265,7 +1270,7 @@ async function finishSession(){
     state.finalAttempts=(state.finalAttempts||0)+1;
     if(accuracy>=.85&&avgMs<=6000)state.completed=true;
   }
-  save();lastSessionHandoffText=sessionHandoffJsonText(snap,session?.records||[]);renderEnd(snap,before);setEndHandoffStatus(false,false);await showLevelResolution(snap,before);await window.LanguagePoints?.awardLevel?.({correct:snap.correct,total:snap.total,target:snap.target,recovered:snap.recovered||0,mastered:snap.masteredRewards||0,level:completedLevel});showScreen("endScreen");
+  try{save();}catch(e){console.warn("Progress save unavailable",e);}lastSessionHandoffText=sessionHandoffJsonText(snap,session?.records||[]);try{renderEnd(snap,before);setEndHandoffStatus(false,false);}catch(e){console.warn("Results render recovered",e);}try{await settleUi(showLevelResolution(snap,before),5500,"End route");await settleUi(window.LanguagePoints?.awardLevel?.({correct:snap.correct,total:snap.total,target:snap.target,recovered:snap.recovered||0,mastered:snap.masteredRewards||0,level:completedLevel}),1600,"Language points");}finally{missionOverlay(false);showScreen("endScreen");}
 }
 function renderEnd(s,before){
   renderMedalSummary();
