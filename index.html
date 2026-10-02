@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#10271d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="ae-version" content="1.10.1">
-<title>B2 Territorio 1 - v1.10.1</title>
+<meta name="ae-version" content="1.10.2">
+<title>B2 Territorio 1 - v1.10.2</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -216,7 +216,7 @@ body.feedback-correct .game{animation:none!important}body.feedback-wrong .game{a
 
 
 <style id="v200-style">
-/* v2.4 Â· AdriÃ¡n Visual System + level mission transitions */
+/* v2.4 · Adrián Visual System + level mission transitions */
 .mission-overlay{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--mission-accent,#E7BF57) 24%,transparent),transparent 42%),linear-gradient(180deg,#101814 0%,#09100d 100%);color:#fff;pointer-events:auto}.mission-overlay.hidden{display:none!important}.mission-overlay.resolution.hit{background:radial-gradient(circle at 50% 34%,color-mix(in srgb,var(--mission-accent,#E7BF57) 34%,transparent),transparent 38%),linear-gradient(180deg,#30250c,#0e0d08 78%)}.mission-overlay.resolution.miss{background:radial-gradient(circle at 50% 34%,color-mix(in srgb,var(--rank-4,#762F32) 38%,transparent),transparent 40%),linear-gradient(180deg,#2b1718,#0d0b0b 78%)}
 .mission-card{width:min(92vw,520px);padding:30px 22px 26px;border:1px solid color-mix(in srgb,var(--mission-accent,#E7BF57) 58%,white 8%);border-radius:20px;background:rgba(8,14,11,.80);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 28px 80px rgba(0,0,0,.45),0 0 42px color-mix(in srgb,var(--mission-accent,#E7BF57) 18%,transparent);text-align:center}.mission-eyebrow{font-size:12px;font-weight:950;letter-spacing:.16em;color:var(--mission-accent,#E7BF57)}.mission-title{margin-top:13px;font-size:clamp(28px,8vw,44px);font-weight:950;letter-spacing:-.035em}.mission-score{margin:8px 0 5px;font-size:clamp(58px,17vw,94px);line-height:.9;font-weight:950;color:#fff;text-shadow:0 0 20px color-mix(in srgb,var(--mission-accent,#E7BF57) 40%,transparent)}.mission-score small{font-size:.32em;opacity:.74;margin-left:4px}.mission-targetline{font-size:18px;font-weight:900;color:#efe8d7}.mission-targetline b{color:var(--mission-accent,#E7BF57)}.mission-meta{margin-top:13px;font-size:15px;font-weight:900;color:#dbe6df}.mission-rules{margin-top:6px;font-size:10px;letter-spacing:.14em;color:#91a39a;font-weight:900}.mission-change{margin-top:9px;font-size:15px;font-weight:950;letter-spacing:.06em}
 .mission-count{margin-top:22px;font-size:clamp(72px,22vw,124px);line-height:.8;font-weight:950;color:var(--mission-accent,#E7BF57);text-shadow:0 0 30px color-mix(in srgb,var(--mission-accent,#E7BF57) 54%,transparent)}.mission-count.pop{animation:missionPop .32s cubic-bezier(.2,.9,.25,1.28)}.resolution .mission-count{font-size:clamp(31px,9vw,48px);letter-spacing:.10em;margin-top:20px}.resolution.hit .mission-card{border-color:color-mix(in srgb,var(--mission-accent,#E7BF57) 72%,transparent)}.resolution.miss .mission-card{border-color:color-mix(in srgb,var(--rank-4,#762F32) 78%,transparent)}.resolution.miss .mission-eyebrow,.resolution.miss .mission-count,.resolution.miss .mission-targetline b{color:color-mix(in srgb,var(--mission-accent) 68%,white 32%)}@keyframes missionPop{0%{transform:scale(.72);opacity:.35}70%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
@@ -225,7 +225,7 @@ body.feedback-correct .game{animation:none!important}body.feedback-wrong .game{a
 
 
 <style id="v240-cover-style">
-/* v2.4 Â· AVS cover rank + transactional emergency exit */
+/* v2.4 · AVS cover rank + transactional emergency exit */
 #startScreen{background:var(--cover-rank-surface,#2B1B19)!important;transition:none!important}
 #startScreen .panel{box-shadow:0 22px 60px rgba(0,0,0,.24),0 0 0 1px color-mix(in srgb,var(--cover-rank-color,#762F32) 34%,transparent)!important}
 .emergency-exit{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:24;min-width:54px;height:34px;padding:0 9px;border:1px solid color-mix(in srgb,var(--negative-wine,#762F32) 72%,white 10%);border-radius:9px;background:rgba(8,13,11,.76);color:#d8c8c4;font-size:10px;font-weight:950;letter-spacing:.08em;box-shadow:0 6px 18px rgba(0,0,0,.28);opacity:.72;cursor:pointer;backdrop-filter:blur(6px)}
@@ -236,7 +236,7 @@ body.feedback-correct .game{animation:none!important}body.feedback-wrong .game{a
 
 
 <style id="v220-style">
-/* v2.4 Â· canonical AVS semantics: scalar value = rank colour, event state = AVS semantic colour */
+/* v2.4 · canonical AVS semantics: scalar value = rank colour, event state = AVS semantic colour */
 body{background:radial-gradient(90% 70% at 110% 5%,rgba(var(--ambient-rank-rgb,87,150,90),.24),transparent 55%),radial-gradient(80% 60% at -10% 95%,rgba(var(--ambient-rank-rgb,87,150,90),.14),transparent 58%),linear-gradient(180deg,var(--ambient-rank-surface,#213C26),#0d1712 58%,#09110d)!important}
 .delta.good,.learning-direction.good,.peer-delta.good{color:color-mix(in srgb,var(--rank-10,#57965A) 62%,white 38%)!important}.delta.bad,.learning-direction.bad,.peer-delta.bad{color:color-mix(in srgb,var(--rank-4,#762F32) 62%,white 38%)!important}.delta.neutral,.learning-direction.neutral,.peer-delta.neutral{color:#b7c9bf!important}
 .target-result.hit{background:color-mix(in srgb,var(--rank-15,#E7BF57) 18%,transparent)!important;border-color:color-mix(in srgb,var(--rank-15,#E7BF57) 68%,white 10%)!important;color:color-mix(in srgb,var(--rank-15,#E7BF57) 66%,white 34%)!important}.target-result.miss{background:color-mix(in srgb,var(--rank-4,#762F32) 22%,transparent)!important;border-color:color-mix(in srgb,var(--rank-4,#762F32) 72%,white 10%)!important;color:color-mix(in srgb,var(--rank-4,#762F32) 62%,white 38%)!important}
@@ -246,7 +246,7 @@ body{background:radial-gradient(90% 70% at 110% 5%,rgba(var(--ambient-rank-rgb,8
 
 
 <style id="v230-style">
-/* v2.4 Â· AVS 2.0 perceptual lightness + phrase exposure summary */
+/* v2.4 · AVS 2.0 perceptual lightness + phrase exposure summary */
 .start-phrase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:8px 0 14px}.start-phrase-grid .card{border-color:color-mix(in srgb,var(--ambient-rank-color,#57965A) 22%,rgba(255,255,255,.06))}.start-phrase-grid .card b{font-variant-numeric:tabular-nums}.leech-count-card{border-color:rgba(187,158,240,.28)!important;background:rgba(187,158,240,.07)!important}@media(max-width:520px){.start-phrase-grid{grid-template-columns:repeat(3,1fr);gap:6px}.start-phrase-grid .card{padding:10px 5px}.start-phrase-grid .card b{font-size:22px}.start-phrase-grid .card span{font-size:8px}}
 .ai-legend-item i{box-shadow:0 0 0 1px rgba(255,255,255,.12) inset}.score-chart{background:#0b120f!important}
 .daily-key-card.revealed{animation:keyTurnPulse .18s ease}.daily-key-card:not(.revealed){animation:keyTurnBack .18s ease}@keyframes keyTurnPulse{0%{transform:scaleX(1)}48%{transform:scaleX(.96)}100%{transform:scaleX(1)}}@keyframes keyTurnBack{0%{transform:scaleX(.96)}100%{transform:scaleX(1)}}
@@ -254,7 +254,7 @@ body{background:radial-gradient(90% 70% at 110% 5%,rgba(var(--ambient-rank-rgb,8
 </style>
 
 <style id="v250-style">
-/* v2.5 Â· memory echoes, card-turn micro-sound and zero-scroll result actions */
+/* v2.5 · memory echoes, card-turn micro-sound and zero-scroll result actions */
 .memory-echo{position:fixed;z-index:32;top:calc(8px + env(safe-area-inset-top));left:50%;width:min(92vw,520px);padding:9px 13px 10px;border:1px solid rgba(255,213,102,.42);border-radius:12px;background:rgba(16,19,14,.94);box-shadow:0 12px 34px rgba(0,0,0,.36),0 0 22px rgba(255,213,102,.10);text-align:center;pointer-events:none;opacity:0;transform:translate(-50%,-12px) scale(.985);transition:opacity .12s ease,transform .16s cubic-bezier(.2,.8,.25,1)}
 .memory-echo.show{opacity:1;transform:translate(-50%,0) scale(1)}.memory-echo small{display:block;color:#d8b95a;font-size:8px;font-weight:950;letter-spacing:.16em}.memory-echo b{display:block;margin-top:2px;color:#fff0bd;font-size:13px;line-height:1.15}.memory-echo span{display:block;margin-top:2px;color:#bfae83;font-size:8px;font-weight:900;letter-spacing:.09em}
 .key-memory-echo{display:flex;flex-direction:column;align-items:center;width:min(100%,310px);margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,213,102,.16);font-style:normal}.key-memory-echo small{font-size:8px!important;color:#d7b95d!important;letter-spacing:.15em}.key-memory-echo span{margin-top:3px;color:#f4e7ba!important;font-size:10px!important;font-weight:900;letter-spacing:.02em!important}.key-memory-echo b{margin:4px 0 0!important;padding:0!important;background:none!important;color:#bfae83!important;font-size:8px!important;letter-spacing:.08em}
@@ -270,13 +270,13 @@ body{background:radial-gradient(90% 70% at 110% 5%,rgba(var(--ambient-rank-rgb,8
 @media(max-width:520px){.memory-echo{top:28dvh;width:min(94vw,560px);padding:14px}.memory-echo b{font-size:clamp(20px,5.8vw,26px)}.memory-echo span{font-size:11px}.key-slide .daily-key-card,.key-slide .daily-key-face{min-height:225px}.daily-key-face{padding:21px 17px}.daily-key-face strong{font-size:clamp(27px,7.4vw,35px)}.daily-key-back b{font-size:16px}.daily-key-back>span{font-size:14px}.key-memory-echo span{font-size:13px!important}.key-memory-echo b{font-size:10.5px!important}}
 </style>
 <style id="v260-style">
-/* v2.7.1 Â· Skill League + non-overlapping feedback */
+/* v2.7.1 · Skill League + non-overlapping feedback */
 #gameScreen .feedback{position:relative!important;inset:auto!important;left:auto!important;top:auto!important;width:100%!important;min-height:0!important;margin:8px 0 0!important;padding:8px 11px!important;display:none!important;grid-template-columns:auto 1fr auto;align-items:center;gap:7px!important;border-radius:10px!important;transform:none!important;box-shadow:0 8px 18px rgba(0,0,0,.22)!important}#gameScreen .feedback.show{display:grid!important;opacity:1;transform:none!important}#gameScreen .feedback .feedback-question{font-size:14px!important;line-height:1!important;letter-spacing:.03em!important}#gameScreen .feedback .feedback-label{font-size:18px!important;line-height:1.05!important}#gameScreen .feedback .feedback-label small{font-size:10px!important;margin-top:2px!important}#gameScreen .feedback .appearance{font-size:9px!important}.feedback-correct-line{grid-column:1/-1;font-size:clamp(15px,4vw,20px);font-weight:950;letter-spacing:.02em;color:#fff7df;text-align:center;padding-top:2px}
 .skillrow{border-left:3px solid transparent;padding-left:7px;border-radius:6px}.skillrow.podium{border-left-color:var(--reward-gold,#E7BF57);background:linear-gradient(90deg,rgba(231,191,87,.08),transparent 42%)}.skillrow.bottom3{border-left-color:var(--negative-wine,#762F32);background:linear-gradient(90deg,rgba(118,47,50,.09),transparent 42%)}.skillrow .name{display:flex;align-items:center;gap:6px;min-width:0}.skill-rank{flex:0 0 22px;font-style:normal;font-size:10px;font-weight:950;letter-spacing:.04em;color:#8f9d95}.podium .skill-rank{color:#e7bf57}.bottom3 .skill-rank{color:#b06f72}.skill-name-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rank-move{flex:0 0 auto;font-style:normal;font-size:9px;font-weight:950}.rank-move.up{color:#88cabe}.rank-move.down{color:#b08688}.rank-move.flat{color:#697a70}.league-change{color:var(--mission-accent,#E7BF57)!important;font-size:13px!important}
 @media(max-width:520px){#gameScreen .feedback{margin-top:6px!important;padding:7px 8px!important;gap:5px!important}#gameScreen .feedback .feedback-question{font-size:12px!important}#gameScreen .feedback .feedback-label{font-size:16px!important}.feedback-correct-line{font-size:15px}.skillrow{padding-left:5px}.skill-rank{flex-basis:20px;font-size:9px}.rank-move{font-size:8px}}
 </style>
 <style id="v270-style">
-/* v2.7.1 Â· cognitive feedback hierarchy */
+/* v2.7.1 · cognitive feedback hierarchy */
 #gameScreen .feedback{position:relative!important;inset:auto!important;left:auto!important;top:auto!important;width:100%!important;margin:9px 0 0!important;padding:10px 12px!important;display:none!important;grid-template-columns:minmax(128px,1.45fr) minmax(100px,1fr) minmax(68px,.58fr);align-items:center;gap:8px!important;border:1px solid rgba(255,255,255,.16)!important;border-radius:13px!important;transform:none!important;box-shadow:0 10px 26px rgba(0,0,0,.25)!important;overflow:hidden}
 #gameScreen .feedback.ok{background:linear-gradient(100deg,rgba(29,112,70,.97),rgba(18,64,45,.96))!important;border-left:7px solid #66d69b!important}#gameScreen .feedback.no{background:linear-gradient(100deg,rgba(151,45,59,.98),rgba(79,29,37,.97))!important;border-left:7px solid #ef8290!important}#gameScreen .feedback.show{display:grid!important;opacity:1!important;transform:none!important}
 .feedback-exposure{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;align-items:end;column-gap:5px;text-align:left}.feedback-exposure strong{grid-row:1/3;font-size:clamp(48px,13vw,72px);line-height:.78;font-weight:980;letter-spacing:-.065em;color:#fff9e8;text-shadow:0 3px 14px rgba(0,0,0,.25)}.feedback-exposure span{font-size:clamp(20px,5vw,28px);line-height:.95;font-weight:950;color:#fff}.feedback-exposure small{font-size:10px!important;line-height:1.1!important;margin:3px 0 0!important;letter-spacing:.11em;color:rgba(255,255,255,.75)}
@@ -287,7 +287,7 @@ body{background:radial-gradient(90% 70% at 110% 5%,rgba(var(--ambient-rank-rgb,8
 </style>
 
 <style id="v271-style">
-/* v2.7.1.1 Â· mobile framing / overflow hardening */
+/* v2.7.1.1 · mobile framing / overflow hardening */
 html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,.feedback,.correct-reveal{max-width:100%;min-width:0}
 .toprow{grid-template-columns:76px minmax(0,1fr) minmax(102px,auto)}.qnum,.hudright,.leveltag{min-width:0}.hudright{width:100%;justify-content:flex-end}.leveltag{max-width:64px;overflow:visible}.leveltag .level-target{max-width:100%;white-space:nowrap;font-size:9px;padding:3px 5px}
 .answers{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.answer{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:normal;white-space:normal}
@@ -304,8 +304,8 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 
 <style id="v280-style">
-/* v2.8.1 Â· Error Lab / Secret Keys */
-.error-lab{border-color:rgba(231,191,87,.18)}.error-lab-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:10px}.error-lab-title span{display:block;font-size:10px;font-weight:950;letter-spacing:.14em;color:#e7bf57}.error-lab-title h3{margin:3px 0 0!important;font-size:20px!important;text-transform:none!important;letter-spacing:-.01em!important;color:#f3eee1!important}.error-lab-title small{color:#b7c9bf;font-size:11px;font-weight:850;text-align:right}.error-lab-list{display:grid;gap:12px}.error-coach-card{min-width:0;padding:14px;border-radius:13px;background:rgba(6,14,10,.30);border:1px solid rgba(255,255,255,.09)}.error-coach-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.error-coach-head small{display:block;font-size:9px;font-weight:950;letter-spacing:.12em;color:#e7bf57}.error-coach-head h3{margin:3px 0 0!important;font-size:clamp(20px,5vw,26px)!important;text-transform:none!important;letter-spacing:-.02em!important;color:#f5f1e8!important}.error-coach-head>span{flex:0 0 auto;padding:5px 7px;border-radius:999px;background:rgba(118,47,50,.28);border:1px solid rgba(176,111,114,.24);font-size:9px;font-weight:950;letter-spacing:.07em;color:#d8b8ba}.error-example{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07)}.error-example:first-of-type{border-top:0}.error-example-q{font-size:14px;line-height:1.4;color:#e2ebe5;font-weight:750}.error-example-q>b{color:#e7bf57}.error-coach-card .mistake-choice{margin-top:7px}.error-coach-card .mistake-choice .wrong{background:rgba(118,47,50,.16);border:1px solid rgba(176,111,114,.14)}.error-solved{margin-top:7px;padding:8px 10px;border-radius:8px;background:rgba(231,191,87,.07);border-left:3px solid rgba(231,191,87,.55);font-size:13px;line-height:1.35;font-weight:850;color:#f0e6c7}.error-formula{margin-top:10px;padding:10px 11px;border-radius:9px;background:#edf3ef;color:#132219;text-align:center;font-size:14px;line-height:1.3;font-weight:950;overflow-wrap:anywhere}.error-quick{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;margin-top:8px;padding:9px 10px;border-radius:9px;background:rgba(143,215,176,.08);border-left:4px solid rgba(143,215,176,.68)}.error-quick b{font-size:9px;letter-spacing:.08em;color:#a8daba}.error-quick span{font-size:13px;line-height:1.35;font-weight:800;color:#e2ece6}.error-detail{margin-top:8px;border:1px solid rgba(255,255,255,.09);border-radius:9px;background:rgba(255,255,255,.035);overflow:hidden}.error-detail summary{cursor:pointer;list-style:none;padding:10px 11px;font-size:11px;font-weight:950;letter-spacing:.08em;color:#eef5f0}.error-detail summary::-webkit-details-marker{display:none}.error-detail summary::after{content:'ï¼‹';float:right;color:#aebfb5}.error-detail[open] summary::after{content:'âˆ’'}.error-detail-body{padding:0 11px 11px;border-top:1px solid rgba(255,255,255,.07)}.error-detail-body p{margin:10px 0 0;font-size:13px;line-height:1.5;color:#d9e6de}.error-detail-body p b{color:#f2ead4}.secret-detail{border-color:rgba(231,191,87,.18)}.secret-detail summary{color:#f1da9e}.secret-key-copy{margin-top:11px;padding:11px;border-radius:9px;background:rgba(231,191,87,.09);border-left:4px solid #e7bf57;font-size:14px;line-height:1.45;font-weight:900;color:#fff1c8}.secret-trap{color:#d8caa7!important}.error-music{display:grid;gap:7px;margin-top:11px}.error-music>div{padding:10px 11px;border-radius:9px;background:linear-gradient(135deg,rgba(231,191,87,.11),rgba(0,0,0,.10));border:1px solid rgba(231,191,87,.17)}.error-music small{display:block;font-size:8px;font-weight:950;letter-spacing:.14em;color:#d7b95d}.error-music b{display:block;margin-top:3px;font-size:14px;line-height:1.25;color:#fff0bd}.error-music span{display:block;margin-top:4px;font-size:10px;font-weight:900;letter-spacing:.06em;color:#bfae83}.errors .error-coach-card{margin-top:12px}.errors .error-coach-card:first-child{margin-top:0}.errors .error-detail{margin-top:8px;padding-top:0;border:1px solid rgba(255,255,255,.09)}.errors .secret-detail{border-color:rgba(231,191,87,.18)}
+/* v2.8.1 · Error Lab / Secret Keys */
+.error-lab{border-color:rgba(231,191,87,.18)}.error-lab-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:10px}.error-lab-title span{display:block;font-size:10px;font-weight:950;letter-spacing:.14em;color:#e7bf57}.error-lab-title h3{margin:3px 0 0!important;font-size:20px!important;text-transform:none!important;letter-spacing:-.01em!important;color:#f3eee1!important}.error-lab-title small{color:#b7c9bf;font-size:11px;font-weight:850;text-align:right}.error-lab-list{display:grid;gap:12px}.error-coach-card{min-width:0;padding:14px;border-radius:13px;background:rgba(6,14,10,.30);border:1px solid rgba(255,255,255,.09)}.error-coach-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.error-coach-head small{display:block;font-size:9px;font-weight:950;letter-spacing:.12em;color:#e7bf57}.error-coach-head h3{margin:3px 0 0!important;font-size:clamp(20px,5vw,26px)!important;text-transform:none!important;letter-spacing:-.02em!important;color:#f5f1e8!important}.error-coach-head>span{flex:0 0 auto;padding:5px 7px;border-radius:999px;background:rgba(118,47,50,.28);border:1px solid rgba(176,111,114,.24);font-size:9px;font-weight:950;letter-spacing:.07em;color:#d8b8ba}.error-example{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07)}.error-example:first-of-type{border-top:0}.error-example-q{font-size:14px;line-height:1.4;color:#e2ebe5;font-weight:750}.error-example-q>b{color:#e7bf57}.error-coach-card .mistake-choice{margin-top:7px}.error-coach-card .mistake-choice .wrong{background:rgba(118,47,50,.16);border:1px solid rgba(176,111,114,.14)}.error-solved{margin-top:7px;padding:8px 10px;border-radius:8px;background:rgba(231,191,87,.07);border-left:3px solid rgba(231,191,87,.55);font-size:13px;line-height:1.35;font-weight:850;color:#f0e6c7}.error-formula{margin-top:10px;padding:10px 11px;border-radius:9px;background:#edf3ef;color:#132219;text-align:center;font-size:14px;line-height:1.3;font-weight:950;overflow-wrap:anywhere}.error-quick{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;margin-top:8px;padding:9px 10px;border-radius:9px;background:rgba(143,215,176,.08);border-left:4px solid rgba(143,215,176,.68)}.error-quick b{font-size:9px;letter-spacing:.08em;color:#a8daba}.error-quick span{font-size:13px;line-height:1.35;font-weight:800;color:#e2ece6}.error-detail{margin-top:8px;border:1px solid rgba(255,255,255,.09);border-radius:9px;background:rgba(255,255,255,.035);overflow:hidden}.error-detail summary{cursor:pointer;list-style:none;padding:10px 11px;font-size:11px;font-weight:950;letter-spacing:.08em;color:#eef5f0}.error-detail summary::-webkit-details-marker{display:none}.error-detail summary::after{content:'＋';float:right;color:#aebfb5}.error-detail[open] summary::after{content:'−'}.error-detail-body{padding:0 11px 11px;border-top:1px solid rgba(255,255,255,.07)}.error-detail-body p{margin:10px 0 0;font-size:13px;line-height:1.5;color:#d9e6de}.error-detail-body p b{color:#f2ead4}.secret-detail{border-color:rgba(231,191,87,.18)}.secret-detail summary{color:#f1da9e}.secret-key-copy{margin-top:11px;padding:11px;border-radius:9px;background:rgba(231,191,87,.09);border-left:4px solid #e7bf57;font-size:14px;line-height:1.45;font-weight:900;color:#fff1c8}.secret-trap{color:#d8caa7!important}.error-music{display:grid;gap:7px;margin-top:11px}.error-music>div{padding:10px 11px;border-radius:9px;background:linear-gradient(135deg,rgba(231,191,87,.11),rgba(0,0,0,.10));border:1px solid rgba(231,191,87,.17)}.error-music small{display:block;font-size:8px;font-weight:950;letter-spacing:.14em;color:#d7b95d}.error-music b{display:block;margin-top:3px;font-size:14px;line-height:1.25;color:#fff0bd}.error-music span{display:block;margin-top:4px;font-size:10px;font-weight:900;letter-spacing:.06em;color:#bfae83}.errors .error-coach-card{margin-top:12px}.errors .error-coach-card:first-child{margin-top:0}.errors .error-detail{margin-top:8px;padding-top:0;border:1px solid rgba(255,255,255,.09)}.errors .secret-detail{border-color:rgba(231,191,87,.18)}
 @media(max-width:520px){.error-lab-title{align-items:flex-start;flex-direction:column;gap:4px}.error-lab-title small{text-align:left}.error-coach-card{padding:12px}.error-coach-head{gap:8px}.error-coach-head h3{font-size:21px!important}.error-coach-card .mistake-choice{grid-template-columns:1fr 1fr}.error-coach-card .mistake-choice div{font-size:12px;padding:8px}.error-quick{grid-template-columns:1fr;gap:3px}.error-detail summary{font-size:10px;padding:10px}.secret-key-copy{font-size:13px}.error-music b{font-size:13px}}
 </style>
 
@@ -317,7 +317,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 
 <style id="v290-style">
-/* v2.9 Â· dedicated Error Lab screen + Spotify links */
+/* v2.9 · dedicated Error Lab screen + Spotify links */
 #errorsScreen .panel{padding:clamp(20px,5vw,34px)}#errorsScreen .error-lab-hero{margin-bottom:18px}#errorsScreen .error-lab-hero h1{font-size:clamp(42px,10vw,72px)}#errorsScreen .error-lab-hero p{font-size:18px;font-weight:850;margin-bottom:5px}#errorsScreen .error-lab-hero small{font-size:14px;line-height:1.45;color:#b7c9bf;font-weight:750}
 #errorsScreen .error-coach-card{padding:clamp(16px,4vw,24px);border-radius:16px;margin-top:18px}#errorsScreen .error-coach-head h3{font-size:clamp(27px,7vw,38px)!important}#errorsScreen .error-example-q{font-size:clamp(18px,4.5vw,23px)!important;line-height:1.42}#errorsScreen .mistake-choice div{font-size:clamp(17px,4vw,21px)!important;padding:12px!important}#errorsScreen .error-solved{font-size:clamp(18px,4.5vw,23px)!important;padding:12px 14px;line-height:1.45}#errorsScreen .error-formula{font-size:clamp(18px,4.5vw,24px)!important;padding:14px}#errorsScreen .error-quick span{font-size:clamp(17px,4vw,21px)!important}#errorsScreen .error-detail summary{font-size:14px!important;padding:15px!important}#errorsScreen .error-detail-body p{font-size:clamp(17px,4vw,21px)!important;line-height:1.65}#errorsScreen .secret-key-copy{font-size:clamp(18px,4.4vw,23px)!important;line-height:1.55}#errorsScreen .error-music b{font-size:clamp(18px,4.4vw,23px)!important}#errorsScreen .error-music span{font-size:13px!important}
 .spotify-open,.key-spotify-open{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:10px 13px;border-radius:999px;background:#1ed760;color:#07170d!important;text-decoration:none;font-size:11px;font-weight:950;letter-spacing:.07em}.spotify-open:active,.key-spotify-open:active{transform:scale(.98)}.key-spotify-open{display:flex;width:max-content;max-width:100%;margin:10px auto 0}.key-slide .key-spotify-open{font-size:10px;padding:9px 12px}
@@ -329,12 +329,12 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 
 <style id="v211-style">
-/* v2.11 Â· Focus Time targets and weekly effort chart */
+/* v2.11 · Focus Time targets and weekly effort chart */
 .focus-panel{margin:14px 0;padding:16px;border:1px solid color-mix(in srgb,var(--ambient-rank-color,#57965A) 30%,rgba(255,255,255,.10));border-radius:15px;background:linear-gradient(145deg,rgba(8,19,13,.72),rgba(23,47,36,.82));box-shadow:inset 0 0 0 1px rgba(255,255,255,.025)}.focus-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}.focus-head span{display:block;font-size:10px;font-weight:950;letter-spacing:.13em;color:#c9ddd1}.focus-head strong{display:block;margin-top:3px;font-size:clamp(27px,7vw,38px);line-height:1;font-variant-numeric:tabular-nums;color:#f4f7f5}.focus-head strong small{font-size:.45em;color:#b7c9bf}.focus-head em{font-style:normal;font-size:10px;font-weight:950;letter-spacing:.06em;color:#f1da9e;text-align:right}.focus-progress{position:relative;height:13px;margin-top:14px;border-radius:999px;background:rgba(255,255,255,.10);overflow:visible}.focus-progress>i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--rank-11,#32A48F),var(--rank-15,#E7BF57));box-shadow:0 0 12px rgba(231,191,87,.18)}.focus-mark{position:absolute;top:-3px;width:2px;height:19px;background:rgba(255,255,255,.62);border-radius:2px}.focus-mark.rec{background:#f1da9e}.focus-targets{display:flex;justify-content:space-between;gap:6px;margin-top:7px;font-size:9px;font-weight:950;letter-spacing:.05em;color:#aebfb5}.focus-why{margin:10px 0 0;font-size:11px;line-height:1.4;color:#b7c9bf;font-weight:750}.focus-week{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}.focus-week-head{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#dce9e1}.focus-week-head span{color:#9fb2a7}.focus-week-bars{height:92px;display:grid;grid-template-columns:repeat(7,1fr);align-items:end;gap:7px;margin-top:10px}.focus-day{height:100%;display:grid;grid-template-rows:1fr auto auto;gap:3px;text-align:center}.focus-bar-mini{height:62px;display:flex;align-items:flex-end;justify-content:center;border-radius:7px;background:rgba(255,255,255,.045);overflow:hidden}.focus-bar-mini i{display:block;width:72%;min-height:0;border-radius:5px 5px 2px 2px;background:var(--rank-11,#32A48F)}.focus-day.today .focus-bar-mini{outline:1px solid rgba(231,191,87,.48)}.focus-day.today .focus-bar-mini i{background:var(--rank-15,#E7BF57)}.focus-day.future{opacity:.35}.focus-day b{font-size:10px;color:#dbe7df}.focus-day small{font-size:8px;color:#8fa298}.focus-note{display:block;margin-top:10px;font-size:9px;line-height:1.4;color:#82958a}.stats-focus-panel{margin-top:14px}
 @media(max-width:520px){.focus-panel{padding:14px 12px}.focus-head{align-items:flex-start}.focus-head em{max-width:120px}.focus-week-head{flex-direction:column;gap:3px}.focus-week-bars{gap:5px}.focus-targets{font-size:8px}.focus-why{font-size:10px}}
 </style>
 <style id="v212-style">
-/* v2.12 Â· Skill League podium, relegation zone, full-name tooltip and 8-level report */
+/* v2.12 · Skill League podium, relegation zone, full-name tooltip and 8-level report */
 .skillrow{position:relative;grid-template-columns:72px minmax(0,1.3fr) minmax(62px,1fr) 44px!important;gap:8px;padding:8px 9px;margin:6px 0;border:1px solid rgba(255,255,255,.055);border-radius:9px;background:rgba(255,255,255,.018)}.skill-position{display:flex;align-items:center;gap:6px;min-width:0}.skill-rank{display:inline-grid;place-items:center;min-width:30px;height:25px;padding:0 5px;border-radius:7px;background:rgba(0,0,0,.18);font-style:normal;font-size:14px!important;font-weight:950;font-variant-numeric:tabular-nums;color:#dbe7df}.rank-move{min-width:28px;font-size:11px!important;font-weight:950;font-style:normal;font-variant-numeric:tabular-nums;text-align:left}.skill-name-hit{position:relative;min-width:0;max-width:100%;padding:5px 4px;border:0;background:transparent;color:#e7f0ea;text-align:left;cursor:help;font:inherit;font-weight:850}.skill-name-text{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.skill-name-popup{position:absolute;z-index:40;left:0;bottom:calc(100% + 7px);display:none;width:max-content;max-width:min(72vw,460px);padding:9px 11px;border:1px solid rgba(231,191,87,.28);border-radius:9px;background:#101b15;color:#f4f7f5;box-shadow:0 10px 28px rgba(0,0,0,.42);font-size:13px;line-height:1.35;font-weight:850;white-space:normal}.skill-name-hit:hover .skill-name-popup,.skill-name-hit:focus .skill-name-popup,.skill-name-hit:focus-visible .skill-name-popup,.skill-name-hit.show-tip .skill-name-popup{display:block}.skill-name-hit:focus{outline:1px solid rgba(231,191,87,.28);border-radius:7px}
 .skillrow.podium,.skillrow.bottom3{border-left:1px solid transparent!important}.skillrow.rank-1{background:linear-gradient(90deg,rgba(231,191,87,.24),rgba(231,191,87,.055) 64%,rgba(0,0,0,.03));border-color:rgba(231,191,87,.32)!important}.skillrow.rank-2{background:linear-gradient(90deg,rgba(198,207,211,.19),rgba(198,207,211,.045) 64%,rgba(0,0,0,.03));border-color:rgba(198,207,211,.25)!important}.skillrow.rank-3{background:linear-gradient(90deg,rgba(180,119,73,.22),rgba(180,119,73,.05) 64%,rgba(0,0,0,.03));border-color:rgba(180,119,73,.29)!important}.skillrow.rank-23{background:linear-gradient(90deg,rgba(132,55,41,.11),rgba(0,0,0,.02))}.skillrow.rank-24{background:linear-gradient(90deg,rgba(118,47,50,.17),rgba(0,0,0,.02))}.skillrow.rank-25{background:linear-gradient(90deg,rgba(99,45,42,.25),rgba(0,0,0,.02));border-color:rgba(176,111,114,.18)!important}.skillrow.rank-1 .skill-rank{background:#E7BF57;color:#211b08}.skillrow.rank-2 .skill-rank{background:#c6cfd3;color:#172026}.skillrow.rank-3 .skill-rank{background:#b47749;color:#20130d}.skillrow.rank-23 .skill-rank{background:#843729;color:#f3dbdc}.skillrow.rank-24 .skill-rank{background:#762F32;color:#f3dbdc}.skillrow.rank-25 .skill-rank{background:#632D2A;color:#f3dbdc}.skillrow .track{height:8px!important}.skillrow .pct{font-size:13px;font-variant-numeric:tabular-nums}
 .league-report{margin-top:14px;padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(0,0,0,.12)}.league-report-head{display:flex;justify-content:space-between;gap:10px;align-items:end}.league-report-head span{font-size:10px;font-weight:950;letter-spacing:.11em;color:#f1da9e}.league-report-head b{font-size:9px;color:#82958a;font-weight:850}.league-report-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:9px}.league-note{min-width:0;padding:9px 10px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.055)}.league-note small{display:block;font-size:8px;font-weight:950;letter-spacing:.07em;color:#94a99c}.league-note b{display:block;margin-top:3px;font-size:19px;line-height:1;font-variant-numeric:tabular-nums}.league-note span{display:block;margin-top:5px;font-size:10px;line-height:1.25;font-weight:850;color:#dce8e0;overflow-wrap:anywhere}.league-note.up b{color:#88cabe}.league-note.down b{color:#c58f92}.league-note.medal b{color:#f1da9e}.league-note.escape b{color:#9ec29f}.league-note.steady{grid-column:1/-1}.skill-league-list{position:relative}
@@ -342,13 +342,13 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 
 <style id="v213-style">
-/* v3.0 Â· League Study and cleaner wrong-answer music cue */
+/* v3.0 · League Study and cleaner wrong-answer music cue */
 .skill-rank{font-size:16px!important;min-width:33px;height:28px}.rank-move{font-size:13px!important;min-width:31px}.league-study-open{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;margin-top:13px;padding:13px 14px;border:1px solid rgba(231,191,87,.22);border-radius:11px;background:linear-gradient(90deg,rgba(231,191,87,.11),rgba(122,165,236,.06));color:#edf4ef;text-align:left}.league-study-open span{font-size:10px;font-weight:950;letter-spacing:.11em;color:#f1da9e}.league-study-open b{font-size:12px}.league-study-open em{font-style:normal;font-size:10px;font-weight:950;color:#a9bcb0}.league-study-hero p{max-width:560px;margin-left:auto;margin-right:auto}.league-study-table .skillrow{padding-top:10px;padding-bottom:10px}.league-study-report .league-report{margin-top:8px}.league-study-report .league-report-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.league-study-report .league-note{padding:15px}.league-study-report .league-note small{font-size:10px}.league-study-report .league-note b{font-size:28px}.league-study-report .league-note span{font-size:14px;line-height:1.4}.league-study-report .league-report-head span{font-size:12px}.league-study-report .league-report-head b{font-size:11px}.league-study-explain{margin:12px 0 0;font-size:13px;line-height:1.55;color:#b8c9bf}.memory-echo b{font-size:clamp(19px,5.2vw,28px)!important}.memory-echo small,.memory-echo span{display:none!important}
 @media(max-width:520px){.skill-rank{font-size:15px!important;min-width:31px}.rank-move{font-size:12px!important;min-width:27px}.league-study-open b{font-size:11px}.league-study-report .league-report-grid{grid-template-columns:1fr}.league-study-report .league-note{padding:14px}.league-study-report .league-note span{font-size:15px}.league-study-report .league-note b{font-size:30px}}
 </style>
 
 <style id="v214-style">
-/* v3.0 Â· wrong answer = song title only; League gets stronger visual hierarchy */
+/* v3.0 · wrong answer = song title only; League gets stronger visual hierarchy */
 #leagueScreen .skill-rank{font-size:19px!important;min-width:38px;height:31px;font-weight:950}
 #leagueScreen .rank-move{font-size:15px!important;min-width:34px;font-weight:950}
 #leagueScreen .skill-name-text{font-size:14px;font-weight:850}
@@ -365,7 +365,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 
 <style id="v300-style">
-/* v3.0 Â· Error Fingerprints + instant phrase record */
+/* v3.0 · Error Fingerprints + instant phrase record */
 #gameScreen .feedback{grid-template-columns:minmax(128px,1.45fr) minmax(100px,1fr) minmax(82px,.72fr)!important}
 .feedback-record{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;padding:9px 5px;border-radius:9px;background:rgba(0,0,0,.11)}
 .feedback-record span{font-size:clamp(16px,4.5vw,24px);font-weight:980;line-height:1;white-space:nowrap}.record-good{color:#b8f1cb}.record-bad{color:#ffc0c7}
@@ -376,14 +376,14 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 
 <style id="v310-style">
-/* v3.1 Â· misconception fingerprint + release ledger */
+/* v3.1 · misconception fingerprint + release ledger */
 .misconception-fingerprint{display:grid;grid-template-columns:auto 1fr;gap:3px 9px;margin:8px 0;padding:11px 12px;border:1px solid rgba(126,201,255,.14);border-radius:10px;background:rgba(68,129,170,.09)}
 .misconception-fingerprint span{font-size:9px;font-weight:950;letter-spacing:.11em;color:#9fd6f4}.misconception-fingerprint b{font-size:13px;color:#e7f7ff}.misconception-fingerprint small{grid-column:1/-1;color:#aebdc4;font-size:11px}
 .release-info{margin:14px 2px 2px;border-top:1px solid rgba(255,255,255,.07);padding-top:10px;color:#8fa49a}.release-info summary{display:flex;justify-content:center;gap:10px;align-items:center;cursor:pointer;list-style:none;font-size:10px;letter-spacing:.08em}.release-info summary::-webkit-details-marker{display:none}.release-info summary b{color:#b7c8bf}.release-info summary span{font-size:8px;color:#71857b}.release-info ul{margin:9px auto 0;padding:10px 12px 10px 28px;max-width:520px;border-radius:9px;background:rgba(0,0,0,.10);font-size:10px;line-height:1.55;color:#9eb0a7}
 </style>
 
 <style id="v320-style">
-/* v3.2 Â· answer record becomes the feedback itself */
+/* v3.2 · answer record becomes the feedback itself */
 #gameScreen .feedback{display:none!important;grid-template-columns:1fr!important;padding:8px 10px!important;margin-top:7px!important;border-left-width:7px!important}
 #gameScreen .feedback.show{display:grid!important}
 #gameScreen .feedback .feedback-record{display:grid!important;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;align-items:center;justify-items:center;gap:0 18px;width:100%;padding:4px 10px 2px!important;background:transparent!important;border-radius:0!important}
@@ -398,7 +398,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 
 <style id="v330-style">
-/* v3.3 Â· Local Coach + clearer Music Echo */
+/* v3.3 · Local Coach + clearer Music Echo */
 #coachScreen .panel{max-width:980px!important}#coachScreen .resulttitle h1{font-size:clamp(38px,9vw,68px)}
 .campaign-eta-mini{margin:11px 0 4px;padding:13px 14px;border-radius:12px;background:rgba(var(--ai-rgb),.09);border:1px solid rgba(var(--ai-rgb),.24);display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:end}.campaign-eta-mini strong{grid-row:1/3;font-size:clamp(30px,7vw,46px);line-height:.95;color:var(--ai-color);letter-spacing:-.04em}.campaign-eta-mini span{font-size:10px;font-weight:900;letter-spacing:.08em;color:#9fb2a8;text-transform:uppercase}.campaign-eta-mini b{font-size:14px;color:#edf4f0}.campaign-eta-mini small{grid-column:1/-1;margin-top:7px;color:#8ea397;font-size:10px;line-height:1.4}.campaign-eta-range{margin-top:9px;font-size:10px;font-weight:850;letter-spacing:.04em;color:#9fb2a8}
 .campaign-plan-scenarios{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.campaign-plan-scenarios span{padding:5px 8px;border-radius:999px;background:rgba(var(--ai-rgb),.10);border:1px solid rgba(var(--ai-rgb),.18);font-size:9px;font-weight:900;letter-spacing:.04em;color:#bcd0c5}
@@ -411,13 +411,13 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 
 <style id="v340-style">
-/* v3.4 Â· Skill League matchday flash */
+/* v3.4 · Skill League matchday flash */
 .resolution .mission-card{width:min(94vw,620px)!important}.league-flash{margin:18px auto 0;padding:14px 14px 11px;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.08)}.league-flash-title{margin-bottom:9px;font-size:11px;font-weight:1000;letter-spacing:.16em;color:#d8e1dc}.league-flash-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.league-flash-row{display:grid;grid-template-columns:48px 1fr;align-items:center;gap:7px;min-height:34px;text-align:left}.league-flash-row strong{font-size:21px;font-weight:1000}.league-flash-row span{font-size:13px;font-weight:900;line-height:1.08}.league-flash-row.up strong{color:#aef2c2}.league-flash-row.down strong{color:#ffadb4}.league-none,.league-steady{font-size:10px;font-weight:900;letter-spacing:.1em;color:#819087;padding:8px 0}.league-steady{text-align:center}.resolution .mission-count{margin-top:14px!important}
 @media(max-width:520px){.league-flash{padding-left:5px;padding-right:5px}.league-flash-grid{gap:5px}.league-flash-row{grid-template-columns:40px 1fr;gap:4px}.league-flash-row strong{font-size:18px}.league-flash-row span{font-size:11px}}
 </style>
 
 <style id="v350-style">
-/* v3.5 Â· Matchday leaders */
+/* v3.5 · Matchday leaders */
 .league-stars{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:0 0 11px}.league-star{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:9px;align-items:center;padding:9px 10px;border-radius:10px;text-align:left;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}.league-star small{grid-column:1/-1;font-size:8px;font-weight:1000;letter-spacing:.14em;color:#aab8b0}.league-star b{font-size:27px;line-height:1;font-weight:1000}.league-star span{font-size:12px;line-height:1.08;font-weight:950}.league-star.up{border-color:rgba(174,242,194,.22)}.league-star.down{border-color:rgba(255,173,180,.22)}.league-star.up b{color:#aef2c2}.league-star.down b{color:#ffadb4}
 @media(max-width:520px){.league-stars{gap:5px}.league-star{padding:7px 6px;column-gap:5px}.league-star b{font-size:22px}.league-star span{font-size:10px}}
 </style>
@@ -473,14 +473,14 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 
 <style id="v313-style">
-/* v3.13 Â· transient grammar label + fast dashboard exits. Existing answer-transition durations are unchanged. */
+/* v3.13 · transient grammar label + fast dashboard exits. Existing answer-transition durations are unchanged. */
 #gameScreen .feedback .feedback-skill-tag{grid-column:1/-1;width:100%;margin:0;padding:5px 9px 4px;border-top:1px solid rgba(255,255,255,.16);font-size:clamp(11px,3.1vw,14px);line-height:1.18;font-weight:950;letter-spacing:.035em;text-align:center;color:rgba(255,255,255,.88);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:none}
 .top-dashboard-nav{display:flex;justify-content:flex-start;margin:0 0 13px}.top-dashboard-nav .ghost{min-height:42px;padding:9px 13px;font-size:14px;font-weight:950;letter-spacing:.04em}.end-campaign-estimate{margin:14px 0 16px}
 @media(max-width:520px){#gameScreen .feedback .feedback-skill-tag{font-size:11px;padding:4px 6px 3px}.top-dashboard-nav{margin-bottom:11px}.top-dashboard-nav .ghost{font-size:14px;padding:9px 12px}}
 </style>
 
 <style id="v315-style">
-/* v3.15 final study freeze Â· low-friction AI handoff; gameplay calibration remains untouched. */
+/* v3.15 final study freeze · low-friction AI handoff; gameplay calibration remains untouched. */
 .ai-handoff-card{margin:12px 0 15px;padding:14px 15px;border-radius:14px;border:1px solid rgba(231,191,87,.28);background:linear-gradient(135deg,rgba(231,191,87,.10),rgba(var(--ai-rgb),.10));display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}.ai-handoff-card span{display:block;font-size:12px;font-weight:950;letter-spacing:.1em;color:#d8c47f}.ai-handoff-card b{display:block;margin-top:4px;font-size:18px;line-height:1.2;color:#f5f0df}.ai-handoff-card small{display:block;margin-top:5px;font-size:12px;line-height:1.45;color:#9fb2a8}.ai-handoff-card.copied{border-color:rgba(130,230,169,.42);background:linear-gradient(135deg,rgba(72,164,101,.15),rgba(var(--ai-rgb),.08))}.ai-handoff-card.copied b{color:#b8f1cb}.ai-handoff-card button{min-width:150px}.error-session-handoff{margin:0 0 14px;padding:12px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}.error-session-handoff small{display:block;margin-top:7px;font-size:12px;line-height:1.45;color:#90a399}.coach-prompt-section>.primary{width:100%}#endScreen .learning-score-box{min-width:0}#endScreen .learning-score-box>div:first-child{min-width:0}#endScreen .learning-direction{min-width:0;max-width:48%;text-align:right;white-space:normal;overflow-wrap:anywhere}
 @media(max-width:520px){.ai-handoff-card{grid-template-columns:1fr;padding:13px}.ai-handoff-card button{width:100%}.ai-handoff-card span{font-size:11px}.ai-handoff-card b{font-size:17px}.ai-handoff-card small{font-size:12px}.error-session-handoff button{width:100%}#endScreen .learning-score-box{gap:8px}#endScreen .learning-direction{font-size:clamp(23px,7vw,30px);max-width:46%}}
 </style>
@@ -513,12 +513,12 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <div class="app">
 <section id="startScreen" class="screen start">
   <div class="panel">
-    <div id="startKicker" class="kicker">B2 TERRITORIO 1 Â· PART 1</div>
+    <div id="startKicker" class="kicker">B2 TERRITORIO 1 · PART 1</div>
     <div class="level-title-row"><h1 id="startLevel">LEVEL 42</h1><button type="button" class="level-next-shortcut" onclick="document.getElementById('startBtn')?.click()">NEXT LEVEL</button></div>
     <div id="startMedals" class="medal-summary-host"></div>
-    <p class="subtitle">B2 Territorio 1 Â· B2 First Â· Part 1</p>
-    <div class="ai-valuation-box hero-ai"><div><span>AI VALORATION</span><b id="startAiLevel">â€” / 15</b><small id="startAiConfidence">EstimaciÃ³n adaptativa</small></div><em>AI</em></div>
-    <div class="meta">1,610 tarjetas Â· 30 exÃ¡menes reales Â· red lÃ©xica Â· 15 segundos</div>
+    <p class="subtitle">B2 Territorio 1 · B2 First · Part 1</p>
+    <div class="ai-valuation-box hero-ai"><div><span>AI VALORATION</span><b id="startAiLevel">— / 15</b><small id="startAiConfidence">Estimación adaptativa</small></div><em>AI</em></div>
+    <div class="meta">1,610 tarjetas · 30 exámenes reales · red léxica · 15 segundos</div>
     <div class="hero-progress">
       <div class="progress-label"><span>Coverage</span><strong id="coverageText">0 / 1610</strong></div>
       <div class="track"><div id="coverageFill" class="fill" style="width:0%"></div></div>
@@ -528,11 +528,11 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="track"><div id="masteryFill" class="fill mastery" style="width:0%"></div></div>
     </div>
     <div class="grid">
-      <div class="card"><b id="startFluency">â€”</b><span>B2 rating</span></div>
-      <div class="card"><b id="startAccuracy">â€”</b><span>Recent accuracy</span></div>
-      <div class="card"><b id="startAvg">â€”</b><span>Avg response</span></div>
+      <div class="card"><b id="startFluency">—</b><span>B2 rating</span></div>
+      <div class="card"><b id="startAccuracy">—</b><span>Recent accuracy</span></div>
+      <div class="card"><b id="startAvg">—</b><span>Avg response</span></div>
       <div class="card lifetime-score-card"><b id="startAllAccuracy">-</b><span>Avg hits /15</span></div>
-      <div class="card"><b id="startAuto">â€”</b><span>Automatic</span></div>
+      <div class="card"><b id="startAuto">—</b><span>Automatic</span></div>
       <div class="card"><b id="startMastered">0/25</b><span>Keys mastered</span></div>
       <div class="card"><b id="startTotal">0</b><span>Total answers</span></div>
       <div class="card study-time-card"><b id="startStudyTime">0s</b><span>Active training time</span></div>
@@ -543,13 +543,13 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="card leech-count-card"><b id="startLeeches">0</b><span>Leeches</span></div>
     </div>
     <section id="startFocusPanel" class="focus-panel"></section>
-    <div class="peer-box"><div class="peer-head"><span>TYPICAL LEARNER Â· PACE</span><b id="startPeerDelta" class="peer-delta neutral">â€”</b></div><small id="startPeerStatus">Model-based typical range Â· not measured users</small></div>
+    <div class="peer-box"><div class="peer-head"><span>TYPICAL LEARNER · PACE</span><b id="startPeerDelta" class="peer-delta neutral">—</b></div><small id="startPeerStatus">Model-based typical range · not measured users</small></div>
     <div id="campaign2Box" class="next-campaign-box"><div class="next-campaign-head"><div><span>GRADUATION READINESS</span><b id="campaign2Score">0%</b></div><em id="campaign2Stage">Building foundation</em></div><div class="track"><div id="campaign2Fill" class="fill" style="width:0%"></div></div><p id="campaign2Status">Keep training to build evidence.</p><div id="campaign2PracticeEstimate" class="campaign-eta-mini"></div><button id="campaign2Copy" class="ghost small hidden">COPY PROGRESS JSON</button></div>
     <div id="campaignStatus" class="statusbox"></div>
     <div class="actions"><button id="startBtn" class="primary">START</button></div>
     <div class="dashboard-menu">
-      <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs Â· progress Â· keys</span></button>
-      <button id="coachBtn" class="secondary menu-btn"><b>MY COACH</b><span>Focus Â· common mistakes Â· rules</span></button>
+      <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs · progress · keys</span></button>
+      <button id="coachBtn" class="secondary menu-btn"><b>MY COACH</b><span>Focus · common mistakes · rules</span></button>
     </div>
     <div class="actions">
       <button id="exportBtn" class="ghost small">Download progress backup</button>
@@ -560,7 +560,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <section class="daily-key-section"><div id="dailyKeyHost"></div></section>
     <section class="growth-tree-section"><div id="growthTreeHost"></div></section>
     <div id="releaseInfo"></div>
-    <div id="buildVersion" class="footerline">ONLINE BUILD Â· checking versionâ€¦</div>
+    <div id="buildVersion" class="footerline">ONLINE BUILD · checking version…</div>
   </div>
 </section>
 
@@ -568,17 +568,17 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <section id="statsScreen" class="screen dashboard-screen hidden">
   <div class="panel">
     <div class="top-dashboard-nav"><button id="statsTopDashboardBtn" class="ghost">DASHBOARD</button></div>
-    <div class="resulttitle"><div class="kicker">DASHBOARD Â· v3.0</div><h1>Statistics</h1><p>Your full learning snapshot before the next level.</p></div>
-    <div class="ai-valuation-box"><div><span>AI VALORATION</span><b id="statsAiLevel">â€” / 15</b><small id="statsAiConfidence">Adaptive estimate</small></div><em>AI</em></div>
-    <div class="learning-score-box"><div><span>LEARNING SCORE</span><b id="statsLearningScore">â€”</b><small id="statsLearningWindow">Long-term curve</small></div><div id="statsLearningDelta" class="learning-direction neutral">â†’</div></div>
-    <div class="peer-box"><div class="peer-head"><span>TYPICAL LEARNER MODEL</span><b id="statsPeerDelta" class="peer-delta neutral">â€”</b></div><div class="peer-values"><div><b id="statsPeerYou">â€”</b><span>You</span></div><div><b id="statsPeerHealthy">â€”</b><span>Healthy min</span></div><div><b id="statsPeerExpected">â€”</b><span>Typical</span></div><div><b id="statsPeerStrong">â€”</b><span>Strong pace</span></div><div><b id="statsPeerDeltaMini">Â±0</b><span>Pace</span></div></div><small id="statsPeerLabel">Model-based typical range Â· not measured users</small></div>
+    <div class="resulttitle"><div class="kicker">DASHBOARD · v3.0</div><h1>Statistics</h1><p>Your full learning snapshot before the next level.</p></div>
+    <div class="ai-valuation-box"><div><span>AI VALORATION</span><b id="statsAiLevel">— / 15</b><small id="statsAiConfidence">Adaptive estimate</small></div><em>AI</em></div>
+    <div class="learning-score-box"><div><span>LEARNING SCORE</span><b id="statsLearningScore">—</b><small id="statsLearningWindow">Long-term curve</small></div><div id="statsLearningDelta" class="learning-direction neutral">→</div></div>
+    <div class="peer-box"><div class="peer-head"><span>TYPICAL LEARNER MODEL</span><b id="statsPeerDelta" class="peer-delta neutral">—</b></div><div class="peer-values"><div><b id="statsPeerYou">—</b><span>You</span></div><div><b id="statsPeerHealthy">—</b><span>Healthy min</span></div><div><b id="statsPeerExpected">—</b><span>Typical</span></div><div><b id="statsPeerStrong">—</b><span>Strong pace</span></div><div><b id="statsPeerDeltaMini">±0</b><span>Pace</span></div></div><small id="statsPeerLabel">Model-based typical range · not measured users</small></div>
     <div class="grid"><div class="card"><b id="statsCoverage">0%</b><span>Coverage</span></div><div class="card"><b id="statsMastery">0%</b><span>Mastery</span></div><div class="card"><b id="statsAccuracy">0%</b><span>Recent accuracy</span></div><div class="card lifetime-score-card"><b id="statsAllAccuracy">-</b><span>Avg hits /15</span></div><div class="card"><b id="statsAutomatic">0%</b><span>Automatic</span></div><div class="card"><b id="statsAvg">0.0s</b><span>Avg response</span></div><div class="card"><b id="statsTotal">0</b><span>Total answers</span></div><div class="card study-time-card"><b id="statsStudyTime">0s</b><span>Active training time</span></div></div>
     <section id="statsFocusPanel" class="focus-panel stats-focus-panel"></section>
-    <div class="charts stats-charts"><div class="section score-section"><div class="chart-title-row"><h3>Correct answers Â· /15</h3><button id="scoreExpandBtn" class="ghost small">EXPAND</button></div><div id="statsAccuracyChart"></div></div><div class="section learning-trend"><h3>Learning Curve Â· long-term</h3><div id="statsLearningChart"></div></div></div>
-    <div class="section target-stats-section"><h3>Target performance</h3><div class="grid target-grid"><div class="card"><b id="targetAvg">â€”</b><span>Avg target /15</span></div><div class="card"><b id="targetActualAvg">â€”</b><span>Avg actual /15</span></div><div class="card"><b id="targetDeltaAvg">â€”</b><span>Avg vs target</span></div><div class="card"><b id="targetHitRate">â€”</b><span>Targets met</span></div></div><div id="targetBreakdown" class="statusbox"></div></div>
-    <div class="section reading-load-section"><h3>Reading load Â· fixed 15s</h3><p class="meta">Observational only Â· the timer and adaptive engine do not change from these measurements.</p><div class="grid"><div class="card"><b id="readingShort">â€”</b><span>Short Â· â‰¤12 words</span><small id="readingShortMeta">No evidence yet</small></div><div class="card"><b id="readingMedium">â€”</b><span>Medium Â· 13â€“17 words</span><small id="readingMediumMeta">No evidence yet</small></div><div class="card"><b id="readingLong">â€”</b><span>Long Â· â‰¥18 words</span><small id="readingLongMeta">No evidence yet</small></div></div><div id="readingLoadInsight" class="statusbox">Building evidence.</div></div>
+    <div class="charts stats-charts"><div class="section score-section"><div class="chart-title-row"><h3>Correct answers · /15</h3><button id="scoreExpandBtn" class="ghost small">EXPAND</button></div><div id="statsAccuracyChart"></div></div><div class="section learning-trend"><h3>Learning Curve · long-term</h3><div id="statsLearningChart"></div></div></div>
+    <div class="section target-stats-section"><h3>Target performance</h3><div class="grid target-grid"><div class="card"><b id="targetAvg">—</b><span>Avg target /15</span></div><div class="card"><b id="targetActualAvg">—</b><span>Avg actual /15</span></div><div class="card"><b id="targetDeltaAvg">—</b><span>Avg vs target</span></div><div class="card"><b id="targetHitRate">—</b><span>Targets met</span></div></div><div id="targetBreakdown" class="statusbox"></div></div>
+    <div class="section reading-load-section"><h3>Reading load · fixed 15s</h3><p class="meta">Observational only · the timer and adaptive engine do not change from these measurements.</p><div class="grid"><div class="card"><b id="readingShort">—</b><span>Short · ≤12 words</span><small id="readingShortMeta">No evidence yet</small></div><div class="card"><b id="readingMedium">—</b><span>Medium · 13–17 words</span><small id="readingMediumMeta">No evidence yet</small></div><div class="card"><b id="readingLong">—</b><span>Long · ≥18 words</span><small id="readingLongMeta">No evidence yet</small></div></div><div id="readingLoadInsight" class="statusbox">Building evidence.</div></div>
     <div id="statsCampaign2" class="statusbox"></div>
-    <div class="section"><h3>Skill League Â· current ranking</h3><div id="statsSkills"></div></div>
+    <div class="section"><h3>Skill League · current ranking</h3><div id="statsSkills"></div></div>
     <div class="screen-nav"><button id="statsBackBtn" class="primary">BACK TO DASHBOARD</button></div>
   </div>
 </section>
@@ -586,22 +586,22 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <section id="leagueScreen" class="screen dashboard-screen hidden">
   <div class="panel">
     <div class="top-dashboard-nav"><button id="leagueTopDashboardBtn" class="ghost">DASHBOARD</button></div>
-    <div class="resulttitle league-study-hero"><div class="kicker">SKILL LEAGUE Â· v3.0</div><h1>League Study</h1><p>La clasificaciÃ³n completa y el movimiento de las Ãºltimas 8 jornadas, con espacio para leer cada cambio con claridad.</p></div>
+    <div class="resulttitle league-study-hero"><div class="kicker">SKILL LEAGUE · v3.0</div><h1>League Study</h1><p>La clasificación completa y el movimiento de las últimas 8 jornadas, con espacio para leer cada cambio con claridad.</p></div>
     <div id="leagueStudyBody"></div>
-    <p class="league-study-explain"><b>CÃ³mo leerla:</b> â–²/â–¼ indica movimiento de puestos en la liga. No significa por sÃ­ solo que el mastery haya mejorado o empeorado: una skill tambiÃ©n puede cambiar de posiciÃ³n porque otras la adelantan.</p>
+    <p class="league-study-explain"><b>Cómo leerla:</b> ▲/▼ indica movimiento de puestos en la liga. No significa por sí solo que el mastery haya mejorado o empeorado: una skill también puede cambiar de posición porque otras la adelantan.</p>
     <div class="screen-nav"><button id="leagueBackBtn" class="primary">BACK TO STATISTICS</button></div>
   </div>
 </section>
 <section id="coachScreen" class="screen dashboard-screen hidden">
   <div class="panel">
     <div class="top-dashboard-nav"><button id="coachTopDashboardBtn" class="ghost">DASHBOARD</button></div>
-    <div class="resulttitle"><div class="kicker">MY COACH Â· LIVE</div><h1>Study file</h1><p>What the algorithm thinks you should review right now.</p></div>
+    <div class="resulttitle"><div class="kicker">MY COACH · LIVE</div><h1>Study file</h1><p>What the algorithm thinks you should review right now.</p></div>
     <div id="localCoachReport" class="local-coach-report"></div>
     <div id="coachIntro" class="statusbox"></div>
     <div class="section"><h3>Focus now</h3><div id="coachFocus" class="coach-grid"></div></div>
     <div class="section"><h3>Common mistakes</h3><div id="coachMistakes"></div></div>
-    <div class="section"><h3>All keys Â· weakest â†’ strongest</h3><div id="coachSkills"></div></div>
-    <div class="section coach-prompt-section"><h3>AI handoff Â· global</h3><p class="meta">One JSON for any AI: longitudinal progress, pace, retention, reading load, priorities and the Spanish-L1 analysis method.</p><button id="coachGenerateBtn" class="primary">COPY GLOBAL JSON</button><div id="coachPromptBox" class="hidden coach-prompt-box"><textarea id="coachPromptText" readonly spellcheck="false"></textarea><button id="coachPromptCopy" class="primary">COPY GLOBAL JSON</button></div></div>
+    <div class="section"><h3>All keys · weakest → strongest</h3><div id="coachSkills"></div></div>
+    <div class="section coach-prompt-section"><h3>AI handoff · global</h3><p class="meta">One JSON for any AI: longitudinal progress, pace, retention, reading load, priorities and the Spanish-L1 analysis method.</p><button id="coachGenerateBtn" class="primary">COPY GLOBAL JSON</button><div id="coachPromptBox" class="hidden coach-prompt-box"><textarea id="coachPromptText" readonly spellcheck="false"></textarea><button id="coachPromptCopy" class="primary">COPY GLOBAL JSON</button></div></div>
     <div class="screen-nav"><button id="coachBackBtn" class="primary">BACK TO DASHBOARD</button></div>
   </div>
 </section>
@@ -612,7 +612,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <div class="toprow">
       <div id="timer" class="timer"><strong id="timerText">15.0</strong></div>
       <div class="qnum"><span>QUESTION</span><b id="qIndex">1</b><span id="qTotal">/ 15</span></div>
-      <div class="hudright"><button id="soundBtn" class="soundbtn" aria-label="Sound on">ðŸ”Š</button><div id="sessionLevel" class="leveltag">L42</div></div>
+      <div class="hudright"><button id="soundBtn" class="soundbtn" aria-label="Sound on">🔊</button><div id="sessionLevel" class="leveltag">L42</div></div>
     </div>
   </div>
   <div class="playfield">
@@ -633,9 +633,9 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div id="endMedals" class="medal-summary-host"></div>
       <p id="endSub"></p><div id="endTarget" class="target-result hidden"></div>
     </div>
-    <div class="end-quick-actions" aria-label="Quick result actions"><button id="topContinueBtn" class="primary">NEXT LEVEL</button><button id="topHomeBtn" class="secondary">DASHBOARD Â· PORTADA</button><button id="topErrorsBtn" class="secondary hidden">REVIEW ERRORS</button><button id="topFinalBtn" class="secondary hidden">FINAL CHALLENGE</button></div>
-    <div id="endAiHandoff" class="ai-handoff-card" aria-live="polite"><div><span>PROGRESS JSON Â· OPTIONAL</span><b id="endHandoffStatus">PROGRESS JSON READY Â· OPTIONAL</b><small id="endHandoffMeta">Learning progress + this level + session errors. Nothing is copied automatically.</small></div><button id="endCopyHandoffBtn" class="secondary">COPY PROGRESS JSON</button></div>
-    <div class="ai-valuation-box"><div><span>AI VALORATION</span><b id="endAiLevel">â€” / 15</b><small id="endAiConfidence">EstimaciÃ³n adaptativa</small></div><em>AI</em></div>
+    <div class="end-quick-actions" aria-label="Quick result actions"><button id="topContinueBtn" class="primary">NEXT LEVEL</button><button id="topHomeBtn" class="secondary">DASHBOARD · PORTADA</button><button id="topErrorsBtn" class="secondary hidden">REVIEW ERRORS</button><button id="topFinalBtn" class="secondary hidden">FINAL CHALLENGE</button></div>
+    <div id="endAiHandoff" class="ai-handoff-card" aria-live="polite"><div><span>PROGRESS JSON · OPTIONAL</span><b id="endHandoffStatus">PROGRESS JSON READY · OPTIONAL</b><small id="endHandoffMeta">Learning progress + this level + session errors. Nothing is copied automatically.</small></div><button id="endCopyHandoffBtn" class="secondary">COPY PROGRESS JSON</button></div>
+    <div class="ai-valuation-box"><div><span>AI VALORATION</span><b id="endAiLevel">— / 15</b><small id="endAiConfidence">Estimación adaptativa</small></div><em>AI</em></div>
     <div id="endCampaignPracticeEstimate" class="campaign-eta-mini end-campaign-estimate"></div>
 
     <div class="grid">
@@ -646,13 +646,13 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="card"><b id="eMastery">0%</b><span>Mastery</span></div>
       <div class="card"><b id="eMastered">0/25</b><span>Keys mastered</span><div id="dAcc"></div></div>
     </div>
-    <div class="learning-score-box"><div><span>LEARNING SCORE</span><b id="learningScore">â€”</b><small id="learningScoreWindow">Media mÃ³vil</small></div><div id="learningScoreDelta" class="learning-direction neutral">â†’</div></div>
+    <div class="learning-score-box"><div><span>LEARNING SCORE</span><b id="learningScore">—</b><small id="learningScoreWindow">Media móvil</small></div><div id="learningScoreDelta" class="learning-direction neutral">→</div></div>
     <div id="campaign2End" class="statusbox next-campaign-end hidden"></div>
     <section id="levelLesson" class="level-lesson hidden"></section>
-    <button id="endErrorLabToggle" class="error-lab-toggle hidden" type="button"><span>ERROR LAB</span><b id="endErrorLabToggleMeta">Errores del Ãºltimo nivel</b><em>OPEN â†’</em></button>
+    <button id="endErrorLabToggle" class="error-lab-toggle hidden" type="button"><span>ERROR LAB</span><b id="endErrorLabToggleMeta">Errores del último nivel</b><em>OPEN →</em></button>
     <div class="charts">
-      <div class="section"><h3>Accuracy Â· all levels</h3><div id="accuracyChart"></div></div>
-      <div class="section learning-trend"><h3>Learning Curve Â· long-term</h3><div id="learningTrendChart"></div></div>
+      <div class="section"><h3>Accuracy · all levels</h3><div id="accuracyChart"></div></div>
+      <div class="section learning-trend"><h3>Learning Curve · long-term</h3><div id="learningTrendChart"></div></div>
     </div>
     <div class="grid phrasegrid">
       <div class="card"><b id="ePhrasesDone">0</b><span>Unique phrases done</span></div>
@@ -660,28 +660,28 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="card leech-count-card"><b id="eLeeches">0</b><span>Leeches</span></div>
       <div class="card"><b id="eBankTotal">1610</b><span>Bank total</span></div>
     </div>
-    <div class="section"><h3>Skill League Â· current ranking</h3><div id="weakSkills"></div></div>
-    <div class="ai-legend-wrap"><span>CÃ“DIGO DE COLOR Â· 1 BAJO â†’ 15 MÃXIMO</span><div id="aiLegend" class="ai-legend"></div></div>
+    <div class="section"><h3>Skill League · current ranking</h3><div id="weakSkills"></div></div>
+    <div class="ai-legend-wrap"><span>CÓDIGO DE COLOR · 1 BAJO → 15 MÁXIMO</span><div id="aiLegend" class="ai-legend"></div></div>
     <div class="actions">
       <button id="continueBtn" class="primary">NEXT LEVEL</button>
-      <button id="homeBtn" class="secondary">DASHBOARD Â· PORTADA</button>
+      <button id="homeBtn" class="secondary">DASHBOARD · PORTADA</button>
       <button id="errorsBtn" class="secondary hidden">REVIEW ERRORS</button>
       <button id="finalBtn" class="secondary hidden">FINAL CHALLENGE</button>
     </div>
-    <div id="endBuildVersion" class="footerline">B2 Territorio 1 Â· checking versionâ€¦</div>
+    <div id="endBuildVersion" class="footerline">B2 Territorio 1 · checking version…</div>
   </div>
 </section>
 <section id="errorsScreen" class="screen review hidden">
   <div class="panel">
     <div class="top-dashboard-nav"><button id="errorsTopDashboardBtn" class="ghost">DASHBOARD</button></div>
-    <div class="resulttitle error-lab-hero"><div class="kicker">ERROR LAB Â· v3.0</div><h1>Latest mistakes</h1><p id="errorsCount"></p><small>Solo contiene los errores del nivel que acabas de terminar.</small></div>
-    <div class="error-session-handoff"><button id="errorsSessionCopyBtn" class="secondary">COPY SESSION ERRORS JSON</button><small>Todos los errores del nivel + grupos + fingerprints + guÃ­a de contraste con espaÃ±ol.</small></div>
+    <div class="resulttitle error-lab-hero"><div class="kicker">ERROR LAB · v3.0</div><h1>Latest mistakes</h1><p id="errorsCount"></p><small>Solo contiene los errores del nivel que acabas de terminar.</small></div>
+    <div class="error-session-handoff"><button id="errorsSessionCopyBtn" class="secondary">COPY SESSION ERRORS JSON</button><small>Todos los errores del nivel + grupos + fingerprints + guía de contraste con español.</small></div>
     <div id="errorsFull" class="errors"></div>
     <div class="actions"><button id="errorsBackBtn" class="primary">BACK TO RESULTS</button></div>
   </div>
 </section>
 </div>
-<section id="scoreModal" class="score-modal hidden"><div class="score-modal-card"><div class="chart-title-row"><div><div class="kicker">PERFORMANCE OVER TIME</div><h2>Correct answers Â· /15</h2></div><button id="scoreCloseBtn" class="secondary">CLOSE</button></div><div id="scoreExpandedChart"></div><p class="meta">Each point is one 15-question level. Solid + filled = your actual score; dashed + hollow = the adaptive TARGET. Both use the AVS 1â€“15 colour of the value they represent. 13 = Blue Medal; 14 = Violet Medal; 15 = Gold Medal; 0 is the minimum. Higher is better. The horizontal axis uses real time: hours for short spans, calendar days for longer spans.</p></div></section>
+<section id="scoreModal" class="score-modal hidden"><div class="score-modal-card"><div class="chart-title-row"><div><div class="kicker">PERFORMANCE OVER TIME</div><h2>Correct answers · /15</h2></div><button id="scoreCloseBtn" class="secondary">CLOSE</button></div><div id="scoreExpandedChart"></div><p class="meta">Each point is one 15-question level. Solid + filled = your actual score; dashed + hollow = the adaptive TARGET. Both use the AVS 1–15 colour of the value they represent. 13 = Blue Medal; 14 = Violet Medal; 15 = Gold Medal; 0 is the minimum. Higher is better. The horizontal axis uses real time: hours for short spans, calendar days for longer spans.</p></div></section>
 
 <section id="missionOverlay" class="mission-overlay hidden" aria-hidden="true"><div class="mission-card"><div id="missionBody"></div><div id="missionCount" class="mission-count"></div></div></section>
 <div id="particles" class="particles" aria-hidden="true"></div>
@@ -696,7 +696,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./app.js?v=1.10.2"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=medals1',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=loadfix1',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>
