@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.10.1";
+const APP_VERSION = "1.10.2";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -1102,7 +1102,7 @@ function renderGrowthTree(){
 const RELEASE_NOTES=["v1.8.1 · B2 Territorio 1","Nuevo contador anónimo de LEECHES en portada y resultados: muestra cuántas hay, nunca cuáles son","Cuatro sonidos positivos de acierto según velocidad: cuanto más rápida la respuesta, más brillante y agudo el feedback","Los aciertos tardíos siguen sonando positivos, pero con una resolución más grave","El sonido de error ahora es más claramente descendente y distinto de cualquier acierto","El sistema LEECH mantiene sus reglas: 4 fallos activos, descanso de 8 niveles o 3 días y máximo una LEECH por nivel","No cambia el algoritmo de selección, el banco, las estadísticas ni el reloj fijo de 15 segundos"];
 function renderReleaseInfo(){const host=$("releaseInfo"),online=location.protocol.startsWith("http"),build=`${online?"ONLINE":"LOCAL"} BUILD · v${APP_VERSION} · BANK ${CAMPAIGN?.version||"—"}`;if(host)host.innerHTML=`<details class="release-info"><summary><b>B2 Territorio 1 v${APP_VERSION}</b><span>WHAT’S NEW</span></summary><ul>${RELEASE_NOTES.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></details>`;if($("buildVersion"))$("buildVersion").textContent=build;if($("endBuildVersion"))$("endBuildVersion").textContent=build;const meta=document.querySelector('meta[name="ae-version"]');if(meta)meta.setAttribute("content",APP_VERSION);document.title=`B2 Territorio 1 - v${APP_VERSION}`;}
 function medalCounts(){const rows=(state.sessionHistory||[]).filter(x=>!x.mode||x.mode==="training");return window.AdrianAchievements?.countsFromHistory?.(rows)||{blue:0,violet:0,gold:0};}
-function renderMedalSummary(){const html=window.AdrianAchievements?.medalStripHtml?.(medalCounts(),{context:"summary"})||"";const a=$("startMedals"),b=$("endMedals");if(a)a.innerHTML=html;if(b)b.innerHTML=html;}
+function renderMedalSummary(latest=null){const strip=window.AdrianAchievements?.medalStripHtml?.(medalCounts(),{context:"summary"})||"",badge=latest?window.AdrianAchievements?.badgeHtml?.(latest.correct,latest.total||SESSION_SIZE)||"":"";const a=$("startMedals"),b=$("endMedals");if(a)a.innerHTML=strip;if(b)b.innerHTML=strip+badge;}
 function renderStart(){
   ensureDailyKey();
   const st=overallStats(),sg=stageInfo(st.coverage),rb=ratingBand(st.rating),ai=aiValorationStats();
@@ -1273,7 +1273,7 @@ async function finishSession(){
   try{save();}catch(e){console.warn("Progress save unavailable",e);}lastSessionHandoffText=sessionHandoffJsonText(snap,session?.records||[]);try{renderEnd(snap,before);setEndHandoffStatus(false,false);}catch(e){console.warn("Results render recovered",e);}try{await settleUi(showLevelResolution(snap,before),5500,"End route");await settleUi(window.LanguagePoints?.awardLevel?.({correct:snap.correct,total:snap.total,target:snap.target,recovered:snap.recovered||0,mastered:snap.masteredRewards||0,level:completedLevel}),1600,"Language points");}finally{missionOverlay(false);showScreen("endScreen");}
 }
 function renderEnd(s,before){
-  renderMedalSummary();
+  renderMedalSummary(s);
   const st=overallStats(),sg=stageInfo(st.coverage),rb=ratingBand(st.rating),ai=aiValorationStats();
   setEndHandoffStatus(false,false);
   applyRatingTheme(st.rating);applyAiTheme(ai);
