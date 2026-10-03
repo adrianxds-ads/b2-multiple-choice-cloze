@@ -53,13 +53,16 @@ function ensureStyle(){
 }
 function ensureHud(){
   ensureStyle();
-  const top=document.querySelector("#gameScreen .top");
+  const game=document.getElementById("gameScreen");
+  if(!game)return null;
+  let top=game.querySelector(".quiz-game-footer");
+  if(!top){top=document.createElement("div");top.className="quiz-game-footer";game.appendChild(top);const exit=game.querySelector(".emergency-exit");if(exit)top.appendChild(exit);}
   if(!top)return null;
   let el=document.getElementById("languagePointsHud");
   if(!el){
     el=document.createElement("div");el.id="languagePointsHud";el.className="lp-game-score";
     el.innerHTML="<div class='lp-game-label'>PUNTOS DE PARTIDA</div><div class='lp-game-main'><b>0</b><small>PTS</small></div><div class='lp-game-total'>TOTAL <strong>0</strong></div><div class='lp-delta'></div>";
-    top.appendChild(el);
+    top.prepend(el);
   }
   return el;
 }
@@ -106,8 +109,8 @@ function recordAnswer(data){
     delta=90+Math.round(30*speed);
   }
   run.answerPoints+=delta;
-  updateHud(before,run.answerPoints,delta,true);
-  answerSound(delta);
+  updateHud(before,run.answerPoints,delta,false);
+  // The quiz supplies one short answer cue; avoid duplicate audio.
   return run.answerPoints;
 }
 function baseMoves(points){
