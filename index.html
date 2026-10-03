@@ -508,6 +508,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
   #gameScreen .feedback .feedback-record b{font-size:clamp(44px,14vw,64px)!important}
 }
 </style>
+<style id="mobile-viewport-containment">html,body{overflow-x:clip}</style>
 </head>
 <body>
 <div class="app">
@@ -696,7 +697,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./app.js?v=1.10.2"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=loadfix3',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=loadfix4',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>
