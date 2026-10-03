@@ -1,5 +1,5 @@
 const CACHE_PREFIX='b2-territorio-1-';
-const CACHE='b2-territorio-1-v1.10.2-loadfix4';
+const CACHE='b2-territorio-1-v1.10.2-recovery1';
 const ASSETS=['./','./index.html','./adrian-visual-system.js','./adrian-achievements.js','./lessons.js','./keys.js','./error-coach.js','./language-points.js','./hub-path-game.js','./app.js','./territory-01.json','./manifest.webmanifest','./icon.svg'];
 const CORE_RE=/\.(?:html|js|css|json|webmanifest)$/i;
 function withTimeout(req,ms,init={}){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);return fetch(req,{...init,signal:c.signal}).finally(()=>clearTimeout(t));}
@@ -15,7 +15,7 @@ self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.origin!==self.location.origin)return;
   e.respondWith((async()=>{
     const c=await caches.open(CACHE),core=e.request.mode==='navigate'||CORE_RE.test(u.pathname);
-    if(core){const hit=await c.match(e.request,{ignoreSearch:true});if(hit)return hit;const r=await network(e.request,2800);if(r&&r.ok)return r;if(e.request.mode==='navigate')return (await c.match('./index.html'))||(await c.match('./'))||Response.error();return Response.error();}
+    if(core){const r=await network(e.request,1800);if(r&&r.ok){await c.put(e.request,r.clone());return r;}const hit=await c.match(e.request,{ignoreSearch:true});if(hit)return hit;if(e.request.mode==='navigate')return (await c.match('./index.html'))||(await c.match('./'))||Response.error();return Response.error();}
     const hit=await c.match(e.request,{ignoreSearch:true});if(hit)return hit;
     const r=await network(e.request,5000);if(r&&r.ok){await c.put(e.request,r.clone());return r;}return Response.error();
   })());
