@@ -7,8 +7,8 @@
 <meta name="theme-color" content="#10271d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="ae-version" content="1.10.3">
-<title>B2 Territorio 1 - v1.10.3</title>
+<meta name="ae-version" content="1.10.4">
+<title>B2 Territorio 1 - v1.10.4</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -511,6 +511,9 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 </style>
 <style id="mobile-viewport-containment">html,body{overflow-x:clip}</style>
 <link rel="stylesheet" href="./quiz-polish.css?v=20261003-1">
+<style id="read-first-style">
+.read-first-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 2px}.read-first-row small{color:var(--muted);font-size:11px;font-weight:750;line-height:1.35}.read-first-toggle{min-height:42px!important;padding:10px 12px!important;border-radius:999px!important;font-size:11px!important;letter-spacing:.035em!important}.read-first-toggle[aria-pressed="true"]{background:rgba(143,215,176,.14)!important;border-color:rgba(143,215,176,.42)!important;color:#eafff2!important}#answers{transition:opacity .12s ease}#answers.read-first-hidden{visibility:hidden;opacity:0;pointer-events:none}
+</style>
 </head>
 <body>
 <div class="app">
@@ -549,6 +552,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     <div class="peer-box"><div class="peer-head"><span>TYPICAL LEARNER · PACE</span><b id="startPeerDelta" class="peer-delta neutral">—</b></div><small id="startPeerStatus">Model-based typical range · not measured users</small></div>
     <div id="campaign2Box" class="next-campaign-box"><div class="next-campaign-head"><div><span>GRADUATION READINESS</span><b id="campaign2Score">0%</b></div><em id="campaign2Stage">Building foundation</em></div><div class="track"><div id="campaign2Fill" class="fill" style="width:0%"></div></div><p id="campaign2Status">Keep training to build evidence.</p><div id="campaign2PracticeEstimate" class="campaign-eta-mini"></div><button id="campaign2Copy" class="ghost small hidden">COPY PROGRESS JSON</button></div>
     <div id="campaignStatus" class="statusbox"></div>
+    <div class="read-first-row"><button id="readFirstToggle" class="ghost read-first-toggle" type="button" aria-pressed="true">MODO · LEER PRIMERO · SÍ</button><small>Enunciado primero; el reloj empieza cuando aparecen las cuatro respuestas.</small></div>
     <div class="actions"><button id="startBtn" class="primary">START</button></div>
     <div class="dashboard-menu">
       <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs · progress · keys</span></button>
@@ -696,11 +700,11 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script>window.LANGUAGE_POINTS_CONFIG={appId:"cloze",timeLimit:15};</script>
 <script src="./language-points.js?v=1.2.0"></script>
 <script src="./hub-path-game.js?v=1.0.0"></script>
-<script src="./territory-01.js?v=1.10.3"></script>
-<script src="./app.js?v=1.10.3"></script>
+<script src="./territory-01.js?v=1.10.4"></script>
+<script src="./app.js?v=1.10.4"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=polish20261003',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=readfirst20261003',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>

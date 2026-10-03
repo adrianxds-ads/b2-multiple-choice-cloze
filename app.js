@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.10.3";
+const APP_VERSION = "1.10.4";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -18,11 +18,27 @@ const COLOR_BANDS_15=AVS_RANKS.map(x=>x.color);
 const SURFACE_BANDS_15=AVS_RANKS.map(x=>x.surface||x.color);
 const GRAPH_BANDS_15=AVS_RANKS.map(x=>x.band||x.color);
 const AVS_TEXT_BANDS_15=AVS_RANKS.map(x=>x.text||x.color);
-let CAMPAIGN=null, BANK=[], state=null, session=null, timerHandle=null, deadline=0, current=null, locked=false;
+let CAMPAIGN=null, BANK=[], state=null, session=null, timerHandle=null, revealHandle=null, deadline=0, current=null, locked=false, currentPreReadMs=0;
 let audioCtx=null, soundOn=true, lastTickShown=TIME_LIMIT+1, lastUrgentBeat=-1;
 let focusLastActivityTs=Date.now(),focusLastTickTs=Date.now(),focusSaveMs=0,focusTimerHandle=null;
 
 const $=id=>document.getElementById(id);
+const READ_FIRST_KEY="b2_cloze_read_first_v1";
+let readFirstMode=(()=>{try{return localStorage.getItem(READ_FIRST_KEY)!=="0";}catch(e){return true;}})();
+function readFirstDelayMs(text){
+  const words=String(text||"").trim().split(/\s+/).filter(Boolean).length;
+  return Math.round(Math.max(3000,Math.min(4800,3000+Math.max(0,words-8)*90)));
+}
+function syncReadFirstButton(){
+  const b=$("readFirstToggle");if(!b)return;
+  b.setAttribute("aria-pressed",readFirstMode?"true":"false");
+  b.textContent=readFirstMode?"MODO · LEER PRIMERO · SÍ":"MODO · TODO JUNTO · NORMAL";
+}
+function toggleReadFirstMode(){
+  readFirstMode=!readFirstMode;
+  try{localStorage.setItem(READ_FIRST_KEY,readFirstMode?"1":"0");}catch(e){}
+  syncReadFirstButton();
+}
 function shuffledAnswerColorClasses(){
   const a=["option-c1","option-c2","option-c3","option-c4"],tones=["option-tone-1","option-tone-2","option-tone-3"];
   for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
@@ -1156,7 +1172,7 @@ if(sessionStarting)return;sessionStarting=true;try{
 }
 function abortSession(){
   if(!session)return;
-  clearInterval(timerHandle);deadline=0;locked=true;missionOverlay(false);
+  clearInterval(timerHandle);clearTimeout(revealHandle);revealHandle=null;deadline=0;locked=true;missionOverlay(false);
   const focusKeep={times:{...(state.focusTimeByDate||{})},targets:{...(state.focusTargetsByDate||{})},started:state.focusTrackingStartedAt};
   const snapshot=session.abortSnapshot;session=null;current=null;
   const f=$("feedback");if(f)f.classList.remove("show");hideCorrectReveal();document.body.classList.remove("feedback-correct","feedback-wrong");
@@ -1180,6 +1196,7 @@ function startTimer(){
   },50);
 }
 function nextQuestion(){
+  clearTimeout(revealHandle);revealHandle=null;currentPreReadMs=0;
   locked=false;hideCorrectReveal();
   if(session.index>=session.plan.length){finishSessionSafe();return;}
   current=session.plan[session.index];
@@ -1189,13 +1206,21 @@ function nextQuestion(){
   $("qTotal").textContent="/ "+session.plan.length+(rewardSpecial?" · "+rewardSpecial:"");
   const view=visibleCard(current);current.visibleQuestion=view.question;current.visibleOptions=view.options;current.visibleFocus=view.focus;current.visibleNames=view.names;
   $("questionText").classList.remove("focus-active");$("questionText").textContent=view.question;
-  const wrap=$("answers");wrap.innerHTML="";const answerColors=shuffledAnswerColorClasses();
-  current.display.forEach((txt,i)=>{const b=document.createElement("button");b.className="answer "+answerColors[i];b.textContent=view.options[i];b.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"){e.preventDefault();answer(i,false);}});b.addEventListener("click",()=>answer(i,false));wrap.appendChild(b);});
-  $("timerText").textContent=TIME_LIMIT.toFixed(1);$("timer").classList.remove("urgent");renderSegments(TIME_LIMIT);startTimer();
+  const wrap=$("answers");wrap.innerHTML="";wrap.classList.toggle("read-first-hidden",readFirstMode);const answerColors=shuffledAnswerColorClasses();
+  current.display.forEach((txt,i)=>{const b=document.createElement("button");b.className="answer "+answerColors[i];b.textContent=view.options[i];b.disabled=readFirstMode;b.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"){e.preventDefault();answer(i,false);}});b.addEventListener("click",()=>answer(i,false));wrap.appendChild(b);});
+  $("timerText").textContent=TIME_LIMIT.toFixed(1);$("timer").classList.remove("urgent");renderSegments(TIME_LIMIT);
+  if(readFirstMode){
+    currentPreReadMs=readFirstDelayMs(view.question);
+    const expectedSession=session,expectedIndex=session.index;
+    revealHandle=setTimeout(()=>{
+      if(session!==expectedSession||session.index!==expectedIndex||locked)return;
+      wrap.classList.remove("read-first-hidden");[...wrap.children].forEach(b=>b.disabled=false);revealHandle=null;startTimer();
+    },currentPreReadMs);
+  }else startTimer();
 }
 function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect=0,phraseWrong=0,cat="",trigger=""){/* Feedback stays on the answer tiles. */}
 function answer(pos,timeout=false){
-  if(locked)return;locked=true;clearInterval(timerHandle);
+  if(locked)return;locked=true;clearInterval(timerHandle);clearTimeout(revealHandle);revealHandle=null;
   const sec=timeout?TIME_LIMIT:Math.max(.05,(TIME_LIMIT*1000-(deadline-performance.now()))/1000);
   const ok=pos===current.correctPos&&!timeout,type=outcomeType(ok,sec,current.targetTime||3.6,timeout);
   const buttons=[...$("answers").children];
@@ -1208,7 +1233,7 @@ function answer(pos,timeout=false){
   const now=Date.now(),intervalDays=reviewIntervalDays(previousSeen,type);
   state.seen[current.fingerprint]={count:appearance,lastLevel:state.level,lastTs:now,lastCorrect:ok,lapses,intervalDays,nextDueTs:now+intervalDays*86400000,masteredRewarded:!!(previousSeen?.masteredRewarded||masteredReward)};state.templateLast[current.templateId]=state.level;state.templateSeen[current.templateId]={count:patternAppearance,lastLevel:state.level,lastTs:now};const targetAfter=updateLeechTarget(current,ok,now);
   const shownQuestion=current.visibleQuestion||current.q,shownOptions=current.visibleOptions||current.display,load=promptLoadMeta(shownQuestion);
-  const rec={level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:pos>=0?shownOptions[pos]:"No answer",correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:current.targetTime||3.6,timeLimitSec:TIME_LIMIT,sessionMode:session.mode,leechBefore:leechStage(previousTarget),leechAfter:leechStage(targetAfter),targetLapses:targetAfter?.lapses||0,targetPressure:targetAfter?.pressure||0};
+  const rec={level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:pos>=0?shownOptions[pos]:"No answer",correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:current.targetTime||3.6,timeLimitSec:TIME_LIMIT,sessionMode:session.mode,studyMode:readFirstMode?"READ_FIRST":"STANDARD",preReadMs:currentPreReadMs,leechBefore:leechStage(previousTarget),leechAfter:leechStage(targetAfter),targetLapses:targetAfter?.lapses||0,targetPressure:targetAfter?.pressure||0};
   hideCorrectReveal();
   try{flashGrammarFocus(shownQuestion,rec.correctAnswer,current.visibleFocus||current.focus||[]);}catch(e){console.error("Grammar focus flash failed",e);}
   state.history.push(rec);state.history=state.history.slice(-12000);state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
@@ -1312,6 +1337,7 @@ async function boot(){
   BANK=CAMPAIGN.questions;state=loadState();startFocusTracking();save();
   const seg=$("segments");for(let i=0;i<10;i++){const d=document.createElement("div");d.className="seg";seg.appendChild(d);}
   $("startBtn").onclick=async()=>{await ensureAudio();await startSession(false);};
+  if($("readFirstToggle")){$("readFirstToggle").onclick=toggleReadFirstMode;syncReadFirstButton();}
   $("statsBtn").onclick=()=>{renderStatsScreen();showScreen("statsScreen");};
   $("scoreExpandBtn").onclick=()=>{const rows=state.sessionHistory.filter(x=>x.mode==="training");$("scoreExpandedChart").innerHTML=sessionScoreChart(rows,true);$("scoreModal").classList.remove("hidden");};
   $("scoreCloseBtn").onclick=()=>$("scoreModal").classList.add("hidden");
