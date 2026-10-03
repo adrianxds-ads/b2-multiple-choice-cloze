@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script src="./progress-storage.js?v=20261003"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#10271d">
@@ -698,7 +699,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./app.js?v=1.10.2"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=recovery2',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=storage20261003',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>

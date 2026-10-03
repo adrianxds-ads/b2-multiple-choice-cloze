@@ -262,7 +262,7 @@ function loadState(){
 function save(){
   state.updatedAt=Date.now();state.history=state.history.slice(-HISTORY_LIMIT);state.sessionHistory=state.sessionHistory.slice(-SESSION_HISTORY_LIMIT);
   try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
-  catch(e){console.error("Progress save failed",e);state.history=state.history.slice(-3000);state.sessionHistory=state.sessionHistory.slice(-500);localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
+  catch(e){console.error("Progress save failed",e);throw e;}
 }
 
 function formatStudyTime(ms){const total=Math.max(0,Math.round((ms||0)/1000)),h=Math.floor(total/3600),m=Math.floor((total%3600)/60),s=total%60;return h?`${h}h ${String(m).padStart(2,"0")}m`:m?`${m}m ${String(s).padStart(2,"0")}s`:`${s}s`;}

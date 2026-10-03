@@ -1,6 +1,6 @@
 const CACHE_PREFIX='b2-territorio-1-';
-const CACHE='b2-territorio-1-v1.10.2-recovery2';
-const ASSETS=['./','./index.html','./adrian-visual-system.js','./adrian-achievements.js','./lessons.js','./keys.js','./error-coach.js','./language-points.js','./hub-path-game.js','./app.js','./territory-01.json','./manifest.webmanifest','./icon.svg'];
+const CACHE='b2-territorio-1-v1.10.2-storage20261003';
+const ASSETS=['./progress-storage.js','./','./index.html','./adrian-visual-system.js','./adrian-achievements.js','./lessons.js','./keys.js','./error-coach.js','./language-points.js','./hub-path-game.js','./app.js','./territory-01.json','./manifest.webmanifest','./icon.svg'];
 const CORE_RE=/\.(?:html|js|css|json|webmanifest)$/i;
 function withTimeout(req,ms,init={}){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);return fetch(req,{...init,signal:c.signal}).finally(()=>clearTimeout(t));}
 async function installCore(list){
