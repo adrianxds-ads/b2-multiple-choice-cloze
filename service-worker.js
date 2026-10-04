@@ -1,6 +1,6 @@
 const CACHE_PREFIX='b2-territorio-1-';
-const CACHE='b2-territorio-1-v1.10.4-readfirst20261003';
-const ASSETS=['./quiz-polish.css','./progress-storage.js','./','./index.html','./adrian-visual-system.js','./adrian-achievements.js','./lessons.js','./keys.js','./error-coach.js','./language-points.js','./hub-path-game.js','./app.js','./territory-01.json','./manifest.webmanifest','./icon.svg'];
+const CACHE='b2-territorio-1-v1.10.4-core-sync-20261004';
+const ASSETS=['./quiz-polish.css','./progress-storage.js','./','./index.html','/adrian-core/design/adrian-visual-system.js','/adrian-core/components/adrian-achievements.js','./lessons.js','./keys.js','./error-coach.js','./language-points.js','/adrian-core/components/hub-path-game.js','./app.js','./territory-01.json','./manifest.webmanifest','./icon.svg'];
 const CORE_RE=/\.(?:html|js|css|json|webmanifest)$/i;
 function withTimeout(req,ms,init={}){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);return fetch(req,{...init,signal:c.signal}).finally(()=>clearTimeout(t));}
 async function installCore(list){
