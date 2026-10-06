@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <script src="./progress-storage.js?v=20261003"></script>
@@ -694,7 +694,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <section id="missionOverlay" class="mission-overlay hidden" aria-hidden="true"><div class="mission-card"><div id="missionBody"></div><div id="missionCount" class="mission-count"></div></div></section>
 <div id="particles" class="particles" aria-hidden="true"></div>
 <script src="https://adrianxds-ads.github.io/adrian-core/design/adrian-visual-system.js?v=core-20261004b"></script>
-<script src="https://adrianxds-ads.github.io/adrian-core/components/adrian-achievements.js?v=core-20261004b"></script>
+<script src="https://adrianxds-ads.github.io/adrian-core/components/adrian-achievements.js?v=core-20261004b"></script><script src="https://adrianxds-ads.github.io/adrian-core/components/adrian-performance.js?v=1.0.0-20261006"></script>
 <script src="./lessons.js?v=1.2.2"></script>
 <script src="./keys.js?v=1.2.2"></script>
 <script src="./error-coach.js?v=1.2.2"></script>
@@ -705,10 +705,10 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./app.js?v=1.10.4-oca2"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=core-sync-20261004',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=performance-20261006',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
-<script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>
+<script src="./performance-adapter.js?v=1.0.0-20261006"></script><script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=9"></script>
 
 </body>
 </html>
