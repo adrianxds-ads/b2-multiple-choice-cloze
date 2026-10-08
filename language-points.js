@@ -90,7 +90,7 @@ function renderHome(){
   ensureStyle();
   const panel=document.querySelector("#startScreen .panel");if(!panel)return;
   let bar=document.getElementById("languagePointsHome");
-  if(!bar){bar=document.createElement("div");bar.id="languagePointsHome";bar.className="lp-homebar";const anchor=panel.querySelector(".hero-progress");if(anchor)panel.insertBefore(bar,anchor);else panel.appendChild(bar);}
+  if(!bar){bar=document.createElement("div");bar.id="languagePointsHome";bar.className="lp-homebar";const anchor=panel.querySelector(".hero-progress");if(anchor)anchor.parentNode.insertBefore(bar,anchor);else panel.appendChild(bar);}
   const s=load();
   bar.innerHTML="<div class='lp-homecell'><b>"+fmt(s.totalPoints)+"</b><span>LANGUAGE PTS</span></div><div class='lp-homecell'><b>"+fmt(s.rating)+"</b><span>RATING</span></div>";
 }
