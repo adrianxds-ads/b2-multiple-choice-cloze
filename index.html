@@ -8,8 +8,8 @@
 <meta name="theme-color" content="#10271d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="ae-version" content="1.10.10">
-<title>B2 Territorio 1 - v1.10.10</title>
+<meta name="ae-version" content="1.10.11">
+<title>B2 Territorio 1 - v1.10.11</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -550,8 +550,9 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs · progress · keys</span></button>
       <button id="coachBtn" class="secondary menu-btn"><b>MY COACH</b><span>Focus · common mistakes · rules</span></button>
     </div>
-    <details class="home-details"><summary>Ver progreso y valoración</summary>
     <div id="startMedals" class="medal-summary-host"></div>
+<details class="home-details"><summary>Ver progreso y valoración</summary>
+    
     <div class="ai-valuation-box hero-ai"><div><span>AI VALORATION</span><b id="startAiLevel">— / 15</b><small id="startAiConfidence">Estimación adaptativa</small></div><em>AI</em></div>
 <div class="hero-progress">
       <div class="progress-label"><span>Coverage</span><strong id="coverageText">0 / 1610</strong></div>
@@ -716,16 +717,16 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <section id="missionOverlay" class="mission-overlay hidden" aria-hidden="true"><div class="mission-card"><div id="missionBody"></div><div id="missionCount" class="mission-count"></div></div></section>
 <div id="particles" class="particles" aria-hidden="true"></div>
 <script src="https://adrianxds-ads.github.io/adrian-core/design/adrian-visual-system.js?v=core-20261004b"></script>
-<script src="https://adrianxds-ads.github.io/adrian-core/components/adrian-achievements.js?v=c796fa764ae1"></script><script src="https://adrianxds-ads.github.io/adrian-core/components/hub-charts.js?v=1.0.0"></script>
+<script src="https://adrianxds-ads.github.io/adrian-core/components/adrian-achievements.js?v=celebration-20261008"></script><script src="https://adrianxds-ads.github.io/adrian-core/components/hub-charts.js?v=1.1.0"></script>
 <script src="https://adrianxds-ads.github.io/adrian-core/components/adrian-performance.js?v=1.1.0"></script>
 <script src="./lessons.js?v=1.2.2"></script>
 <script src="./keys.js?v=1.2.2"></script>
 <script src="./error-coach.js?v=1.2.2"></script>
 <script>window.LANGUAGE_POINTS_CONFIG={appId:"cloze",timeLimit:15};</script>
-<script src="./language-points.js?v=1.10.10"></script>
+<script src="./language-points.js?v=1.10.11"></script>
 
-<script src="./territory-01.js?v=1.10.10"></script>
-<script src="./app.js?v=1.10.10-oca2"></script>
+<script src="./territory-01.js?v=1.10.11"></script>
+<script src="./app.js?v=1.10.11-oca2"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
   navigator.serviceWorker.register('./service-worker.js?v=performance-20261006b',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});

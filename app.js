@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.10.10";
+const APP_VERSION = "1.10.11";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -592,7 +592,7 @@ function deltaText(value,goodUp=true,suffix=""){
   return `<span class="delta ${good?"good":bad?"bad":"neutral"}" style="color:${color}">${arrow} ${Math.abs(value).toFixed(1)}${suffix}</span>`;
 }
 function sparkline(values,format=v=>String(Math.round(v)),lowerBetter=false,refLine=null,refLabel="Avg"){
- if(window.HubCharts)return HubCharts.chart(values,{title:"Línea de aprendizaje"});
+ if(window.HubCharts)return HubCharts.chart(values.map((value,i)=>({value,at:state.sessionHistory.filter(x=>x.mode==="training")[i]?.ts,label:"Nivel "+state.sessionHistory.filter(x=>x.mode==="training")[i]?.level})),{title:"Línea de aprendizaje · histórico completo"});
   values=Array.isArray(values)?values.filter(Number.isFinite):[];
   if(values.length<2)return '<div class="footerline">Complete a few levels to build this graph.</div>';
   const w=600,h=108,p=10,min=Math.min(...values),max=Math.max(...values),span=Math.max(.01,max-min);
@@ -606,7 +606,7 @@ function sparkline(values,format=v=>String(Math.round(v)),lowerBetter=false,refL
   return `<svg class="chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><line x1="0" y1="${h-p}" x2="${w}" y2="${h-p}" stroke="rgba(255,255,255,.12)"/><line x1="0" y1="${p}" x2="${w}" y2="${p}" stroke="rgba(255,255,255,.07)"/>${meanSvg}${shadow}${segments}${dots}</svg><div class="chartmeta"><span style="color:${valueTextColor(current/100)}">Now ${format(current)}</span><span style="color:${valueTextColor(best/100)}">Best ${format(best)}</span>${meanMeta}</div>`;
 }
 function sessionScoreChart(rows,expanded=false){
- if(window.HubCharts)return HubCharts.chart((rows||[]).filter(r=>!r.mode||r.mode==="training").map(r=>({at:r.ts,value:r.total?15*r.correct/r.total:null})),{max:15,unit:" /15",title:"Resultados"});
+ if(window.HubCharts)return HubCharts.chart((rows||[]).filter(r=>!r.mode||r.mode==="training").map(r=>({at:r.ts,value:r.total?15*r.correct/r.total:null,target:Number.isFinite(r.target)?15*r.target/r.total:null,label:"Nivel "+r.level,weight:r.total})),{max:15,unit:" /15",title:"Resultados · histórico completo",expanded});
   rows=(rows||[]).filter(x=>x.mode==="training"&&Number.isFinite(x.correct)&&Number.isFinite(x.ts));
   if(rows.length<2)return '<div class="footerline">Complete a few levels to build this graph.</div>';
   const colors=GRAPH_BANDS_15,mobile=!expanded&&window.innerWidth<=620;
@@ -1149,10 +1149,10 @@ async function showLevelResolution(s,before){
   $("missionCount").textContent="ROUTE";
   playLevelScore(s.correct,s.total);window.AdrianAchievements?.play?.(tone,s.correct,s.total);
   const label=s.mode==="final"?(hit?"FINAL CLEARED":"FINAL NOT CLEARED"):(hit?"TARGET CLEARED":"TARGET MISSED");
-  const pathRun=window.HubPathGame?.resolve?.({appId:"b2-cloze",theme:"b2-cloze",correct:s.correct,total:s.total,bestCombo:s.bestCombo||0,mount:$("missionBody"),duration:3200,label,eventId:`b2-cloze:${s.ts||Date.now()}:${s.level}:${s.mode}`});
-  if(pathRun)await settleUi(pathRun,5000,"Hub route");else await wait(3200);
-  missionOverlay(false);
+  $("missionCount").textContent=achievement?"MEDALLA":"SESIÓN COMPLETA";
+  try{await window.AdrianAchievements.celebrate(s.correct,s.total,{mount:$("missionBody"),counts:medalCounts(),label});}finally{missionOverlay(false);}
 }
+
 function adaptiveLevelTarget(plan){
   if(!Array.isArray(plan)||!plan.length)return null;
   const training=state.sessionHistory.filter(x=>x.mode==="training"&&Number.isFinite(x.correct)&&Number.isFinite(x.total)).slice(-8),recentExpected=training.length?mean(training.map(x=>15*x.correct/x.total)):15*(state.history.length?overallStats().accuracy:.50),globalAcc=state.history.length?overallStats().accuracy:.50;
@@ -1341,7 +1341,7 @@ async function boot(){
   $("startBtn").onclick=async()=>{await ensureAudio();await startSession(false);};
   if($("readFirstToggle")){$("readFirstToggle").onclick=toggleReadFirstMode;syncReadFirstButton();}
   $("statsBtn").onclick=()=>{renderStatsScreen();showScreen("statsScreen");};
-  $("scoreExpandBtn").onclick=()=>{const rows=state.sessionHistory.filter(x=>x.mode==="training");$("scoreExpandedChart").innerHTML=sessionScoreChart(rows,true);$("scoreModal").classList.remove("hidden");};
+  $("scoreExpandBtn").onclick=()=>{const rows=state.sessionHistory.filter(x=>x.mode==="training");if(window.HubCharts)return HubCharts.open(rows.map(x=>({at:x.ts,value:15*x.correct/x.total,target:x.target,label:"Nivel "+x.level})),{max:15,unit:" /15",title:"Resultados · histórico completo"});$("scoreExpandedChart").innerHTML=sessionScoreChart(rows,true);$("scoreModal").classList.remove("hidden");};
   $("scoreCloseBtn").onclick=()=>$("scoreModal").classList.add("hidden");
   $("scoreModal").onclick=e=>{if(e.target===$("scoreModal"))$("scoreModal").classList.add("hidden");};
   $("coachBtn").onclick=()=>{renderCoachScreen();showScreen("coachScreen");};
