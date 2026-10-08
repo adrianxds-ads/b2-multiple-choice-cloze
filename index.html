@@ -8,8 +8,8 @@
 <meta name="theme-color" content="#10271d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="ae-version" content="1.10.11">
-<title>B2 Territorio 1 - v1.10.11</title>
+<meta name="ae-version" content="1.10.12">
+<title>B2 Territorio 1 - v1.10.12</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <style>
@@ -511,6 +511,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 }
 </style>
 <style id="mobile-viewport-containment">html,body{overflow-x:clip}</style>
+<style id="end-secondary-actions-style">#endScreen .end-secondary-actions{margin:16px 0 8px;border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:0 14px}#endScreen .end-secondary-actions>summary{cursor:pointer;min-height:48px;display:flex;align-items:center;font-size:14px;font-weight:800}#endScreen .end-secondary-actions[open]{padding-bottom:12px}#endScreen .end-secondary-actions>.actions{margin-top:4px}#endScreen .end-secondary-actions>summary:focus-visible{outline:3px solid currentColor;outline-offset:3px}</style>
 <link rel="stylesheet" href="./quiz-polish.css?v=20261003-1">
 <style id="read-first-style">
 .read-first-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 2px}.read-first-row small{color:var(--muted);font-size:11px;font-weight:750;line-height:1.35}.read-first-toggle{min-height:42px!important;padding:10px 12px!important;border-radius:999px!important;font-size:11px!important;letter-spacing:.035em!important}.read-first-toggle[aria-pressed="true"]{background:rgba(143,215,176,.14)!important;border-color:rgba(143,215,176,.42)!important;color:#eafff2!important}#answers{transition:opacity .12s ease}#answers.read-first-hidden{visibility:hidden;opacity:0;pointer-events:none}
@@ -693,12 +694,14 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     </div>
     <div class="section"><h3>Skill League · current ranking</h3><div id="weakSkills"></div></div>
     <div class="ai-legend-wrap"><span>CÓDIGO DE COLOR · 1 BAJO → 15 MÁXIMO</span><div id="aiLegend" class="ai-legend"></div></div>
+    <details class="end-secondary-actions"><summary>Más acciones (mismos botones de arriba)</summary>
     <div class="actions">
       <button id="continueBtn" class="primary">NEXT LEVEL</button>
       <button id="homeBtn" class="secondary">DASHBOARD · PORTADA</button>
       <button id="errorsBtn" class="secondary hidden">REVIEW ERRORS</button>
       <button id="finalBtn" class="secondary hidden">FINAL CHALLENGE</button>
     </div>
+    </details>
     <div id="endBuildVersion" class="footerline">B2 Territorio 1 · checking version…</div>
   </div>
 </section>
@@ -723,10 +726,10 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./keys.js?v=1.2.2"></script>
 <script src="./error-coach.js?v=1.2.2"></script>
 <script>window.LANGUAGE_POINTS_CONFIG={appId:"cloze",timeLimit:15};</script>
-<script src="./language-points.js?v=1.10.11"></script>
+<script src="./language-points.js?v=1.10.12"></script>
 
-<script src="./territory-01.js?v=1.10.11"></script>
-<script src="./app.js?v=1.10.11-oca2"></script>
+<script src="./territory-01.js?v=1.10.12"></script>
+<script src="./app.js?v=1.10.12-oca2"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
   navigator.serviceWorker.register('./service-worker.js?v=performance-20261006b',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
