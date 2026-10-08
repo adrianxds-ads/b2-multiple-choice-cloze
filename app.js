@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.10.9";
+const APP_VERSION = "1.10.10";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -592,6 +592,7 @@ function deltaText(value,goodUp=true,suffix=""){
   return `<span class="delta ${good?"good":bad?"bad":"neutral"}" style="color:${color}">${arrow} ${Math.abs(value).toFixed(1)}${suffix}</span>`;
 }
 function sparkline(values,format=v=>String(Math.round(v)),lowerBetter=false,refLine=null,refLabel="Avg"){
+ if(window.HubCharts)return HubCharts.chart(values,{title:"Línea de aprendizaje"});
   values=Array.isArray(values)?values.filter(Number.isFinite):[];
   if(values.length<2)return '<div class="footerline">Complete a few levels to build this graph.</div>';
   const w=600,h=108,p=10,min=Math.min(...values),max=Math.max(...values),span=Math.max(.01,max-min);
@@ -605,6 +606,7 @@ function sparkline(values,format=v=>String(Math.round(v)),lowerBetter=false,refL
   return `<svg class="chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><line x1="0" y1="${h-p}" x2="${w}" y2="${h-p}" stroke="rgba(255,255,255,.12)"/><line x1="0" y1="${p}" x2="${w}" y2="${p}" stroke="rgba(255,255,255,.07)"/>${meanSvg}${shadow}${segments}${dots}</svg><div class="chartmeta"><span style="color:${valueTextColor(current/100)}">Now ${format(current)}</span><span style="color:${valueTextColor(best/100)}">Best ${format(best)}</span>${meanMeta}</div>`;
 }
 function sessionScoreChart(rows,expanded=false){
+ if(window.HubCharts)return HubCharts.chart((rows||[]).filter(r=>!r.mode||r.mode==="training").map(r=>({at:r.ts,value:r.total?15*r.correct/r.total:null})),{max:15,unit:" /15",title:"Resultados"});
   rows=(rows||[]).filter(x=>x.mode==="training"&&Number.isFinite(x.correct)&&Number.isFinite(x.ts));
   if(rows.length<2)return '<div class="footerline">Complete a few levels to build this graph.</div>';
   const colors=GRAPH_BANDS_15,mobile=!expanded&&window.innerWidth<=620;
