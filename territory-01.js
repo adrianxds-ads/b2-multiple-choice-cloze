@@ -2,7 +2,7 @@ window.__AE_CAMPAIGN__ = {
   "schemaVersion": 1,
   "campaignId": "B2-MCC-C1",
   "title": "B2 Territorio 1",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "startingLevel": 1,
   "sessionSize": 15,
   "timeLimit": 15,
@@ -39514,7 +39514,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940119,
@@ -39546,7 +39550,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940120,
@@ -39579,7 +39587,12 @@ window.__AE_CAMPAIGN__ = {
         "as",
         "like"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "as",
+        "like"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940121,
@@ -39612,7 +39625,12 @@ window.__AE_CAMPAIGN__ = {
         "as",
         "like"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "as",
+        "like"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940122,
@@ -39644,7 +39662,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940123,
@@ -39676,7 +39698,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940124,
@@ -39708,7 +39734,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "their"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "their"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940125,
@@ -39740,7 +39770,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "their"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "their"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940126,
@@ -39773,7 +39807,12 @@ window.__AE_CAMPAIGN__ = {
         "everyone",
         "everybody"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "everyone",
+        "everybody"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940127,
@@ -39806,7 +39845,12 @@ window.__AE_CAMPAIGN__ = {
         "everyone",
         "everybody"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "everyone",
+        "everybody"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940128,
@@ -39838,7 +39882,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940129,
@@ -39870,7 +39918,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940130,
@@ -39902,7 +39954,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "without"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "without"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940131,
@@ -39934,7 +39990,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "without"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "without"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940132,
@@ -39966,7 +40026,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "little"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "little"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940133,
@@ -39998,7 +40062,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "little"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "little"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950134,
@@ -40030,7 +40098,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "discoveries"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "discoveries"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950135,
@@ -40062,7 +40134,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "discoveries"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "discoveries"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950136,
@@ -40094,7 +40170,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950137,
@@ -40126,7 +40206,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950138,
@@ -40158,7 +40242,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "knowledge"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "knowledge"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950140,
@@ -40190,7 +40278,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unbelievable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unbelievable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950141,
@@ -40222,7 +40314,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unbelievable"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unbelievable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950142,
@@ -40254,7 +40350,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "including"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "including"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950143,
@@ -40286,7 +40386,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "including"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "including"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950144,
@@ -40318,7 +40422,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "additionally"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "additionally"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950145,
@@ -40350,7 +40458,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "additionally"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "additionally"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950146,
@@ -40382,7 +40494,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "roughly"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "roughly"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950148,
@@ -40414,7 +40530,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "expectations"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "expectations"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950149,
@@ -40446,7 +40566,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "expectations"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "expectations"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940218,
@@ -40478,7 +40602,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "long"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "long"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940219,
@@ -40510,7 +40638,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "long"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "long"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940220,
@@ -40542,7 +40674,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "too"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "too"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940221,
@@ -40574,7 +40710,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "too"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "too"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940222,
@@ -40606,7 +40746,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "a"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "a"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940223,
@@ -40638,7 +40782,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "a"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "a"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940224,
@@ -40670,7 +40818,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "been"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "been"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940225,
@@ -40702,7 +40854,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "been"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "been"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940226,
@@ -40734,7 +40890,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "not"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "not"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940227,
@@ -40766,7 +40926,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "not"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "not"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940228,
@@ -40798,7 +40962,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "able"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "able"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940229,
@@ -40830,7 +40998,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "able"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "able"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940230,
@@ -40862,7 +41034,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "it"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "it"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940231,
@@ -40894,7 +41070,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "it"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "it"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940232,
@@ -40926,7 +41106,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "up"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "up"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940233,
@@ -40958,7 +41142,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "up"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "up"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950234,
@@ -40990,7 +41178,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "beneficial"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "beneficial"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950236,
@@ -41022,7 +41214,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "energetic"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "energetic"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950237,
@@ -41054,7 +41250,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "energetic"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "energetic"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950238,
@@ -41086,7 +41286,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "length"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "length"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950239,
@@ -41118,7 +41322,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "length"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "length"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950240,
@@ -41150,7 +41358,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "lifestyle"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "lifestyle"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950241,
@@ -41182,7 +41394,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "lifestyle"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "lifestyle"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950242,
@@ -41214,7 +41430,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unlike"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unlike"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950243,
@@ -41246,7 +41466,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unlike"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unlike"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950244,
@@ -41279,7 +41503,12 @@ window.__AE_CAMPAIGN__ = {
         "behaviour",
         "behaviours"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "behaviour",
+        "behaviours"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950246,
@@ -41311,7 +41540,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "daily"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "daily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950247,
@@ -41343,7 +41576,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "daily"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "daily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950248,
@@ -41375,7 +41612,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "automatically"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "automatically"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950249,
@@ -41407,7 +41648,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "automatically"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "automatically"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940318,
@@ -41439,7 +41684,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "apart"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "apart"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940319,
@@ -41471,7 +41720,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "apart"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "apart"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940320,
@@ -41503,7 +41756,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940321,
@@ -41535,7 +41792,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940322,
@@ -41567,7 +41828,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "by"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "by"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940323,
@@ -41599,7 +41864,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "by"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "by"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940324,
@@ -41631,7 +41900,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "of"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "of"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940325,
@@ -41663,7 +41936,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "of"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "of"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940326,
@@ -41695,7 +41972,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "order"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "order"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940327,
@@ -41727,7 +42008,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "order"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "order"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940328,
@@ -41759,7 +42044,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "fact"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "fact"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940329,
@@ -41791,7 +42080,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "fact"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "fact"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940330,
@@ -41823,7 +42116,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940331,
@@ -41855,7 +42152,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940332,
@@ -41887,7 +42188,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "the"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "the"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940333,
@@ -41919,7 +42224,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "the"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "the"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950334,
@@ -41951,7 +42260,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "breathtaking"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "breathtaking"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950336,
@@ -41983,7 +42296,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "beautifully"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "beautifully"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950338,
@@ -42015,7 +42332,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "inspiration"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "inspiration"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950339,
@@ -42047,7 +42368,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "inspiration"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "inspiration"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950340,
@@ -42079,7 +42404,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impressive"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "impressive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950341,
@@ -42111,7 +42440,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impressive"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "impressive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950342,
@@ -42143,7 +42476,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "educational"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "educational"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950344,
@@ -42175,7 +42512,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "accessible"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "accessible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950346,
@@ -42207,7 +42548,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "admission"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "admission"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950348,
@@ -42239,7 +42584,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unlimited"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unlimited"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950349,
@@ -42271,7 +42620,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unlimited"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unlimited"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940418,
@@ -42303,7 +42656,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940419,
@@ -42335,7 +42692,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940420,
@@ -42367,7 +42728,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940421,
@@ -42399,7 +42764,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940422,
@@ -42431,7 +42800,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940423,
@@ -42463,7 +42836,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940424,
@@ -42496,7 +42873,12 @@ window.__AE_CAMPAIGN__ = {
         "a",
         "one"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "a",
+        "one"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940425,
@@ -42529,7 +42911,12 @@ window.__AE_CAMPAIGN__ = {
         "a",
         "one"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "a",
+        "one"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940426,
@@ -42561,7 +42948,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "all"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "all"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940427,
@@ -42593,7 +42984,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "all"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "all"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940428,
@@ -42626,7 +43021,12 @@ window.__AE_CAMPAIGN__ = {
         "which",
         "that"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "which",
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940429,
@@ -42659,7 +43059,12 @@ window.__AE_CAMPAIGN__ = {
         "which",
         "that"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "which",
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940430,
@@ -42691,7 +43096,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "have"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940431,
@@ -42723,7 +43132,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "have"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940432,
@@ -42755,7 +43168,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "was"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "was"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940433,
@@ -42787,7 +43204,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "was"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "was"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950434,
@@ -42819,7 +43240,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "wealthy"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "wealthy"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950436,
@@ -42851,7 +43276,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "consequently"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "consequently"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950437,
@@ -42883,7 +43312,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "consequently"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "consequently"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950438,
@@ -42915,7 +43348,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "childhood"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "childhood"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950440,
@@ -42947,7 +43384,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "criticism"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "criticism"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950442,
@@ -42979,7 +43420,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unsuitable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unsuitable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950444,
@@ -43011,7 +43456,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "discouraged"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "discouraged"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950445,
@@ -43043,7 +43492,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "discouraged"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "discouraged"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950446,
@@ -43075,7 +43528,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "productive"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "productive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950447,
@@ -43107,7 +43564,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "productive"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "productive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950448,
@@ -43139,7 +43600,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "death"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "death"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950449,
@@ -43171,7 +43636,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "death"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "death"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940518,
@@ -43203,7 +43672,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "no"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "no"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940519,
@@ -43235,7 +43708,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "no"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "no"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940520,
@@ -43267,7 +43744,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "a"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "a"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940521,
@@ -43299,7 +43780,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "a"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "a"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940522,
@@ -43331,7 +43816,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "for"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940523,
@@ -43363,7 +43852,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "for"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940524,
@@ -43395,7 +43888,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940525,
@@ -43427,7 +43924,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940526,
@@ -43459,7 +43960,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940527,
@@ -43491,7 +43996,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940528,
@@ -43523,7 +44032,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "have"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940529,
@@ -43555,7 +44068,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "have"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940530,
@@ -43587,7 +44104,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "such"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "such"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940531,
@@ -43619,7 +44140,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "such"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "such"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940532,
@@ -43651,7 +44176,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "but"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "but"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940533,
@@ -43683,7 +44212,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "but"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "but"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950534,
@@ -43715,7 +44248,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "contribution"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "contribution"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950536,
@@ -43747,7 +44284,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "original"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "original"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950538,
@@ -43779,7 +44320,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "freezing"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "freezing"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950540,
@@ -43811,7 +44356,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "visible"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "visible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950541,
@@ -43843,7 +44392,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "visible"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "visible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950542,
@@ -43875,7 +44428,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "designer"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "designer"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950544,
@@ -43908,7 +44465,12 @@ window.__AE_CAMPAIGN__ = {
         "effective",
         "efficient"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "effective",
+        "efficient"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950546,
@@ -43940,7 +44502,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "replaced"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "replaced"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950548,
@@ -43972,7 +44538,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "considerably"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "considerably"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950549,
@@ -44004,7 +44574,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "considerably"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "considerably"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940618,
@@ -44036,7 +44610,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "a"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "a"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940619,
@@ -44068,7 +44646,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "a"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "a"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940620,
@@ -44100,7 +44682,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "had"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "had"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940621,
@@ -44132,7 +44718,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "had"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "had"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940622,
@@ -44165,7 +44755,12 @@ window.__AE_CAMPAIGN__ = {
         "who",
         "that"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "who",
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940623,
@@ -44198,7 +44793,12 @@ window.__AE_CAMPAIGN__ = {
         "who",
         "that"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "who",
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940624,
@@ -44230,7 +44830,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "more"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "more"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940625,
@@ -44262,7 +44866,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "more"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "more"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940626,
@@ -44294,7 +44902,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940627,
@@ -44326,7 +44938,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940628,
@@ -44358,7 +44974,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "not"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "not"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940629,
@@ -44390,7 +45010,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "not"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "not"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940630,
@@ -44422,7 +45046,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "some"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "some"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940631,
@@ -44454,7 +45082,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "some"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "some"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940632,
@@ -44486,7 +45118,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "how"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "how"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940633,
@@ -44518,7 +45154,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "how"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "how"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950634,
@@ -44550,7 +45190,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "originally"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "originally"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950636,
@@ -44582,7 +45226,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "surfers"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "surfers"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950638,
@@ -44614,7 +45262,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "popularity"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "popularity"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950640,
@@ -44646,7 +45298,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "reasonably"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "reasonably"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950641,
@@ -44678,7 +45334,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "reasonably"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "reasonably"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950642,
@@ -44710,7 +45370,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "depending"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "depending"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950644,
@@ -44742,7 +45406,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "height"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "height"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950646,
@@ -44774,7 +45442,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "width"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "width"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950647,
@@ -44806,7 +45478,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "width"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "width"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950648,
@@ -44838,7 +45514,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "illegal"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "illegal"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940718,
@@ -44870,7 +45550,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "like"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "like"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940719,
@@ -44902,7 +45586,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "like"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "like"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940720,
@@ -44934,7 +45622,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940721,
@@ -44966,7 +45658,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940722,
@@ -44998,7 +45694,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "itself"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "itself"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940723,
@@ -45030,7 +45730,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "itself"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "itself"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940724,
@@ -45062,7 +45766,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "having"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "having"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940725,
@@ -45094,7 +45802,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "having"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "having"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940726,
@@ -45126,7 +45838,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "much"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "much"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940727,
@@ -45158,7 +45874,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "much"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "much"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940728,
@@ -45190,7 +45910,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "so"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "so"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940729,
@@ -45222,7 +45946,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "so"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "so"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940730,
@@ -45254,7 +45982,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "putting"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "putting"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940731,
@@ -45286,7 +46018,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "putting"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "putting"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940732,
@@ -45318,7 +46054,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940733,
@@ -45350,7 +46090,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950734,
@@ -45382,7 +46126,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "mathematician"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "mathematician"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950736,
@@ -45414,7 +46162,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "discoveries"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "discoveries"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950737,
@@ -45446,7 +46198,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "discoveries"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "discoveries"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950738,
@@ -45478,7 +46234,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "produced"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "produced"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950739,
@@ -45510,7 +46270,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "produced"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "produced"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950740,
@@ -45542,7 +46306,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "enable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "enable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950741,
@@ -45574,7 +46342,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "enable"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "enable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950742,
@@ -45606,7 +46378,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "solutions"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "solutions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950744,
@@ -45638,7 +46414,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "novelist"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "novelist"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950746,
@@ -45670,7 +46450,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "dramatically"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "dramatically"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950748,
@@ -45703,7 +46487,12 @@ window.__AE_CAMPAIGN__ = {
         "achievement",
         "achievements"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "achievement",
+        "achievements"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940818,
@@ -45735,7 +46524,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "well"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "well"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940819,
@@ -45767,7 +46560,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "well"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "well"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940820,
@@ -45799,7 +46596,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940821,
@@ -45831,7 +46632,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940822,
@@ -45863,7 +46668,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940823,
@@ -45895,7 +46704,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940824,
@@ -45927,7 +46740,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "makes"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "makes"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940825,
@@ -45959,7 +46776,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "makes"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "makes"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940826,
@@ -45991,7 +46812,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "despite"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "despite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940827,
@@ -46023,7 +46848,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "despite"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "despite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940828,
@@ -46055,7 +46884,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940829,
@@ -46087,7 +46920,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940830,
@@ -46119,7 +46956,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "has"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "has"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940831,
@@ -46151,7 +46992,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "has"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "has"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940832,
@@ -46183,7 +47028,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "the"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "the"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940833,
@@ -46215,7 +47064,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "the"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "the"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950834,
@@ -46247,7 +47100,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "appearance"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "appearance"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950835,
@@ -46279,7 +47136,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "appearance"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "appearance"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950836,
@@ -46311,7 +47172,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "height"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "height"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950838,
@@ -46343,7 +47208,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "massive"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "massive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950840,
@@ -46375,7 +47244,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "storage"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "storage"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950842,
@@ -46407,7 +47280,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impossible"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "impossible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950843,
@@ -46439,7 +47316,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impossible"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "impossible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950844,
@@ -46471,7 +47352,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unexpectedly"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unexpectedly"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950845,
@@ -46503,7 +47388,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unexpectedly"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unexpectedly"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950846,
@@ -46535,7 +47424,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "belief"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "belief"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950847,
@@ -46567,7 +47460,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "belief"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "belief"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950848,
@@ -46599,7 +47496,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "surprising"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "surprising"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940918,
@@ -46631,7 +47532,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "why"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "why"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940919,
@@ -46663,7 +47568,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "why"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "why"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940920,
@@ -46695,7 +47604,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940921,
@@ -46727,7 +47640,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940922,
@@ -46759,7 +47676,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "come"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "come"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940923,
@@ -46791,7 +47712,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "come"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "come"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940924,
@@ -46823,7 +47748,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "for"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940925,
@@ -46855,7 +47784,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "for"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940926,
@@ -46887,7 +47820,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940927,
@@ -46919,7 +47856,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940928,
@@ -46951,7 +47892,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940929,
@@ -46983,7 +47928,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940930,
@@ -47015,7 +47964,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "something"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "something"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940931,
@@ -47047,7 +48000,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "something"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "something"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940932,
@@ -47079,7 +48036,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "give"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "give"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 940933,
@@ -47111,7 +48072,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "give"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "give"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950934,
@@ -47143,7 +48108,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "length"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "length"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950935,
@@ -47175,7 +48144,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "length"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "length"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950936,
@@ -47207,7 +48180,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "artistic"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "artistic"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950938,
@@ -47239,7 +48216,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "spectacular"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "spectacular"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950940,
@@ -47271,7 +48252,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impressive"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "impressive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950941,
@@ -47303,7 +48288,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impressive"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "impressive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950942,
@@ -47335,7 +48324,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "appearance"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "appearance"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950943,
@@ -47367,7 +48360,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "appearance"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "appearance"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950944,
@@ -47399,7 +48396,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unsurprisingly"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unsurprisingly"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950946,
@@ -47431,7 +48432,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "inspiration"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "inspiration"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950947,
@@ -47463,7 +48468,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "inspiration"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "inspiration"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 950948,
@@ -47495,7 +48504,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "enthusiastic"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "enthusiastic"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941018,
@@ -47527,7 +48540,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "known"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "known"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941019,
@@ -47559,7 +48576,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "known"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "known"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941020,
@@ -47591,7 +48612,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "made"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "made"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941021,
@@ -47623,7 +48648,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "made"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "made"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941022,
@@ -47655,7 +48684,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "less"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "less"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941023,
@@ -47687,7 +48720,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "less"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "less"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941024,
@@ -47719,7 +48756,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "much"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "much"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941025,
@@ -47751,7 +48792,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "much"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "much"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941026,
@@ -47783,7 +48828,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "being"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "being"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941027,
@@ -47815,7 +48864,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "being"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "being"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941028,
@@ -47848,7 +48901,12 @@ window.__AE_CAMPAIGN__ = {
         "for",
         "over"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "for",
+        "over"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941029,
@@ -47881,7 +48939,12 @@ window.__AE_CAMPAIGN__ = {
         "for",
         "over"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "for",
+        "over"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941030,
@@ -47913,7 +48976,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "the"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "the"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941031,
@@ -47945,7 +49012,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "the"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "the"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941032,
@@ -47977,7 +49048,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "up"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "up"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941033,
@@ -48009,7 +49084,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "up"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "up"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951034,
@@ -48041,7 +49120,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "daily"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "daily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951035,
@@ -48073,7 +49156,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "daily"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "daily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951036,
@@ -48105,7 +49192,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "enable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "enable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951037,
@@ -48137,7 +49228,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "enable"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "enable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951038,
@@ -48169,7 +49264,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "accuracy"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "accuracy"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951039,
@@ -48201,7 +49300,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "accuracy"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "accuracy"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951040,
@@ -48233,7 +49336,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "arrival"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "arrival"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951042,
@@ -48265,7 +49372,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "combination"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "combination"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951044,
@@ -48297,7 +49408,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "measurements"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "measurements"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951046,
@@ -48329,7 +49444,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unpredictable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unpredictable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951048,
@@ -48361,7 +49480,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "certainty"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "certainty"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951049,
@@ -48393,7 +49516,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "certainty"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "certainty"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941118,
@@ -48425,7 +49552,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "where"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "where"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941119,
@@ -48457,7 +49588,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "where"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "where"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941120,
@@ -48489,7 +49624,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941121,
@@ -48521,7 +49660,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941122,
@@ -48553,7 +49696,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941123,
@@ -48585,7 +49732,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941124,
@@ -48617,7 +49768,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "out"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "out"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941125,
@@ -48649,7 +49804,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "out"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "out"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941126,
@@ -48681,7 +49840,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941127,
@@ -48713,7 +49876,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941128,
@@ -48747,7 +49914,14 @@ window.__AE_CAMPAIGN__ = {
         "though",
         "while"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "although",
+        "Although",
+        "Though",
+        "While"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941129,
@@ -48781,7 +49955,14 @@ window.__AE_CAMPAIGN__ = {
         "though",
         "while"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "although",
+        "Although",
+        "Though",
+        "While"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941130,
@@ -48813,7 +49994,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "get"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "get"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941131,
@@ -48845,7 +50030,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "get"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "get"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941132,
@@ -48878,7 +50067,12 @@ window.__AE_CAMPAIGN__ = {
         "make",
         "have"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "make",
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941133,
@@ -48911,7 +50105,12 @@ window.__AE_CAMPAIGN__ = {
         "make",
         "have"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "make",
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951134,
@@ -48943,7 +50142,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "satisfaction"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "satisfaction"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951136,
@@ -48975,7 +50178,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "successful"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "successful"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951138,
@@ -49007,7 +50214,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "discover"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "discover"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951140,
@@ -49039,7 +50250,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "solution"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "solution"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951142,
@@ -49071,7 +50286,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "improvement"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "improvement"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951144,
@@ -49103,7 +50322,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951145,
@@ -49135,7 +50358,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951146,
@@ -49167,7 +50394,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "performance"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "performance"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951148,
@@ -49199,7 +50430,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "uncertain"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "uncertain"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951149,
@@ -49231,7 +50466,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "uncertain"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "uncertain"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941218,
@@ -49263,7 +50502,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "come"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "come"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941219,
@@ -49295,7 +50538,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "come"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "come"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941220,
@@ -49327,7 +50574,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941221,
@@ -49359,7 +50610,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941222,
@@ -49391,7 +50646,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "more"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "more"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941223,
@@ -49423,7 +50682,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "more"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "more"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941224,
@@ -49455,7 +50718,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "ago"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "ago"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941225,
@@ -49487,7 +50754,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "ago"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "ago"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941226,
@@ -49519,7 +50790,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "from"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "from"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941227,
@@ -49551,7 +50826,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "from"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "from"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941228,
@@ -49584,7 +50863,12 @@ window.__AE_CAMPAIGN__ = {
         "would",
         "could"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "would",
+        "could"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941229,
@@ -49617,7 +50901,12 @@ window.__AE_CAMPAIGN__ = {
         "would",
         "could"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "would",
+        "could"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941230,
@@ -49649,7 +50938,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "so"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "so"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941231,
@@ -49681,7 +50974,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "so"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "so"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941232,
@@ -49713,7 +51010,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "how"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "how"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941233,
@@ -49745,7 +51046,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "how"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "how"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951234,
@@ -49777,7 +51082,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "truth"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "truth"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951235,
@@ -49809,7 +51118,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "truth"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "truth"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951236,
@@ -49841,7 +51154,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "relationship"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "relationship"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951237,
@@ -49873,7 +51190,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "relationship"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "relationship"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951238,
@@ -49905,7 +51226,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unsuitable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unsuitable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951240,
@@ -49937,7 +51262,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "absence"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "absence"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951242,
@@ -49969,7 +51298,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "inappropriate"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "inappropriate"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951243,
@@ -50001,7 +51334,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "inappropriate"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "inappropriate"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951244,
@@ -50033,7 +51370,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951245,
@@ -50065,7 +51406,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951246,
@@ -50097,7 +51442,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unfortunately"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unfortunately",
+        "Unfortunately"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951247,
@@ -50129,7 +51479,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unfortunately"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unfortunately",
+        "Unfortunately"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951248,
@@ -50161,7 +51516,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "easily"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "easily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951249,
@@ -50193,7 +51552,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "easily"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "easily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941318,
@@ -50225,7 +51588,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "put"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "put"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941319,
@@ -50257,7 +51624,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "put"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "put"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941320,
@@ -50289,7 +51660,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "but"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "but"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941321,
@@ -50321,7 +51696,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "but"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "but"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941322,
@@ -50353,7 +51732,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "more"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "more"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941323,
@@ -50385,7 +51768,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "more"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "more"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941324,
@@ -50417,7 +51804,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941325,
@@ -50449,7 +51840,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941326,
@@ -50483,7 +51878,13 @@ window.__AE_CAMPAIGN__ = {
         "though",
         "while"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "although",
+        "though",
+        "while"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941327,
@@ -50517,7 +51918,13 @@ window.__AE_CAMPAIGN__ = {
         "though",
         "while"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "although",
+        "though",
+        "while"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941328,
@@ -50549,7 +51956,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941329,
@@ -50581,7 +51992,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941330,
@@ -50613,7 +52028,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941331,
@@ -50645,7 +52064,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941332,
@@ -50677,7 +52100,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "take"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "take"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941333,
@@ -50709,7 +52136,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "take"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "take"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951334,
@@ -50741,7 +52172,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "incredible"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "incredible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951335,
@@ -50773,7 +52208,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "incredible"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "incredible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951336,
@@ -50805,7 +52244,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "description"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "description"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951338,
@@ -50837,7 +52280,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impression"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "impression"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951339,
@@ -50869,7 +52316,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impression"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "impression"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951340,
@@ -50901,7 +52352,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "surrounding"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "surrounding"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951342,
@@ -50934,7 +52389,12 @@ window.__AE_CAMPAIGN__ = {
         "farther",
         "further"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "farther",
+        "further"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951344,
@@ -50966,7 +52426,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "difficulty"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "difficulty"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951346,
@@ -50998,7 +52462,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "beginners"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "beginners"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951348,
@@ -51030,7 +52498,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "dangerous"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "dangerous"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951349,
@@ -51062,7 +52534,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "dangerous"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "dangerous"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941418,
@@ -51094,7 +52570,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "still"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "still"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941419,
@@ -51126,7 +52606,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "still"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "still"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941420,
@@ -51158,7 +52642,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "myself"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "myself"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941421,
@@ -51190,7 +52678,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "myself"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "myself"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941422,
@@ -51222,7 +52714,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "not"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "not"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941423,
@@ -51254,7 +52750,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "not"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "not"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941424,
@@ -51286,7 +52786,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "take"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "take"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941425,
@@ -51318,7 +52822,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "take"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "take"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941426,
@@ -51350,7 +52858,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "died"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "died"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941427,
@@ -51382,7 +52894,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "died"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "died"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941428,
@@ -51414,7 +52930,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "something"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "something"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941429,
@@ -51446,7 +52966,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "something"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "something"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941430,
@@ -51479,7 +53003,12 @@ window.__AE_CAMPAIGN__ = {
         "though",
         "when"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "though",
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941431,
@@ -51512,7 +53041,12 @@ window.__AE_CAMPAIGN__ = {
         "though",
         "when"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "though",
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941432,
@@ -51546,7 +53080,13 @@ window.__AE_CAMPAIGN__ = {
         "work",
         "sketch"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "draw",
+        "work",
+        "sketch"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941433,
@@ -51580,7 +53120,13 @@ window.__AE_CAMPAIGN__ = {
         "work",
         "sketch"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "draw",
+        "work",
+        "sketch"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951434,
@@ -51612,7 +53158,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "observant"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "observant"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951435,
@@ -51644,7 +53194,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "observant"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "observant"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951436,
@@ -51676,7 +53230,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "irrefutable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "irrefutable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951437,
@@ -51708,7 +53266,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "irrefutable"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "irrefutable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951438,
@@ -51740,7 +53302,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "decoration"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "decoration"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951440,
@@ -51772,7 +53338,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "foolish"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "foolish"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951442,
@@ -51804,7 +53374,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "necessarily"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "necessarily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951443,
@@ -51836,7 +53410,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "necessarily"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "necessarily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951444,
@@ -51868,7 +53446,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "flashy"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "flashy"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951446,
@@ -51900,7 +53482,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "appreciative"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "appreciative"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951448,
@@ -51932,7 +53518,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "adaptable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "adaptable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941518,
@@ -51965,7 +53555,12 @@ window.__AE_CAMPAIGN__ = {
         "for",
         "during"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "for",
+        "during"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941519,
@@ -51998,7 +53593,12 @@ window.__AE_CAMPAIGN__ = {
         "for",
         "during"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "for",
+        "during"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941520,
@@ -52030,7 +53630,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "few"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "few"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941521,
@@ -52062,7 +53666,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "few"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "few"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941522,
@@ -52094,7 +53702,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "from"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "from"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941523,
@@ -52126,7 +53738,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "from"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "from"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941524,
@@ -52159,7 +53775,12 @@ window.__AE_CAMPAIGN__ = {
         "its",
         "the"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "its",
+        "the"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941525,
@@ -52192,7 +53813,12 @@ window.__AE_CAMPAIGN__ = {
         "its",
         "the"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "its",
+        "the"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941526,
@@ -52225,7 +53851,12 @@ window.__AE_CAMPAIGN__ = {
         "during",
         "on"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "during",
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941527,
@@ -52258,7 +53889,12 @@ window.__AE_CAMPAIGN__ = {
         "during",
         "on"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "during",
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941528,
@@ -52291,7 +53927,12 @@ window.__AE_CAMPAIGN__ = {
         "who",
         "that"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "who",
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941529,
@@ -52324,7 +53965,12 @@ window.__AE_CAMPAIGN__ = {
         "who",
         "that"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "who",
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941530,
@@ -52356,7 +54002,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "him"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "him"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941531,
@@ -52388,7 +54038,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "him"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "him"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941532,
@@ -52420,7 +54074,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "together"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "together"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941533,
@@ -52452,7 +54110,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "together"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "together"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951534,
@@ -52485,7 +54147,12 @@ window.__AE_CAMPAIGN__ = {
         "managerial",
         "management"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "managerial",
+        "management"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951535,
@@ -52518,7 +54185,12 @@ window.__AE_CAMPAIGN__ = {
         "managerial",
         "management"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "managerial",
+        "management"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951536,
@@ -52550,7 +54222,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "bearable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "bearable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951538,
@@ -52582,7 +54258,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "temptation"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "temptation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951540,
@@ -52614,7 +54294,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "absolutely"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "absolutely"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951542,
@@ -52646,7 +54330,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "conference"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "conference"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951544,
@@ -52678,7 +54366,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "arrival"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "arrival"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951546,
@@ -52710,7 +54402,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "receptionist"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "receptionist"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951548,
@@ -52742,7 +54438,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "intentions"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "intentions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951549,
@@ -52774,7 +54474,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "intentions"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "intentions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941618,
@@ -52806,7 +54510,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "was"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "was"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941619,
@@ -52838,7 +54546,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "was"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "was"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941620,
@@ -52870,7 +54582,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "them"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "them"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941621,
@@ -52902,7 +54618,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "them"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "them"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941622,
@@ -52934,7 +54654,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "over"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "over"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941623,
@@ -52966,7 +54690,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "over"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "over"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941624,
@@ -52999,7 +54727,12 @@ window.__AE_CAMPAIGN__ = {
         "country",
         "region"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "country",
+        "region"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941625,
@@ -53032,7 +54765,12 @@ window.__AE_CAMPAIGN__ = {
         "country",
         "region"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "country",
+        "region"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941626,
@@ -53064,7 +54802,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "looked"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "looked"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941627,
@@ -53096,7 +54838,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "looked"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "looked"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941628,
@@ -53130,7 +54876,13 @@ window.__AE_CAMPAIGN__ = {
         "control",
         "possession"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "charge",
+        "control",
+        "possession"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941629,
@@ -53164,7 +54916,13 @@ window.__AE_CAMPAIGN__ = {
         "control",
         "possession"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "charge",
+        "control",
+        "possession"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941630,
@@ -53196,7 +54954,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "what",
+        "What"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941631,
@@ -53228,7 +54991,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "what",
+        "What"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941632,
@@ -53260,7 +55028,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "went"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "went"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941633,
@@ -53292,7 +55064,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "went"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "went"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951634,
@@ -53325,7 +55101,12 @@ window.__AE_CAMPAIGN__ = {
         "modernising",
         "modernizing"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "modernising",
+        "modernizing"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951636,
@@ -53357,7 +55138,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "delightful"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "delightful"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951638,
@@ -53389,7 +55174,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "invitation"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "invitation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951640,
@@ -53421,7 +55210,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "employee"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "employee"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951642,
@@ -53453,7 +55246,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "extensively"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "extensively"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951643,
@@ -53485,7 +55282,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "extensively"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "extensively"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951644,
@@ -53517,7 +55318,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "possessions"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "possessions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951646,
@@ -53549,7 +55354,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "arrangements"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "arrangements"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951648,
@@ -53581,7 +55390,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "transformation"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "transformation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941718,
@@ -53614,7 +55427,12 @@ window.__AE_CAMPAIGN__ = {
         "though",
         "when"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "though",
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941719,
@@ -53647,7 +55465,12 @@ window.__AE_CAMPAIGN__ = {
         "though",
         "when"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "though",
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941720,
@@ -53679,7 +55502,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "did"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "did"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941721,
@@ -53711,7 +55538,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "did"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "did"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941722,
@@ -53744,7 +55575,12 @@ window.__AE_CAMPAIGN__ = {
         "until",
         "till"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "until",
+        "till"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941723,
@@ -53777,7 +55613,12 @@ window.__AE_CAMPAIGN__ = {
         "until",
         "till"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "until",
+        "till"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941724,
@@ -53809,7 +55650,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "when"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941725,
@@ -53841,7 +55686,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "when"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941726,
@@ -53873,7 +55722,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "despite"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "despite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941727,
@@ -53905,7 +55758,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "despite"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "despite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941728,
@@ -53937,7 +55794,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941729,
@@ -53969,7 +55830,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941730,
@@ -54001,7 +55866,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "where"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "where"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941731,
@@ -54033,7 +55902,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "where"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "where"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941732,
@@ -54065,7 +55938,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941733,
@@ -54097,7 +55974,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951734,
@@ -54129,7 +56010,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "introductions"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "introductions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951735,
@@ -54161,7 +56046,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "introductions"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "introductions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951736,
@@ -54193,7 +56082,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impolite"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "impolite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951737,
@@ -54225,7 +56118,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impolite"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "impolite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951738,
@@ -54257,7 +56154,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "overcome"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "overcome"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951740,
@@ -54289,7 +56190,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "observation"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "observation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951741,
@@ -54321,7 +56226,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "observation"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "observation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951742,
@@ -54353,7 +56262,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "characteristics"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "characteristics"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951744,
@@ -54385,7 +56298,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "variety"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "variety"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951746,
@@ -54417,7 +56334,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "visual"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "visual"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951747,
@@ -54449,7 +56370,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "visual"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "visual"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951748,
@@ -54481,7 +56406,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "ensuring"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "ensuring"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951749,
@@ -54513,7 +56442,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "ensuring"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "ensuring"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941818,
@@ -54545,7 +56478,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "for"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941819,
@@ -54577,7 +56514,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "for"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941820,
@@ -54609,7 +56550,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "many"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "many"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941821,
@@ -54641,7 +56586,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "many"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "many"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941822,
@@ -54674,7 +56623,12 @@ window.__AE_CAMPAIGN__ = {
         "to",
         "and"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to",
+        "and"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941823,
@@ -54707,7 +56661,12 @@ window.__AE_CAMPAIGN__ = {
         "to",
         "and"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to",
+        "and"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941824,
@@ -54739,7 +56698,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unlike"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unlike"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941825,
@@ -54771,7 +56734,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unlike"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unlike"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941826,
@@ -54803,7 +56770,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "top"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "top"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941827,
@@ -54835,7 +56806,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "top"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "top"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941828,
@@ -54867,7 +56842,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941829,
@@ -54899,7 +56878,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941830,
@@ -54931,7 +56914,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "less"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "less"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941831,
@@ -54963,7 +56950,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "less"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "less"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941832,
@@ -54995,7 +56986,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "whether"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "whether"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941833,
@@ -55027,7 +57022,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "whether"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "whether"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951834,
@@ -55060,7 +57059,12 @@ window.__AE_CAMPAIGN__ = {
         "network",
         "networking"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "network",
+        "networking"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951836,
@@ -55092,7 +57096,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "steadily"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "steadily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951837,
@@ -55124,7 +57132,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "steadily"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "steadily"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951838,
@@ -55156,7 +57168,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "stressful"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "stressful"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951840,
@@ -55188,7 +57204,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unbearable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unbearable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951842,
@@ -55220,7 +57240,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "risky"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "risky"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951844,
@@ -55252,7 +57276,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "commercial"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "commercial"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951846,
@@ -55284,7 +57312,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "enabling"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "enabling"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951847,
@@ -55316,7 +57348,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "enabling"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "enabling"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951848,
@@ -55348,7 +57384,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "decisions"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "decisions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951849,
@@ -55380,7 +57420,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "decisions"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "decisions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941918,
@@ -55412,7 +57456,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "on"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941919,
@@ -55444,7 +57492,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "on"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941920,
@@ -55476,7 +57528,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941921,
@@ -55508,7 +57564,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941922,
@@ -55542,7 +57602,13 @@ window.__AE_CAMPAIGN__ = {
         "these",
         "those"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "them",
+        "these",
+        "those"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941923,
@@ -55576,7 +57642,13 @@ window.__AE_CAMPAIGN__ = {
         "these",
         "those"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "them",
+        "these",
+        "those"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941924,
@@ -55608,7 +57680,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941925,
@@ -55640,7 +57716,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941926,
@@ -55672,7 +57752,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "spite"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "spite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941927,
@@ -55704,7 +57788,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "spite"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "spite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941928,
@@ -55736,7 +57824,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941929,
@@ -55768,7 +57860,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941930,
@@ -55800,7 +57896,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "all"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "all"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941931,
@@ -55832,7 +57932,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "all"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "all"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941932,
@@ -55864,7 +57968,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "account"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "account"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 941933,
@@ -55896,7 +58004,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "account"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "account"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951934,
@@ -55928,7 +58040,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "products"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "products"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951935,
@@ -55960,7 +58076,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "products"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "products"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951936,
@@ -55992,7 +58112,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "increasingly"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "increasingly"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951938,
@@ -56024,7 +58148,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "consumers"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "consumers"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951939,
@@ -56056,7 +58184,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "consumers"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "consumers"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951940,
@@ -56088,7 +58220,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "loyalty"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "loyalty"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951942,
@@ -56120,7 +58256,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "manufacturers"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "manufacturers"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951944,
@@ -56152,7 +58292,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "profitable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "profitable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951946,
@@ -56184,7 +58328,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "disagreement"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "disagreement"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 951948,
@@ -56216,7 +58364,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unhealthy"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unhealthy"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942018,
@@ -56248,7 +58400,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "where"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "where"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942019,
@@ -56280,7 +58436,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "where"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "where"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942020,
@@ -56312,7 +58472,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "so"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "so"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942021,
@@ -56344,7 +58508,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "so"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "so"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942022,
@@ -56376,7 +58544,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "myself"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "myself"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942023,
@@ -56408,7 +58580,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "myself"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "myself"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942024,
@@ -56440,7 +58616,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942025,
@@ -56472,7 +58652,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "in"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "in"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942026,
@@ -56505,7 +58689,12 @@ window.__AE_CAMPAIGN__ = {
         "which",
         "that"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "which",
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942027,
@@ -56538,7 +58727,12 @@ window.__AE_CAMPAIGN__ = {
         "which",
         "that"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "which",
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942028,
@@ -56572,7 +58766,13 @@ window.__AE_CAMPAIGN__ = {
         "on",
         "at"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "out",
+        "on",
+        "at"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942029,
@@ -56606,7 +58806,13 @@ window.__AE_CAMPAIGN__ = {
         "on",
         "at"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "out",
+        "on",
+        "at"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942030,
@@ -56638,7 +58844,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "from"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "from"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942031,
@@ -56670,7 +58880,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "from"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "from"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942032,
@@ -56702,7 +58916,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "any"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "any"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942033,
@@ -56734,7 +58952,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "any"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "any"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952034,
@@ -56766,7 +58988,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "producer"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "producer"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952035,
@@ -56798,7 +59024,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "producer"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "producer"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952036,
@@ -56831,7 +59061,12 @@ window.__AE_CAMPAIGN__ = {
         "illness",
         "illnesses"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "illness",
+        "illnesses"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952038,
@@ -56863,7 +59098,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "effective"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "effective"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952039,
@@ -56895,7 +59134,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "effective"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "effective"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952040,
@@ -56927,7 +59170,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952041,
@@ -56959,7 +59206,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952042,
@@ -56991,7 +59242,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "addition"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "addition"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952044,
@@ -57023,7 +59278,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "pressure"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "pressure"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952046,
@@ -57055,7 +59314,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "disadvantage"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "disadvantage"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952047,
@@ -57087,7 +59350,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "disadvantage"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "disadvantage"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952048,
@@ -57119,7 +59386,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "spicy"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "spicy"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942118,
@@ -57152,7 +59423,12 @@ window.__AE_CAMPAIGN__ = {
         "what",
         "something"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "what",
+        "something"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942119,
@@ -57185,7 +59461,12 @@ window.__AE_CAMPAIGN__ = {
         "what",
         "something"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "what",
+        "something"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942120,
@@ -57217,7 +59498,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "from"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "from"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942121,
@@ -57249,7 +59534,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "from"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "from"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942122,
@@ -57283,7 +59572,13 @@ window.__AE_CAMPAIGN__ = {
         "amongst",
         "for"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "among",
+        "amongst",
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942123,
@@ -57317,7 +59612,13 @@ window.__AE_CAMPAIGN__ = {
         "amongst",
         "for"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "among",
+        "amongst",
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942124,
@@ -57349,7 +59650,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "are"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "are"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942125,
@@ -57381,7 +59686,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "are"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "are"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942126,
@@ -57413,7 +59722,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "on"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942127,
@@ -57445,7 +59758,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "on"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942128,
@@ -57477,7 +59794,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "be"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "be"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942129,
@@ -57509,7 +59830,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "be"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "be"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942130,
@@ -57541,7 +59866,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "long"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "long"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942131,
@@ -57573,7 +59902,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "long"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "long"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942132,
@@ -57605,7 +59938,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942133,
@@ -57637,7 +59974,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952134,
@@ -57669,7 +60010,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "destruction"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "destruction"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952136,
@@ -57702,7 +60047,12 @@ window.__AE_CAMPAIGN__ = {
         "defences",
         "defenses"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "defences",
+        "defenses"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952137,
@@ -57735,7 +60085,12 @@ window.__AE_CAMPAIGN__ = {
         "defences",
         "defenses"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "defences",
+        "defenses"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952138,
@@ -57767,7 +60122,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "creation"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "creation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952139,
@@ -57799,7 +60158,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "creation"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "creation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952140,
@@ -57831,7 +60194,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "substantial"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "substantial"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952142,
@@ -57863,7 +60230,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "ambitious"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "ambitious"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952144,
@@ -57895,7 +60266,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "massive"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "massive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952146,
@@ -57927,7 +60302,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "endangered"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "endangered"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952148,
@@ -57959,7 +60338,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unclear"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unclear"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942218,
@@ -57991,7 +60374,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942219,
@@ -58023,7 +60410,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942220,
@@ -58055,7 +60446,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "when"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942221,
@@ -58087,7 +60482,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "when"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942222,
@@ -58120,7 +60519,12 @@ window.__AE_CAMPAIGN__ = {
         "below",
         "under"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "below",
+        "under"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942223,
@@ -58153,7 +60557,12 @@ window.__AE_CAMPAIGN__ = {
         "below",
         "under"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "below",
+        "under"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942224,
@@ -58185,7 +60594,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "this"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "this"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942225,
@@ -58217,7 +60630,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "this"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "this"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942226,
@@ -58249,7 +60666,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942227,
@@ -58281,7 +60702,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942228,
@@ -58313,7 +60738,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "spite"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "spite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942229,
@@ -58345,7 +60774,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "spite"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "spite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942230,
@@ -58377,7 +60810,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "such"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "such"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942231,
@@ -58409,7 +60846,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "such"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "such"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942232,
@@ -58441,7 +60882,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "on"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942233,
@@ -58473,7 +60918,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "on"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952234,
@@ -58505,7 +60954,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "consideration"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "consideration"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952236,
@@ -58537,7 +60990,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "existing"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "existing"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952238,
@@ -58569,7 +61026,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "politicians"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "politicians"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952240,
@@ -58601,7 +61062,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "shortage"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "shortage"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952242,
@@ -58634,7 +61099,12 @@ window.__AE_CAMPAIGN__ = {
         "specialise",
         "specialize"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "specialise",
+        "specialize"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952244,
@@ -58666,7 +61136,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "loss"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "loss"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952245,
@@ -58698,7 +61172,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "loss"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "loss"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952246,
@@ -58730,7 +61208,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "construction"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "construction"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952248,
@@ -58762,7 +61244,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "disappeared"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "disappeared"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952249,
@@ -58794,7 +61280,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "disappeared"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "disappeared"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942318,
@@ -58826,7 +61316,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "one"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "one"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942319,
@@ -58858,7 +61352,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "one"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "one"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942320,
@@ -58890,7 +61388,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "that"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942321,
@@ -58922,7 +61424,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "that"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "that"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942322,
@@ -58954,7 +61460,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "when"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942323,
@@ -58986,7 +61496,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "when"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "when"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942324,
@@ -59018,7 +61532,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "could"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "could"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942325,
@@ -59050,7 +61568,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "could"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "could"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942326,
@@ -59082,7 +61604,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "for"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942327,
@@ -59114,7 +61640,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "for"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "for"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942328,
@@ -59146,7 +61676,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942329,
@@ -59178,7 +61712,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942330,
@@ -59210,7 +61748,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "been"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "been"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942331,
@@ -59242,7 +61784,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "been"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "been"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942332,
@@ -59274,7 +61820,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942333,
@@ -59306,7 +61856,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "as"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "as"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952334,
@@ -59338,7 +61892,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "useful"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "useful"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952335,
@@ -59370,7 +61928,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "useful"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "useful"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952336,
@@ -59402,7 +61964,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "attractive"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "attractive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952337,
@@ -59434,7 +62000,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "attractive"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "attractive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952338,
@@ -59466,7 +62036,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "reputation"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "reputation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952340,
@@ -59498,7 +62072,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "designer"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "designer"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952342,
@@ -59530,7 +62108,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "extremely"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "extremely"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952344,
@@ -59562,7 +62144,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "choice"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "choice"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952345,
@@ -59594,7 +62180,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "choice"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "choice"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952346,
@@ -59626,7 +62216,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "natural"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "natural"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952347,
@@ -59658,7 +62252,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "natural"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "natural"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952348,
@@ -59690,7 +62288,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "recycle"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "recycle"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942418,
@@ -59722,7 +62324,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "into"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "into"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942419,
@@ -59754,7 +62360,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "into"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "into"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942420,
@@ -59786,7 +62396,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "one"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "one"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942421,
@@ -59818,7 +62432,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "one"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "one"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942422,
@@ -59850,7 +62468,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "before"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "before"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942423,
@@ -59882,7 +62504,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "before"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "before"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942424,
@@ -59914,7 +62540,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "take"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "take"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942425,
@@ -59946,7 +62576,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "take"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "take"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942426,
@@ -59979,7 +62613,12 @@ window.__AE_CAMPAIGN__ = {
         "have",
         "need"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "have",
+        "need"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942427,
@@ -60012,7 +62651,12 @@ window.__AE_CAMPAIGN__ = {
         "have",
         "need"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "have",
+        "need"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942428,
@@ -60044,7 +62688,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "case"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "case"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942429,
@@ -60076,7 +62724,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "case"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "case"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942430,
@@ -60108,7 +62760,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "after"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "after"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942431,
@@ -60140,7 +62796,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "after"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "after"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942432,
@@ -60172,7 +62832,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942433,
@@ -60204,7 +62868,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952434,
@@ -60236,7 +62904,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952435,
@@ -60268,7 +62940,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientists"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "scientists"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952436,
@@ -60300,7 +62976,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "research"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "research"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952438,
@@ -60332,7 +63012,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "isolation"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "isolation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952440,
@@ -60364,7 +63048,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952441,
@@ -60396,7 +63084,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unable"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952442,
@@ -60428,7 +63120,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "mixture"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "mixture"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952444,
@@ -60460,7 +63156,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "feedback"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "feedback"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952446,
@@ -60492,7 +63192,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "emotional"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "emotional"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952448,
@@ -60524,7 +63228,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "information"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "information"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952449,
@@ -60556,7 +63264,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "information"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "information"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942518,
@@ -60588,7 +63300,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "least"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "least"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942519,
@@ -60620,7 +63336,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "least"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "least"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942520,
@@ -60652,7 +63372,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "get"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "get"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942521,
@@ -60684,7 +63408,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "get"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "get"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942522,
@@ -60716,7 +63444,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "of"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "of"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942523,
@@ -60748,7 +63480,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "of"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "of"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942524,
@@ -60780,7 +63516,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942525,
@@ -60812,7 +63552,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942526,
@@ -60844,7 +63588,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942527,
@@ -60876,7 +63624,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942528,
@@ -60908,7 +63660,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "out"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "out"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942529,
@@ -60940,7 +63696,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "out"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "out"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942530,
@@ -60972,7 +63732,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "neither"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "neither",
+        "Neither"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942531,
@@ -61004,7 +63769,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "neither"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "neither",
+        "Neither"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942532,
@@ -61036,7 +63806,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "whatever"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "whatever",
+        "Whatever"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942533,
@@ -61068,7 +63843,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "whatever"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "whatever",
+        "Whatever"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952534,
@@ -61100,7 +63880,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "sensitive"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "sensitive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952535,
@@ -61132,7 +63916,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "sensitive"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "sensitive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952536,
@@ -61164,7 +63952,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "investigations"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "investigations"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952537,
@@ -61196,7 +63988,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "investigations"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "investigations"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952538,
@@ -61228,7 +64024,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "significant"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "significant"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952540,
@@ -61260,7 +64060,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "considerably"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "considerably"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952541,
@@ -61292,7 +64096,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "considerably"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "considerably"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952542,
@@ -61324,7 +64132,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "possibility"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "possibility"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952543,
@@ -61356,7 +64168,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "possibility"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "possibility"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952544,
@@ -61388,7 +64204,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "comfortable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "comfortable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952546,
@@ -61420,7 +64240,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "dependent"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "dependent"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952548,
@@ -61452,7 +64276,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unreal"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unreal"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952549,
@@ -61484,7 +64312,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unreal"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unreal"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942618,
@@ -61516,7 +64348,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942619,
@@ -61548,7 +64384,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "which"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "which"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942620,
@@ -61580,7 +64420,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942621,
@@ -61612,7 +64456,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "with"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "with"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942622,
@@ -61645,7 +64493,13 @@ window.__AE_CAMPAIGN__ = {
         "while",
         "whereas"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "while",
+        "While",
+        "whereas"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942623,
@@ -61678,7 +64532,13 @@ window.__AE_CAMPAIGN__ = {
         "while",
         "whereas"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "while",
+        "While",
+        "whereas"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942624,
@@ -61710,7 +64570,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942625,
@@ -61742,7 +64606,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "what"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "what"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942626,
@@ -61774,7 +64642,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "any"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "any"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942627,
@@ -61806,7 +64678,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "any"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "any"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942628,
@@ -61838,7 +64714,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "take"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "take",
+        "Take"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942629,
@@ -61870,7 +64751,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "take"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "take",
+        "Take"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942630,
@@ -61902,7 +64788,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "such"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "such",
+        "Such"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942631,
@@ -61934,7 +64825,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "such"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "such",
+        "Such"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942632,
@@ -61966,7 +64862,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "be"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "be",
+        "Be"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942633,
@@ -61998,7 +64899,12 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "be"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "be",
+        "Be"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952634,
@@ -62030,7 +64936,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "fashionable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "fashionable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952636,
@@ -62062,7 +64972,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "pleasures"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "pleasures"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952637,
@@ -62094,7 +65008,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "pleasures"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "pleasures"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952638,
@@ -62127,7 +65045,12 @@ window.__AE_CAMPAIGN__ = {
         "admission",
         "admittance"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "admission",
+        "admittance"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952640,
@@ -62159,7 +65082,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "beneficial"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "beneficial"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952642,
@@ -62193,7 +65120,13 @@ window.__AE_CAMPAIGN__ = {
         "energized",
         "energised"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "energetic",
+        "energized",
+        "energised"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952644,
@@ -62225,7 +65158,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "increasingly"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "increasingly"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952646,
@@ -62257,7 +65194,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impolite"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "impolite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952647,
@@ -62289,7 +65230,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impolite"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "impolite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952648,
@@ -62321,7 +65266,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "consumption"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "consumption"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952649,
@@ -62353,7 +65302,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "consumption"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "consumption"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942718,
@@ -62385,7 +65338,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "without"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "without"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942719,
@@ -62417,7 +65374,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "without"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "without"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942720,
@@ -62450,7 +65411,12 @@ window.__AE_CAMPAIGN__ = {
         "if",
         "after"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "if",
+        "after"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942721,
@@ -62483,7 +65449,12 @@ window.__AE_CAMPAIGN__ = {
         "if",
         "after"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "if",
+        "after"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942722,
@@ -62515,7 +65486,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "because"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "because"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942723,
@@ -62547,7 +65522,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "because"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "because"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942724,
@@ -62579,7 +65558,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "another"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "another"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942725,
@@ -62611,7 +65594,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "another"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "another"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942726,
@@ -62643,7 +65630,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "among"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "among"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942727,
@@ -62675,7 +65666,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "among"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "among"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942728,
@@ -62707,7 +65702,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "no"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "no"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942729,
@@ -62739,7 +65738,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "no"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "no"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942730,
@@ -62771,7 +65774,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "who"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "who"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942731,
@@ -62803,7 +65810,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "who"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "who"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942732,
@@ -62835,7 +65846,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "same"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "same"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942733,
@@ -62867,7 +65882,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "same"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "same"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952734,
@@ -62899,7 +65918,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "depth"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "depth"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952736,
@@ -62931,7 +65954,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unusual"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unusual"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952738,
@@ -62963,7 +65990,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "endangered"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "endangered"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952740,
@@ -62995,7 +66026,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "establishment"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "establishment"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952742,
@@ -63027,7 +66062,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unforgettable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unforgettable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952743,
@@ -63059,7 +66098,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unforgettable"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unforgettable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952744,
@@ -63091,7 +66134,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "accessible"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "accessible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952746,
@@ -63123,7 +66170,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "inhabitants"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "inhabitants"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952747,
@@ -63155,7 +66206,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "inhabitants"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "inhabitants"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952748,
@@ -63187,7 +66242,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "surprisingly"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "surprisingly"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942818,
@@ -63219,7 +66278,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "of"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "of"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942819,
@@ -63251,7 +66314,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "of"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "of"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942820,
@@ -63283,7 +66350,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "spend"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "spend"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942821,
@@ -63315,7 +66386,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "spend"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "spend"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942822,
@@ -63347,7 +66422,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "out"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "out"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942823,
@@ -63379,7 +66458,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "out"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "out"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942824,
@@ -63411,7 +66494,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "before"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "before"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942825,
@@ -63443,7 +66530,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "before"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "before"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942826,
@@ -63475,7 +66566,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "been"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "been"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942827,
@@ -63507,7 +66602,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "been"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "been"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942828,
@@ -63539,7 +66638,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "have"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942829,
@@ -63571,7 +66674,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "have"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942830,
@@ -63603,7 +66710,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942831,
@@ -63635,7 +66746,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942832,
@@ -63667,7 +66782,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942833,
@@ -63699,7 +66818,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952834,
@@ -63731,7 +66854,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unhealthy"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unhealthy"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952836,
@@ -63763,7 +66890,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "sailing"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "sailing"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952838,
@@ -63795,7 +66926,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "advice"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "advice"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952839,
@@ -63827,7 +66962,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "advice"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "advice"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952840,
@@ -63859,7 +66998,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unaffordable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unaffordable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952841,
@@ -63891,7 +67034,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unaffordable"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "unaffordable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952842,
@@ -63923,7 +67070,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impatient"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "impatient"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952844,
@@ -63955,7 +67106,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "variety"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "variety"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952846,
@@ -63987,7 +67142,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientist"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "scientist"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952847,
@@ -64019,7 +67178,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "scientist"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "scientist"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952848,
@@ -64051,7 +67214,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "irreversible"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "irreversible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952849,
@@ -64083,7 +67250,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "irreversible"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "irreversible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942918,
@@ -64115,7 +67286,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "taking"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "taking"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942919,
@@ -64147,7 +67322,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "taking"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "taking"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942920,
@@ -64179,7 +67358,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942921,
@@ -64211,7 +67394,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942922,
@@ -64243,7 +67430,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "on"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942923,
@@ -64275,7 +67466,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "on"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "on"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942924,
@@ -64307,7 +67502,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942925,
@@ -64339,7 +67538,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "to"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "to"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942926,
@@ -64371,7 +67574,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "give"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "give"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942927,
@@ -64403,7 +67610,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "give"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "give"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942928,
@@ -64435,7 +67646,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "are"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "are"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942929,
@@ -64467,7 +67682,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "are"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "are"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942930,
@@ -64499,7 +67718,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "have"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942931,
@@ -64531,7 +67754,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "have"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "have"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942932,
@@ -64563,7 +67790,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "ever"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "ever"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 942933,
@@ -64595,7 +67826,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "ever"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "ever"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952934,
@@ -64627,7 +67862,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "romantic"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "romantic"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952936,
@@ -64659,7 +67898,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "attractions"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "attractions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952937,
@@ -64691,7 +67934,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "attractions"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "attractions"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952938,
@@ -64723,7 +67970,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impressive"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "impressive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952939,
@@ -64755,7 +68006,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impressive"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "impressive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952940,
@@ -64787,7 +68042,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "explanation"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "explanation"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952942,
@@ -64819,7 +68078,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "hospitality"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "hospitality"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952944,
@@ -64851,7 +68114,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "simply"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "simply"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952945,
@@ -64883,7 +68150,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "simply"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "simply"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952946,
@@ -64915,7 +68186,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "internationally"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "internationally"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952947,
@@ -64947,7 +68222,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "internationally"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "internationally"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 952948,
@@ -64979,7 +68258,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "originality"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "originality"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943018,
@@ -65011,7 +68294,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "had"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "had"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943019,
@@ -65043,7 +68330,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "had"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "had"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943020,
@@ -65075,7 +68366,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "would"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "would"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943021,
@@ -65107,7 +68402,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "would"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "would"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943022,
@@ -65139,7 +68438,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "since"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "since"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943023,
@@ -65171,7 +68474,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "since"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "since"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943024,
@@ -65203,7 +68510,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "like"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "like"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943025,
@@ -65235,7 +68546,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "like"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "like"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943026,
@@ -65267,7 +68582,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943027,
@@ -65299,7 +68618,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "is"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "is"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943028,
@@ -65331,7 +68654,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "get"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "get"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943029,
@@ -65363,7 +68690,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "get"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "get"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943030,
@@ -65395,7 +68726,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "say"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "say"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943031,
@@ -65427,7 +68762,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "say"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "say"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943032,
@@ -65459,7 +68798,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "up"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "up"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 943033,
@@ -65491,7 +68834,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "up"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "up"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953034,
@@ -65523,7 +68870,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impolite"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "impolite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953035,
@@ -65555,7 +68906,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "impolite"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "impolite"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953036,
@@ -65587,7 +68942,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "popularity"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "popularity"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953038,
@@ -65619,7 +68978,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "affordable"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "affordable"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953040,
@@ -65651,7 +69014,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "dissatisfied"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "dissatisfied"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953042,
@@ -65683,7 +69050,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "unappealing"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "unappealing"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953044,
@@ -65715,7 +69086,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "identity"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "identity"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953046,
@@ -65747,7 +69122,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "insensitive"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "insensitive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953047,
@@ -65779,7 +69158,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "insensitive"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "insensitive"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953048,
@@ -65811,7 +69194,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "irresponsible"
       ],
-      "distractorVariant": 1
+      "distractorVariant": 1,
+      "acceptedForms": [
+        "irresponsible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     },
     {
       "id": 953049,
@@ -65843,7 +69230,11 @@ window.__AE_CAMPAIGN__ = {
       "acceptedAnswers": [
         "irresponsible"
       ],
-      "distractorVariant": 2
+      "distractorVariant": 2,
+      "acceptedForms": [
+        "irresponsible"
+      ],
+      "acceptedFormsSource": "Original answer-key variants; training copy only"
     }
   ]
 };

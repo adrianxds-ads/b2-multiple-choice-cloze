@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.11.0";
+const APP_VERSION = "1.11.1";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -1098,7 +1098,7 @@ function renderGrowthTree(){
   host.innerHTML=`<div class="growth-tree-canvas" data-tree-stage="${stage}"><svg viewBox="0 0 420 300" role="img" aria-label="Practice tree, growth stage ${stage} of 200"><defs><linearGradient id="treeTrunk" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5d3827"/><stop offset=".55" stop-color="#76503a"/><stop offset="1" stop-color="#957258"/></linearGradient></defs><ellipse class="tree-ground" cx="210" cy="282" rx="78" ry="7"/> <g class="tree-branches" fill="none" stroke="url(#treeTrunk)" stroke-linecap="round" stroke-linejoin="round">${branch}</g><g class="tree-leaves">${leaf}</g></svg></div><div class="growth-tree-count"><b>${level.toLocaleString()}</b><span>LEVEL</span></div>`;
 }
 
-const RELEASE_NOTES=["v1.11.0 · Cambridge Parts 1, 2 y 3","2.431 tarjetas verificadas: 1.610 del banco anterior y 821 nuevas de Open Cloze y Word Formation","La cifra de portada se calcula desde el banco realmente cargado: ya no puede quedarse en 1.610 después de una ampliación","Las nuevas tarjetas se mezclan en sesiones de 15 preguntas, con variantes de un mismo hueco agrupadas para evitar repeticiones consecutivas","Se conservan el progreso, las estadísticas, las medallas, las estrellas y el reloj fijo de 15 segundos"];
+const RELEASE_NOTES=["v1.11.1 · Cambridge Parts 1, 2 y 3","2.431 tarjetas verificadas: 1.610 del banco anterior y 821 nuevas de Open Cloze y Word Formation","La cifra de portada se calcula desde el banco realmente cargado: ya no puede quedarse en 1.610 después de una ampliación","Las nuevas tarjetas se mezclan en sesiones de 15 preguntas, con variantes de un mismo hueco agrupadas para evitar repeticiones consecutivas","Se conservan el progreso, las estadísticas, las medallas, las estrellas y el reloj fijo de 15 segundos"];
 function renderReleaseInfo(){const host=$("releaseInfo"),online=location.protocol.startsWith("http"),build=`${online?"ONLINE":"LOCAL"} BUILD · v${APP_VERSION} · BANK ${CAMPAIGN?.version||"—"}`;if(host)host.innerHTML=`<details class="release-info"><summary><b>B2 Territorio 1 v${APP_VERSION}</b><span>WHAT’S NEW</span></summary><ul>${RELEASE_NOTES.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></details>`;if($("buildVersion"))$("buildVersion").textContent=build;if($("endBuildVersion"))$("endBuildVersion").textContent=build;const meta=document.querySelector('meta[name="ae-version"]');if(meta)meta.setAttribute("content",APP_VERSION);document.title=`B2 Territorio 1 - v${APP_VERSION}`;}
 function medalCounts(){const rows=(state.sessionHistory||[]).filter(x=>!x.mode||x.mode==="training");return window.AdrianAchievements?.countsFromHistory?.(rows)||{blue:0,violet:0,gold:0};}
 function renderMedalSummary(latest=null){const strip=window.AdrianAchievements?.medalStripHtml?.(medalCounts(),{context:"summary"})||"",badge=latest?window.AdrianAchievements?.badgeHtml?.(latest.correct,latest.total||SESSION_SIZE,medalCounts())||"":"";const a=$("startMedals"),b=$("endMedals");if(a)a.innerHTML=strip;if(b)b.innerHTML=strip+badge;}
@@ -1242,9 +1242,9 @@ function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect
 function answer(pos,timeout=false){
   if(locked)return;locked=true;clearInterval(timerHandle);clearTimeout(revealHandle);revealHandle=null;
   const sec=timeout?TIME_LIMIT:Math.max(.05,(TIME_LIMIT*1000-(deadline-performance.now()))/1000);
-  const ok=pos===current.correctPos&&!timeout,type=outcomeType(ok,sec,current.targetTime||3.6,timeout);
+  const ok=!timeout&&(pos===current.correctPos||(pos>=0&&!!current.acceptedForms?.some(x=>QuizLearning.normalize(x)===QuizLearning.normalize(current.display[pos])))),type=outcomeType(ok,sec,current.targetTime||3.6,timeout);
   const buttons=[...$("answers").children];
-  buttons.forEach((b,i)=>{b.disabled=true;b.classList.remove("good","bad","dim");if(i===current.correctPos)b.classList.add("good");else b.classList.add("dim");});
+  buttons.forEach((b,i)=>{b.disabled=true;b.classList.remove("good","bad","dim");if(i===current.correctPos||(ok&&i===pos))b.classList.add("good");else b.classList.add("dim");});
   if(!ok&&pos>=0){buttons[pos].classList.remove("dim");buttons[pos].classList.add("bad");}
   const previousSeen=state.seen[current.fingerprint]||null,previousTemplate=state.templateSeen[current.templateId]||null,previousTarget=leechInfo(current),speedScore=updateMetric(current,ok,sec,type),info=previousSeen||{count:0,lastLevel:-99,lapses:0},gapLevels=previousSeen?state.level-previousSeen.lastLevel:null;
   const masteredReward=ok&&previousSeen?.lapses>0&&!previousSeen.masteredRewarded&&previousSeen.lastCorrect===true&&previousSeen.count>=2&&gapLevels>=2,recoveredReward=ok&&!masteredReward&&previousSeen?.lapses>0&&previousSeen.lastCorrect===false;
