@@ -1,7 +1,7 @@
 importScripts('./build-assets.js','./sw-integrity.js');
 const CACHE_PREFIX='b2-territorio-1-';
 const CACHE='b2-territorio-1-'+self.AdrianRelease.build;
-const ASSETS=['./learning-feedback.js','./quiz-polish.css','./progress-storage.js','./','./index.html','/adrian-core/design/adrian-visual-system.js','/adrian-core/components/adrian-achievements.js','/adrian-core/components/adrian-performance.js?v=1.0.1-20261006','./lessons.js','./keys.js','./error-coach.js','./language-points.js','./app.js','./performance-adapter.js?v=1.0.0-20261006','./territory-01.json','./manifest.webmanifest','./icon.svg'];
+const ASSETS=['./nucleo-game-theme.css','./learning-feedback.js','./quiz-polish.css','./progress-storage.js','./','./index.html','/adrian-core/design/adrian-visual-system.js','/adrian-core/components/adrian-achievements.js','/adrian-core/components/adrian-performance.js?v=1.0.1-20261006','./lessons.js','./keys.js','./error-coach.js','./language-points.js','./app.js','./performance-adapter.js?v=1.0.0-20261006','./territory-01.json','./manifest.webmanifest','./icon.svg'];
 const CORE_RE=/\.(?:html|js|css|json|webmanifest)$/i;
 function withTimeout(req,ms,init={}){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);return releaseFetch(req,{...init,signal:c.signal}).finally(()=>clearTimeout(t));}
 async function installCore(list){
