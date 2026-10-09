@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#10271d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="ae-version" content="1.10.14">
+<meta name="ae-version" content="1.10.15">
 <title>Cloze Quiz</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
@@ -541,10 +541,10 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <div class="app">
 <section id="startScreen" class="screen start">
   <div class="panel">
-    <div id="startKicker" class="kicker">CLOZE QUIZ · B2 PART 1</div>
+    <div id="startKicker" class="kicker">CLOZE QUIZ · B2 PARTS 1–3</div>
     <div class="level-title-row"><h1 id="startLevel">LEVEL 42</h1><button type="button" class="level-next-shortcut" onclick="document.getElementById('startBtn')?.click()">NEXT LEVEL</button></div>
-    <p class="subtitle">Cloze Quiz · B2 First · Part 1</p>
-    <div class="meta">1,610 tarjetas · 30 exámenes reales · red léxica · 15 segundos</div>
+    <p class="subtitle">Cloze Quiz · B2 First · Parts 1, 2 y 3</p>
+    <div class="meta"><span id="bankCountLabel">Cargando tarjetas…</span> · 30 exámenes · léxico, Open Cloze y Word Formation · 15 segundos</div>
         <div class="actions"><button id="startBtn" class="primary">START</button></div>
         <div class="read-first-row"><button id="readFirstToggle" class="ghost read-first-toggle" type="button" aria-pressed="true">MODO · LEER PRIMERO · SÍ</button><small>Enunciado primero; el reloj empieza cuando aparecen las cuatro respuestas.</small></div>
 <div class="dashboard-menu">
@@ -556,7 +556,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
     
     <div class="ai-valuation-box hero-ai"><div><span>AI VALORATION</span><b id="startAiLevel">— / 15</b><small id="startAiConfidence">Estimación adaptativa</small></div><em>AI</em></div>
 <div class="hero-progress">
-      <div class="progress-label"><span>Coverage</span><strong id="coverageText">0 / 1610</strong></div>
+      <div class="progress-label"><span>Coverage</span><strong id="coverageText">0 / …</strong></div>
       <div class="track"><div id="coverageFill" class="fill" style="width:0%"></div></div>
     </div>
     <div class="hero-progress">
@@ -690,7 +690,7 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
       <div class="card"><b id="ePhrasesDone">0</b><span>Unique phrases done</span></div>
       <div class="card"><b id="eRepeats">0</b><span>Repeated phrases</span></div>
       <div class="card leech-count-card"><b id="eLeeches">0</b><span>Leeches</span></div>
-      <div class="card"><b id="eBankTotal">1610</b><span>Bank total</span></div>
+      <div class="card"><b id="eBankTotal">—</b><span>Bank total</span></div>
     </div>
     <div class="section"><h3>Skill League · current ranking</h3><div id="weakSkills"></div></div>
     <div class="ai-legend-wrap"><span>CÓDIGO DE COLOR · 1 BAJO → 15 MÁXIMO</span><div id="aiLegend" class="ai-legend"></div></div>
@@ -726,13 +726,13 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <script src="./keys.js?v=1.2.2"></script>
 <script src="./error-coach.js?v=1.2.2"></script>
 <script>window.LANGUAGE_POINTS_CONFIG={appId:"cloze",timeLimit:15};</script>
-<script src="./language-points.js?v=1.10.14"></script>
+<script src="./language-points.js?v=1.10.15"></script>
 
-<script src="./territory-01.js?v=1.10.14"></script>
-<script src="./app.js?v=1.10.14-oca2"></script>
+<script src="./territory-01.js?v=1.10.15"></script>
+<script src="./app.js?v=1.10.15-oca2"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=cloze-cambridge-20261009',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=cloze-cambridge-20261009b',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="./performance-adapter.js?v=1.1.0"></script><script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=10-0d4fa97"></script>
