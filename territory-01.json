@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "campaignId": "B2-MCC-C1",
   "title": "B2 Territorio 1",
-  "version": "2026-10-09.1",
+  "version": "1.11.0",
   "startingLevel": 1,
   "sessionSize": 15,
   "timeLimit": 15,
@@ -7498,7 +7498,7 @@
       "skill": "B2 Territorio 1 · Red léxica",
       "templateId": "v05",
       "domain": "territory-network",
-      "q": "Can you ___ the project on your own?",
+      "q": "Do you think you can ___ to finish the project on your own?",
       "a": [
         "cope",
         "handle",
@@ -7506,7 +7506,7 @@
         "deal with"
       ],
       "c": 2,
-      "rule": "Contraste léxico B2: manage encaja en este contexto.",
+      "rule": "Manage to + infinitive means succeed in doing something. Handle and deal with take an object; cope normally takes with.",
       "trigger": "MANAGE",
       "targetTime": 8,
       "difficulty": "B2",
@@ -9466,7 +9466,7 @@
       "skill": "B2 Territorio 1 · Red léxica",
       "templateId": "v15",
       "domain": "territory-network",
-      "q": "Can you ___ the cost of the repairs?",
+      "q": "The contractor will ___ the cost of the repairs at around €500.",
       "a": [
         "infer",
         "assume",
@@ -9474,7 +9474,7 @@
         "estimate"
       ],
       "c": 3,
-      "rule": "Contraste léxico B2: estimate encaja en este contexto.",
+      "rule": "Estimate a cost at an amount gives an approximate price; the other choices do not fit this construction.",
       "trigger": "ESTIMATE",
       "targetTime": 8,
       "difficulty": "B2",
@@ -11146,7 +11146,7 @@
       "skill": "B2 Territorio 1 · Red léxica",
       "templateId": "v24",
       "domain": "territory-network",
-      "q": "Can you ___ the project on your own?",
+      "q": "Even with limited resources, we can ___ to complete the project.",
       "a": [
         "regulate",
         "control",
@@ -11154,7 +11154,7 @@
         "govern"
       ],
       "c": 2,
-      "rule": "Contraste léxico B2: manage encaja en este contexto.",
+      "rule": "Manage to + infinitive expresses succeeding despite a difficulty. Control, regulate and govern do not take this infinitive pattern.",
       "trigger": "MANAGE",
       "targetTime": 8,
       "difficulty": "B2",
@@ -12274,7 +12274,7 @@
       "skill": "B2 Territorio 1 · Red léxica",
       "templateId": "v30",
       "domain": "territory-network",
-      "q": "Can you ___ the cost of the repairs?",
+      "q": "The builder will ___ the repair costs at about €500, rather than give a firm quote.",
       "a": [
         "speculate",
         "predict",
@@ -12282,7 +12282,7 @@
         "forecast"
       ],
       "c": 2,
-      "rule": "Contraste léxico B2: estimate encaja en este contexto.",
+      "rule": "Estimate costs at an amount means give an approximate calculation, rather than a firm quote.",
       "trigger": "ESTIMATE",
       "targetTime": 8,
       "difficulty": "B2",
@@ -40040,13 +40040,13 @@
       "domain": "cambridge-word",
       "q": "… Nevertheless, it's always exciting to think that there are still plenty of ___ to be made. Recently, a group of (DISCOVER)",
       "a": [
-        "coveries",
+        "discoverers",
+        "discovery",
         "discoveries",
-        "discoverie",
-        "discovers"
+        "rediscovered"
       ],
-      "c": 1,
-      "rule": "DISCOVER → discoveries. Word formation. ",
+      "c": 2,
+      "rule": "Plenty of requires a countable plural here, and things to be made are discoveries, not discoverers.",
       "trigger": "DISCOVER → DISCOVERIES",
       "targetTime": 10.5,
       "difficulty": "B2",

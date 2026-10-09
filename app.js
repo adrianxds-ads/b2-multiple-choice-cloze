@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.10.15";
+const APP_VERSION = "1.11.0";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -11,7 +11,7 @@ const LEECH_LEVEL_COOLDOWN = 8;
 const LEECH_DAY_COOLDOWN = 3;
 const LEECH_PER_SESSION = 1;
 const HISTORY_LIMIT = 6000;
-const SESSION_HISTORY_LIMIT = 1000;
+const SESSION_HISTORY_LIMIT = Number.MAX_SAFE_INTEGER;
 const VISUAL_SYSTEM=window.ADRIAN_VISUAL_SYSTEM||null;
 const AVS_RANKS=VISUAL_SYSTEM?.ranks||[{color:"#422522",surface:"#1A1714",band:"#291F1B",text:"#91817F"},{color:"#512927",surface:"#1F1915",band:"#30211D",text:"#9A8382"},{color:"#632D2A",surface:"#241A16",band:"#3A231F",text:"#A58583"},{color:"#762F32",surface:"#2B1B19",band:"#442423",text:"#B08688"},{color:"#843729",surface:"#2F1D16",band:"#4B281E",text:"#B88B83"},{color:"#904311",surface:"#33210E",band:"#512E12",text:"#BF9275"},{color:"#90570C",surface:"#33270D",band:"#51390F",text:"#BF9E72"},{color:"#8B6B05",surface:"#312E0A",band:"#4F430C",text:"#BCA96E"},{color:"#798136",surface:"#2B351A",band:"#454F25",text:"#B1B68A"},{color:"#57965A",surface:"#213C26",band:"#335A38",text:"#9EC29F"},{color:"#32A48F",surface:"#154037",band:"#206153",text:"#88CABE"},{color:"#4AA7C8",surface:"#1C4149",band:"#2D6271",text:"#96CCDF"},{color:"#7AA5EC",surface:"#2C4054",band:"#466184",text:"#B2CBF4"},{color:"#BB9EF0",surface:"#413E56",band:"#675E86",text:"#D8C7F6"},{color:"#E7BF57",surface:"#4F4925",band:"#7E6F36",text:"#F1DA9E"}];
 const COLOR_BANDS_15=AVS_RANKS.map(x=>x.color);
@@ -203,10 +203,10 @@ function normaliseProgressState(s){
   s.level=syncGlobalLevel(s.level);
   if(!Number.isFinite(s.totalCorrect))s.totalCorrect=Object.values(s.metrics||{}).reduce((n,m)=>n+(Number(m?.correct)||0),0);
   for(const skill of CAMPAIGN.skills){const seed=seedMetric(skill.id),old=s.metrics[skill.id];const m=old&&typeof old==="object"&&!Array.isArray(old)?{...seed,...old}:seed;for(const [key,value] of Object.entries(seed))if(typeof value==="number"&&!Number.isFinite(m[key]))m[key]=value;m.domains=m.domains&&typeof m.domains==="object"&&!Array.isArray(m.domains)?m.domains:{};s.metrics[skill.id]=m;}
-  s.history=Array.isArray(s.history)?s.history.slice(-HISTORY_LIMIT):[];
+  s.history=Array.isArray(s.history)?QuizLearning.retain(s.history,HISTORY_LIMIT,STORAGE_KEY+":answers"):[];
   if(!Number.isFinite(s.activeTrainingMs))s.activeTrainingMs=s.history.reduce((sum,r)=>sum+(Number.isFinite(r?.ms)?r.ms:0),0);
   s.focusTimeByDate=s.focusTimeByDate&&typeof s.focusTimeByDate==="object"?s.focusTimeByDate:{};s.focusTargetsByDate=s.focusTargetsByDate&&typeof s.focusTargetsByDate==="object"?s.focusTargetsByDate:{};if(!Number.isFinite(s.focusTrackingStartedAt))s.focusTrackingStartedAt=Date.now();
-  s.sessionHistory=Array.isArray(s.sessionHistory)?s.sessionHistory.slice(-SESSION_HISTORY_LIMIT):[];
+  s.sessionHistory=Array.isArray(s.sessionHistory)?QuizLearning.preserve(s.sessionHistory,STORAGE_KEY+":sessions"):[];
   s.seen=s.seen&&typeof s.seen==="object"?s.seen:{};s.templateLast=s.templateLast&&typeof s.templateLast==="object"?s.templateLast:{};s.templateSeen=s.templateSeen&&typeof s.templateSeen==="object"?s.templateSeen:{};s.leechTargets=s.leechTargets&&typeof s.leechTargets==="object"?s.leechTargets:{};
   {const activeFp=new Set(CAMPAIGN.questions.map(q=>q.fingerprint));for(const [fp,info] of Object.entries(s.seen))if(info&&typeof info==="object")info.retired=!activeFp.has(fp);}
   s.dailyKey=s.dailyKey&&typeof s.dailyKey==="object"?s.dailyKey:{date:"",cat:""};s.keyring=Array.isArray(s.keyring)?s.keyring.filter(x=>x&&typeof x.cat==="string").slice(0,25):[];const firstKeyDate=s.keyring.map(x=>x.firstDate).filter(Boolean).sort()[0]||s.dailyKey.date||"";s.keyJourneyStart=typeof s.keyJourneyStart==="string"&&s.keyJourneyStart?s.keyJourneyStart:firstKeyDate;s.keyring.forEach((x,i)=>x.number=i+1);const rebuildTemplateSeen=!Object.keys(s.templateSeen).length;
@@ -229,7 +229,7 @@ function normaliseProgressState(s){
     const repurposedCats=new Set(["verb_ing","verb_to","bare_infinitive","phrasal_get_take","phrasal_put_set","phrasal_look_come"]);
     s.legacyRepurposedMetrics=s.legacyRepurposedMetrics&&typeof s.legacyRepurposedMetrics==="object"?s.legacyRepurposedMetrics:{};
     for(const cat of repurposedCats){if(s.metrics[cat])s.legacyRepurposedMetrics[cat]=s.metrics[cat];s.metrics[cat]=seedMetric(cat);}
-    const moved=s.history.filter(r=>repurposedCats.has(r.cat));s.legacyHistory=(Array.isArray(s.legacyHistory)?s.legacyHistory:[]).concat(moved).slice(-1500);s.history=s.history.filter(r=>!repurposedCats.has(r.cat));
+    const moved=s.history.filter(r=>repurposedCats.has(r.cat));s.legacyHistory=QuizLearning.retain((Array.isArray(s.legacyHistory)?s.legacyHistory:[]).concat(moved),1500,STORAGE_KEY+":legacy");s.history=s.history.filter(r=>!repurposedCats.has(r.cat));
     for(const fp of Object.keys(s.seen)){const cat=fp.split("|")[0];if(repurposedCats.has(cat)&&s.seen[fp])s.seen[fp].retired=true;}
     for(const t of Object.keys(s.templateLast))if([...repurposedCats].some(cat=>t.startsWith(cat+"-")))delete s.templateLast[t];
     for(const t of Object.keys(s.templateSeen))if([...repurposedCats].some(cat=>t.startsWith(cat+"-")))delete s.templateSeen[t];
@@ -249,7 +249,7 @@ function loadState(){
   catch(e){try{if(raw)localStorage.setItem(STORAGE_KEY+"_recovery_"+Date.now(),raw);}catch(_){}return newState();}
 }
 function save(){
-  state.updatedAt=Date.now();state.history=state.history.slice(-HISTORY_LIMIT);state.sessionHistory=state.sessionHistory.slice(-SESSION_HISTORY_LIMIT);
+  state.updatedAt=Date.now();state.history=QuizLearning.retain(state.history,HISTORY_LIMIT,STORAGE_KEY+":answers");state.sessionHistory=QuizLearning.preserve(state.sessionHistory,STORAGE_KEY+":sessions");
   try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
   catch(e){console.error("Progress save failed",e);throw e;}
 }
@@ -294,7 +294,7 @@ function catPriority(cat){
 }
 function overallStats(){
   const metrics=Object.values(state.metrics),history=recentRows(75);
-  const coverage=activeSeenCount()/CAMPAIGN.questions.length;
+  const coverage=linguisticCoverage();
   const mastery=mean(metrics.map(metricMastery));
   const minSkill=Math.min(...metrics.map(metricMastery));
   const allTimeAttempts=Number(state.totalAttempts)||0;
@@ -314,7 +314,7 @@ function overallStats(){
   return {...base,eligible:graduation.eligible,graduation};
 }
 function graduationEvidence(st){
-  const now=Date.now(),day=86400000,hist=state.history||[],training=hist.filter(r=>r.sessionMode!=="final"),reviews=training.filter(r=>r.review).slice(-300);
+  const now=Date.now(),day=86400000,hist=state.history||[],training=hist.filter(r=>r.sessionMode!=="final"),reviews=training.filter(r=>r.reviewDue===true||(r.reviewDue==null&&r.review&&Number(r.gap)>=2)).slice(-300);
   const retentionAccuracy=reviews.length?reviews.filter(r=>r.correct).length/reviews.length:0;
   const firstTs=hist.find(r=>Number.isFinite(r.ts))?.ts||state.createdAt||now,spanDays=Math.max(0,(now-firstTs)/day);
   const recentSessions=(state.sessionHistory||[]).filter(x=>!x.mode||x.mode==="training").slice(-8),stableAccuracy=recentSessions.length?mean(recentSessions.map(x=>Number(x.accuracy)||0)):0,stableTimeMs=recentSessions.length?mean(recentSessions.map(x=>Number(x.avgMs)||0)):0;
@@ -391,7 +391,11 @@ function reviewIntervalDays(info,type){
   if(type==="secure")return Math.min(21,Math.max(2,Math.round(prev*1.7)));
   return Math.min(10,Math.max(1,Math.round(prev*1.25)));
 }
-function seenInfo(q){const x=state.seen[q.fingerprint]||null;return x?.retired?null:x;}
+let semanticBank=null,semanticGroups=null;
+function semanticTarget(q){return QuizLearning.normalize(q.q)+"|"+QuizLearning.normalize(q.a[q.c]);}
+function targetGroups(){if(semanticBank!==BANK){semanticBank=BANK;semanticGroups=new Map();for(const q of BANK){const key=semanticTarget(q),group=semanticGroups.get(key)||[];group.push(q.fingerprint);semanticGroups.set(key,group);}}return semanticGroups;}
+function seenInfo(q){const group=targetGroups().get(semanticTarget(q))||[q.fingerprint];return group.map(fp=>state.seen[fp]).filter(x=>x&&!x.retired).sort((a,b)=>(b.lastTs||0)-(a.lastTs||0))[0]||null;}
+function linguisticCoverage(){const groups=targetGroups();let seen=0;for(const group of groups.values())if(group.some(fp=>state.seen[fp]&&!state.seen[fp].retired))seen++;return groups.size?seen/groups.size:0;}
 function lexicalTargetKey(q){
   if(!q||!Array.isArray(q.a)||!Number.isInteger(q.c)||q.c<0||q.c>=q.a.length)return "";
   const answer=String(q.a[q.c]??"").toLowerCase().trim().replace(/\s+/g," "),family=q.networkFamily||q.templateId||q.cat||"unknown";
@@ -503,16 +507,18 @@ function chooseOne(pool,chosen,sessionCats,sessionTemplates,mode,allowedCats=nul
   if(mode!=="review"){const unseenTemplates=cand.filter(q=>!state.templateSeen[q.templateId]);if(unseenTemplates.length)cand=unseenTemplates;}
   cand=cand.filter(q=>(sessionCats[q.cat]||0)<2 && (sessionTemplates[q.templateId]||0)<1);
   if(!cand.length)return null;
-  cand.sort((a,b)=>qScore(b,sessionCats,sessionTemplates,mode)-qScore(a,sessionCats,sessionTemplates,mode));
+  cand=cand.map(q=>({q,score:qScore(q,sessionCats,sessionTemplates,mode)})).sort((a,b)=>b.score-a.score).map(x=>x.q);
   return cand[Math.floor(Math.random()*Math.min(5,cand.length))];
 }
 function buildTrainingPlan(){
   const chosen=[],cats={},temps={},families=new Set(),targets=new Set(),answers=new Set(),optionTerms=new Set(),sourceCount={};
   const family=q=>q.networkFamily||q.templateId||q.fingerprint;
   const source=q=>q.sourceType||"legacy-support";
+  const semantic=new Set(),semanticKey=q=>QuizLearning.normalize(q.q)+"|"+QuizLearning.normalize(q.a[q.c]);
   const addQ=q=>{
+    if(!q||semantic.has(semanticKey(q)))return false;
     const target=lexicalTargetKey(q);if(!q||families.has(family(q))||targets.has(target))return false;
-    chosen.push(q);families.add(family(q));targets.add(target);cats[q.cat]=(cats[q.cat]||0)+1;temps[q.templateId]=(temps[q.templateId]||0)+1;
+    semantic.add(semanticKey(q));chosen.push(q);families.add(family(q));targets.add(target);cats[q.cat]=(cats[q.cat]||0)+1;temps[q.templateId]=(temps[q.templateId]||0)+1;
     const ans=String(q.a[q.c]).toLowerCase();answers.add(ans);q.a.forEach(x=>optionTerms.add(String(x).toLowerCase()));
     sourceCount[source(q)]=(sourceCount[source(q)]||0)+1;return true;
   };
@@ -527,7 +533,7 @@ function buildTrainingPlan(){
   };
   const pick=(pool,mode,sourceType=null)=>{
     const chosenFp=new Set(chosen.map(q=>q.fingerprint)),leechCount=chosen.filter(q=>leechStage(leechInfo(q))==="leech").length;
-    let cand=pool.filter(q=>!chosenFp.has(q.fingerprint)&&!families.has(family(q))&&!targets.has(lexicalTargetKey(q)));
+    let cand=pool.filter(q=>!semantic.has(semanticKey(q))&&!chosenFp.has(q.fingerprint)&&!families.has(family(q))&&!targets.has(lexicalTargetKey(q)));
     if(leechCount>=LEECH_PER_SESSION)cand=cand.filter(q=>leechStage(leechInfo(q))!=="leech");
     if(sourceType)cand=cand.filter(q=>source(q)===sourceType);
     if(mode!=="review")cand=cand.filter(q=>leechStage(leechInfo(q))!=="leech");
@@ -814,7 +820,7 @@ function flushFocusSave(){if(!state||focusSaveMs<1)return;focusSaveMs=0;try{save
 function focusTick(){const now=Date.now(),dt=Math.max(0,Math.min(1600,now-focusLastTickTs));focusLastTickTs=now;if(!state||document.visibilityState!=="visible"||now-focusLastActivityTs>90000)return;const day=localDayKey(now);state.focusTimeByDate[day]=(state.focusTimeByDate[day]||0)+dt;focusSaveMs+=dt;if(focusSaveMs>=15000)flushFocusSave();renderFocusWidgets();}
 function startFocusTracking(){if(focusTimerHandle)return;ensureFocusTarget();focusLastActivityTs=focusLastTickTs=Date.now();["pointerdown","keydown","touchstart","scroll"].forEach(ev=>document.addEventListener(ev,markFocusActivity,{passive:true}));document.addEventListener("visibilitychange",()=>{focusLastTickTs=Date.now();if(document.visibilityState==="hidden")flushFocusSave();else markFocusActivity();});window.addEventListener("beforeunload",flushFocusSave);focusTimerHandle=setInterval(focusTick,1000);}
 
-function renderStatsScreen(){
+function renderStatsScreen(){QuizLearning.evidence(state.history);
   renderFocusWidgets();
   const st=overallStats(),ai=aiValorationStats(),learning=learningScoreStats(),c2=campaign2Readiness(),peer=typicalLearnerStats(),trend=state.sessionHistory.filter(x=>x.mode==="training"),tgt=targetPerformanceStats(),readingLoad=readingLoadStats();applyRatingTheme(st.rating);applyAiTheme(ai);
   $("statsAiLevel").textContent=`${ai.level} / 15`;paintText("statsAiLevel",ai.score/100);$("statsAiConfidence").textContent=`Evidence ${Math.round(ai.confidence*100)}%`;paintText("statsAiConfidence",ai.confidence);
@@ -1092,7 +1098,7 @@ function renderGrowthTree(){
   host.innerHTML=`<div class="growth-tree-canvas" data-tree-stage="${stage}"><svg viewBox="0 0 420 300" role="img" aria-label="Practice tree, growth stage ${stage} of 200"><defs><linearGradient id="treeTrunk" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5d3827"/><stop offset=".55" stop-color="#76503a"/><stop offset="1" stop-color="#957258"/></linearGradient></defs><ellipse class="tree-ground" cx="210" cy="282" rx="78" ry="7"/> <g class="tree-branches" fill="none" stroke="url(#treeTrunk)" stroke-linecap="round" stroke-linejoin="round">${branch}</g><g class="tree-leaves">${leaf}</g></svg></div><div class="growth-tree-count"><b>${level.toLocaleString()}</b><span>LEVEL</span></div>`;
 }
 
-const RELEASE_NOTES=["v1.10.15 · Cambridge Parts 1, 2 y 3","2.431 tarjetas verificadas: 1.610 del banco anterior y 821 nuevas de Open Cloze y Word Formation","La cifra de portada se calcula desde el banco realmente cargado: ya no puede quedarse en 1.610 después de una ampliación","Las nuevas tarjetas se mezclan en sesiones de 15 preguntas, con variantes de un mismo hueco agrupadas para evitar repeticiones consecutivas","Se conservan el progreso, las estadísticas, las medallas, las estrellas y el reloj fijo de 15 segundos"];
+const RELEASE_NOTES=["v1.11.0 · Cambridge Parts 1, 2 y 3","2.431 tarjetas verificadas: 1.610 del banco anterior y 821 nuevas de Open Cloze y Word Formation","La cifra de portada se calcula desde el banco realmente cargado: ya no puede quedarse en 1.610 después de una ampliación","Las nuevas tarjetas se mezclan en sesiones de 15 preguntas, con variantes de un mismo hueco agrupadas para evitar repeticiones consecutivas","Se conservan el progreso, las estadísticas, las medallas, las estrellas y el reloj fijo de 15 segundos"];
 function renderReleaseInfo(){const host=$("releaseInfo"),online=location.protocol.startsWith("http"),build=`${online?"ONLINE":"LOCAL"} BUILD · v${APP_VERSION} · BANK ${CAMPAIGN?.version||"—"}`;if(host)host.innerHTML=`<details class="release-info"><summary><b>B2 Territorio 1 v${APP_VERSION}</b><span>WHAT’S NEW</span></summary><ul>${RELEASE_NOTES.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></details>`;if($("buildVersion"))$("buildVersion").textContent=build;if($("endBuildVersion"))$("endBuildVersion").textContent=build;const meta=document.querySelector('meta[name="ae-version"]');if(meta)meta.setAttribute("content",APP_VERSION);document.title=`B2 Territorio 1 - v${APP_VERSION}`;}
 function medalCounts(){const rows=(state.sessionHistory||[]).filter(x=>!x.mode||x.mode==="training");return window.AdrianAchievements?.countsFromHistory?.(rows)||{blue:0,violet:0,gold:0};}
 function renderMedalSummary(latest=null){const strip=window.AdrianAchievements?.medalStripHtml?.(medalCounts(),{context:"summary"})||"",badge=latest?window.AdrianAchievements?.badgeHtml?.(latest.correct,latest.total||SESSION_SIZE,medalCounts())||"":"";const a=$("startMedals"),b=$("endMedals");if(a)a.innerHTML=strip;if(b)b.innerHTML=strip+badge;}
@@ -1173,7 +1179,9 @@ function secondaryEffect(run){try{Promise.resolve(run()).catch(e=>console.warn("
 async function startSession(finalMode=false){
 if(sessionStarting)return;sessionStarting=true;try{
   applyRatingTheme(overallStats().rating);
+  QuizLearning.clear();
   const raw=finalMode?buildFinalPlan():buildTrainingPlan();
+  if(!raw.length){sessionStarting=false;return;}
   const target=finalMode?null:adaptiveLevelTarget(raw),abortSnapshot=JSON.stringify(state);
   session={mode:finalMode?"final":"training",level:state.level,index:0,correct:0,automatic:0,times:[],records:[],usedDisplayNames:new Set(),target,plan:raw.map(shuffleOptions),abortSnapshot,rankBefore:skillRankPositions(),combo:0,bestCombo:0,recovered:0,masteredRewards:0,learningXp:0,lastReward:""};
   $("sessionLevel").innerHTML=finalMode?"FINAL":`L${state.level}<small class="level-target">TARGET ${target.toFixed(1)}</small>`;
@@ -1206,19 +1214,21 @@ function startTimer(){
   },50);
 }
 function nextQuestion(){
+  QuizLearning.clear();
   clearTimeout(revealHandle);revealHandle=null;currentPreReadMs=0;
   locked=false;hideCorrectReveal();
   if(session.index>=session.plan.length){finishSessionSafe();return;}
   current=session.plan[session.index];
   if(!current||!Array.isArray(current.display)||current.display.length!==4||!Number.isInteger(current.correctPos)||current.correctPos<0||current.correctPos>3){console.error("Skipping invalid question",current);session.index++;setTimeout(nextQuestion,0);return;}
   $("qIndex").textContent=session.index+1;
-  const rewardPrior=state.seen[current.fingerprint]||null,rewardGap=rewardPrior?state.level-rewardPrior.lastLevel:null,rewardSpecial=rewardPrior?.lapses>0&&!rewardPrior.masteredRewarded&&rewardPrior.lastCorrect===true&&rewardPrior.count>=2&&rewardGap>=2?"MASTER CHANCE":rewardPrior?.lapses>0&&rewardPrior.lastCorrect===false?"RECOVERY":rewardPrior?"SPACED REVIEW":session.index===session.plan.length-1?"FINAL":"";
+  const rewardPrior=state.seen[current.fingerprint]||null,rewardGap=rewardPrior?state.level-rewardPrior.lastLevel:null,rewardSpecial=rewardPrior?.lapses>0&&!rewardPrior.masteredRewarded&&rewardPrior.lastCorrect===true&&rewardPrior.count>=2&&rewardGap>=2?"MASTER CHANCE":rewardPrior?.lapses>0&&rewardPrior.lastCorrect===false?"RECOVERY":rewardPrior?(QuizLearning.ready(rewardPrior,state.level)?"SPACED REVIEW":"EXTRA PRACTICE"):session.index===session.plan.length-1?"FINAL":"";
   $("qTotal").textContent="/ "+session.plan.length+(rewardSpecial?" · "+rewardSpecial:"");
   const view=visibleCard(current);current.visibleQuestion=view.question;current.visibleOptions=view.options;current.visibleFocus=view.focus;current.visibleNames=view.names;
   $("questionText").classList.remove("focus-active");$("questionText").textContent=view.question;
   const wrap=$("answers");wrap.innerHTML="";wrap.classList.toggle("read-first-hidden",readFirstMode);const answerColors=shuffledAnswerColorClasses();
   current.display.forEach((txt,i)=>{const b=document.createElement("button");b.className="answer "+answerColors[i];b.textContent=view.options[i];b.disabled=readFirstMode;b.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"){e.preventDefault();answer(i,false);}});b.addEventListener("click",()=>answer(i,false));wrap.appendChild(b);});
   $("timerText").textContent=TIME_LIMIT.toFixed(1);$("timer").classList.remove("urgent");renderSegments(TIME_LIMIT);
+  if([2,3].includes(Number(current.sourcePart))&&(state.seen[current.fingerprint]?.count||0)>=2&&Math.random()<.35){QuizLearning.production(current,wrap,pos=>answer(pos,false));}
   if(readFirstMode){
     currentPreReadMs=readFirstDelayMs(view.question);
     const expectedSession=session,expectedIndex=session.index;
@@ -1243,12 +1253,13 @@ function answer(pos,timeout=false){
   const now=Date.now(),intervalDays=reviewIntervalDays(previousSeen,type);
   state.seen[current.fingerprint]={count:appearance,lastLevel:state.level,lastTs:now,lastCorrect:ok,lapses,intervalDays,nextDueTs:now+intervalDays*86400000,masteredRewarded:!!(previousSeen?.masteredRewarded||masteredReward)};state.templateLast[current.templateId]=state.level;state.templateSeen[current.templateId]={count:patternAppearance,lastLevel:state.level,lastTs:now};const targetAfter=updateLeechTarget(current,ok,now);
   const shownQuestion=current.visibleQuestion||current.q,shownOptions=current.visibleOptions||current.display,load=promptLoadMeta(shownQuestion);
-  const rec={level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:pos>=0?shownOptions[pos]:"No answer",correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:current.targetTime||3.6,timeLimitSec:TIME_LIMIT,sessionMode:session.mode,studyMode:readFirstMode?"READ_FIRST":"STANDARD",preReadMs:currentPreReadMs,leechBefore:leechStage(previousTarget),leechAfter:leechStage(targetAfter),targetLapses:targetAfter?.lapses||0,targetPressure:targetAfter?.pressure||0};
+  const rec={retrievalMode:current.retrievalMode||"RECOGNITION",level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,reviewDue:QuizLearning.ready(previousSeen,state.level),delayedRecall:!!previousSeen&&elapsedDays(previousSeen.lastTs)>=1,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:current.productionAnswer||(pos>=0?shownOptions[pos]:"No answer"),correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:current.targetTime||3.6,timeLimitSec:TIME_LIMIT,sessionMode:session.mode,studyMode:readFirstMode?"READ_FIRST":"STANDARD",preReadMs:currentPreReadMs,leechBefore:leechStage(previousTarget),leechAfter:leechStage(targetAfter),targetLapses:targetAfter?.lapses||0,targetPressure:targetAfter?.pressure||0};
   hideCorrectReveal();
   try{flashGrammarFocus(shownQuestion,rec.correctAnswer,current.visibleFocus||current.focus||[]);}catch(e){console.error("Grammar focus flash failed",e);}
-  state.history.push(rec);state.history=state.history.slice(-12000);state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
+  state.history.push(rec);state.history=QuizLearning.retain(state.history,12000,STORAGE_KEY+":answers");state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
   secondaryEffect(()=>window.LanguagePoints?.recordAnswer?.({correct:ok,sec,timeLimit:TIME_LIMIT}));
-  const answeredSession=session,answeredIndex=session.index,delay=ok?160:360;setTimeout(()=>{if(session!==answeredSession||session.index!==answeredIndex)return;session.index++;try{nextQuestion();}catch(e){console.error("Question advance recovered",e);locked=false;setTimeout(nextQuestion,120);}},delay);
+  QuizLearning.show("#questionText",shownQuestion,rec.correctAnswer);
+  const answeredSession=session,answeredIndex=session.index,delay=QuizLearning.HOLD_MS;setTimeout(()=>{if(session!==answeredSession||session.index!==answeredIndex)return;session.index++;try{nextQuestion();}catch(e){console.error("Question advance recovered",e);locked=false;setTimeout(nextQuestion,120);}},delay);
   try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect();else playWrong();}catch(e){console.warn("Answer cue unavailable",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat,current.trigger);}catch(e){console.error("Feedback failed",e);}
 }
 function finishSessionSafe(){if(!session||session.finishing)return;session.finishing=true;locked=true;Promise.resolve().then(()=>finishSession()).catch(e=>{console.error("Session finish recovered",e);try{missionOverlay(false);}catch(_){}try{const total=session?.records?.length||SESSION_SIZE,score=session?.correct||0;if($("endKicker"))$("endKicker").textContent=`LEVEL ${state?.level||""} COMPLETE`;if($("endScore"))$("endScore").textContent=`${score}/${total}`;if($("endSub"))$("endSub").textContent="Cierre recuperado automáticamente";showScreen("endScreen");}catch(_){}locked=false;});}
