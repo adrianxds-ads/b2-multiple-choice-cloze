@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.10.13";
+const APP_VERSION = "1.10.14";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -553,7 +553,13 @@ function buildTrainingPlan(){
 
   // Territorio 1: roughly 75% exploration, 25% spaced review.
   // New material is deliberately mixed: real exam anchors + lexical network + selected legacy support.
-  for(const [src,n] of [["exam-core",4],["territory-network",5],["legacy-support",2]]){
+  // Every session samples Parts 1, 2 and 3 fairly when unseen anchors are available.
+  // The three source parts share the original exam_core metric and adaptive review.
+  for(const part of [1,2,3]){
+    const pool=unseen.filter(q=>source(q)==="exam-core"&&(q.sourcePart||1)===part);
+    const q=pick(pool,"explore");if(q)addQ(q);
+  }
+  for(const [src,n] of [["exam-core",1],["territory-network",5],["legacy-support",2]]){
     for(let i=0;i<n;i++){const q=pick(unseen,"explore",src);if(q)addQ(q);}
   }
   while(chosen.length<11){const q=pick(unseen,"explore");if(!q)break;addQ(q);}

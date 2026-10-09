@@ -1,0 +1,756 @@
+{
+  "sources": 30,
+  "old": 1610,
+  "gaps": {
+    "2": 240,
+    "3": 240
+  },
+  "added": {
+    "2": 480,
+    "3": 341
+  },
+  "total": 2431,
+  "issues": [
+    "no variant 2 exam 1 p3 q19",
+    "no variant 2 exam 1 p3 q23",
+    "no variant 2 exam 2 p3 q17",
+    "no variant 2 exam 2 p3 q22",
+    "no variant 2 exam 3 p3 q17",
+    "no variant 2 exam 3 p3 q18",
+    "no variant 2 exam 3 p3 q21",
+    "no variant 2 exam 3 p3 q22",
+    "no variant 2 exam 3 p3 q23",
+    "no variant 2 exam 4 p3 q17",
+    "no variant 2 exam 4 p3 q19",
+    "no variant 2 exam 4 p3 q20",
+    "no variant 2 exam 4 p3 q21",
+    "no variant 2 exam 5 p3 q17",
+    "no variant 2 exam 5 p3 q18",
+    "no variant 2 exam 5 p3 q19",
+    "no variant 2 exam 5 p3 q21",
+    "no variant 2 exam 5 p3 q22",
+    "no variant 2 exam 5 p3 q23",
+    "no variant 2 exam 6 p3 q17",
+    "no variant 2 exam 6 p3 q18",
+    "no variant 2 exam 6 p3 q19",
+    "no variant 2 exam 6 p3 q21",
+    "no variant 2 exam 6 p3 q22",
+    "no variant 2 exam 6 p3 q24",
+    "no variant 2 exam 7 p3 q17",
+    "no variant 2 exam 7 p3 q21",
+    "no variant 2 exam 7 p3 q22",
+    "no variant 2 exam 7 p3 q23",
+    "no variant 2 exam 7 p3 q24",
+    "no variant 2 exam 8 p3 q18",
+    "no variant 2 exam 8 p3 q19",
+    "no variant 2 exam 8 p3 q20",
+    "no variant 2 exam 8 p3 q24",
+    "no variant 2 exam 9 p3 q18",
+    "no variant 2 exam 9 p3 q19",
+    "no variant 2 exam 9 p3 q22",
+    "no variant 2 exam 9 p3 q24",
+    "no variant 2 exam 10 p3 q20",
+    "no variant 2 exam 10 p3 q21",
+    "no variant 2 exam 10 p3 q22",
+    "no variant 2 exam 10 p3 q23",
+    "no variant 2 exam 11 p3 q17",
+    "no variant 2 exam 11 p3 q18",
+    "no variant 2 exam 11 p3 q19",
+    "no variant 2 exam 11 p3 q20",
+    "no variant 2 exam 11 p3 q21",
+    "no variant 2 exam 11 p3 q23",
+    "no variant 2 exam 12 p3 q19",
+    "no variant 2 exam 12 p3 q20",
+    "no variant 2 exam 13 p3 q18",
+    "no variant 2 exam 13 p3 q20",
+    "no variant 2 exam 13 p3 q21",
+    "no variant 2 exam 13 p3 q22",
+    "no variant 2 exam 13 p3 q23",
+    "no variant 2 exam 14 p3 q19",
+    "no variant 2 exam 14 p3 q20",
+    "no variant 2 exam 14 p3 q22",
+    "no variant 2 exam 14 p3 q23",
+    "no variant 2 exam 14 p3 q24",
+    "no variant 2 exam 15 p3 q18",
+    "no variant 2 exam 15 p3 q19",
+    "no variant 2 exam 15 p3 q20",
+    "no variant 2 exam 15 p3 q21",
+    "no variant 2 exam 15 p3 q22",
+    "no variant 2 exam 15 p3 q23",
+    "no variant 2 exam 16 p3 q17",
+    "no variant 2 exam 16 p3 q18",
+    "no variant 2 exam 16 p3 q19",
+    "no variant 2 exam 16 p3 q20",
+    "no variant 2 exam 16 p3 q22",
+    "no variant 2 exam 16 p3 q23",
+    "no variant 2 exam 16 p3 q24",
+    "no variant 2 exam 17 p3 q19",
+    "no variant 2 exam 17 p3 q21",
+    "no variant 2 exam 17 p3 q22",
+    "no variant 2 exam 18 p3 q17",
+    "no variant 2 exam 18 p3 q19",
+    "no variant 2 exam 18 p3 q20",
+    "no variant 2 exam 18 p3 q21",
+    "no variant 2 exam 18 p3 q22",
+    "no variant 2 exam 19 p3 q18",
+    "no variant 2 exam 19 p3 q20",
+    "no variant 2 exam 19 p3 q21",
+    "no variant 2 exam 19 p3 q22",
+    "no variant 2 exam 19 p3 q23",
+    "no variant 2 exam 19 p3 q24",
+    "no variant 2 exam 20 p3 q18",
+    "no variant 2 exam 20 p3 q21",
+    "no variant 2 exam 20 p3 q22",
+    "no variant 2 exam 20 p3 q24",
+    "no variant 2 exam 21 p3 q17",
+    "no variant 2 exam 21 p3 q20",
+    "no variant 2 exam 21 p3 q21",
+    "no variant 2 exam 21 p3 q22",
+    "no variant 2 exam 21 p3 q23",
+    "no variant 2 exam 21 p3 q24",
+    "no variant 2 exam 22 p3 q17",
+    "no variant 2 exam 22 p3 q18",
+    "no variant 2 exam 22 p3 q19",
+    "no variant 2 exam 22 p3 q20",
+    "no variant 2 exam 22 p3 q21",
+    "no variant 2 exam 22 p3 q23",
+    "no variant 2 exam 23 p3 q19",
+    "no variant 2 exam 23 p3 q20",
+    "no variant 2 exam 23 p3 q21",
+    "no variant 2 exam 23 p3 q24",
+    "no variant 2 exam 24 p3 q18",
+    "no variant 2 exam 24 p3 q19",
+    "no variant 2 exam 24 p3 q21",
+    "no variant 2 exam 24 p3 q22",
+    "no variant 2 exam 24 p3 q23",
+    "no variant 2 exam 25 p3 q19",
+    "no variant 2 exam 25 p3 q22",
+    "no variant 2 exam 25 p3 q23",
+    "no variant 2 exam 26 p3 q17",
+    "no variant 2 exam 26 p3 q19",
+    "no variant 2 exam 26 p3 q20",
+    "no variant 2 exam 26 p3 q21",
+    "no variant 2 exam 26 p3 q22",
+    "no variant 2 exam 27 p3 q17",
+    "no variant 2 exam 27 p3 q18",
+    "no variant 2 exam 27 p3 q19",
+    "no variant 2 exam 27 p3 q20",
+    "no variant 2 exam 27 p3 q22",
+    "no variant 2 exam 27 p3 q24",
+    "no variant 2 exam 28 p3 q17",
+    "no variant 2 exam 28 p3 q18",
+    "no variant 2 exam 28 p3 q21",
+    "no variant 2 exam 28 p3 q22",
+    "no variant 2 exam 29 p3 q17",
+    "no variant 2 exam 29 p3 q20",
+    "no variant 2 exam 29 p3 q21",
+    "no variant 2 exam 29 p3 q24",
+    "no variant 2 exam 30 p3 q18",
+    "no variant 2 exam 30 p3 q19",
+    "no variant 2 exam 30 p3 q20",
+    "no variant 2 exam 30 p3 q21",
+    "no variant 2 exam 30 p3 q22"
+  ],
+  "sample": [
+    {
+      "exam": 1,
+      "part": 2,
+      "question": "… them and once that has happened, it may be hard to know ___ to do about it. There are also many positive …",
+      "options": [
+        "which",
+        "that",
+        "what",
+        "how"
+      ],
+      "answer": "what"
+    },
+    {
+      "exam": 1,
+      "part": 2,
+      "question": "… do about it. There are also many positive aspects of gaming, however. ___ many gamers will tell you, it has become a …",
+      "options": [
+        "than",
+        "by",
+        "for",
+        "as"
+      ],
+      "answer": "as"
+    },
+    {
+      "exam": 1,
+      "part": 2,
+      "question": "… tell you, it has become a means for many to communicate regularly ___ those they care most about. This is true for …",
+      "options": [
+        "with",
+        "by",
+        "from",
+        "to"
+      ],
+      "answer": "with"
+    },
+    {
+      "exam": 1,
+      "part": 3,
+      "question": "… Nevertheless, it's always exciting to think that there are still plenty of ___ to be made. Recently, a group of (DISCOVER)",
+      "options": [
+        "discover",
+        "discovery",
+        "discoveries",
+        "discovered"
+      ],
+      "answer": "discoveries"
+    },
+    {
+      "exam": 1,
+      "part": 3,
+      "question": "to be made. Recently, a group of ___ set off on a deep-sea expedition aiming to explore … (SCIENCE)",
+      "options": [
+        "science",
+        "scientist",
+        "scientific",
+        "scientists"
+      ],
+      "answer": "scientists"
+    },
+    {
+      "exam": 1,
+      "part": 3,
+      "question": "… mountain ranges off the coast of Chile. They wanted to increase their ___ of the diverse sea life there. What they found … (KNOW)",
+      "options": [
+        "knowledge",
+        "know",
+        "known",
+        "knowing"
+      ],
+      "answer": "knowledge"
+    },
+    {
+      "exam": 2,
+      "part": 2,
+      "question": "… Solar batteries – known as cells – provide plenty of power as ___ as there is enough sun. Smaller solar cells are …",
+      "options": [
+        "far",
+        "much",
+        "well",
+        "long"
+      ],
+      "answer": "long"
+    },
+    {
+      "exam": 2,
+      "part": 2,
+      "question": "… however, using them in smart clothing or other soft products has proved ___ difficult to be worth doing on",
+      "options": [
+        "too",
+        "so",
+        "much",
+        "more"
+      ],
+      "answer": "too"
+    },
+    {
+      "exam": 2,
+      "part": 2,
+      "question": "difficult to be worth doing on ___ large scale. However, this may soon change because solar …",
+      "options": [
+        "an",
+        "a",
+        "the",
+        "one"
+      ],
+      "answer": "a"
+    },
+    {
+      "exam": 2,
+      "part": 3,
+      "question": "… exercise? Studies show that even small amounts of regular movement can be ___ to health. In fact, just three and a half … (BENEFIT)",
+      "options": [
+        "benefit",
+        "beneficiary",
+        "benefits",
+        "beneficial"
+      ],
+      "answer": "beneficial"
+    },
+    {
+      "exam": 2,
+      "part": 3,
+      "question": "… health. In fact, just three and a half minutes per day of ___ activity like stair-climbing will do you good. So, getting … (ENERGY)",
+      "options": [
+        "energetic",
+        "energy",
+        "energetically",
+        "energise"
+      ],
+      "answer": "energetic"
+    },
+    {
+      "exam": 2,
+      "part": 3,
+      "question": "… your fitness five-a-day doesn't mean big workouts of over an hour in ___ – it's micro-breaks of movement that can easily fit … (LONG)",
+      "options": [
+        "long",
+        "length",
+        "longer",
+        "lengthy"
+      ],
+      "answer": "length"
+    },
+    {
+      "exam": 3,
+      "part": 2,
+      "question": "… Cultural Organization. The list has traditions from over 130 countries on it. ___ from food, it also includes activities and events such",
+      "options": [
+        "apart",
+        "away",
+        "aside",
+        "beyond"
+      ],
+      "answer": "apart"
+    },
+    {
+      "exam": 3,
+      "part": 2,
+      "question": "from food, it also includes activities and events such ___ dances and festivals. UNESCO said that",
+      "options": [
+        "like",
+        "as",
+        "than",
+        "by"
+      ],
+      "answer": "as"
+    },
+    {
+      "exam": 3,
+      "part": 2,
+      "question": "dances and festivals. UNESCO said that ___ including the bread on the list, it was protecting …",
+      "options": [
+        "in",
+        "on",
+        "by",
+        "at"
+      ],
+      "answer": "by"
+    },
+    {
+      "exam": 3,
+      "part": 3,
+      "question": "… … sand sculptors – artists who make sculptures out of sand. The ___ sculptures can be seen in spring, summer and autumn. … (BREATH)",
+      "options": [
+        "breathtaking",
+        "breath",
+        "breathe",
+        "breathing"
+      ],
+      "answer": "breathtaking"
+    },
+    {
+      "exam": 3,
+      "part": 3,
+      "question": "sculptures can be seen in spring, summer and autumn. They're so ___ detailed, it's hard to believe they're just sand and … (BEAUTY)",
+      "options": [
+        "beauty",
+        "beautifully",
+        "beautiful",
+        "beautify"
+      ],
+      "answer": "beautifully"
+    },
+    {
+      "exam": 3,
+      "part": 3,
+      "question": "… hard to believe they're just sand and water. Science-fiction adventures have provided ___ for many of them and there are dinosaurs, too. … (INSPIRE)",
+      "options": [
+        "inspire",
+        "inspired",
+        "inspiration",
+        "inspiring"
+      ],
+      "answer": "inspiration"
+    },
+    {
+      "exam": 4,
+      "part": 2,
+      "question": "… is a popular tourist destination. However, there are also plenty of reasons ___ explore the country's second largest city, Tartu. To start",
+      "options": [
+        "for",
+        "to",
+        "with",
+        "into"
+      ],
+      "answer": "to"
+    },
+    {
+      "exam": 4,
+      "part": 2,
+      "question": "explore the country's second largest city, Tartu. To start ___ , Tartu is the oldest city in the Baltic …",
+      "options": [
+        "by",
+        "from",
+        "with",
+        "to"
+      ],
+      "answer": "with"
+    },
+    {
+      "exam": 4,
+      "part": 2,
+      "question": "… city in the Baltic states and has one of the oldest universities ___ the world, founded in the 1600s. Around",
+      "options": [
+        "on",
+        "at",
+        "into",
+        "in"
+      ],
+      "answer": "in"
+    },
+    {
+      "exam": 4,
+      "part": 3,
+      "question": "… first novel was not published until she was 40. Born into a ___ New York family, she travelled in Europe with her … (WEALTH)",
+      "options": [
+        "wealth",
+        "wealthy",
+        "wealthier",
+        "wealthily"
+      ],
+      "answer": "wealthy"
+    },
+    {
+      "exam": 4,
+      "part": 3,
+      "question": "… York family, she travelled in Europe with her parents as a child, ___ becoming fluent in French, German and Italian. She wrote … (CONSEQUENCE)",
+      "options": [
+        "consequence",
+        "consequential",
+        "consequently",
+        "consequences"
+      ],
+      "answer": "consequently"
+    },
+    {
+      "exam": 4,
+      "part": 3,
+      "question": "becoming fluent in French, German and Italian. She wrote stories from early ___ , attempting her first novel aged just 11. It … (CHILD)",
+      "options": [
+        "child",
+        "children",
+        "childish",
+        "childhood"
+      ],
+      "answer": "childhood"
+    },
+    {
+      "exam": 5,
+      "part": 2,
+      "question": "… for nearly anything you can think …. So it should come as ___ surprise that if you're interested in giving your creativity",
+      "options": [
+        "a",
+        "an",
+        "no",
+        "the"
+      ],
+      "answer": "no"
+    },
+    {
+      "exam": 5,
+      "part": 2,
+      "question": "surprise that if you're interested in giving your creativity ___ boost, there are apps for that, too. Some of …",
+      "options": [
+        "an",
+        "the",
+        "one",
+        "a"
+      ],
+      "answer": "a"
+    },
+    {
+      "exam": 5,
+      "part": 2,
+      "question": "… that, too. Some of these apps use sound to stimulate your imagination. ___ instance, you may hear a sequence of sounds that …",
+      "options": [
+        "for",
+        "to",
+        "of",
+        "with"
+      ],
+      "answer": "for"
+    },
+    {
+      "exam": 5,
+      "part": 3,
+      "question": "… worked in … different fields throughout her life. She made a major ___ to transport history by inventing the (CONTRIBUTE)",
+      "options": [
+        "contribute",
+        "contributed",
+        "contribution",
+        "contributor"
+      ],
+      "answer": "contribution"
+    },
+    {
+      "exam": 5,
+      "part": 3,
+      "question": "to transport history by inventing the ___ version of a windscreen wiper. Anderson was in a … (ORIGIN)",
+      "options": [
+        "origin",
+        "originally",
+        "originality",
+        "original"
+      ],
+      "answer": "original"
+    },
+    {
+      "exam": 5,
+      "part": 3,
+      "question": "… that the driver kept the windscreen open, even though the weather was ___ . That was because it was too hard to … (FREEZE)",
+      "options": [
+        "freezing",
+        "freeze",
+        "frozen",
+        "freezer"
+      ],
+      "answer": "freezing"
+    },
+    {
+      "exam": 6,
+      "part": 2,
+      "question": "… included Monet, Renoir, Pissarro and Degas. Modern life and ordinary people having ___ good time were popular subjects with many Impressionists. They …",
+      "options": [
+        "an",
+        "the",
+        "one",
+        "a"
+      ],
+      "answer": "a"
+    },
+    {
+      "exam": 6,
+      "part": 2,
+      "question": "… theatres, cafés and popular countryside resorts. Traditionally in French painting, poorer people ___ rarely been shown as individuals or people",
+      "options": [
+        "had",
+        "am",
+        "is",
+        "are"
+      ],
+      "answer": "had"
+    },
+    {
+      "exam": 6,
+      "part": 2,
+      "question": "rarely been shown as individuals or people ___ should be taken seriously. Even",
+      "options": [
+        "which",
+        "who",
+        "whose",
+        "whom"
+      ],
+      "answer": "who"
+    },
+    {
+      "exam": 6,
+      "part": 3,
+      "question": "… paddle, but longer – to move themselves forwards. Modern stand-up paddleboarding is ___ from Hawaii and was adopted by west-coast American (ORIGIN)",
+      "options": [
+        "origin",
+        "original",
+        "originality",
+        "originally"
+      ],
+      "answer": "originally"
+    },
+    {
+      "exam": 6,
+      "part": 3,
+      "question": "from Hawaii and was adopted by west-coast American ___ in the early 2000s. It has been growing in (SURF)",
+      "options": [
+        "surfers",
+        "surf",
+        "surfer",
+        "surfing"
+      ],
+      "answer": "surfers"
+    },
+    {
+      "exam": 6,
+      "part": 3,
+      "question": "in the early 2000s. It has been growing in ___ ever since. Unlike surfing, which requires waves, it is … (POPULAR)",
+      "options": [
+        "popular",
+        "popularity",
+        "popularly",
+        "unpopular"
+      ],
+      "answer": "popularity"
+    },
+    {
+      "exam": 7,
+      "part": 2,
+      "question": "… with jobs that need doing around the house? If you are anything ___ me, you do, but you hate making your bed! …",
+      "options": [
+        "like",
+        "in",
+        "on",
+        "at"
+      ],
+      "answer": "like"
+    },
+    {
+      "exam": 7,
+      "part": 2,
+      "question": "… do, but you hate making your bed! Well, there's good news, thanks ___ a Spanish company which has designed a bed that …",
+      "options": [
+        "for",
+        "to",
+        "with",
+        "into"
+      ],
+      "answer": "to"
+    },
+    {
+      "exam": 7,
+      "part": 2,
+      "question": "a Spanish company which has designed a bed that makes ___ . You can press a button, which automatically makes …",
+      "options": [
+        "it",
+        "its",
+        "itself",
+        "they"
+      ],
+      "answer": "itself"
+    },
+    {
+      "exam": 7,
+      "part": 3,
+      "question": "… our world has also been shaped by children and teenagers. The German ___ , Carl Friedrich Gauss (1777–1855), made the first of … (MATHEMATICS)",
+      "options": [
+        "mathematician",
+        "mathematics",
+        "mathematical",
+        "mathematicss"
+      ],
+      "answer": "mathematician"
+    },
+    {
+      "exam": 7,
+      "part": 3,
+      "question": ", Carl Friedrich Gauss (1777–1855), made the first of several important ___ while he was still in elementary school. One day, … (DISCOVER)",
+      "options": [
+        "discover",
+        "discoveries",
+        "discovery",
+        "discovered"
+      ],
+      "answer": "discoveries"
+    },
+    {
+      "exam": 7,
+      "part": 3,
+      "question": "… the numbers from 1 to 100. To the teacher's great surprise, Carl ___ the answer in seconds. The formula he devised to … (PRODUCT)",
+      "options": [
+        "product",
+        "products",
+        "produced",
+        "produce"
+      ],
+      "answer": "produced"
+    },
+    {
+      "exam": 8,
+      "part": 2,
+      "question": "Ears do … than hear. They keep you balanced, as ___ . Inside the inner ear, three small loops, or …",
+      "options": [
+        "so",
+        "well",
+        "too",
+        "much"
+      ],
+      "answer": "well"
+    },
+    {
+      "exam": 8,
+      "part": 2,
+      "question": "… three small loops, or semi-circular canals, can be found. They are filled ___ liquid and have thousands of microscopic hairs lining them. …",
+      "options": [
+        "by",
+        "from",
+        "with",
+        "to"
+      ],
+      "answer": "with"
+    },
+    {
+      "exam": 8,
+      "part": 2,
+      "question": "… the liquid in the canals also moves. This causes the tiny hairs ___ move too, sending a nerve message telling the brain …",
+      "options": [
+        "for",
+        "with",
+        "into",
+        "to"
+      ],
+      "answer": "to"
+    },
+    {
+      "exam": 8,
+      "part": 3,
+      "question": "… and Australia. When the Baobab drops its leaves, its branches have the ___ of roots sticking up into the air, as if … (APPEAR)",
+      "options": [
+        "appear",
+        "appearance",
+        "appeared",
+        "disappear"
+      ],
+      "answer": "appearance"
+    },
+    {
+      "exam": 8,
+      "part": 3,
+      "question": "… the air, as if it had been planted upside-down. Baobabs range in ___ from five to twenty metres, and there's evidence from … (HIGH)",
+      "options": [
+        "high",
+        "higher",
+        "height",
+        "highly"
+      ],
+      "answer": "height"
+    },
+    {
+      "exam": 8,
+      "part": 3,
+      "question": "… shiny and are often hollow. One ancient Baobab in Zimbabwe is so ___ that up to forty people can shelter in the … (MASS)",
+      "options": [
+        "mass",
+        "massively",
+        "masses",
+        "massive"
+      ],
+      "answer": "massive"
+    },
+    {
+      "exam": 9,
+      "part": 2,
+      "question": "Would you like your next walk to be … adventure? Then ___ not try a high-tech treasure hunt known as 'geocaching'? …",
+      "options": [
+        "what",
+        "which",
+        "why",
+        "that"
+      ],
+      "answer": "why"
+    },
+    {
+      "exam": 9,
+      "part": 2,
+      "question": "… 'geocaching'? A geocache is a small container hidden outdoors that is located ___ the help of a map or a GPS app, …",
+      "options": [
+        "by",
+        "from",
+        "to",
+        "with"
+      ],
+      "answer": "with"
+    }
+  ]
+}

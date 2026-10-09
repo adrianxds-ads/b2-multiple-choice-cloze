@@ -1,5 +1,5 @@
-# B2 Territorio 1
+# Close Quiz · B2 First
 
-Quiz adaptativo para B2 First · Reading and Use of English · Part 1.
+Banco: 2431 tarjetas; 1.610 originales intactas y 821 tarjetas nuevas de Parts 2 y 3, derivadas de 480 huecos reales de los 30 exámenes del banco Cambridge. Comparten familia de repaso las variantes del mismo hueco. 15 preguntas y 15 segundos, algoritmo original y progreso conservados.
 
-Banco activo: 1.610 tarjetas · 240 anclas de 30 exámenes reales · 640 preguntas de red léxica · 730 preguntas seleccionadas del banco anterior. Sesiones de 15 preguntas, reloj fijo de 15 segundos y repetición espaciada orientada a exploración.
+Regenerar: node generate-cambridge-expansion.cjs --apply. Auditoría: cambridge-expansion-qa.json.
