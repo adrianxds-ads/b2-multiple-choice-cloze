@@ -1197,9 +1197,25 @@ function abortSession(){
   if(snapshot){try{const restored=JSON.parse(snapshot);state=validProgressState(restored)?normaliseProgressState(restored):restored;state.focusTimeByDate=focusKeep.times;state.focusTargetsByDate=focusKeep.targets;state.focusTrackingStartedAt=focusKeep.started;save();}catch(e){console.error("Emergency exit rollback failed",e);}}
   locked=false;renderStart();showScreen("startScreen");
 }
-function renderSegments(left){
-  const n=Math.ceil(left);
-  [...$("segments").children].forEach((e,i)=>e.classList.toggle("on",i<n));
+function renderSegments(left=TIME_LIMIT,total=TIME_LIMIT){
+  const host=$("segments");
+  if(!host)return;
+  const duration=Math.max(.001,Number(total)||TIME_LIMIT),seconds=Math.max(1,Math.ceil(duration));
+  if(host.children.length!==seconds||host.dataset.secondsTotal!==String(seconds)){
+    const nodes=Array.from({length:seconds},()=>{const node=document.createElement("i");node.className="seg";return node;});
+    host.replaceChildren(...nodes);
+    host.classList.add("seconds-bar");
+    host.dataset.secondsTotal=String(seconds);
+    host.style.gridTemplateColumns="repeat("+seconds+",minmax(0,1fr))";
+    host.setAttribute("role","progressbar");
+    host.setAttribute("aria-valuemin","0");
+    host.setAttribute("aria-valuemax",String(seconds));
+  }
+  const remaining=Math.max(0,Math.min(duration,Number(left)||0));
+  const elapsed=Math.max(0,Math.min(seconds,Math.floor(duration-remaining+0.000001)));
+  [...host.children].forEach((node,index)=>node.classList.toggle("on",index<elapsed));
+  host.setAttribute("aria-valuenow",String(elapsed));
+  host.setAttribute("aria-valuetext",elapsed+" de "+seconds+" segundos transcurridos");
 }
 function startTimer(){
   clearInterval(timerHandle);deadline=performance.now()+TIME_LIMIT*1000;lastTickShown=TIME_LIMIT+1;lastUrgentBeat=-1;
@@ -1356,7 +1372,7 @@ async function boot(){
   for(const q of CAMPAIGN.questions){q.skill=learningTerminology(q.skill);q.rule=learningTerminology(q.rule);q.trigger=learningTerminology(q.trigger);}
   if(CAMPAIGN.questions.length!==before)console.warn(`B2 Territorio 1 skipped ${before-CAMPAIGN.questions.length} invalid question(s) with duplicate/broken options.`);
   BANK=CAMPAIGN.questions;state=loadState();startFocusTracking();save();
-  const seg=$("segments");for(let i=0;i<10;i++){const d=document.createElement("div");d.className="seg";seg.appendChild(d);}
+  renderSegments(TIME_LIMIT);
   $("startBtn").onclick=async()=>{await ensureAudio();await startSession(false);};
   if($("readFirstToggle")){$("readFirstToggle").onclick=toggleReadFirstMode;syncReadFirstButton();}
   $("statsBtn").onclick=()=>{renderStatsScreen();showScreen("statsScreen");};
