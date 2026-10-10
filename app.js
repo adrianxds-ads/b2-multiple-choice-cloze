@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.11.4";
+const APP_VERSION = "1.11.5";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -27,13 +27,55 @@ const $=id=>document.getElementById(id);
 const READ_FIRST_KEY="b2_cloze_read_first_v1";
 let readFirstMode=(()=>{try{return localStorage.getItem(READ_FIRST_KEY)!=="0";}catch(e){return true;}})();
 
-// During READ_FIRST, tapping the non-interactive game area reveals answers early.
-document.addEventListener('pointerdown', event=>{
-  if(!(revealEarlyOnTap && session && !locked))return;
-  if(event.target.closest('button,a,input,textarea,select,[role="button"],[contenteditable="true"]'))return;
-  if(event.cancelable)event.preventDefault();
-  const reveal=revealEarlyOnTap; reveal(); if(soundOn)tone(900,.028,.007,'sine');
-},true);
+// A dedicated, accessible target prevents the reveal gesture selecting an answer.
+const NucleoReadFirstSkip=(()=>{
+  let button=null,action=null;
+  function ensure(){
+    if(button)return button;
+    const css=document.createElement('style');
+    css.id='nucleo-read-skip-style';
+    css.textContent=[
+      '.nucleo-read-skip{appearance:none;display:grid;place-items:center;width:82px;height:76px;margin:0 auto 12px;padding:9px;background:#EAF0F5;border:2px solid #25282C;border-radius:15px;box-shadow:0 3px 11px rgba(0,0,0,.17);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;flex:0 0 auto;position:relative;z-index:5}',
+      '.nucleo-read-skip[hidden]{display:none!important}',
+      '.nucleo-read-skip:active{transform:scale(.96)}',
+      '.nucleo-read-skip:focus-visible{outline:3px solid #ffd566;outline-offset:3px}',
+      '.nucleo-read-skip-tiles{width:56px;height:52px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4px}',
+      '.nucleo-read-skip-tiles i{display:block;border-radius:5px;box-shadow:inset 0 -2px 0 rgba(0,0,0,.20)}',
+      '.nucleo-read-skip-tiles i:nth-child(1){background:#77531f}',
+      '.nucleo-read-skip-tiles i:nth-child(2){background:#1f6264}',
+      '.nucleo-read-skip-tiles i:nth-child(3){background:#405582}',
+      '.nucleo-read-skip-tiles i:nth-child(4){background:#74405a}',
+      '@media(max-width:520px){.nucleo-read-skip{width:76px;height:70px;margin-bottom:9px}.nucleo-read-skip-tiles{width:52px;height:48px}}'
+    ].join('');
+    document.head.append(css);
+    button=document.createElement('button');
+    button.type='button';button.className='nucleo-read-skip';button.hidden=true;
+    button.setAttribute('aria-label','Mostrar las cuatro respuestas ahora');
+    button.title='Mostrar respuestas';
+    button.innerHTML='<span class="nucleo-read-skip-tiles" aria-hidden="true"><i></i><i></i><i></i><i></i></span>';
+    // Reveal only on click, AFTER pointerup: never reveal on pointerdown.
+    for(const type of ['pointerdown','pointerup','touchstart','touchend'])button.addEventListener(type,e=>e.stopPropagation());
+    button.addEventListener('click',e=>{
+      e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
+      if(!action||button.hidden)return;
+      const reveal=action;action=null;button.disabled=true;
+      reveal();
+    });
+    return button;
+  }
+  return {
+    show(anchorId,onReveal){
+      const anchor=document.getElementById(anchorId);
+      if(!anchor||typeof onReveal!=='function')return;
+      const target=anchorId==='kqOriginal'?anchor:(anchor.closest('.question')||anchor);
+      const b=ensure();
+      if(b.nextElementSibling!==target)target.before(b);
+      action=onReveal;b.disabled=false;b.hidden=false;
+    },
+    hide(){action=null;if(button){button.hidden=true;button.disabled=true;}},
+    get button(){return button;}
+  };
+})();
 function readFirstDelayMs(text){
   const words=String(text||"").trim().split(/\s+/).filter(Boolean).length;
   return Math.round(Math.max(3000,Math.min(4800,3000+Math.max(0,words-8)*90)));
@@ -1240,7 +1282,7 @@ function startTimer(){
 }
 function nextQuestion(){
   QuizLearning.clear();
-  clearTimeout(revealHandle);revealHandle=null;revealEarlyOnTap=null;currentPreReadMs=0;
+  clearTimeout(revealHandle);revealHandle=null;revealEarlyOnTap=null;NucleoReadFirstSkip.hide();currentPreReadMs=0;
   locked=false;hideCorrectReveal();
   if(session.index>=session.plan.length){finishSessionSafe();return;}
   current=session.plan[session.index];
@@ -1261,12 +1303,13 @@ function nextQuestion(){
       if(session!==expectedSession||session.index!==expectedIndex||locked)return;
       clearTimeout(revealHandle);revealHandle=null;revealEarlyOnTap=null;
       currentPreReadMs=Math.round(performance.now()-readingStartedAt);
-      wrap.classList.remove("read-first-hidden");[...wrap.children].forEach(b=>b.disabled=false);
+      NucleoReadFirstSkip.hide();wrap.classList.remove("read-first-hidden");[...wrap.children].forEach(b=>b.disabled=false);
       startTimer();
     };
     revealEarlyOnTap=revealChoices;
+    NucleoReadFirstSkip.show('questionText',()=>{revealChoices();if(soundOn)tone(900,.028,.007,'sine');});
     revealHandle=setTimeout(revealChoices,currentPreReadMs);
-  }else{revealEarlyOnTap=null;startTimer();}
+  }else{revealEarlyOnTap=null;NucleoReadFirstSkip.hide();startTimer();}
 }
 function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect=0,phraseWrong=0,cat="",trigger=""){/* Feedback stays on the answer tiles. */}
 function answer(pos,timeout=false){
