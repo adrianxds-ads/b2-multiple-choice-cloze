@@ -336,10 +336,51 @@ function loadState(){
   let raw=null;try{raw=localStorage.getItem(STORAGE_KEY);const s=JSON.parse(raw||"null");if(validProgressState(s))return normaliseProgressState(s);if(raw)localStorage.setItem(STORAGE_KEY+"_recovery_"+Date.now(),raw);if(s&&s.campaignId===CAMPAIGN.campaignId&&s.schemaVersion===1){const recovered={...newState(),...s};for(const key of ["level","sessions","totalAttempts"])if(!Number.isFinite(recovered[key]))recovered[key]=key==="level"?storedGlobalLevel():0;recovered.metrics=s.metrics&&typeof s.metrics==="object"&&!Array.isArray(s.metrics)?s.metrics:{};return normaliseProgressState(recovered);}return newState();}
   catch(e){try{if(raw)localStorage.setItem(STORAGE_KEY+"_recovery_"+Date.now(),raw);}catch(_){}return newState();}
 }
+async function loadSafeState(){
+  const fromLocal=loadState();
+  const store=window.ClozeProgressIDB;
+  if(!store)return fromLocal;
+  try{
+    const fromDB=await store.read();
+    const validDB=validProgressState(fromDB);
+    const preferDB=validDB&&(
+      (Number(fromDB.sessions)||0)>(Number(fromLocal.sessions)||0)||
+      ((Number(fromDB.sessions)||0)===(Number(fromLocal.sessions)||0)&&
+       (Number(fromDB.updatedAt)||0)>(Number(fromLocal.updatedAt)||0))
+    );
+    const recovered=preferDB?normaliseProgressState(fromDB):fromLocal;
+    // Persist before boot: a previous localStorage snapshot stays untouched if quota is full.
+    await store.write(recovered);
+    return recovered;
+  }catch(error){
+    console.error("Cloze IndexedDB progress recovery unavailable",error);
+    // If localStorage cannot save either, do not start an unsafe session.
+    try{localStorage.setItem(STORAGE_KEY,JSON.stringify(fromLocal));}
+    catch(quota){throw new Error("No se puede guardar tu progreso todavía. No se ha borrado ningún dato: "+quota.message);}
+    return fromLocal;
+  }
+}
+function showSaveWarning(error){
+  console.error("Cloze Quiz progress persistence unavailable",error);
+  let warning=document.getElementById("clozeSaveWarning");
+  if(!warning){
+    warning=document.createElement("div");
+    warning.id="clozeSaveWarning";
+    warning.setAttribute("role","alert");
+    warning.style.cssText="position:fixed;z-index:100000;left:10px;right:10px;bottom:16px;background:#fff5d2;color:#30260b;padding:14px;border:2px solid #966717;border-radius:12px;font:16px/1.35 system-ui";
+    warning.textContent="Error al guardar una sesión. No se ha borrado tu historial. Guarda una copia del progreso antes de cerrar.";
+    document.body.appendChild(warning);
+  }
+}
 function save(){
   state.updatedAt=Date.now();state.history=QuizLearning.retain(state.history,HISTORY_LIMIT,STORAGE_KEY+":answers");state.sessionHistory=QuizLearning.preserve(state.sessionHistory,STORAGE_KEY+":sessions");
-  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
-  catch(e){console.error("Progress save failed",e);throw e;}
+  let localSaved=false;
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));localSaved=true;}
+  catch(error){console.warn("Cloze localStorage quota; keeping previous raw progress untouched",error);}
+  const store=window.ClozeProgressIDB;
+  if(store){
+    void store.write(state).catch(error=>{if(!localSaved)showSaveWarning(error);});
+  }else if(!localSaved)showSaveWarning(new Error("No alternative storage"));
 }
 
 function formatStudyTime(ms){const total=Math.max(0,Math.round((ms||0)/1000)),h=Math.floor(total/3600),m=Math.floor((total%3600)/60),s=total%60;return h?`${h}h ${String(m).padStart(2,"0")}m`:m?`${m}m ${String(s).padStart(2,"0")}s`:`${s}s`;}
@@ -1446,8 +1487,11 @@ function exportProgress(){
 function importProgress(file){
   const r=new FileReader();r.onload=()=>{try{const s=JSON.parse(r.result);if(!validProgressState(s))throw Error("Invalid progress schema");state=normaliseProgressState(s);save();renderStart();alert("Progress imported.");}catch(e){console.error("Progress import rejected",e);alert("This progress file is not valid for Territorio 1.");}};r.readAsText(file);
 }
-function resetProgress(){
-  if(confirm("Reset all Territorio 1 progress? Export a backup first if you want to keep it.")){localStorage.removeItem(STORAGE_KEY);state=newState();save();renderStart();}
+async function resetProgress(){
+  if(confirm("Reset all Territorio 1 progress? Export a backup first if you want to keep it.")){
+    try{await window.ClozeProgressIDB?.remove();}catch(error){alert("No se ha podido reiniciar de forma segura. Conservamos tu progreso.");return;}
+    localStorage.removeItem(STORAGE_KEY);state=newState();save();renderStart();
+  }
 }
 
 function validQuestion(q){
@@ -1465,7 +1509,7 @@ async function boot(){
   for(const skill of CAMPAIGN.skills)skill.name=learningTerminology(skill.name);
   for(const q of CAMPAIGN.questions){q.skill=learningTerminology(q.skill);q.rule=learningTerminology(q.rule);q.trigger=learningTerminology(q.trigger);}
   if(CAMPAIGN.questions.length!==before)console.warn(`B2 Territorio 1 skipped ${before-CAMPAIGN.questions.length} invalid question(s) with duplicate/broken options.`);
-  BANK=CAMPAIGN.questions;state=loadState();startFocusTracking();save();
+  BANK=CAMPAIGN.questions;state=await loadSafeState();startFocusTracking();save();
   renderSegments(TIME_LIMIT);
   $("startBtn").onclick=async()=>{await ensureAudio();await startSession(false);};
   if($("readFirstToggle")){$("readFirstToggle").onclick=toggleReadFirstMode;syncReadFirstButton();}
