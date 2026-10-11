@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.11.8";
+const APP_VERSION = "1.11.9";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -103,7 +103,10 @@ const NucleoReadFirstSkip=(()=>{
     get button(){return button;}
   };
 })();
-function readFirstDelayMs(text){return 60000;}
+function readFirstDelayMs(text){
+  const words=String(text||"").trim().split(/\s+/).filter(Boolean).length;
+  return Math.round(Math.max(3000,Math.min(4800,3000+Math.max(0,words-8)*90)));
+}
 function syncReadFirstButton(){
   const b=$("readFirstToggle");if(!b)return;
   b.setAttribute("aria-pressed",readFirstMode?"true":"false");
@@ -1372,7 +1375,7 @@ function nextQuestion(){
   $("timerText").textContent=TIME_LIMIT.toFixed(1);$("timer").classList.remove("urgent");renderSegments(TIME_LIMIT);
   if([2,3].includes(Number(current.sourcePart))&&(state.seen[current.fingerprint]?.count||0)>=2&&Math.random()<.35){QuizLearning.production(current,wrap,pos=>answer(pos,false));}
   if(readFirstMode){
-    currentPreReadMs=readFirstDelayMs(view.question);
+    currentPreReadMs=readFirstDelayMs(view.question);wrap.dataset.nucleoReadSeconds=String(currentPreReadMs/1000);window.NucleoQuizBars?.refresh?.();
     const expectedSession=session,expectedIndex=session.index,readingStartedAt=performance.now();
     const revealChoices=()=>{
       if(session!==expectedSession||session.index!==expectedIndex||locked)return;
