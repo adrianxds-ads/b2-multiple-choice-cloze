@@ -253,10 +253,20 @@ function burstParticles(anchor){/* Feedback stays on the answer tiles. */}
 function refreshSoundButton(){const b=$("soundBtn");if(!b)return;if(!audioSupported()){soundOn=false;b.disabled=true;b.textContent='🔇';b.setAttribute('aria-label','Audio unavailable');b.title='Audio unavailable';return;}b.disabled=false;b.textContent=soundOn?'🔊':'🔇';b.setAttribute('aria-label',soundOn?'Sound on':'Sound off');b.title='';}
 
 async function loadCampaign(){
+  // The packaged JS bank is authoritative and needs no extra network request.
   if(window.__AE_CAMPAIGN__) return window.__AE_CAMPAIGN__;
-  const r=await fetch(`./territory-01.json?v=${encodeURIComponent(APP_VERSION)}`,{cache:"no-store"});
-  if(!r.ok) throw new Error("Cannot load B2 Territorio 1");
-  return r.json();
+  let failure=null;
+  for(let attempt=0;attempt<3;attempt++){
+    if(window.__AE_CAMPAIGN__)return window.__AE_CAMPAIGN__;
+    try{
+      const r=await fetch(`./territory-01.json?v=${encodeURIComponent(APP_VERSION)}`,{cache:"no-store"});
+      if(r.ok)return await r.json();
+      failure=new Error("Territorio 1: HTTP "+r.status);
+    }catch(error){failure=error;}
+    await new Promise(resolve=>setTimeout(resolve,450*(attempt+1)));
+  }
+  if(window.__AE_CAMPAIGN__)return window.__AE_CAMPAIGN__;
+  throw failure||new Error("No se ha podido cargar el banco de Territorio 1");
 }
 
 function seedMetric(cat){
@@ -1483,4 +1493,14 @@ async function boot(){
   $("errorsBackBtn").onclick=()=>showScreen("endScreen");
   renderStart();showScreen("startScreen");
 }
-boot().catch(err=>{console.error(err);document.body.innerHTML='<div style="padding:30px;color:white;font-family:system-ui"><h1>B2 Territorio 1</h1><p>Could not load Territorio 1.</p></div>';});
+boot().catch(err=>{
+  console.error("Cloze Quiz: fallo de carga; los datos no se han modificado",err);
+  const root=document.createElement("main");
+  root.style.cssText="box-sizing:border-box;min-height:75vh;background:#EAF0F5;color:#25282C;padding:28px 22px;font:18px/1.45 system-ui";
+  const h=document.createElement("h1");h.textContent="Cloze Quiz · recuperar carga";
+  const para=document.createElement("p");para.textContent="No hemos podido preparar las preguntas. Tu nivel, respuestas e historial siguen guardados. Puedes volver a intentarlo sin borrar datos.";
+  const detail=document.createElement("p");detail.style.cssText="font-size:15px;overflow-wrap:anywhere";detail.textContent=String(err?.message||"Error temporal de carga");
+  const retry=document.createElement("button");retry.textContent="VOLVER A INTENTAR";retry.style.cssText="display:block;min-height:54px;padding:14px 22px;background:#564195;color:white;font-size:18px;font-weight:750;border:0;border-radius:14px";
+  retry.onclick=()=>location.reload();
+  root.append(h,para,detail,retry);document.body.replaceChildren(root);
+});

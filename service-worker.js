@@ -21,3 +21,5 @@ self.addEventListener('fetch',e=>{
     const r=await network(e.request,5000);if(r&&r.ok){await c.put(e.request,r.clone());return r;}return Response.error();
   })());
 });
+
+// Cloze recovery release 2026-10-11: no blocking offline precache.
