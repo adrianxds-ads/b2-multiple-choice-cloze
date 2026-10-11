@@ -16,7 +16,7 @@ self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.origin!==self.location.origin)return;
   e.respondWith((async()=>{
     const c=await caches.open(CACHE),core=e.request.mode==='navigate'||CORE_RE.test(u.pathname);
-    if(core){const r=await network(e.request,1800);if(r&&r.ok){await c.put(e.request,r.clone());return r;}const hit=await releaseMatch(c,e.request);if(hit)return hit;if(e.request.mode==='navigate')return (await c.match('./index.html'))||(await c.match('./'))||Response.error();return Response.error();}
+    if(core){if(e.request.mode!=='navigate'){const ready=await releaseMatch(c,e.request);if(ready)return ready;}const r=await network(e.request,6000);if(r&&r.ok){await c.put(e.request,r.clone());return r;}const hit=await releaseMatch(c,e.request);if(hit)return hit;if(e.request.mode==='navigate')return (await c.match('./index.html'))||(await c.match('./'))||Response.error();return Response.error();}
     const hit=await releaseMatch(c,e.request);if(hit)return hit;
     const r=await network(e.request,5000);if(r&&r.ok){await c.put(e.request,r.clone());return r;}return Response.error();
   })());
