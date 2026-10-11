@@ -103,10 +103,7 @@ const NucleoReadFirstSkip=(()=>{
     get button(){return button;}
   };
 })();
-function readFirstDelayMs(text){
-  const words=String(text||"").trim().split(/\s+/).filter(Boolean).length;
-  return Math.round(Math.max(3000,Math.min(4800,3000+Math.max(0,words-8)*90)));
-}
+function readFirstDelayMs(text){return 60000;}
 function syncReadFirstButton(){
   const b=$("readFirstToggle");if(!b)return;
   b.setAttribute("aria-pressed",readFirstMode?"true":"false");
