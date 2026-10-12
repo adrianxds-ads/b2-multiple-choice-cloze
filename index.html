@@ -542,15 +542,16 @@ html,body,.app,.screen,.top,.toprow,.playfield,.question,.answer-stage,.answers,
 <link rel="stylesheet" href="./nucleo-quiz-refinement.css?v=4.1.0">
 <link rel="stylesheet" href="./nucleo-global-v45.css?v=4.5.3">
 
+
 <style id="unified-oled-relax">
 :root { --bg-oled: #000000; --card-surface: #1B2228; --border-subtle: #414B54; --text-main: #EAF0F5; --timer-active: #D4B07B; --timer-warning: #C97A72; --timer-off: #22262B; }
-body { background-color: var(--bg-oled) !important; color: var(--text-main) !important; }
-.question-box, .prompt-card, .exercise-card, .question-card { background: var(--card-surface) !important; border: 1px solid var(--border-subtle) !important; border-radius: 12px !important; padding: 16px !important; margin-bottom: 1rem !important; }
-.options-grid > *, .answers-grid > *, .choices-container > * { background-color: var(--card-surface) !important; color: var(--text-main) !important; border-width: 1.5px !important; border-style: solid !important; border-radius: 12px !important; box-shadow: none !important; }
-.options-grid > *:nth-child(1) { border-color: #E09875 !important; }
-.options-grid > *:nth-child(2) { border-color: #68B8A6 !important; }
-.options-grid > *:nth-child(3) { border-color: #7B96D4 !important; }
-.options-grid > *:nth-child(4) { border-color: #B18CD4 !important; }
+body, .screen, #startScreen, #gameScreen, #statsScreen, #endScreen, #coachScreen, #flashScreen, #leagueScreen, #errorsScreen { background-color: var(--bg-oled) !important; background-image: none !important; color: var(--text-main) !important; }
+.question-box, .prompt-card, .exercise-card, .question-card, .question { background: var(--card-surface) !important; border: 1px solid var(--border-subtle) !important; border-radius: 12px !important; padding: 16px !important; margin-bottom: 1rem !important; }
+.options-grid > *, .answers-grid > *, .choices-container > *, .answers > .answer { background-color: var(--card-surface) !important; background-image: none !important; color: var(--text-main) !important; border-width: 1.5px !important; border-style: solid !important; border-radius: 12px !important; box-shadow: none !important; }
+.options-grid > *:nth-child(1), .answers > .answer:nth-child(1) { border-color: #E09875 !important; }
+.options-grid > *:nth-child(2), .answers > .answer:nth-child(2) { border-color: #68B8A6 !important; }
+.options-grid > *:nth-child(3), .answers > .answer:nth-child(3) { border-color: #7B96D4 !important; }
+.options-grid > *:nth-child(4), .answers > .answer:nth-child(4) { border-color: #B18CD4 !important; }
 .quiz-segmented-timer { display: flex !important; gap: 5px !important; width: 100% !important; max-width: 380px !important; margin: 12px auto 8px auto !important; padding: 0 4px !important; height: 6px !important; }
 .quiz-segmented-timer .timer-segment { flex: 1 !important; height: 4px !important; border-radius: 2px !important; background-color: var(--timer-off) !important; transition: background-color 0.15s ease !important; }
 .quiz-segmented-timer .timer-segment.active { background-color: var(--timer-active) !important; }
@@ -760,10 +761,11 @@ if('serviceWorker' in navigator && location.protocol.startsWith('http')){
 <script src="https://adrianxds-ads.github.io/adrian-core/components/hub-nav.js?v=12-20261011"></script>
 
 
+
 <script id="unified-timer-script">
 (function() {
   function initTimer() {
-    var grid = document.querySelector('.options-grid, .answers-grid, .choices-container, .options-container, .quiz-grid') || document.querySelector('.question-box, .prompt-card, .exercise-card');
+    var grid = document.querySelector('.options-grid, .answers-grid, .choices-container, .options-container, .quiz-grid, .answers') || document.querySelector('.question-box, .prompt-card, .exercise-card, .question');
     if (!grid) return;
     var bar = document.getElementById('quiz-segmented-timer');
     if (!bar) {
