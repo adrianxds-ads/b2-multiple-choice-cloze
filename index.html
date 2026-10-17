@@ -557,7 +557,8 @@ body, .screen, #startScreen, #gameScreen, #statsScreen, #endScreen, #coachScreen
 
 
 </style>
-<link rel="stylesheet" href="/adrian-core/design/integrated-v11/integrated-theme.css"></head>
+<link rel="stylesheet" href="/adrian-core/design/integrated-v11/integrated-theme.css"><link rel="stylesheet" href="./quiz-ergonomics.css?v=1.0.0">
+</head>
 <body data-nucleo-game="cloze" data-integrated-app="cloze" style="--integrated-tint:#CEE0DB;--integrated-accent:#37BFB5">
 <div class="app">
 <section id="startScreen" class="screen start">
@@ -751,7 +752,8 @@ body, .screen, #startScreen, #gameScreen, #statsScreen, #endScreen, #coachScreen
 
 <script src="./territory-01.js?v=1.11.1"></script>
 <script src="./progress-idb.js?v=2-durable"></script>
-<script src="./app.js?v=1.11.21-clozeanswers20261017"></script>
+<script src="./quiz-ergonomics.js?v=1.0.0"></script>
+<script src="./app.js?v=1.11.22-clozeanswers20261017"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
   navigator.serviceWorker.register('./service-worker.js?v=clozeanswers20261017',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
