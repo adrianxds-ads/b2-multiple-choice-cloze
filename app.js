@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.11.19";
+const APP_VERSION = "1.11.20";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -1311,6 +1311,7 @@ if(sessionStarting)return;sessionStarting=true;try{
   QuizLearning.clear();
   const raw=finalMode?buildFinalPlan():buildTrainingPlan();
   if(!raw.length){sessionStarting=false;return;}
+  await settleUi(ensureAudio(),1000,"Audio start");
   const target=finalMode?null:adaptiveLevelTarget(raw),abortSnapshot=JSON.stringify(state);
   session={mode:finalMode?"final":"training",level:state.level,index:0,correct:0,automatic:0,times:[],records:[],usedDisplayNames:new Set(),target,plan:raw.map(shuffleOptions),abortSnapshot,rankBefore:skillRankPositions(),combo:0,bestCombo:0,recovered:0,masteredRewards:0,learningXp:0,lastReward:""};
   $("sessionLevel").innerHTML=finalMode?"FINAL":`L${state.level}<small class="level-target">TARGET ${target.toFixed(1)}</small>`;
@@ -1410,7 +1411,19 @@ function answer(pos,timeout=false){
   state.history.push(rec);state.history=QuizLearning.retain(state.history,12000,STORAGE_KEY+":answers");state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
   secondaryEffect(()=>window.LanguagePoints?.recordAnswer?.({correct:ok,sec,timeLimit:TIME_LIMIT}));
   QuizLearning.show("#questionText",shownQuestion,rec.correctAnswer);
-  const answeredSession=session,answeredIndex=session.index,delay=QuizLearning.HOLD_MS;setTimeout(()=>{if(session!==answeredSession||session.index!==answeredIndex)return;session.index++;try{nextQuestion();}catch(e){console.error("Question advance recovered",e);locked=false;setTimeout(nextQuestion,120);}},delay);
+  const answeredSession=session,answeredIndex=session.index,delay=Math.max(300,Number(QuizLearning.HOLD_MS)||650);
+  let advanceTries=0;
+  const advance=()=>{
+    if(session!==answeredSession||session.index>answeredIndex+1)return;
+    if(session.index===answeredIndex)session.index++;
+    if(++advanceTries>4){console.error("Cloze advance halted safely: recovery limit reached");return;}
+    try{nextQuestion();}
+    catch(e){console.error("Cloze question advance retry",advanceTries,e);setTimeout(advance,Math.min(1200,150*advanceTries));}
+  };
+  setTimeout(advance,delay);
+  // Chrome may suspend a callback when returning from a mobile background tab.
+  // This second check only advances if the same answered question is still pending.
+  setTimeout(()=>{if(session===answeredSession&&session.index===answeredIndex)advance();},delay+1800);
   try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect();else playWrong();}catch(e){console.warn("Answer cue unavailable",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat,current.trigger);}catch(e){console.error("Feedback failed",e);}
 }
 function finishSessionSafe(){if(!session||session.finishing)return;session.finishing=true;locked=true;Promise.resolve().then(()=>finishSession()).catch(e=>{console.error("Session finish recovered",e);try{missionOverlay(false);}catch(_){}try{const total=session?.records?.length||SESSION_SIZE,score=session?.correct||0;if($("endKicker"))$("endKicker").textContent=`LEVEL ${state?.level||""} COMPLETE`;if($("endScore"))$("endScore").textContent=`${score}/${total}`;if($("endSub"))$("endSub").textContent="Cierre recuperado automáticamente";showScreen("endScreen");}catch(_){}locked=false;});}
