@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.11.20";
+const APP_VERSION = "1.11.21";
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
@@ -1395,7 +1395,7 @@ function answer(pos,timeout=false){
   if(locked)return;locked=true;clearInterval(timerHandle);clearTimeout(revealHandle);revealHandle=null;revealEarlyOnTap=null;
   const sec=timeout?TIME_LIMIT:Math.max(.05,(TIME_LIMIT*1000-(deadline-performance.now()))/1000);
   const ok=!timeout&&(pos===current.correctPos||(pos>=0&&!!current.acceptedForms?.some(x=>QuizLearning.normalize(x)===QuizLearning.normalize(current.display[pos])))),type=outcomeType(ok,sec,current.targetTime||3.6,timeout);
-  const buttons=[...$("answers").children];
+  const buttons=[...$("answers").querySelectorAll("button.answer")];
   buttons.forEach((b,i)=>{b.disabled=true;b.classList.remove("good","bad","dim");if(i===current.correctPos||(ok&&i===pos))b.classList.add("good");else b.classList.add("dim");});
   if(!ok&&pos>=0){buttons[pos].classList.remove("dim");buttons[pos].classList.add("bad");}
   const previousSeen=state.seen[current.fingerprint]||null,previousTemplate=state.templateSeen[current.templateId]||null,previousTarget=leechInfo(current),speedScore=updateMetric(current,ok,sec,type),info=previousSeen||{count:0,lastLevel:-99,lapses:0},gapLevels=previousSeen?state.level-previousSeen.lastLevel:null;
