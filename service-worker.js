@@ -1,4 +1,4 @@
-// Exam-only four-option B2 quiz update, v1.12.0 · 2026-10-21
+// Exam-only four-option B2 quiz; Gemini/ChatGPT mobile Part 4 refinements v1.12.1 · 2026-10-21
 importScripts('./build-assets.js','./sw-integrity.js');
 const CACHE_PREFIX='b2-territorio-1-';
 const CACHE='b2-territorio-1-'+self.AdrianRelease.build;

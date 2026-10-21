@@ -23,3 +23,14 @@ La transcripción maestra se ha cotejado contra las estructuras almacenadas de C
 Se conserva la clave de progreso `adaptive_b2_cloze_campaign1_v1`, el identificador de campaña y todo el historial anterior. Las tarjetas fuera del banco activo quedan retiradas del muestreo sin borrarlas del historial. Se mantiene el flujo tradicional de la app, sin otra aplicación ni un nuevo modo que sustituya al quiz.
 
 Compilación: ejecutar `node generate-exam-quiz.cjs` teniendo el repositorio `adaptive-exam` como hermano de la carpeta del proyecto; produce `territory-01.json`, `territory-01.js` y `exam-quiz-source-qa.json`. La fuente adicional de Cambridge Part 4 se conserva en `cambridge-part4-source.json`. La compilación es reproducible sin IA en ejecución. Validar con `node test-exam-quiz.cjs` y comprobación funcional de navegador antes de publicar.
+
+## Cierre Bloque 1 · colaboración Gemini / ChatGPT (21/10/2026) · v1.12.1
+
+Mejoras concretas, sin tocar el historial ni las Parts 1–3:
+- Part 4 usa el diseño compacto responsivo, palabra obligatoria destacada con un span DOM seguro (`qe-keyword-badge`), y reserva la altura real necesaria, sin recortar texto.
+- Se compensa la barra `.adrian-tools` por encima de `.app` al mostrar Part 4; `.app` ya no obliga a un segundo `100dvh`. En alturas reducidas se usan botones táctiles de al menos 44 px y texto >=17 px.
+- Exam 20 / Part 4 / Q28 (`LONG`, ID 962028): clave canónica `spent a long time`; formas admitidas `spent/took/was a long time` según el solucionario Cambridge revisado por Gemini; distractores `passed a long time`, `lasted a long time` y `spent long time`. Las soluciones alternativas se mantienen en `acceptedForms`, no aparecen como distractores.
+- Los tres distractores del ítem y las formas admitidas se mantienen en `curated-part4-overrides.json`. El generador `generate-exam-quiz.cjs` aplica esa fuente local antes de validar y escribir, sin interceptar funciones de escritura del sistema.
+- El guard de `missing-word` evita eliminar verbos iniciales o sustantivos finales. Los otros 155 grupos automáticos de Part 4 **siguen pendientes de auditoría semántica individual**.
+
+Verificación: `node generate-exam-quiz.cjs`, `node test-exam-quiz.cjs` y `node test-part4-geometry.cjs`. El último lanza Python Playwright/Edge, carga los activos locales en el origen de GitHub Pages (requiere red), comprueba los 180 ítems de Part 4 a 360×740, 412×780, 412×915 y 390×650; prueba la legibilidad, ausencia de recortes, scroll, posición de temporizador/EXIT y un control básico de Parts 1–3. No reemplaza la comprobación manual en el Pixel. La transcripción de los 900 huecos frente a cada PDF sigue pendiente.

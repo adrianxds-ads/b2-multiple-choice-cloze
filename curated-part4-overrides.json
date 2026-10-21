@@ -1,0 +1,21 @@
+{
+  "962028": {
+    "id": 962028,
+    "sourceExam": 20,
+    "sourcePart": 4,
+    "sourceQuestion": 28,
+    "keyword": "LONG",
+    "canonical": "spent a long time",
+    "acceptedForms": [
+      "spent a long time",
+      "took a long time",
+      "was a long time"
+    ],
+    "traps": [
+      "passed a long time",
+      "lasted a long time",
+      "spent long time"
+    ],
+    "sourceNote": "Cambridge B2 First Handbook Sample Paper 1 (and EngExam Test 10), Part 4, Q28. Official mark scheme: spent/took/was | a long time."
+  }
+}

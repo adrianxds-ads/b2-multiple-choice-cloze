@@ -5,6 +5,36 @@
    for Parts 2–4. Always validate; never invent a question or correct answer.
 */
 const fs=require('fs'),path=require('path'),vm=require('vm'),crypto=require('crypto');
+/* === BLOCK-1-CURATED-OVERRIDES-START === */
+const _curatedPart4Path = path.join(__dirname, 'curated-part4-overrides.json');
+const _curatedPart4ById = fs.existsSync(_curatedPart4Path)
+  ? JSON.parse(fs.readFileSync(_curatedPart4Path, 'utf8'))
+  : {};
+
+function applyCuratedPart4Override(q) {
+  if (!q || Number(q.sourcePart) !== 4) return q;
+  const ov = _curatedPart4ById[String(q.id)];
+  if (!ov) return q;
+  q.acceptedForms = ov.acceptedForms.slice();
+  const canonical = ov.canonical;
+  const traps = ov.traps.slice(0, 3);
+  const currentCorrectIdx = (typeof q.c === 'number' && q.c >= 0 && q.c < 4) ? q.c : 0;
+  const nextOptions = [];
+  let trapIdx = 0;
+  for (let i = 0; i < 4; i++) {
+    if (i === currentCorrectIdx) {
+      nextOptions.push(canonical);
+    } else {
+      nextOptions.push(traps[trapIdx++]);
+    }
+  }
+  q.a = nextOptions;
+  q.c = currentCorrectIdx;
+  if (Array.isArray(q.traps)) q.traps = ov.traps.slice(0, 3);
+  if (q.trapOrigin) q.trapOrigin = 'hand-reviewed-pilot';
+  return q;
+}
+/* === BLOCK-1-CURATED-OVERRIDES-END === */
 const here=__dirname,src=path.resolve(here,'../adaptive-exam'),context={window:{}};
 vm.createContext(context);
 for(const f of ['data/cambridge-quiz-transcribed.js','data/engexam-bank.js','keyword-quiz-bank.js'])
@@ -105,6 +135,24 @@ function produceTraps(real,keyword,valid,existing=[]){
  const accepted=new Set(normForms(valid));
  const candidates=[],tokens=base.split(/\s+/);
  const add=(v,reason)=>{
+    /* === BLOCK-1-TRAP-GUARD-START === */
+    if (reason === 'missing-word') {
+      const _rTok = String(real || '').trim().split(/\s+/).filter(Boolean);
+      const _cTok = String(v || '').trim().split(/\s+/).filter(Boolean);
+      const _safeInternal = new Set(['a','an','the','to','of','in','on','at','for','with','about','from','by','as','up','out']);
+      if (_cTok.length < 2 || _rTok.length < 3) return;
+      if (_cTok[0].toLowerCase() !== _rTok[0].toLowerCase()) return;
+      if (_cTok[_cTok.length - 1].toLowerCase() !== _rTok[_rTok.length - 1].toLowerCase()) return;
+      if (_cTok.length === _rTok.length - 1) {
+        let _dropped = '';
+        for (let _i = 0, _j = 0; _i < _rTok.length; _i++) {
+          if (_j < _cTok.length && _rTok[_i].toLowerCase() === _cTok[_j].toLowerCase()) _j++;
+          else { _dropped = _rTok[_i].toLowerCase(); break; }
+        }
+        if (!_safeInternal.has(_dropped)) return;
+      }
+    }
+    /* === BLOCK-1-TRAP-GUARD-END === */
   v=String(v).replace(/\s+/g,' ').trim();
   if(!v||accepted.has(norm(v))||!hasKeyword(v,keyword))return;
   if(wordCount(v)<2||wordCount(v)>5||norm(v)===norm(base))return;
@@ -182,6 +230,9 @@ function produceTraps(real,keyword,valid,existing=[]){
  return picked.slice(0,3);
 }
 function newQuestion(q){
+  /* === BLOCK-1-NEWQ-HOOK-START === */
+  applyCuratedPart4Override(q);
+  /* === BLOCK-1-NEWQ-HOOK-END === */
  if(output.some(x=>x.id===q.id||x.fingerprint===q.fingerprint))throw Error('Duplicate id/fingerprint '+q.id);
  if(q.a.length!==4||new Set(q.a.map(norm)).size!==4||q.c<0||q.c>3)throw Error('Bad answers/options '+q.sourcePart+'/'+q.id);
  if(q.q.split('___').length!==2)throw Error('Expected one gap '+q.id+' '+q.q);

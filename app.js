@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.12.0";
+const APP_VERSION = "1.12.1";
 const quizFlow=new window.QuizFlowController();
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
@@ -1374,7 +1374,7 @@ function nextQuestion(){
   const rewardPrior=state.seen[current.fingerprint]||null,rewardGap=rewardPrior?state.level-rewardPrior.lastLevel:null,rewardSpecial=rewardPrior?.lapses>0&&!rewardPrior.masteredRewarded&&rewardPrior.lastCorrect===true&&rewardPrior.count>=2&&rewardGap>=2?"MASTER CHANCE":rewardPrior?.lapses>0&&rewardPrior.lastCorrect===false?"RECOVERY":rewardPrior?(QuizLearning.ready(rewardPrior,state.level)?"SPACED REVIEW":"EXTRA PRACTICE"):session.index===session.plan.length-1?"FINAL":"";
   $("qTotal").textContent="/ "+session.plan.length+" · EXAM "+String(current.sourceExam||0).padStart(2,'0')+" · PART "+(current.sourcePart||1)+(rewardSpecial?" · "+rewardSpecial:"");
   document.body.dataset.questionPart=String(current.sourcePart||1);
-   if(Number(current.sourcePart)===4){$("questionText").style.setProperty("white-space","pre-line","important");$("questionText").style.setProperty("font-size","clamp(17px,4.5vw,25px)","important");}
+   if(Number(current.sourcePart)===4){$("questionText").style.setProperty("white-space","pre-line","important");$("questionText").style.setProperty("font-size",((window.innerWidth <= 640 || window.innerHeight <= 860) ? 'clamp(17px, 4.3vw, 20px)' : 'clamp(17px, 4.5vw, 25px)'),"important");}
    else{$("questionText").style.removeProperty("white-space");$("questionText").style.removeProperty("font-size");}
    const view=visibleCard(current);current.visibleQuestion=view.question;current.visibleOptions=view.options;current.visibleFocus=view.focus;current.visibleNames=view.names;
   $("questionText").classList.remove("focus-active");$("questionText").textContent=view.question;

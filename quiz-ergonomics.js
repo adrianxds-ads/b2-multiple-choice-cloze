@@ -33,7 +33,60 @@ class QuizFlowController{
 }
 let sample=null,stage=null,question=null,answers=null,progress=null,timer=null,counter=null;
 let measuredOwner=null,measuredWidth=0,measuredFont='',lastTimer='',lastProgress='';
-function markGaps(host){
+/* === BLOCK-1-MARKGAPS-BADGE-START === */
+function decorateKeyWordBadge(targetEl) {
+  if (typeof document === 'undefined') return;
+  const root = (targetEl && targetEl.nodeType === 1) ? targetEl : document.getElementById('questionText');
+  if (!root || !root.textContent || !root.textContent.includes('KEY WORD:')) return;
+
+  if (document.body && document.body.dataset && document.body.dataset.questionPart === '4' && root.id === 'questionText') {
+    const isMobileViewport = (typeof window !== 'undefined') && (window.innerWidth <= 640 || window.innerHeight <= 860);
+    root.style.setProperty('font-size', isMobileViewport ? 'clamp(17px, 4.3vw, 20px)' : 'clamp(17px, 4.5vw, 25px)', 'important');
+    root.style.setProperty('line-height', isMobileViewport ? '1.22' : '1.28', 'important');
+  }
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+  const targetNodes = [];
+  let current;
+  while ((current = walker.nextNode())) {
+    const parent = current.parentNode;
+    if (parent && parent.classList && parent.classList.contains('qe-keyword-badge')) continue;
+    if (current.nodeValue && /KEY WORD:\s*[A-Z0-9-]+/.test(current.nodeValue)) {
+      targetNodes.push(current);
+    }
+  }
+
+  for (const textNode of targetNodes) {
+    const parts = textNode.nodeValue.split(/(KEY WORD:\s*[A-Z0-9-]+)/);
+    if (parts.length <= 1) continue;
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      if (!part) continue;
+      if (/^KEY WORD:\s*[A-Z0-9-]+$/.test(part)) {
+        const badge = document.createElement('span');
+        badge.className = 'qe-keyword-badge';
+        badge.textContent = part;
+        frag.appendChild(badge);
+      } else {
+        frag.appendChild(document.createTextNode(part));
+      }
+    }
+    if (textNode.parentNode) {
+      textNode.parentNode.replaceChild(frag, textNode);
+    }
+  }
+}
+
+function markGaps(...args) {
+  const result = _origMarkGaps_Block1.apply(this, args);
+  try {
+    decorateKeyWordBadge(args[0]);
+  } catch (_err) {}
+  return result;
+}
+/* === BLOCK-1-MARKGAPS-BADGE-END === */
+function _origMarkGaps_Block1(host){
  const walker=document.createTreeWalker(host,NodeFilter.SHOW_TEXT),nodes=[];
  while(walker.nextNode()){const n=walker.currentNode;if(!n.parentElement.closest('.gap-slot,.ql-answer,.gap-filled')&&/_{2,}/.test(n.textContent))nodes.push(n);}
  for(const node of nodes){const parts=node.textContent.split(/(_{2,})/),frag=document.createDocumentFragment();for(const text of parts){if(/^_{2,}$/.test(text)){const gap=document.createElement('span');gap.className='gap-slot';gap.textContent=text;gap.setAttribute('aria-label','Hueco por completar');frag.append(gap);}else frag.append(document.createTextNode(text));}node.replaceWith(frag);}

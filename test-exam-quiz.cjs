@@ -29,3 +29,62 @@ assert.deepEqual([...counts.entries()],[[1,240],[2,240],[3,240],[4,180]]);
 const old=JSON.parse(require('child_process').execFileSync('git',['-C',dir,'show','a8b8ecb:territory-01.json'],{encoding:'utf8',maxBuffer:18000000}));
 assert.equal(bank.campaignId,old.campaignId,'same campaign id means history is preserved');
 console.log('PASS: 900 questions, original-only source, 4 quiz parts, 4 options, 2–5 words, stable history key.');
+
+// === BLOCK-1-TESTS-START ===
+{
+  const curatedOverrides = JSON.parse(
+    fs.readFileSync(path.join(__dirname, 'curated-part4-overrides.json'), 'utf8')
+  );
+  assert(curatedOverrides['962028'], 'curated-part4-overrides.json debe contener el ítem 962028');
+
+  const longItem = bank.questions.find(q => q.id === 962028);
+  assert(longItem, 'Debe existir el ítem LONG (id 962028) en bank.questions');
+  assert.strictEqual(longItem.sourceExam, 20);
+  assert.strictEqual(longItem.sourcePart, 4);
+  assert.strictEqual(longItem.sourceQuestion, 28);
+  assert.strictEqual(longItem.a[longItem.c], 'spent a long time');
+
+  assert.deepStrictEqual(
+    longItem.acceptedForms,
+    ['spent a long time', 'took a long time', 'was a long time'],
+    'acceptedForms de 962028 debe conservar las tres variantes válidas del solucionario oficial de Cambridge'
+  );
+
+  const longTraps = longItem.a.filter((_, idx) => idx !== longItem.c);
+  assert.strictEqual(longTraps.length, 3);
+
+  const forbiddenForLong = new Set([
+    ...longItem.acceptedForms.map(s => s.toLowerCase()),
+    'a long time',
+    'spent a long',
+    'spent the long time',
+    'kept a long time'
+  ]);
+  for (const trap of longTraps) {
+    assert(!forbiddenForLong.has(trap.toLowerCase()), 'Distractor prohibido o ambiguo en 962028: ' + trap);
+  }
+
+  assert.deepStrictEqual(
+    new Set(longTraps),
+    new Set(['passed a long time', 'lasted a long time', 'spent long time']),
+    'Los distractores de 962028 deben coincidir exactamente con los 3 curados'
+  );
+
+  const genSource = fs.readFileSync(path.join(__dirname, 'generate-exam-quiz.cjs'), 'utf8');
+  assert(
+    genSource.trimStart().startsWith("'use strict'") || genSource.trimStart().startsWith('"use strict"'),
+    'generate-exam-quiz.cjs debe mantener use strict al principio'
+  );
+  assert(
+    !genSource.includes('_block1WriteIntercepted'),
+    'generate-exam-quiz.cjs no debe hacer monkey-patching de fs.writeFileSync'
+  );
+
+  const qeCssText = fs.readFileSync(path.join(__dirname, 'quiz-ergonomics.css'), 'utf8');
+  assert(
+    qeCssText.includes('html:root body[data-quiz-ergonomics][data-quiz-ergonomics][data-question-part="4"] #gameScreen#gameScreen .prompt-card'),
+    'quiz-ergonomics.css debe usar selector de alta especificidad para .prompt-card en Part 4'
+  );
+  console.log('✓ Bloque 1 (estático) verificado: id 962028, acceptedForms, distractores y especificidad CSS.');
+}
+// === BLOCK-1-TESTS-END ===

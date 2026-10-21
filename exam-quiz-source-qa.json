@@ -88,12 +88,12 @@
         "refused to put up",
         "refused for put up",
         "refused to put out",
-        "refused to up"
+        "refused to up put"
       ],
       "why": [
         "grammatical-contrast",
         "grammatical-contrast",
-        "missing-word"
+        "word-order"
       ]
     },
     {
@@ -119,13 +119,13 @@
       "answers": [
         "each child was given",
         "each child is given",
-        "child was given",
-        "each child was"
+        "each child were given",
+        "each child had given"
       ],
       "why": [
         "grammatical-contrast",
-        "missing-word",
-        "missing-word"
+        "grammatical-contrast",
+        "grammatical-contrast"
       ]
     },
     {
@@ -136,12 +136,12 @@
         "to stop using her",
         "for stop using her",
         "to stop using his",
-        "to stop her"
+        "to stop her using"
       ],
       "why": [
         "grammatical-contrast",
         "grammatical-contrast",
-        "missing-word"
+        "word-order"
       ]
     },
     {
@@ -167,12 +167,12 @@
       "answers": [
         "didn't turn up",
         "didn't turn out",
-        "turn up",
-        "didn't turn off"
+        "didn't turn off",
+        "didn't turn down"
       ],
       "why": [
         "grammatical-contrast",
-        "missing-word",
+        "grammatical-contrast",
         "grammatical-contrast"
       ]
     },
@@ -200,12 +200,12 @@
         "have paid attention to",
         "has paid attention to",
         "have paid attention for",
-        "have attention to"
+        "had paid attention to"
       ],
       "why": [
         "grammatical-contrast",
         "grammatical-contrast",
-        "missing-word"
+        "grammatical-contrast"
       ]
     },
     {
@@ -215,13 +215,13 @@
       "answers": [
         "didn't expect you to",
         "didn't expect you for",
-        "expect you to",
-        "didn't expect to"
+        "didn't expect to you",
+        "didn't expect you of"
       ],
       "why": [
         "grammatical-contrast",
-        "missing-word",
-        "missing-word"
+        "word-order",
+        "grammatical-contrast"
       ]
     },
     {
@@ -247,13 +247,13 @@
       "answers": [
         "every single player looks",
         "every single player look",
-        "single player looks",
-        "every single looks"
+        "every single looks player",
+        "not every single player looks"
       ],
       "why": [
         "agreement",
-        "missing-word",
-        "missing-word"
+        "word-order",
+        "verb-pattern"
       ]
     }
   ],
