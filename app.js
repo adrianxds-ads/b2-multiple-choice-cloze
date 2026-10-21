@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.11.22";
+const APP_VERSION = "1.12.0";
 const quizFlow=new window.QuizFlowController();
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
@@ -1241,7 +1241,7 @@ function renderStart(){
   $("startKicker").textContent=`B2 TERRITORIO 1 · ${currentStageText()}`;
   $("startLevel").textContent=`LEVEL ${state.level}`;
   if($("bankCountLabel"))$("bankCountLabel").textContent=`${fmtBankCount(BANK.length)} tarjetas`;
-  $("startBtn").textContent=state.sessions?`CONTINUE · LEVEL ${state.level}`:`START · LEVEL ${state.level}`;
+  $("startBtn").textContent="ESTUDIAR EXÁMENES ORIGINALES · 15";
   $("coverageText").textContent=`${fmtBankCount(activeSeenCount())} / ${fmtBankCount(BANK.length)}`;
   $("coverageFill").style.width=pct(st.coverage)+"%";paintFill("coverageFill",st.coverage);paintText("coverageText",st.coverage);
   $("masteryText").textContent=pct(st.mastery)+"%";$("masteryFill").style.width=pct(st.mastery)+"%";paintFill("masteryFill",st.mastery);paintText("masteryText",st.mastery);
@@ -1522,7 +1522,7 @@ async function boot(){
   if(CAMPAIGN.questions.length!==before)console.warn(`B2 Territorio 1 skipped ${before-CAMPAIGN.questions.length} invalid question(s) with duplicate/broken options.`);
   BANK=CAMPAIGN.questions;state=await loadSafeState();startFocusTracking();save();
   renderSegments(TIME_LIMIT);
-  $("startBtn").onclick=async()=>{await ensureAudio();await startSession(false);};
+  $("startBtn").onclick=()=>{location.assign("./literal-exams.html");};if($("classicBtn"))$("classicBtn").onclick=async()=>{await ensureAudio();await startSession(false);};
   if($("readFirstToggle")){$("readFirstToggle").onclick=toggleReadFirstMode;syncReadFirstButton();}
   $("statsBtn").onclick=()=>{renderStatsScreen();showScreen("statsScreen");};
   $("scoreExpandBtn").onclick=()=>{const rows=state.sessionHistory.filter(x=>x.mode==="training");if(window.HubCharts)return HubCharts.open(rows.map(x=>({at:x.ts,value:15*x.correct/x.total,target:x.target,label:"Nivel "+x.level})),{max:15,unit:" /15",title:"Resultados · histórico completo"});$("scoreExpandedChart").innerHTML=sessionScoreChart(rows,true);$("scoreModal").classList.remove("hidden");};

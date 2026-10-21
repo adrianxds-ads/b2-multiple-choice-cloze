@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#11251f">
+<title>English Cloze · Exámenes originales</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./literal-exams.css?v=1">
+</head>
+<body>
+<main class="app">
+  <header class="top"><a href="./index.html?legacy=1" class="small-link">← Repaso anterior</a><span>ENGLISH CLOZE · B2 FIRST</span></header>
+  <section id="home" class="screen">
+    <p class="eyebrow">BANCO LITERAL · 30 EXÁMENES</p>
+    <h1>Las preguntas reales, tal cual.</h1>
+    <p class="lead">Trabajamos exclusivamente con las Parts 1, 2 y 3 de nuestro banco de exámenes. Mantenemos el texto original y sus soluciones, sin reformulaciones ni distractores inventados.</p>
+    <div class="stats">
+      <div><strong id="bankCount">—</strong><span>huecos originales</span></div>
+      <div><strong id="doneCount">0</strong><span>respuestas registradas</span></div>
+      <div><strong id="accuracy">—</strong><span>aciertos</span></div>
+    </div>
+    <p class="setting-label">¿Qué parte practicamos?</p>
+    <div id="modes" class="modes" role="group" aria-label="Seleccionar parte">
+      <button type="button" data-part="all" class="selected">Mezcladas</button>
+      <button type="button" data-part="1">Part 1</button>
+      <button type="button" data-part="2">Part 2</button>
+      <button type="button" data-part="3">Part 3</button>
+    </div>
+    <button id="start" class="main-action">EMPEZAR · 15 PREGUNTAS</button>
+    <p class="hint">Part 1: las cuatro opciones originales. Parts 2 y 3: escribimos la respuesta, igual que en el examen. Lectura sin límite de tiempo; al empezar a responder, 15 segundos.</p>
+    <p id="status" class="status" role="status">Cargando los originales…</p>
+    <p class="subtle">Los exámenes 01–10 proceden de Cambridge; los 11–30, de EngExam. Las respuestas se identifican por su fuente. Nuestro progreso anterior se conserva en el repaso clásico.</p>
+  </section>
+  <section id="game" class="screen" hidden>
+    <div class="game-head">
+      <button type="button" id="exit" class="secondary">← Salir sin borrar el historial</button>
+      <span id="position">1 / 15</span>
+    </div>
+    <div class="source">
+      <strong id="examLabel"></strong>
+      <span id="partLabel"></span>
+    </div>
+    <p id="instructions" class="instructions"></p>
+    <article class="paper">
+      <div id="sourceTitle" class="paper-title"></div>
+      <div id="passage" class="passage" aria-label="Texto literal del examen"></div>
+    </article>
+    <div class="response-card">
+      <div class="task-row"><strong id="questionLabel"></strong><span id="wordBase"></span></div>
+      <div id="reading" class="reading"><button type="button" id="ready" class="main-action">YA HE LEÍDO · RESPONDER</button><small>El reloj solo empezará cuando pulses este botón.</small></div>
+      <div id="respond" hidden>
+        <div class="timer"><span id="timerLabel">15 s</span><div class="track"><div id="timeBar"></div></div></div>
+        <div id="choices" class="choices"></div>
+        <form id="wordForm" hidden autocomplete="off">
+          <label for="wordInput">Escribe la palabra exacta</label>
+          <div class="input-row"><input id="wordInput" inputmode="text" autocapitalize="none" spellcheck="false" autocomplete="off" aria-label="Respuesta escrita"><button type="submit">COMPROBAR</button></div>
+        </form>
+      </div>
+      <div id="feedback" class="feedback" hidden aria-live="polite">
+        <strong id="resultText"></strong>
+        <p id="correctText"></p>
+        <p id="explanation"></p>
+        <small id="answerSource"></small>
+        <button id="next" class="main-action" type="button">CONTINUAR</button>
+      </div>
+    </div>
+  </section>
+  <section id="finish" class="screen" hidden>
+    <p class="eyebrow">SESIÓN COMPLETADA</p>
+    <h2 id="finishScore"></h2>
+    <p id="finishSummary"></p>
+    <button id="again" class="main-action" type="button">OTRAS 15 PREGUNTAS</button>
+    <button id="homeBtn" class="secondary" type="button">VOLVER AL INICIO</button>
+  </section>
+</main>
+<script src="https://adrianxds-ads.github.io/adaptive-exam/data/cambridge-quiz-transcribed.js"></script>
+<script src="https://adrianxds-ads.github.io/adaptive-exam/data/engexam-bank.js"></script>
+<script src="./literal-exams.js?v=1"></script>
+</body>
+</html>
