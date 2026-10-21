@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.11.22";
+const APP_VERSION = "1.12.0";
 const quizFlow=new window.QuizFlowController();
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
@@ -569,6 +569,8 @@ const DISPLAY_NAMES={
 };
 function stableHash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
 function visibleCard(q){
+  // Keep original exam names and words unchanged; no randomized renaming.
+  if(q.sourceType==='exam-core')return {question:q.q,options:q.display||[],focus:q.focus||[],names:{},occurrence:(seenInfo(q)?.count||0)+1};
   const occurrence=(seenInfo(q)?.count||0)+1,all=[q.q,...(q.display||[])].join(" "),map={};
   for(const [original,def] of Object.entries(DISPLAY_NAMES))if(new RegExp(`\\b${original}\\b`).test(all)){
     const base=stableHash(`${q.fingerprint}|${original}`)%def.pool.length,used=session?.usedDisplayNames;let name=def.pool[(base+occurrence-1)%def.pool.length];
@@ -688,18 +690,13 @@ function buildTrainingPlan(){
   const unseen=BANK.filter(q=>!seenInfo(q));
   const due=BANK.filter(q=>seenInfo(q)&&reviewReady(q));
 
-  // Territorio 1: roughly 75% exploration, 25% spaced review.
-  // New material is deliberately mixed: real exam anchors + lexical network + selected legacy support.
-  // Every session samples Parts 1, 2 and 3 fairly when unseen anchors are available.
-  // The three source parts share the original exam_core metric and adaptive review.
-  for(const part of [1,2,3]){
-    const pool=unseen.filter(q=>source(q)==="exam-core"&&(q.sourcePart||1)===part);
-    const q=pick(pool,"explore");if(q)addQ(q);
+  // All cards come from our 30-paper source bank. Balance the four genuine exam Parts.
+  // Keep all existing quiz mechanics, level timing, learning metrics and spaced review.
+  for(const part of [1,2,3,4]){
+    const pool=unseen.filter(q=>source(q)==="exam-core"&&q.sourcePart===part);
+    for(let i=0;i<3;i++){const q=pick(pool,"explore");if(q)addQ(q);}
   }
-  for(const [src,n] of [["exam-core",1],["territory-network",5],["legacy-support",2]]){
-    for(let i=0;i<n;i++){const q=pick(unseen,"explore",src);if(q)addQ(q);}
-  }
-  while(chosen.length<11){const q=pick(unseen,"explore");if(!q)break;addQ(q);}
+  while(chosen.length<12){const q=pick(unseen,"explore");if(!q)break;addQ(q);}
   while(chosen.length<15){const q=pick(due,"review");if(!q)break;addQ(q);}
   while(chosen.length<15){const q=pick(unseen,"explore");if(!q)break;addQ(q);}
 
@@ -713,13 +710,16 @@ function buildTrainingPlan(){
   return chosen.slice(0,SESSION_SIZE);
 }
 function buildFinalPlan(){
-  const ranked=[...CAMPAIGN.skills].sort((a,b)=>catPriority(b.id)-catPriority(a.id)),result=[];
-  for(const s of ranked){
-    const pool=BANK.filter(q=>q.cat===s.id).sort((a,b)=>(seenInfo(a)?.lastLevel||-999)-(seenInfo(b)?.lastLevel||-999));
-    if(pool[0])result.push(pool[0]);
+  // Former category cap does not apply to the four original exam Parts.
+  const result=[],used=new Set();
+  for(let i=0;i<30;i++){
+    const part=1+(i%4);
+    const pool=BANK.filter(q=>q.sourcePart===part&&!used.has(q.fingerprint));
+    if(!pool.length)break;
+    pool.sort((a,b)=>(seenInfo(a)?.lastLevel??-999)-(seenInfo(b)?.lastLevel??-999));
+    const q=pool[0];result.push(q);used.add(q.fingerprint);
   }
-  while(result.length<30){const q=chooseOne(BANK,result,{},{},"review");if(!q)break;result.push(q);}
-  return result.slice(0,30);
+  return result;
 }
 function shuffleOptions(q){
   const items=q.a.map((x,i)=>({x,ok:i===q.c})),correct=items.find(x=>x.ok),wrong=items.filter(x=>!x.ok);
@@ -1372,8 +1372,11 @@ function nextQuestion(){
   if(!current||!Array.isArray(current.display)||current.display.length!==4||!Number.isInteger(current.correctPos)||current.correctPos<0||current.correctPos>3){console.error("Skipping invalid question",current);session.index++;setTimeout(nextQuestion,0);return;}
   $("qIndex").textContent=session.index+1;
   const rewardPrior=state.seen[current.fingerprint]||null,rewardGap=rewardPrior?state.level-rewardPrior.lastLevel:null,rewardSpecial=rewardPrior?.lapses>0&&!rewardPrior.masteredRewarded&&rewardPrior.lastCorrect===true&&rewardPrior.count>=2&&rewardGap>=2?"MASTER CHANCE":rewardPrior?.lapses>0&&rewardPrior.lastCorrect===false?"RECOVERY":rewardPrior?(QuizLearning.ready(rewardPrior,state.level)?"SPACED REVIEW":"EXTRA PRACTICE"):session.index===session.plan.length-1?"FINAL":"";
-  $("qTotal").textContent="/ "+session.plan.length+(rewardSpecial?" · "+rewardSpecial:"");
-  const view=visibleCard(current);current.visibleQuestion=view.question;current.visibleOptions=view.options;current.visibleFocus=view.focus;current.visibleNames=view.names;
+  $("qTotal").textContent="/ "+session.plan.length+" · EXAM "+String(current.sourceExam||0).padStart(2,'0')+" · PART "+(current.sourcePart||1)+(rewardSpecial?" · "+rewardSpecial:"");
+  document.body.dataset.questionPart=String(current.sourcePart||1);
+   if(Number(current.sourcePart)===4){$("questionText").style.setProperty("white-space","pre-line","important");$("questionText").style.setProperty("font-size","clamp(17px,4.5vw,25px)","important");}
+   else{$("questionText").style.removeProperty("white-space");$("questionText").style.removeProperty("font-size");}
+   const view=visibleCard(current);current.visibleQuestion=view.question;current.visibleOptions=view.options;current.visibleFocus=view.focus;current.visibleNames=view.names;
   $("questionText").classList.remove("focus-active");$("questionText").textContent=view.question;
   const wrap=$("answers");wrap.innerHTML="";wrap.classList.toggle("read-first-hidden",readFirstMode);const answerColors=shuffledAnswerColorClasses();
   current.display.forEach((txt,i)=>{const b=document.createElement("button");b.className="answer "+answerColors[i];b.textContent=view.options[i];b.disabled=readFirstMode;b.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"){e.preventDefault();answer(i,false);}});b.addEventListener("click",()=>answer(i,false));wrap.appendChild(b);});

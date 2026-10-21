@@ -1,0 +1,721 @@
+{
+  "1": [
+    {
+      "n": 25,
+      "first": "'Thanks for your great idea for entertaining the kids,' Nola said to Jain.",
+      "keyword": "COMING",
+      "secondBefore": "Nola ",
+      "secondAfter": " with a great idea for entertaining the kids.",
+      "answers": [
+        "thanked Jain for coming up"
+      ],
+      "display": "thanked Jain for coming up"
+    },
+    {
+      "n": 26,
+      "first": "Spend as much time as you can on this painting, because that's what will improve it.",
+      "keyword": "BETTER",
+      "secondBefore": "The more time you spend on this painting, ",
+      "secondAfter": " be.",
+      "answers": [
+        "the better it will"
+      ],
+      "display": "the better it will"
+    },
+    {
+      "n": 27,
+      "first": "'Do you like windsurfing?' my aunt asked my brother.",
+      "keyword": "KEEN",
+      "secondBefore": "My aunt asked my brother ",
+      "secondAfter": " windsurfing.",
+      "answers": [
+        "if he was keen on",
+        "whether he was keen on"
+      ],
+      "display": "if he was keen on"
+    },
+    {
+      "n": 28,
+      "first": "I'm considering eating less cheese and drinking less milk.",
+      "keyword": "DOWN",
+      "secondBefore": "I'm thinking ",
+      "secondAfter": " cheese and milk.",
+      "answers": [
+        "of cutting down on",
+        "about cutting down on"
+      ],
+      "display": "of cutting down on"
+    },
+    {
+      "n": 29,
+      "first": "'I won't accept your bad behaviour any longer!' the teacher said to the children.",
+      "keyword": "REFUSED",
+      "secondBefore": "The teacher ",
+      "secondAfter": " with the children's bad behaviour any longer.",
+      "answers": [
+        "refused to put up"
+      ],
+      "display": "refused to put up"
+    },
+    {
+      "n": 30,
+      "first": "I was pleased to find the job easier than expected.",
+      "keyword": "DEMANDING",
+      "secondBefore": "I was pleased that the job wasn't ",
+      "secondAfter": " thought it would be.",
+      "answers": [
+        "as demanding as I had",
+        "as demanding as I'd"
+      ],
+      "display": "as demanding as I had"
+    }
+  ],
+  "2": [
+    {
+      "n": 25,
+      "first": "My parents gave all the children sweets at the end of the party.",
+      "keyword": "CHILD",
+      "secondBefore": "At the end of the party, ",
+      "secondAfter": " sweets by my parents.",
+      "answers": [
+        "each child was given",
+        "every child was given"
+      ],
+      "display": "each child was given"
+    },
+    {
+      "n": 26,
+      "first": "'Please don't use my favourite mug any more,' Vanya said to her little sister.",
+      "keyword": "STOP",
+      "secondBefore": "Vanya asked her little sister ",
+      "secondAfter": " favourite mug.",
+      "answers": [
+        "to stop using her"
+      ],
+      "display": "to stop using her"
+    },
+    {
+      "n": 27,
+      "first": "'It's a pity this laptop is too expensive for me,' said Luke.",
+      "keyword": "AFFORD",
+      "secondBefore": "Luke wished he ",
+      "secondAfter": " get the laptop.",
+      "answers": [
+        "could afford to"
+      ],
+      "display": "could afford to"
+    },
+    {
+      "n": 28,
+      "first": "Although we were expecting Anna for dinner at seven, she arrived at eight o'clock.",
+      "keyword": "TURN",
+      "secondBefore": "Although we were expecting Anna for dinner at seven, she ",
+      "secondAfter": " until eight o'clock.",
+      "answers": [
+        "didn't turn up",
+        "did not turn up"
+      ],
+      "display": "didn't turn up"
+    },
+    {
+      "n": 29,
+      "first": "People think that this necklace is extremely valuable.",
+      "keyword": "THOUGHT",
+      "secondBefore": "This necklace ",
+      "secondAfter": " extremely valuable.",
+      "answers": [
+        "is thought to be"
+      ],
+      "display": "is thought to be"
+    },
+    {
+      "n": 30,
+      "first": "Stefan didn't listen to the teacher's instructions, which was a mistake.",
+      "keyword": "ATTENTION",
+      "secondBefore": "Stefan should ",
+      "secondAfter": " the teacher's instructions.",
+      "answers": [
+        "have paid attention to"
+      ],
+      "display": "have paid attention to"
+    }
+  ],
+  "3": [
+    {
+      "n": 25,
+      "first": "I'm surprised that you're here!",
+      "keyword": "EXPECT",
+      "secondBefore": "I ",
+      "secondAfter": " be here!",
+      "answers": [
+        "didn't expect you to",
+        "did not expect you to"
+      ],
+      "display": "didn't expect you to"
+    },
+    {
+      "n": 26,
+      "first": "Ben needed to try very hard to win the race.",
+      "keyword": "GREAT",
+      "secondBefore": "Ben had to ",
+      "secondAfter": " effort to win the race.",
+      "answers": [
+        "make a great",
+        "put in a great",
+        "make a very great",
+        "put in a very great"
+      ],
+      "display": "make a great"
+    },
+    {
+      "n": 27,
+      "first": "It is obvious that the coach is admired by all the players, without exception.",
+      "keyword": "SINGLE",
+      "secondBefore": "It is obvious that ",
+      "secondAfter": " up to the coach.",
+      "answers": [
+        "every single player looks"
+      ],
+      "display": "every single player looks"
+    },
+    {
+      "n": 28,
+      "first": "It's a pity I didn't buy as much food as we needed for everyone at the party!",
+      "keyword": "ENOUGH",
+      "secondBefore": "If only I ",
+      "secondAfter": " for everyone at the party!",
+      "answers": [
+        "'d bought enough food",
+        "had bought enough food"
+      ],
+      "display": "'d bought enough food"
+    },
+    {
+      "n": 29,
+      "first": "Nobody understood Ferda's decision to leave her job.",
+      "keyword": "DECIDED",
+      "secondBefore": "Nobody understood ",
+      "secondAfter": " up her job.",
+      "answers": [
+        "why Ferda decided to give"
+      ],
+      "display": "why Ferda decided to give"
+    },
+    {
+      "n": 30,
+      "first": "I know that it isn't always easy to grow vegetables.",
+      "keyword": "CAN",
+      "secondBefore": "I know that ",
+      "secondAfter": " difficult.",
+      "answers": [
+        "growing vegetables can be",
+        "growing vegetables can sometimes be"
+      ],
+      "display": "growing vegetables can be"
+    }
+  ],
+  "4": [
+    {
+      "n": 25,
+      "first": "I don't know why someone put this plant in a rubbish bin – it's in perfect condition!",
+      "keyword": "THROWN",
+      "secondBefore": "I don't know why this plant ",
+      "secondAfter": " – it's in perfect condition, but it's in a rubbish bin!",
+      "answers": [
+        "was thrown away",
+        "has been thrown away"
+      ],
+      "display": "was thrown away"
+    },
+    {
+      "n": 26,
+      "first": "Barbara thinks she will use all the facilities at the hotel.",
+      "keyword": "HOPING",
+      "secondBefore": "Barbara ",
+      "secondAfter": " advantage of all the facilities at the hotel.",
+      "answers": [
+        "is hoping to take",
+        "'s hoping to take"
+      ],
+      "display": "is hoping to take"
+    },
+    {
+      "n": 27,
+      "first": "I had almost run out of time, so I had to rush round the last part of the exhibition.",
+      "keyword": "LEFT",
+      "secondBefore": "I had very ",
+      "secondAfter": " see the last part of the exhibition, so I had to rush round it.",
+      "answers": [
+        "little time left to"
+      ],
+      "display": "little time left to"
+    },
+    {
+      "n": 28,
+      "first": "Leah wished she had postponed the barbecue until the summer.",
+      "keyword": "PUTTING",
+      "secondBefore": "Leah regretted ",
+      "secondAfter": " the barbecue until the summer.",
+      "answers": [
+        "not putting off"
+      ],
+      "display": "not putting off"
+    },
+    {
+      "n": 29,
+      "first": "I don't know who owns this car.",
+      "keyword": "IDEA",
+      "secondBefore": "I have ",
+      "secondAfter": " this is.",
+      "answers": [
+        "no idea whose car"
+      ],
+      "display": "no idea whose car"
+    },
+    {
+      "n": 30,
+      "first": "David lives a long way from college, so he has to take the bus every day.",
+      "keyword": "CLOSER",
+      "secondBefore": "If David ",
+      "secondAfter": ", he wouldn't have to take the bus every day.",
+      "answers": [
+        "lived closer to college",
+        "moved closer to college"
+      ],
+      "display": "lived closer to college"
+    }
+  ],
+  "5": [
+    {
+      "n": 25,
+      "first": "I'll lend you some money, but you must give it back to me soon!",
+      "keyword": "PAY",
+      "secondBefore": "I'll lend you some money as ",
+      "secondAfter": " me back soon!",
+      "answers": [
+        "long as you pay"
+      ],
+      "display": "long as you pay"
+    },
+    {
+      "n": 26,
+      "first": "People all over the world have listened to this song.",
+      "keyword": "HEARD",
+      "secondBefore": "This song ",
+      "secondAfter": " people all over the world.",
+      "answers": [
+        "has been heard by"
+      ],
+      "display": "has been heard by"
+    },
+    {
+      "n": 27,
+      "first": "'Tidy your room, it's a mess!' Steve said to his son.",
+      "keyword": "CLEAR",
+      "secondBefore": "Steve told his ",
+      "secondAfter": " mess in his room.",
+      "answers": [
+        "son to clear up the",
+        "son to clear out the"
+      ],
+      "display": "son to clear up the"
+    },
+    {
+      "n": 28,
+      "first": "Sal didn't bring the right kind of clothes for yesterday's wet weather.",
+      "keyword": "UNSUITABLE",
+      "secondBefore": "The clothes that Sal ",
+      "secondAfter": " for yesterday's wet weather.",
+      "answers": [
+        "brought were unsuitable",
+        "had brought were unsuitable"
+      ],
+      "display": "brought were unsuitable"
+    },
+    {
+      "n": 29,
+      "first": "My cousin thinks it is wrong to play loud music in public places.",
+      "keyword": "APPROVE",
+      "secondBefore": "My cousin doesn't ",
+      "secondAfter": " played in public places.",
+      "answers": [
+        "approve of loud music being"
+      ],
+      "display": "approve of loud music being"
+    },
+    {
+      "n": 30,
+      "first": "The very first thing I noticed about the restaurant was how quiet it was.",
+      "keyword": "STRUCK",
+      "secondBefore": "What ",
+      "secondAfter": " all about the restaurant was how quiet it was.",
+      "answers": [
+        "struck me first of"
+      ],
+      "display": "struck me first of"
+    }
+  ],
+  "6": [
+    {
+      "n": 25,
+      "first": "Yalen said that if we didn't leave immediately, we'd miss the train.",
+      "keyword": "UNLESS",
+      "secondBefore": "Yalen said that we wouldn't catch ",
+      "secondAfter": " off immediately.",
+      "answers": [
+        "the train unless we set"
+      ],
+      "display": "the train unless we set"
+    },
+    {
+      "n": 26,
+      "first": "Before we went on the camping trip, the organisers made sure we had all the necessary information about the area.",
+      "keyword": "EVERYTHING",
+      "secondBefore": "The organisers told ",
+      "secondAfter": " know about the area before we went on the camping trip.",
+      "answers": [
+        "us everything we needed to"
+      ],
+      "display": "us everything we needed to"
+    },
+    {
+      "n": 27,
+      "first": "I always try not to get angry with my sister, but I don't always manage it!",
+      "keyword": "HELP",
+      "secondBefore": "Sometimes I just ",
+      "secondAfter": " my temper with my sister!",
+      "answers": [
+        "can't help losing",
+        "cannot help losing"
+      ],
+      "display": "can't help losing"
+    },
+    {
+      "n": 28,
+      "first": "I made a suggestion for improving the college website and almost everyone agreed.",
+      "keyword": "DISAGREED",
+      "secondBefore": "Hardly ",
+      "secondAfter": " my suggestion for improving the college website.",
+      "answers": [
+        "anyone disagreed with",
+        "anybody disagreed with"
+      ],
+      "display": "anyone disagreed with"
+    },
+    {
+      "n": 29,
+      "first": "The scientists thought that some of the results of the experiment might not be accurate.",
+      "keyword": "ACCURACY",
+      "secondBefore": "The scientists ",
+      "secondAfter": " some of the results of the experiment.",
+      "answers": [
+        "doubted the accuracy of",
+        "questioned the accuracy of"
+      ],
+      "display": "doubted the accuracy of"
+    },
+    {
+      "n": 30,
+      "first": "'Can I save enough money to buy a motorbike?' I wondered.",
+      "keyword": "ABLE",
+      "secondBefore": "I wondered whether I would ",
+      "secondAfter": " aside enough money to buy a motorbike.",
+      "answers": [
+        "be able to put"
+      ],
+      "display": "be able to put"
+    }
+  ],
+  "7": [
+    {
+      "n": 25,
+      "first": "My geography homework is to think of at least three ways to collect water in the desert.",
+      "keyword": "COME",
+      "secondBefore": "My geography homework is to ",
+      "secondAfter": " at least three ways to collect water in the desert.",
+      "answers": [
+        "come up with"
+      ],
+      "display": "come up with"
+    },
+    {
+      "n": 26,
+      "first": "Rav will need to try harder if he wants to win the race.",
+      "keyword": "MORE",
+      "secondBefore": "Rav will need to ",
+      "secondAfter": " an effort if he wants to win the race.",
+      "answers": [
+        "make more of"
+      ],
+      "display": "make more of"
+    },
+    {
+      "n": 27,
+      "first": "My parents don't like me lending my skateboard to my friends.",
+      "keyword": "RATHER",
+      "secondBefore": "My parents would ",
+      "secondAfter": " my friends borrow my skateboard.",
+      "answers": [
+        "rather I didn't let",
+        "rather I did not let"
+      ],
+      "display": "rather I didn't let"
+    },
+    {
+      "n": 28,
+      "first": "I sometimes find my little brother annoying.",
+      "keyword": "NERVES",
+      "secondBefore": "My little brother ",
+      "secondAfter": " sometimes.",
+      "answers": [
+        "gets on my nerves"
+      ],
+      "display": "gets on my nerves"
+    },
+    {
+      "n": 29,
+      "first": "The teacher asked me whether I was interested in history.",
+      "keyword": "FIND",
+      "secondBefore": "'Do ",
+      "secondAfter": "?', the teacher asked me.",
+      "answers": [
+        "you find history interesting"
+      ],
+      "display": "you find history interesting"
+    },
+    {
+      "n": 30,
+      "first": "Adam hates volleyball, so how did the coach manage to persuade him to join the team?",
+      "keyword": "SUCCEED",
+      "secondBefore": "Adam hates volleyball, so how did the coach ",
+      "secondAfter": " him to join the team?",
+      "answers": [
+        "succeed in persuading",
+        "succeed in getting"
+      ],
+      "display": "succeed in persuading"
+    }
+  ],
+  "8": [
+    {
+      "n": 25,
+      "first": "My parents often allow me to go shopping by myself.",
+      "keyword": "LET",
+      "secondBefore": "My parents often ",
+      "secondAfter": " my own.",
+      "answers": [
+        "let me go shopping on"
+      ],
+      "display": "let me go shopping on"
+    },
+    {
+      "n": 26,
+      "first": "Harry was only able to play the piece perfectly because he had practised it for hours.",
+      "keyword": "HAVE",
+      "secondBefore": "Harry ",
+      "secondAfter": " able to play the piece perfectly if he hadn't practised it for hours.",
+      "answers": [
+        "wouldn't have been",
+        "would not have been"
+      ],
+      "display": "wouldn't have been"
+    },
+    {
+      "n": 27,
+      "first": "Nola didn't expect the book to be so expensive.",
+      "keyword": "MUCH",
+      "secondBefore": "Nola didn't think the book would ",
+      "secondAfter": " it did.",
+      "answers": [
+        "cost as much as",
+        "cost so much as"
+      ],
+      "display": "cost as much as"
+    },
+    {
+      "n": 28,
+      "first": "Please don't look at my painting yet because I haven't finished it.",
+      "keyword": "RATHER",
+      "secondBefore": "I'd ",
+      "secondAfter": " look at my painting yet because I haven't finished it.",
+      "answers": [
+        "rather you didn't",
+        "rather you did not"
+      ],
+      "display": "rather you didn't"
+    },
+    {
+      "n": 29,
+      "first": "It's possible that George didn't get my text message.",
+      "keyword": "MAY",
+      "secondBefore": "George ",
+      "secondAfter": " my text message.",
+      "answers": [
+        "may not have got",
+        "may not have received",
+        "may not have seen"
+      ],
+      "display": "may not have got"
+    },
+    {
+      "n": 30,
+      "first": "Mary is the best guitarist I know.",
+      "keyword": "THAN",
+      "secondBefore": "Mary is a ",
+      "secondAfter": " else I know.",
+      "answers": [
+        "better guitarist than anyone",
+        "better guitarist than anybody",
+        "better guitarist than everyone",
+        "better guitarist than everybody"
+      ],
+      "display": "better guitarist than anyone"
+    }
+  ],
+  "9": [
+    {
+      "n": 25,
+      "first": "We went to the beach even though the weather was very wet.",
+      "keyword": "FACT",
+      "secondBefore": "We went to the beach despite ",
+      "secondAfter": " raining heavily.",
+      "answers": [
+        "the fact that it was"
+      ],
+      "display": "the fact that it was"
+    },
+    {
+      "n": 26,
+      "first": "It's too late to go to the cinema now.",
+      "keyword": "POINT",
+      "secondBefore": "There's ",
+      "secondAfter": " to the cinema now because it's so late.",
+      "answers": [
+        "no point going",
+        "no point in going"
+      ],
+      "display": "no point going"
+    },
+    {
+      "n": 27,
+      "first": "It was obvious to everyone how excited Petra was.",
+      "keyword": "HIDE",
+      "secondBefore": "Petra ",
+      "secondAfter": " from anyone.",
+      "answers": [
+        "didn't hide her excitement",
+        "did not hide her excitement",
+        "couldn't hide her excitement",
+        "could not hide her excitement"
+      ],
+      "display": "didn't hide her excitement"
+    },
+    {
+      "n": 28,
+      "first": "I can't use this pen because there's no ink left in it.",
+      "keyword": "RUN",
+      "secondBefore": "I can't use this pen because ",
+      "secondAfter": " ink.",
+      "answers": [
+        "it's run out of",
+        "it has run out of"
+      ],
+      "display": "it's run out of"
+    },
+    {
+      "n": 29,
+      "first": "The noise my little brother is making is too much for me to bear.",
+      "keyword": "PUT",
+      "secondBefore": "I ",
+      "secondAfter": " the noise my little brother is making any longer.",
+      "answers": [
+        "can't put up with",
+        "cannot put up with"
+      ],
+      "display": "can't put up with"
+    },
+    {
+      "n": 30,
+      "first": "Well, in my opinion, this is the best phone you can buy.",
+      "keyword": "FAR",
+      "secondBefore": "Well, as ",
+      "secondAfter": " concerned, this is the best phone you can buy.",
+      "answers": [
+        "far as I am",
+        "far as I'm"
+      ],
+      "display": "far as I am"
+    }
+  ],
+  "10": [
+    {
+      "n": 25,
+      "first": "They say that the new sports centre is fantastic.",
+      "keyword": "SAID",
+      "secondBefore": "The new sports centre ",
+      "secondAfter": " fantastic.",
+      "answers": [
+        "is said to be"
+      ],
+      "display": "is said to be"
+    },
+    {
+      "n": 26,
+      "first": "I can't think who this pen belongs to.",
+      "keyword": "WHOSE",
+      "secondBefore": "I have no ",
+      "secondAfter": " is.",
+      "answers": [
+        "idea whose pen it",
+        "idea whose pen this"
+      ],
+      "display": "idea whose pen it"
+    },
+    {
+      "n": 27,
+      "first": "Jane's parents wouldn't let her go to the party.",
+      "keyword": "REFUSED",
+      "secondBefore": "Jane's parents ",
+      "secondAfter": " her to go to the party.",
+      "answers": [
+        "refused to allow",
+        "refused to permit"
+      ],
+      "display": "refused to allow"
+    },
+    {
+      "n": 28,
+      "first": "Jim's house isn't close enough for him to walk to school every day.",
+      "keyword": "AWAY",
+      "secondBefore": "Jim's house is ",
+      "secondAfter": " for him to walk to school every day.",
+      "answers": [
+        "too far away"
+      ],
+      "display": "too far away"
+    },
+    {
+      "n": 29,
+      "first": "I recommend buying that phone right now, before it sells out.",
+      "keyword": "BETTER",
+      "secondBefore": "I think you ",
+      "secondAfter": " that phone right now, before it sells out.",
+      "answers": [
+        "had better buy",
+        "'d better buy"
+      ],
+      "display": "had better buy"
+    },
+    {
+      "n": 30,
+      "first": "I think John's trying to get you to notice him – he's waving at you.",
+      "keyword": "ATTRACT",
+      "secondBefore": "I think John's trying to ",
+      "secondAfter": ", because he's waving at you.",
+      "answers": [
+        "attract your attention"
+      ],
+      "display": "attract your attention"
+    }
+  ]
+}

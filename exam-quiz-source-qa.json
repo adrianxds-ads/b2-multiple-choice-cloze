@@ -1,0 +1,264 @@
+{
+  "compiledAt": "2026-10-21",
+  "questionCount": 900,
+  "coverage": [
+    240,
+    240,
+    240,
+    180
+  ],
+  "sources": {
+    "Cambridge": 10,
+    "EngExam": 20
+  },
+  "part4DistractorOrigins": {
+    "piloted": 24,
+    "provisional": 156
+  },
+  "part4Samples": [
+    {
+      "exam": 1,
+      "n": 25,
+      "q": "'Thanks for your great idea for entertaining the kids,' Nola said to Jain.\nKEY WORD: COMING\nNola ___ with a great idea for entertaining the kids.",
+      "answers": [
+        "thanked Jain for coming up",
+        "thanked Jain to coming up",
+        "thanked Jain for coming out",
+        "thank Jain for coming up"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "verb-form"
+      ]
+    },
+    {
+      "exam": 1,
+      "n": 26,
+      "q": "Spend as much time as you can on this painting, because that's what will improve it.\nKEY WORD: BETTER\nThe more time you spend on this painting, ___ be.",
+      "answers": [
+        "the better it will",
+        "a better it will",
+        "the better this will",
+        "the better it would"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "grammatical-contrast"
+      ]
+    },
+    {
+      "exam": 1,
+      "n": 27,
+      "q": "'Do you like windsurfing?' my aunt asked my brother.\nKEY WORD: KEEN\nMy aunt asked my brother ___ windsurfing.",
+      "answers": [
+        "if he was keen on",
+        "when he was keen on",
+        "if she was keen on",
+        "if he is keen on"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "grammatical-contrast"
+      ]
+    },
+    {
+      "exam": 1,
+      "n": 28,
+      "q": "I'm considering eating less cheese and drinking less milk.\nKEY WORD: DOWN\nI'm thinking ___ cheese and milk.",
+      "answers": [
+        "of cutting down on",
+        "for cutting down on",
+        "of cutting down in",
+        "of cut down on"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "verb-form"
+      ]
+    },
+    {
+      "exam": 1,
+      "n": 29,
+      "q": "'I won't accept your bad behaviour any longer!' the teacher said to the children.\nKEY WORD: REFUSED\nThe teacher ___ with the children's bad behaviour any longer.",
+      "answers": [
+        "refused to put up",
+        "refused for put up",
+        "refused to put out",
+        "refused to up"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "missing-word"
+      ]
+    },
+    {
+      "exam": 1,
+      "n": 30,
+      "q": "I was pleased to find the job easier than expected.\nKEY WORD: DEMANDING\nI was pleased that the job wasn't ___ thought it would be.",
+      "answers": [
+        "as demanding as I had",
+        "than demanding as I had",
+        "as demanding than I had",
+        "as demanding as I have"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "grammatical-contrast"
+      ]
+    },
+    {
+      "exam": 2,
+      "n": 25,
+      "q": "My parents gave all the children sweets at the end of the party.\nKEY WORD: CHILD\nAt the end of the party, ___ sweets by my parents.",
+      "answers": [
+        "each child was given",
+        "each child is given",
+        "child was given",
+        "each child was"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "missing-word",
+        "missing-word"
+      ]
+    },
+    {
+      "exam": 2,
+      "n": 26,
+      "q": "'Please don't use my favourite mug any more,' Vanya said to her little sister.\nKEY WORD: STOP\nVanya asked her little sister ___ favourite mug.",
+      "answers": [
+        "to stop using her",
+        "for stop using her",
+        "to stop using his",
+        "to stop her"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "missing-word"
+      ]
+    },
+    {
+      "exam": 2,
+      "n": 27,
+      "q": "'It's a pity this laptop is too expensive for me,' said Luke.\nKEY WORD: AFFORD\nLuke wished he ___ get the laptop.",
+      "answers": [
+        "could afford to",
+        "can afford to",
+        "could afford for",
+        "would afford to"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "grammatical-contrast"
+      ]
+    },
+    {
+      "exam": 2,
+      "n": 28,
+      "q": "Although we were expecting Anna for dinner at seven, she arrived at eight o'clock.\nKEY WORD: TURN\nAlthough we were expecting Anna for dinner at seven, she ___ until eight o'clock.",
+      "answers": [
+        "didn't turn up",
+        "didn't turn out",
+        "turn up",
+        "didn't turn off"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "missing-word",
+        "grammatical-contrast"
+      ]
+    },
+    {
+      "exam": 2,
+      "n": 29,
+      "q": "People think that this necklace is extremely valuable.\nKEY WORD: THOUGHT\nThis necklace ___ extremely valuable.",
+      "answers": [
+        "is thought to be",
+        "was thought to be",
+        "is thought for be",
+        "is thought to being"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "grammatical-contrast"
+      ]
+    },
+    {
+      "exam": 2,
+      "n": 30,
+      "q": "Stefan didn't listen to the teacher's instructions, which was a mistake.\nKEY WORD: ATTENTION\nStefan should ___ the teacher's instructions.",
+      "answers": [
+        "have paid attention to",
+        "has paid attention to",
+        "have paid attention for",
+        "have attention to"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "missing-word"
+      ]
+    },
+    {
+      "exam": 3,
+      "n": 25,
+      "q": "I'm surprised that you're here!\nKEY WORD: EXPECT\nI ___ be here!",
+      "answers": [
+        "didn't expect you to",
+        "didn't expect you for",
+        "expect you to",
+        "didn't expect to"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "missing-word",
+        "missing-word"
+      ]
+    },
+    {
+      "exam": 3,
+      "n": 26,
+      "q": "Ben needed to try very hard to win the race.\nKEY WORD: GREAT\nBen had to ___ effort to win the race.",
+      "answers": [
+        "make a great",
+        "do a great",
+        "make the great",
+        "have a great"
+      ],
+      "why": [
+        "grammatical-contrast",
+        "grammatical-contrast",
+        "grammatical-contrast"
+      ]
+    },
+    {
+      "exam": 3,
+      "n": 27,
+      "q": "It is obvious that the coach is admired by all the players, without exception.\nKEY WORD: SINGLE\nIt is obvious that ___ up to the coach.",
+      "answers": [
+        "every single player looks",
+        "every single player look",
+        "single player looks",
+        "every single looks"
+      ],
+      "why": [
+        "agreement",
+        "missing-word",
+        "missing-word"
+      ]
+    }
+  ],
+  "problems": [],
+  "warnings": [
+    "Exam 24 Part 4 Q27: source key uses US spelling rumored; adjusted to mandatory British keyword RUMOURED."
+  ]
+}
