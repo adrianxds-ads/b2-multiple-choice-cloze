@@ -114,7 +114,9 @@ html, body { overflow-x: clip; }
     flex: none !important;
     font-size: 15px !important;
     line-height: 1.1 !important;
-    white-space: nowrap !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    text-align: center !important;
   }
 }
 
@@ -258,9 +260,14 @@ html:root body[data-nucleo-game="cloze"][data-question-part="4"]:has(#gameScreen
 @media (max-width:760px) {
   html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu #statsBtn,
   html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu #coachBtn {
-    min-height:88px !important;
-    height:88px !important;
-    max-height:88px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    align-items:flex-start !important;
+    min-height:72px !important;
+    height:auto !important;
+    max-height:none !important;
+    padding:12px 13px !important;
   }
   html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu button.menu-btn > b {
     font-size:14px !important;

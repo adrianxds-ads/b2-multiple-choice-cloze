@@ -26,6 +26,16 @@
     // The shared controls retain all their original onclick/href behavior.
     const game=document.getElementById('gameScreen');
     if(game)new MutationObserver(()=>{if(!game.classList.contains('hidden'))setOpen(false);}).observe(game,{attributes:true,attributeFilter:['class']});
+    // Key Diary renders before its collapsible panel is visible. Recalculate
+    // the active slide after opening, when the carousel has a measurable width.
+    const extras=document.getElementById('homeLearningExtras');
+    // Preserve the always-visible diary/tree on desktop; collapse on phones.
+    if(extras && window.matchMedia('(max-width:760px)').matches)extras.open=false;
+    extras?.addEventListener('toggle',()=>{
+      if(extras.open)requestAnimationFrame(()=>{
+        if(typeof window.renderDailyKey==='function')window.renderDailyKey();
+      });
+    });
     setOpen(false);
     return true;
   }
