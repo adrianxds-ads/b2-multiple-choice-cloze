@@ -83,3 +83,44 @@ html, body { overflow-x: clip; }
     padding:0 12px !important;
   }
 }
+
+/* Video 109961: compact, balanced 4-by-2 navigation when menu opens.
+   The Hub's original controls and event handlers remain untouched. */
+@media (max-width: 760px) {
+  html:root body .adrian-tools.cloze-nav-compact.cloze-nav-open {
+    display: grid !important;
+    grid-template-columns: repeat(4,minmax(0,1fr)) !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    gap: 6px !important;
+    padding: 5px max(8px, env(safe-area-inset-right)) 7px max(8px, env(safe-area-inset-left)) !important;
+  }
+  html:root body .adrian-tools.cloze-nav-compact.cloze-nav-open > .nucleo-route-nav {
+    display: contents !important;
+  }
+  html:root body .adrian-tools.cloze-nav-compact.cloze-nav-open > :is(button,a),
+  html:root body .adrian-tools.cloze-nav-compact.cloze-nav-open > .nucleo-route-nav > :is(button,a) {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    padding: 0 6px !important;
+    margin: 0 !important;
+    flex: none !important;
+    font-size: 15px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Video 109961 (01:50-02:00): Part 4 is intentionally height-compact
+   to avoid scrolling; its light background must still paint the entire
+   viewport below the final EXIT control. Never stretch the quiz cards. */
+html:root body[data-nucleo-game="cloze"][data-question-part="4"]:has(#gameScreen:not(.hidden)) {
+  background-color: #EEF2F6 !important;
+}
