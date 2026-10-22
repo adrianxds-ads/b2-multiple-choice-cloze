@@ -1,0 +1,85 @@
+/* English Cloze-only compact navigation; shared Hub controls stay untouched. */
+@media (max-width: 760px) {
+  html:root body .adrian-tools.cloze-nav-compact {
+    position: sticky !important;
+    top: 0;
+    min-height: 48px !important;
+    height: auto !important;
+    padding: max(2px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) 2px max(8px, env(safe-area-inset-left)) !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+    background: #10191d !important;
+  }
+  html:root body .adrian-tools.cloze-nav-compact:not(.cloze-nav-open) > :not(.cloze-nav-toggle) {
+    display: none !important;
+  }
+  html:root body .adrian-tools.cloze-nav-compact .cloze-nav-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 96px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0 12px;
+    flex: 0 0 auto;
+    color: #f3f7f8;
+    background: #22343b;
+    border: 1px solid #67808b;
+    border-radius: 9px;
+    font: 750 15px/1.2 Roboto,system-ui,sans-serif;
+    cursor: pointer;
+  }
+  html:root body .adrian-tools.cloze-nav-compact .cloze-nav-toggle:focus-visible {
+    outline: 3px solid #ffd566;
+    outline-offset: 1px;
+  }
+  html:root body .adrian-tools.cloze-nav-compact.cloze-nav-open {
+    padding-bottom: 7px !important;
+  }
+  html:root body .adrian-tools.cloze-nav-compact.cloze-nav-open > .nucleo-route-nav {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-width: 100%;
+  }
+  html:root body .adrian-tools.cloze-nav-compact.cloze-nav-open > .adrian-text-toggle,
+  html:root body .adrian-tools.cloze-nav-compact.cloze-nav-open > .adrian-tech-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  html:root body .adrian-tools.cloze-nav-compact.cloze-nav-open > :is(button,a):not(.cloze-nav-toggle) {
+    min-height: 44px;
+  }
+}
+@media (min-width: 761px) {
+  html:root body .adrian-tools .cloze-nav-toggle { display: none !important; }
+}
+/* No clipping of the application itself: borders must not mask content. */
+html, body { overflow-x: clip; }
+
+/* The shared Hub controls remain reachable from Home; no toolbar consumes
+   valuable space while a 15-question session is in progress. */
+@media (max-width: 760px) {
+  html:root body[data-nucleo-game]:has(#gameScreen:not(.hidden)) > .adrian-tools.cloze-nav-compact,
+  html:root body[data-nucleo-game]:has(#gameScreen:not(.hidden)) > .adrian-tools.cloze-nav-compact.cloze-nav-open {
+    display: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* Hub's shared button heights are defined with !important. Override them only
+   for this one dedicated compact navigation toggle. */
+@media (max-width:760px) {
+  html:root body .adrian-tools.cloze-nav-compact > button.cloze-nav-toggle {
+    min-height:44px !important;
+    height:44px !important;
+    max-height:44px !important;
+    padding:0 12px !important;
+  }
+}

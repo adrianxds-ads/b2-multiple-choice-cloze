@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.12.2";
+const APP_VERSION = "1.12.3";
 const quizFlow=new window.QuizFlowController();
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
@@ -114,6 +114,7 @@ function syncReadFirstButton(){
   const b=$("readFirstToggle");if(!b)return;
   b.setAttribute("aria-pressed",readFirstMode?"true":"false");
   b.textContent=readFirstMode?"MODO · LEER PRIMERO · SÍ":"MODO · TODO JUNTO · NORMAL";
+  const help=$("readFirstHelp");if(help)help.textContent=readFirstMode?"Enunciado primero; el reloj empieza cuando aparecen las cuatro respuestas.":"Las cuatro respuestas aparecen inmediatamente y empieza el tiempo adaptado.";
 }
 function toggleReadFirstMode(){
   readFirstMode=!readFirstMode;
@@ -1275,7 +1276,7 @@ async function showLevelIntro(finalMode,target){
   const el=missionOverlay(true),last=state.sessionHistory.filter(x=>x.mode==="training").slice(-1)[0];if(!el)return;
   el.className="mission-overlay intro";const rank=finalMode?14:valueLevel((target||0)/15);el.style.setProperty("--mission-accent",valueColor(rank/15));
   const lastDelta=last&&Number.isFinite(last.target)?last.correct-last.target:null,lastLine=last?`LAST ${last.correct}/15${lastDelta==null?"":` · ${lastDelta>=0?"+":""}${lastDelta.toFixed(1)} VS TARGET`}`:"FIRST LEVEL";
-  $("missionBody").innerHTML=`<div class="mission-eyebrow">${finalMode?"FINAL CHALLENGE":`LEVEL ${state.level}`}</div><div class="mission-title">${finalMode?"FINAL RUN":"TARGET"}</div><div class="mission-score" style="color:${finalMode?valueTextColor(13/15):valueTextColor((target||0)/15)}">${finalMode?"READY":`${target.toFixed(1)}<small>/15</small>`}</div><div class="mission-meta">${lastLine}</div><div class="mission-rules">15 QUESTIONS · 15s</div>`;
+  $("missionBody").innerHTML=`<div class="mission-eyebrow">${finalMode?"FINAL CHALLENGE":`LEVEL ${state.level}`}</div><div class="mission-title">${finalMode?"FINAL RUN":"TARGET"}</div><div class="mission-score" style="color:${finalMode?valueTextColor(13/15):valueTextColor((target||0)/15)}">${finalMode?"READY":`${target.toFixed(1)}<small>/15</small>`}</div><div class="mission-meta">${lastLine}</div><div class="mission-rules">15 QUESTIONS · ADAPTIVE TIME</div>`;
   for(const n of [3,2,1]){$("missionCount").textContent=String(n);$("missionCount").classList.remove("pop");void $("missionCount").offsetWidth;$("missionCount").classList.add("pop");playCountdownStep(n);await wait(820);}
   $("missionCount").textContent="GO";tone(1318.5,.09,.022,"sine");await wait(320);missionOverlay(false);
 }
