@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.12.4";
+const APP_VERSION = "1.12.5";
 const quizFlow=new window.QuizFlowController();
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
@@ -114,7 +114,7 @@ function syncReadFirstButton(){
   const b=$("readFirstToggle");if(!b)return;
   b.setAttribute("aria-pressed",readFirstMode?"true":"false");
   b.textContent=readFirstMode?"MODO · LEER PRIMERO · SÍ":"MODO · TODO JUNTO · NORMAL";
-  const help=$("readFirstHelp");if(help)help.textContent=readFirstMode?"Enunciado primero; el reloj empieza cuando aparecen las cuatro respuestas.":"Las cuatro respuestas aparecen inmediatamente y empieza el tiempo adaptado.";
+  const help=$("readFirstHelp");if(help)help.textContent=readFirstMode?"Enunciado primero; el reloj empieza al ver las opciones.":"Respuestas inmediatamente; reloj con tiempo adaptado.";
 }
 function toggleReadFirstMode(){
   readFirstMode=!readFirstMode;

@@ -9,9 +9,9 @@
 <meta name="theme-color" content="#10191d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="ae-version" content="1.12.4">
+<meta name="ae-version" content="1.12.5">
 <title>Cloze Quiz</title>
-<link rel="manifest" href="./manifest.webmanifest?v=1.12.4">
+<link rel="manifest" href="./manifest.webmanifest?v=1.12.5">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <style>
@@ -559,7 +559,7 @@ body, .screen, #startScreen, #gameScreen, #statsScreen, #endScreen, #coachScreen
 
 </style>
 <link rel="stylesheet" href="/adrian-core/design/integrated-v11/integrated-theme.css"><link rel="stylesheet" href="./quiz-ergonomics.css?v=1.0.0">
-<link rel="stylesheet" href="./cloze-mobile-space.css?v=1.12.4">
+<link rel="stylesheet" href="./cloze-mobile-space.css?v=1.12.5">
 <style id="exam-quiz-mcq-12">body[data-question-part="4"] #questionText{white-space:pre-line!important;font-size:clamp(17px,4.5vw,25px)!important;line-height:1.3!important;text-align:left!important}body[data-question-part="4"] .question{min-height:145px!important;align-items:flex-start!important}body[data-question-part="4"] .answer{font-size:clamp(16px,4vw,23px)!important;line-height:1.2!important;padding:13px 11px!important;overflow-wrap:anywhere!important}body[data-question-part="4"] .playfield{transform:none!important}body[data-question-part="2"] #questionText,body[data-question-part="3"] #questionText,body[data-question-part="1"] #questionText{font-size:clamp(21px,5.2vw,31px)!important;line-height:1.25!important}
 /* === BLOCK-1-HTML-PART4-START === */
 html:root body[data-question-part="4"] #gameScreen#gameScreen #questionText#questionText .qe-keyword-badge {
@@ -604,16 +604,16 @@ html:root body[data-question-part="4"] #gameScreen#gameScreen #questionText#ques
   <div class="panel">
     <div id="startKicker" class="kicker">CLOZE QUIZ · 30 EXÁMENES · PARTS 1–4</div>
     <div class="level-title-row"><h1 id="startLevel">LEVEL 42</h1><button type="button" class="level-next-shortcut" onclick="document.getElementById('startBtn')?.click()">NEXT LEVEL</button></div>
-    <p class="subtitle">Cloze Quiz · B2 First · Parts 1–4 · cuatro opciones en todas</p>
-    <div class="meta"><span id="bankCountLabel">Cargando preguntas…</span> · 30 exámenes originales · cuatro opciones · tiempo adaptado a cada pregunta</div>
+    <p class="subtitle">Cambridge B2 First · Parts 1–4</p>
+    <div class="meta"><span id="bankCountLabel">Cargando preguntas…</span> · 30 exámenes · tiempo adaptado</div>
         <div class="actions"><button id="startBtn" class="primary">START</button></div>
-        <div class="read-first-row"><button id="readFirstToggle" class="ghost read-first-toggle" type="button" aria-pressed="true">MODO · LEER PRIMERO · SÍ</button><small id="readFirstHelp">Enunciado primero; el reloj empieza cuando aparecen las cuatro respuestas.</small></div>
+        <div class="read-first-row"><button id="readFirstToggle" class="ghost read-first-toggle" type="button" aria-pressed="true">MODO · LEER PRIMERO · SÍ</button><small id="readFirstHelp">Enunciado primero; el reloj empieza al ver las opciones.</small></div>
 <div class="dashboard-menu">
-      <button id="statsBtn" class="secondary menu-btn"><b>STATISTICS</b><span>Graphs · progress · keys</span></button>
-      <button id="coachBtn" class="secondary menu-btn"><b>MY COACH</b><span>Focus · common mistakes · rules</span></button>
+      <button id="statsBtn" class="secondary menu-btn"><b>PROGRESO</b><span>Datos y gráficas</span></button>
+      <button id="coachBtn" class="secondary menu-btn"><b>COACH</b><span>Errores y reglas</span></button>
     </div>
     <div id="startMedals" class="medal-summary-host"></div>
-<details class="home-details"><summary>Ver progreso y valoración</summary>
+<details class="home-details"><summary>Ver progreso y opciones</summary>
     
     <div class="ai-valuation-box hero-ai"><div><span>AI VALORATION</span><b id="startAiLevel">— / 15</b><small id="startAiConfidence">Estimación adaptativa</small></div><em>AI</em></div>
 <div class="hero-progress">
@@ -643,13 +643,13 @@ html:root body[data-question-part="4"] #gameScreen#gameScreen #questionText#ques
     <div class="peer-box"><div class="peer-head"><span>TYPICAL LEARNER · PACE</span><b id="startPeerDelta" class="peer-delta neutral">—</b></div><small id="startPeerStatus">Model-based typical range · not measured users</small></div>
     <div id="campaign2Box" class="next-campaign-box"><div class="next-campaign-head"><div><span>GRADUATION READINESS</span><b id="campaign2Score">0%</b></div><em id="campaign2Stage">Building foundation</em></div><div class="track"><div id="campaign2Fill" class="fill" style="width:0%"></div></div><p id="campaign2Status">Keep training to build evidence.</p><div id="campaign2PracticeEstimate" class="campaign-eta-mini"></div><button id="campaign2Copy" class="ghost small hidden">COPY PROGRESS JSON</button></div>
     <div id="campaignStatus" class="statusbox"></div>
-    </details>
     <div class="actions">
       <button id="exportBtn" class="ghost small">Download progress backup</button>
       <button id="importBtn" class="ghost small">Import progress</button>
       <button id="resetBtn" class="ghost small">Reset</button>
       <input id="importFile" type="file" accept="application/json">
     </div>
+    </details>
     <section class="daily-key-section"><div id="dailyKeyHost"></div></section>
     <section class="growth-tree-section"><div id="growthTreeHost"></div></section>
     <div id="releaseInfo"></div>
@@ -793,11 +793,11 @@ html:root body[data-question-part="4"] #gameScreen#gameScreen #questionText#ques
 <script src="./progress-idb.js?v=2-durable"></script>
 <script src="./quiz-ergonomics.js?v=1.0.0"></script>
 <script src="./cloze-timing.js?v=1.12.2"></script>
-<script src="./app.js?v=1.12.4"></script>
-<script src="./cloze-mobile-space.js?v=1.12.4"></script>
+<script src="./app.js?v=1.12.5"></script>
+<script src="./cloze-mobile-space.js?v=1.12.5"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=1.12.4',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=1.12.5',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="./performance-adapter.js?v=1.1.0"></script><script src="/adrian-core/components/hub-quiz-ux.js?v=20261011-2"></script>

@@ -124,3 +124,152 @@ html, body { overflow-x: clip; }
 html:root body[data-nucleo-game="cloze"][data-question-part="4"]:has(#gameScreen:not(.hidden)) {
   background-color: #EEF2F6 !important;
 }
+
+/* English Cloze · mobile home clarity.
+   Deliberately scoped to #startScreen; no effects on quiz cards, timing,
+   scoring, feedback, stats, coach, or the Hub's shared controls. */
+@media (max-width:760px) {
+  html:root body[data-nucleo-game="cloze"] #startScreen {
+    justify-content:flex-start !important;
+    padding:12px 12px max(22px,env(safe-area-inset-bottom)) !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen > .panel {
+    padding:20px 17px 18px !important;
+    background:#18222b !important;
+    border:1px solid #40505b !important;
+    border-radius:18px !important;
+    box-shadow:none !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .kicker {
+    font:800 12px/1.35 Roboto,system-ui,sans-serif !important;
+    letter-spacing:.06em !important;
+    color:#e5bb67 !important;
+    margin-bottom:8px !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .level-title-row {
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+    margin:0 0 4px !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen h1#startLevel {
+    margin:0 !important;
+    font:850 clamp(32px,9vw,42px)/1.08 Roboto,system-ui,sans-serif !important;
+    letter-spacing:-.035em !important;
+    color:#eef5f7 !important;
+    text-align:center !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .subtitle {
+    margin:4px 0 8px !important;
+    font:650 16px/1.35 Roboto,system-ui,sans-serif !important;
+    color:#e2eaf0 !important;
+    text-align:center !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .meta {
+    margin:0 !important;
+    font:600 13px/1.4 Roboto,system-ui,sans-serif !important;
+    color:#b9c9d2 !important;
+    text-align:center !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .actions:has(#startBtn) {
+    margin:16px 0 0 !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen #startBtn {
+    min-height:54px !important;
+    width:100% !important;
+    border-radius:12px !important;
+    background:#20ae9e !important;
+    color:#082420 !important;
+    font:850 17px/1.2 Roboto,system-ui,sans-serif !important;
+    box-shadow:0 3px 0 #14786f !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .read-first-row {
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) !important;
+    gap:6px !important;
+    margin:13px 0 0 !important;
+    padding:11px 12px !important;
+    border:1px solid #455762 !important;
+    border-radius:12px !important;
+    background:#202c35 !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen #readFirstToggle {
+    min-height:42px !important;
+    width:100% !important;
+    border-radius:9px !important;
+    padding:9px 10px !important;
+    font:800 13px/1.2 Roboto,system-ui,sans-serif !important;
+    text-align:center !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen #readFirstHelp {
+    display:block !important;
+    margin:0 !important;
+    color:#bdcbd4 !important;
+    font:550 12px/1.4 Roboto,system-ui,sans-serif !important;
+    text-align:center !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu {
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:9px !important;
+    margin:14px 0 0 !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu .menu-btn {
+    min-width:0 !important;
+    width:100% !important;
+    min-height:80px !important;
+    padding:12px 11px !important;
+    border:1px solid #455762 !important;
+    border-radius:12px !important;
+    background:#121b23 !important;
+    text-align:left !important;
+    box-shadow:none !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu .menu-btn b {
+    font:850 13px/1.25 Roboto,system-ui,sans-serif !important;
+    color:#eef3f6 !important;
+    letter-spacing:.035em !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu .menu-btn span {
+    display:block !important;
+    margin-top:5px !important;
+    font:600 12px/1.3 Roboto,system-ui,sans-serif !important;
+    color:#aebec8 !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen #startMedals {
+    margin-top:15px !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .home-details {
+    margin:16px 0 !important;
+    padding:0 12px !important;
+    border-radius:12px !important;
+    border-color:#40515c !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .home-details > summary {
+    min-height:48px !important;
+    font-size:14px !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen :is(#statsBtn,#coachBtn,#readFirstToggle,#startBtn):focus-visible {
+    outline:3px solid #e5bb67 !important;
+    outline-offset:2px !important;
+  }
+}
+
+/* Keep short navigation labels together, including on 360px Android screens. */
+@media (max-width:760px) {
+  html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu #statsBtn,
+  html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu #coachBtn {
+    min-height:88px !important;
+    height:88px !important;
+    max-height:88px !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu button.menu-btn > b {
+    font-size:14px !important;
+    line-height:1.25 !important;
+    overflow-wrap:normal !important;
+    word-break:normal !important;
+  }
+  html:root body[data-nucleo-game="cloze"] #startScreen .dashboard-menu button.menu-btn > span {
+    font-size:12px !important;
+    line-height:1.3 !important;
+  }
+}
