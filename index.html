@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#EAF0F5">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="ae-version" content="1.12.1">
+<meta name="ae-version" content="1.12.2">
 <title>Cloze Quiz</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
@@ -667,7 +667,7 @@ html:root body[data-question-part="4"] #gameScreen#gameScreen #questionText#ques
     <section id="statsFocusPanel" class="focus-panel stats-focus-panel"></section>
     <div class="charts stats-charts"><div class="section score-section"><div class="chart-title-row"><h3>Correct answers · /15</h3><button id="scoreExpandBtn" class="ghost small">EXPAND</button></div><div id="statsAccuracyChart"></div></div><div class="section learning-trend"><h3>Learning Curve · long-term</h3><div id="statsLearningChart"></div></div></div>
     <div class="section target-stats-section"><h3>Target performance</h3><div class="grid target-grid"><div class="card"><b id="targetAvg">—</b><span>Avg target /15</span></div><div class="card"><b id="targetActualAvg">—</b><span>Avg actual /15</span></div><div class="card"><b id="targetDeltaAvg">—</b><span>Avg vs target</span></div><div class="card"><b id="targetHitRate">—</b><span>Targets met</span></div></div><div id="targetBreakdown" class="statusbox"></div></div>
-    <div class="section reading-load-section"><h3>Reading load · fixed 15s</h3><p class="meta">Observational only · the timer and adaptive engine do not change from these measurements.</p><div class="grid"><div class="card"><b id="readingShort">—</b><span>Short · ≤12 words</span><small id="readingShortMeta">No evidence yet</small></div><div class="card"><b id="readingMedium">—</b><span>Medium · 13–17 words</span><small id="readingMediumMeta">No evidence yet</small></div><div class="card"><b id="readingLong">—</b><span>Long · ≥18 words</span><small id="readingLongMeta">No evidence yet</small></div></div><div id="readingLoadInsight" class="statusbox">Building evidence.</div></div>
+    <div class="section reading-load-section"><h3>Reading load · tiempo variable</h3><p class="meta">Historial: 15 s antes de v1.12.2. Ahora cada pregunta tiene más tiempo según su longitud y complejidad; las métricas antiguas y nuevas no son directamente comparables.</p><div class="grid"><div class="card"><b id="readingShort">—</b><span>Short · ≤12 words</span><small id="readingShortMeta">No evidence yet</small></div><div class="card"><b id="readingMedium">—</b><span>Medium · 13–17 words</span><small id="readingMediumMeta">No evidence yet</small></div><div class="card"><b id="readingLong">—</b><span>Long · ≥18 words</span><small id="readingLongMeta">No evidence yet</small></div></div><div id="readingLoadInsight" class="statusbox">Building evidence.</div></div>
     <div id="statsCampaign2" class="statusbox"></div>
     <div class="section"><h3>Skill League · current ranking</h3><div id="statsSkills"></div></div>
     <div class="screen-nav"><button id="statsBackBtn" class="primary">BACK TO DASHBOARD</button></div>
@@ -790,10 +790,11 @@ html:root body[data-question-part="4"] #gameScreen#gameScreen #questionText#ques
 <script src="./territory-01.js?v=1.11.1"></script>
 <script src="./progress-idb.js?v=2-durable"></script>
 <script src="./quiz-ergonomics.js?v=1.0.0"></script>
-<script src="./app.js?v=1.11.22-clozeanswers20261017"></script>
+<script src="./cloze-timing.js?v=1.12.2"></script>
+<script src="./app.js?v=1.12.2"></script>
 <script>
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  navigator.serviceWorker.register('./service-worker.js?v=clozeanswers20261017',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+  navigator.serviceWorker.register('./service-worker.js?v=1.12.2',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 }
 </script>
 <script src="./performance-adapter.js?v=1.1.0"></script><script src="/adrian-core/components/hub-quiz-ux.js?v=20261011-2"></script>

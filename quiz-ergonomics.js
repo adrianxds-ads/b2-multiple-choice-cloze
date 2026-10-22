@@ -163,7 +163,7 @@ function sync(){
  }
  counter.textContent=s.study?'Pregunta '+(s.index+1):(Math.min(total,s.index+1)+' / '+total);
  const limit=Number(s.limit)||15,left=Math.max(0,Math.min(limit,Number(s.remaining)||0)),reading=!!s.reading;
- const label=reading?'Leer antes de responder':s.paused?'Tiempo en pausa':'Tiempo para responder',number=reading?'Lectura previa':Math.ceil(left)+' s';
+ const label=reading?'Leer antes de responder':s.paused?'Tiempo en pausa':'Tiempo adaptado',number=reading?'Lectura previa':Math.ceil(left)+' s';
  const timerKey=[label,number,Math.round(left*10),s.locked].join('|');
  if(timerKey!==lastTimer){
   lastTimer=timerKey;timer.querySelector('.timer-header span').textContent=label;timer.querySelector('strong').textContent=number;

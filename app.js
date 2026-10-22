@@ -1,11 +1,11 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.12.1";
+const APP_VERSION = "1.12.2";
 const quizFlow=new window.QuizFlowController();
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
 const SESSION_SIZE = 15;
-const TIME_LIMIT = 15;
+const TIME_LIMIT = 15; // fallback only; English Cloze now uses a per-question limit
 const LEECH_WARNING_LAPSES = 3;
 const LEECH_LAPSES = 4;
 const LEECH_LEVEL_COOLDOWN = 8;
@@ -21,6 +21,7 @@ const GRAPH_BANDS_15=AVS_RANKS.map(x=>x.band||x.color);
 const AVS_TEXT_BANDS_15=AVS_RANKS.map(x=>x.text||x.color);
 let CAMPAIGN=null, BANK=[], state=null, session=null, timerHandle=null, revealHandle=null, deadline=0, current=null, locked=false, currentPreReadMs=0;
 let revealEarlyOnTap=null;
+let currentTimeLimitSec=TIME_LIMIT,currentTimeTargetSec=8.5;
 let audioCtx=null, soundOn=true, lastTickShown=TIME_LIMIT+1, lastUrgentBeat=-1;
 let focusLastActivityTs=Date.now(),focusLastTickTs=Date.now(),focusSaveMs=0,focusTimerHandle=null;
 
@@ -104,9 +105,10 @@ const NucleoReadFirstSkip=(()=>{
     get button(){return button;}
   };
 })();
-function readFirstDelayMs(text){
+function readFirstDelayMs(text,part=1){
   const words=String(text||"").trim().split(/\s+/).filter(Boolean).length;
-  return Math.round(Math.max(3000,Math.min(4800,3000+Math.max(0,words-8)*90)));
+  const isTransformation=Number(part)===4;
+  return Math.round(Math.max(3000,Math.min(isTransformation?7600:4800,3000+Math.max(0,words-8)*(isTransformation?230:90))));
 }
 function syncReadFirstButton(){
   const b=$("readFirstToggle");if(!b)return;
@@ -485,7 +487,7 @@ function stageInfo(coverage){
 function outcomeType(ok,sec,target,timeout){
   if(timeout)return "timeout";
   const auto=Math.min(3.0,target*.85);
-  const secure=Math.min(6.0,target*1.35);
+  const secure=Math.min(22,Math.max(6,target*.95)); // a correct thoughtful answer can still count as secure
   const fastWrong=Math.min(3.2,target*.9);
   if(ok&&sec<=auto)return "automatic";
   if(ok&&sec<=secure)return "secure";
@@ -493,8 +495,8 @@ function outcomeType(ok,sec,target,timeout){
   if(sec<=fastWrong)return "fast-wrong";
   return "slow-wrong";
 }
-function updateMetric(q,ok,sec,type){
-  const m=state.metrics[q.cat],target=q.targetTime||3.6;
+function updateMetric(q,ok,sec,type,targetOverride=null){
+  const m=state.metrics[q.cat],target=targetOverride||q.targetTime||3.6;
   const speed=ok?clamp(target/Math.max(.8,sec),0,1):0;
   const newDomain=!m.domains[q.domain];
   const oldTemplate=state.templateLast[q.templateId]!=null;
@@ -1330,10 +1332,10 @@ function abortSession(){
   if(snapshot){try{const restored=JSON.parse(snapshot);state=validProgressState(restored)?normaliseProgressState(restored):restored;state.focusTimeByDate=focusKeep.times;state.focusTargetsByDate=focusKeep.targets;state.focusTrackingStartedAt=focusKeep.started;save();}catch(e){console.error("Emergency exit rollback failed",e);}}
   locked=false;renderStart();showScreen("startScreen");
 }
-function renderSegments(left=TIME_LIMIT,total=TIME_LIMIT){
+function renderSegments(left=TIME_LIMIT,total=currentTimeLimitSec){
   const host=$("segments");
   if(!host)return;
-  const duration=Math.max(.001,Number(total)||TIME_LIMIT),seconds=Math.max(1,Math.ceil(duration));
+  const duration=Math.max(.001,Number(total)||TIME_LIMIT),seconds=20; // fixed-size game bar; numeric seconds remain exact
   if(host.children.length!==seconds||host.dataset.secondsTotal!==String(seconds)){
     const nodes=Array.from({length:seconds},()=>{const node=document.createElement("i");node.className="seg";return node;});
     host.replaceChildren(...nodes);
@@ -1345,19 +1347,19 @@ function renderSegments(left=TIME_LIMIT,total=TIME_LIMIT){
     host.setAttribute("aria-valuemax",String(seconds));
   }
   const remaining=Math.max(0,Math.min(duration,Number(left)||0));
-  const elapsed=Math.max(0,Math.min(seconds,Math.floor(duration-remaining+0.000001)));
+  const elapsed=Math.max(0,Math.min(seconds,Math.floor((duration-remaining)/duration*seconds+0.000001)));
   [...host.children].forEach((node,index)=>node.classList.toggle("on",index<elapsed));
   host.setAttribute("aria-valuenow",String(elapsed));
-  host.setAttribute("aria-valuetext",elapsed+" de "+seconds+" segundos transcurridos");
+  host.setAttribute("aria-valuetext",Math.round(duration-remaining)+" de "+Math.ceil(duration)+" segundos transcurridos");
 }
 function startTimer(){
-  clearInterval(timerHandle);deadline=performance.now()+TIME_LIMIT*1000;lastTickShown=TIME_LIMIT+1;lastUrgentBeat=-1;
+  clearInterval(timerHandle);const limit=currentTimeLimitSec;deadline=performance.now()+limit*1000;lastTickShown=limit+1;lastUrgentBeat=-1;
   timerHandle=guardedQuizInterval(()=>{
     const left=Math.max(0,(deadline-performance.now())/1000),shown=Math.ceil(left);
     $("timerText").textContent=left.toFixed(1);
-    $("timer").style.setProperty("--timer-cut",`${100-left/TIME_LIMIT*100}%`);$("timer").classList.toggle("urgent",left<=3);
-    renderSegments(left);
-    if(left>3&&shown<lastTickShown&&shown>0&&shown<TIME_LIMIT){playTick(false,shown);lastTickShown=shown;}
+    $("timer").style.setProperty("--timer-cut",`${100-left/limit*100}%`);$("timer").classList.toggle("urgent",left<=3);
+    renderSegments(left,limit);
+    if(left>3&&shown<lastTickShown&&shown>0&&shown<Math.min(limit,13)){playTick(false,shown);lastTickShown=shown;}
     if(left<=3&&left>0){const beat=left>2?Math.floor((3-left)*2):100+Math.floor((2-left)*4);if(beat!==lastUrgentBeat){lastUrgentBeat=beat;playUrgentTimerPulse(left,beat);}}
     if(left<=0){clearInterval(timerHandle);answer(-1,true);}
   },50);
@@ -1377,13 +1379,15 @@ function nextQuestion(){
    if(Number(current.sourcePart)===4){$("questionText").style.setProperty("white-space","pre-line","important");$("questionText").style.setProperty("font-size",((window.innerWidth <= 640 || window.innerHeight <= 860) ? 'clamp(17px, 4.3vw, 20px)' : 'clamp(17px, 4.5vw, 25px)'),"important");}
    else{$("questionText").style.removeProperty("white-space");$("questionText").style.removeProperty("font-size");}
    const view=visibleCard(current);current.visibleQuestion=view.question;current.visibleOptions=view.options;current.visibleFocus=view.focus;current.visibleNames=view.names;
+  currentTimeLimitSec=window.ClozeQuestionTiming?.estimate(current,state.history)||TIME_LIMIT;
+  currentTimeTargetSec=window.ClozeQuestionTiming?.effectiveTarget(current,currentTimeLimitSec)||Number(current.targetTime)||3.6;
   $("questionText").classList.remove("focus-active");$("questionText").textContent=view.question;
   const wrap=$("answers");wrap.innerHTML="";wrap.classList.toggle("read-first-hidden",readFirstMode);const answerColors=shuffledAnswerColorClasses();
   current.display.forEach((txt,i)=>{const b=document.createElement("button");b.className="answer "+answerColors[i];b.textContent=view.options[i];b.disabled=readFirstMode;b.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"){e.preventDefault();answer(i,false);}});b.addEventListener("click",()=>answer(i,false));wrap.appendChild(b);});
-  $("timerText").textContent=TIME_LIMIT.toFixed(1);$("timer").classList.remove("urgent");renderSegments(TIME_LIMIT);
+  $("timerText").textContent=currentTimeLimitSec.toFixed(1);$("timer").classList.remove("urgent");renderSegments(currentTimeLimitSec,currentTimeLimitSec);
   if([2,3].includes(Number(current.sourcePart))&&(state.seen[current.fingerprint]?.count||0)>=2&&Math.random()<.35){QuizLearning.production(current,wrap,pos=>answer(pos,false));}
   if(readFirstMode){
-    currentPreReadMs=readFirstDelayMs(view.question);wrap.dataset.nucleoReadSeconds=String(currentPreReadMs/1000);window.NucleoQuizBars?.refresh?.();
+    currentPreReadMs=readFirstDelayMs(view.question,current.sourcePart);wrap.dataset.nucleoReadSeconds=String(currentPreReadMs/1000);window.NucleoQuizBars?.refresh?.();
     const expectedSession=session,expectedIndex=session.index,readingStartedAt=performance.now();
     const revealChoices=()=>{
       if(session!==expectedSession||session.index!==expectedIndex||locked)return;
@@ -1400,23 +1404,23 @@ function nextQuestion(){
 function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect=0,phraseWrong=0,cat="",trigger=""){/* Feedback stays on the answer tiles. */}
 function answer(pos,timeout=false){
   if(locked||!session||session.finishing||$("answers").classList.contains("read-first-hidden"))return;locked=true;clearInterval(timerHandle);clearTimeout(revealHandle);revealHandle=null;revealEarlyOnTap=null;
-  const sec=timeout?TIME_LIMIT:Math.max(.05,(TIME_LIMIT*1000-(deadline-performance.now()))/1000);
-  const ok=!timeout&&(pos===current.correctPos||(pos>=0&&!!current.acceptedForms?.some(x=>QuizLearning.normalize(x)===QuizLearning.normalize(current.display[pos])))),type=outcomeType(ok,sec,current.targetTime||3.6,timeout);
+  const sec=timeout?currentTimeLimitSec:Math.max(.05,(currentTimeLimitSec*1000-(deadline-performance.now()))/1000);
+  const ok=!timeout&&(pos===current.correctPos||(pos>=0&&!!current.acceptedForms?.some(x=>QuizLearning.normalize(x)===QuizLearning.normalize(current.display[pos])))),type=outcomeType(ok,sec,currentTimeTargetSec,timeout);
   const buttons=[...$("answers").querySelectorAll("button.answer")];
   buttons.forEach((b,i)=>{b.disabled=true;b.classList.remove("good","bad","dim");if(i===current.correctPos||(ok&&i===pos))b.classList.add("good");else b.classList.add("dim");});
   if(!ok&&pos>=0){buttons[pos].classList.remove("dim");buttons[pos].classList.add("bad");}
-  const previousSeen=state.seen[current.fingerprint]||null,previousTemplate=state.templateSeen[current.templateId]||null,previousTarget=leechInfo(current),speedScore=updateMetric(current,ok,sec,type),info=previousSeen||{count:0,lastLevel:-99,lapses:0},gapLevels=previousSeen?state.level-previousSeen.lastLevel:null;
+  const previousSeen=state.seen[current.fingerprint]||null,previousTemplate=state.templateSeen[current.templateId]||null,previousTarget=leechInfo(current),speedScore=updateMetric(current,ok,sec,type,currentTimeTargetSec),info=previousSeen||{count:0,lastLevel:-99,lapses:0},gapLevels=previousSeen?state.level-previousSeen.lastLevel:null;
   const masteredReward=ok&&previousSeen?.lapses>0&&!previousSeen.masteredRewarded&&previousSeen.lastCorrect===true&&previousSeen.count>=2&&gapLevels>=2,recoveredReward=ok&&!masteredReward&&previousSeen?.lapses>0&&previousSeen.lastCorrect===false;
   session.lastReward="";if(ok){session.combo=(session.combo||0)+1;session.bestCombo=Math.max(session.bestCombo||0,session.combo);let rewardXp=10+(type==="automatic"?2:0)+(previousSeen?2:0);if(masteredReward){session.masteredRewards++;rewardXp+=12;session.lastReward="MASTERED ✦";}else if(recoveredReward){session.recovered++;rewardXp+=6;session.lastReward="RECOVERED";}const comboBonus={3:3,5:5,10:10,15:20}[session.combo]||0;if(comboBonus){rewardXp+=comboBonus;if(!session.lastReward)session.lastReward=`COMBO ×${session.combo}`;}session.learningXp+=rewardXp;}else session.combo=0;
   const appearance=info.count+1,patternAppearance=(previousTemplate?.count||0)+1,lapses=(info.lapses||0)+(ok?0:1),priorPhraseRows=state.history.filter(x=>x.qid===current.id),phraseCorrect=priorPhraseRows.filter(x=>x.correct).length+(ok?1:0),phraseWrong=priorPhraseRows.filter(x=>!x.correct).length+(ok?0:1);
   const now=Date.now(),intervalDays=reviewIntervalDays(previousSeen,type);
   state.seen[current.fingerprint]={count:appearance,lastLevel:state.level,lastTs:now,lastCorrect:ok,lapses,intervalDays,nextDueTs:now+intervalDays*86400000,masteredRewarded:!!(previousSeen?.masteredRewarded||masteredReward)};state.templateLast[current.templateId]=state.level;state.templateSeen[current.templateId]={count:patternAppearance,lastLevel:state.level,lastTs:now};const targetAfter=updateLeechTarget(current,ok,now);
   const shownQuestion=current.visibleQuestion||current.q,shownOptions=current.visibleOptions||current.display,load=promptLoadMeta(shownQuestion);
-  const rec={retrievalMode:current.retrievalMode||"RECOGNITION",level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,reviewDue:QuizLearning.ready(previousSeen,state.level),delayedRecall:!!previousSeen&&elapsedDays(previousSeen.lastTs)>=1,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:current.productionAnswer||(pos>=0?shownOptions[pos]:"No answer"),correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:current.targetTime||3.6,timeLimitSec:TIME_LIMIT,sessionMode:session.mode,studyMode:readFirstMode?"READ_FIRST":"STANDARD",preReadMs:currentPreReadMs,leechBefore:leechStage(previousTarget),leechAfter:leechStage(targetAfter),targetLapses:targetAfter?.lapses||0,targetPressure:targetAfter?.pressure||0};
+  const rec={retrievalMode:current.retrievalMode||"RECOGNITION",level:state.level,qid:current.id,cat:current.cat,skill:current.skill,templateId:current.templateId,domain:current.domain,correct:ok,ms:Math.round(sec*1000),type,speedScore,occurrence:appearance,patternOccurrence:patternAppearance,review:!!previousSeen,reviewDue:QuizLearning.ready(previousSeen,state.level),delayedRecall:!!previousSeen&&elapsedDays(previousSeen.lastTs)>=1,gap:previousSeen?state.level-previousSeen.lastLevel:null,ts:Date.now(),question:shownQuestion,originalQuestion:current.q,userAnswer:current.productionAnswer||(pos>=0?shownOptions[pos]:"No answer"),correctAnswer:shownOptions[current.correctPos],rule:current.rule,promptWords:load.words,promptChars:load.chars,readingLoad:load.band,targetTimeSec:currentTimeTargetSec,timeLimitSec:currentTimeLimitSec,timerModelVersion:window.ClozeQuestionTiming?.VERSION||0,sourcePart:Number(current.sourcePart)||1,sessionMode:session.mode,studyMode:readFirstMode?"READ_FIRST":"STANDARD",preReadMs:currentPreReadMs,leechBefore:leechStage(previousTarget),leechAfter:leechStage(targetAfter),targetLapses:targetAfter?.lapses||0,targetPressure:targetAfter?.pressure||0};
   hideCorrectReveal();
   try{flashGrammarFocus(shownQuestion,rec.correctAnswer,current.visibleFocus||current.focus||[]);}catch(e){console.error("Grammar focus flash failed",e);}
   state.history.push(rec);state.history=QuizLearning.retain(state.history,12000,STORAGE_KEY+":answers");state.activeTrainingMs=(state.activeTrainingMs||0)+rec.ms;state.totalAttempts++;if(ok)state.totalCorrect=(state.totalCorrect||0)+1;session.records.push(rec);session.times.push(sec);if(ok)session.correct++;if(type==="automatic")session.automatic++;
-  secondaryEffect(()=>window.LanguagePoints?.recordAnswer?.({correct:ok,sec,timeLimit:TIME_LIMIT}));
+  secondaryEffect(()=>window.LanguagePoints?.recordAnswer?.({correct:ok,sec,timeLimit:currentTimeLimitSec}));
   QuizLearning.show("#questionText",shownQuestion,rec.correctAnswer);
   const answeredSession=session,answeredIndex=session.index,answeredCount=session.records.length;
   quizFlow.afterAnswer({correct:ok,
@@ -1576,5 +1580,5 @@ function guardedQuizInterval(fn,ms=50){
 }
 window.QuizErgonomics.bind(()=>{
  if(!session)return null;
- const reading=$("answers").classList.contains("read-first-hidden");return {owner:session,questions:session.plan,results:session.records.map(r=>!!r.correct),index:session.index,total:session.plan.length,limit:TIME_LIMIT,locked,reading,remaining:locked?TIME_LIMIT-(session.times.at(-1)||0):reading?TIME_LIMIT:(deadline-performance.now())/1000};
+ const reading=$("answers").classList.contains("read-first-hidden");return {owner:session,questions:session.plan,results:session.records.map(r=>!!r.correct),index:session.index,total:session.plan.length,limit:currentTimeLimitSec,locked,reading,remaining:locked?currentTimeLimitSec-(session.times.at(-1)||0):reading?currentTimeLimitSec:(deadline-performance.now())/1000};
 });

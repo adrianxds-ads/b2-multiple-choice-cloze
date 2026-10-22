@@ -1,0 +1,31 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const timing=require('./cloze-timing.js');
+const bank=JSON.parse(fs.readFileSync(path.join(__dirname,'territory-01.json'),'utf8'));
+assert.equal(bank.questions.length,900);
+const stats={};
+for(const part of [1,2,3,4]){
+ const questions=bank.questions.filter(q=>q.sourcePart===part);
+ const budgets=questions.map(q=>timing.estimate(q));
+ const bounds=timing.BOUNDS[part];
+ assert.equal(questions.length,part===4?180:240);
+ assert(budgets.every(v=>Number.isInteger(v)&&v>=bounds[0]&&v<=bounds[1]),'Wrong bounds for part '+part);
+ stats[part]={n:budgets.length,min:Math.min(...budgets),median:budgets.slice().sort((a,b)=>a-b)[Math.floor(budgets.length/2)],max:Math.max(...budgets)};
+}
+assert(timing.estimate(bank.questions.find(q=>q.id===962028))>=26);
+const q=bank.questions.find(q=>q.sourcePart===4);
+const orig=JSON.stringify(q);
+const base=timing.estimate(q,[]);
+const old=Array.from({length:50},()=>({sourcePart:4,correct:true,ms:14000,timeLimitSec:15,timerModelVersion:0}));
+assert.equal(timing.estimate(q,old),base,'Pre-change 15s data must not be used for personal calibration');
+const later=Array.from({length:15},()=>({sourcePart:4,correct:true,ms:Math.floor(base*900),timeLimitSec:base,timerModelVersion:timing.VERSION}));
+assert(timing.estimate(q,later)>=base+2,'New performance may gently extend only, never rush');
+assert.equal(timing.estimate(q,Array.from({length:15},()=>({sourcePart:4,correct:false,ms:9999,timeLimitSec:base,timerModelVersion:timing.VERSION}))),base,'Wrong answers must not bias reading-speed estimate');
+assert.equal(JSON.stringify(q),orig,'Timing may not alter the exam bank');
+assert(timing.estimate({...q,q:q.q+' We read additional words about vocabulary and transformations that make this exercise more demanding.'})>=base,'Longer question must not shorten the time');
+assert(timing.effectiveTarget(q,base)>=q.targetTime);
+const app=fs.readFileSync(path.join(__dirname,'app.js'),'utf8');
+for(const frag of ['currentTimeLimitSec=window.ClozeQuestionTiming?.estimate','timeLimitSec:currentTimeLimitSec','timerModelVersion:window.ClozeQuestionTiming?.VERSION','limit:currentTimeLimitSec','currentTimeTargetSec','deadline=performance.now()+limit*1000'])assert(app.includes(frag),'Missing timer integration: '+frag);
+console.log('PASS variable timer 900 questions, adaptive calibration, immutable content, timing hooks',JSON.stringify(stats));
