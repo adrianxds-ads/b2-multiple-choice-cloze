@@ -105,3 +105,12 @@ Verificación: `node generate-exam-quiz.cjs`, `node test-exam-quiz.cjs` y `node 
 - Corrección mínima en `app.js`: `answer()` contrasta `performance.now()` con `deadline` antes de evaluar la respuesta. Una pulsación tardía se registra como `timeout` y se conserva el límite variable de cada pregunta, sin modificar bancos, claves ni identificadores de progreso.
 - Nueva prueba `python test-cloze-deadline-browser.py`: antes del parche FAIL (acierto tardío); después PASS (tiempo agotado, registro único, acierto dentro de plazo y 0 errores JavaScript). Superadas también `node --check app.js`, `node test-cloze-timing.cjs`, `node test-exam-quiz.cjs` y `python test-cloze-mobile-space.py` (cuatro tamaños de pantalla). `test-part4-geometry.py` y `test-gemini-mobile-ux.py` pasaban en la base y no se modificaron las reglas visuales.
 - Estado: modificado y probado localmente. No fusionado, publicado ni verificado en el Pixel 10. Sin uso de cuota Argon, sin acceso a los datos reales y sin modificaciones en Hub o Core.
+
+
+### 24/10/2026 · Cierre de integración aislada y preparación PWA
+
+- Recorrido de navegador: partida completa de 15 preguntas mediante botones (8/15; aciertos y errores); pantalla final, sesión y nivel recuperados tras recarga, sin errores JavaScript. Nivel simulado: 1 → 2. Perfiles Edge separados, sin datos personales. Test común: `C:\Users\adria\AppData\Local\Temp\hub-four-quizzes-fullround-20261024.py` (ejecutado para cuatro ramas; PASS).
+- Prelectura: cuatro tarjetas ocultas antes de revelar, temporizador de respuesta activado después, único registro y modo `READ_FIRST` comprobados (PASS). Test común: `C:\Users\adria\AppData\Local\Temp\hub-four-quizzes-readfirst-20261024.py`.
+- Versión candidata: `1.12.7`; el HTML actualiza rutas `app.js` y `service-worker.js`, se fuerza revisión del service worker y `build-assets.js` incorpora las huellas SHA-256 actualizadas. Cache build candidato: `b3b49f2c4def4a9a`. Verificado que los hashes corresponden a los archivos locales, sin tocar claves de almacenamiento, contenido pedagógico, Hub o Core.
+- Reejecutadas tras preparar caché: pruebas de deadline, `node --check` en JS y `git diff --check` (PASS). En Cloze también batería oficial de 900 preguntas y temporizador adaptativo (PASS).
+- Estado: cambios locales listos para revisión de integración, pero sin fusión ni despliegue. No se ha probado funcionamiento offline real con service worker ni en Pixel 10. Hasta publicación autorizada, Hub `versions.json` y versiones públicas siguen iguales.
