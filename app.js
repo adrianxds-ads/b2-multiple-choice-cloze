@@ -1404,7 +1404,10 @@ function nextQuestion(){
 }
 function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect=0,phraseWrong=0,cat="",trigger=""){/* Feedback stays on the answer tiles. */}
 function answer(pos,timeout=false){
-  if(locked||!session||session.finishing||$("answers").classList.contains("read-first-hidden"))return;locked=true;clearInterval(timerHandle);clearTimeout(revealHandle);revealHandle=null;revealEarlyOnTap=null;
+  if(locked||!session||session.finishing||$("answers").classList.contains("read-first-hidden"))return;
+  // A throttled browser timer may not fire before a late tap: the deadline still wins.
+  if(!timeout&&deadline>0&&performance.now()>=deadline){timeout=true;pos=-1;}
+  locked=true;clearInterval(timerHandle);clearTimeout(revealHandle);revealHandle=null;revealEarlyOnTap=null;
   const sec=timeout?currentTimeLimitSec:Math.max(.05,(currentTimeLimitSec*1000-(deadline-performance.now()))/1000);
   const ok=!timeout&&(pos===current.correctPos||(pos>=0&&!!current.acceptedForms?.some(x=>QuizLearning.normalize(x)===QuizLearning.normalize(current.display[pos])))),type=outcomeType(ok,sec,currentTimeTargetSec,timeout);
   const buttons=[...$("answers").querySelectorAll("button.answer")];
