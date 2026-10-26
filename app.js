@@ -171,7 +171,7 @@ function tone(freq,dur=.035,gain=.018,type='sine',delay=0){
 }
 function playTick(strong=false,step=0){const f=strong?(step%2?1540:1260):(step%2?1280:980);tone(f,strong?.034:.026,strong?.026:.016,'square');}
 function playUrgentTimerPulse(left,beat=0){const final=left<=2,f=final?(beat%2?1660:1450):(beat%2?1360:1160);tone(f,final?.034:.028,final?.016:.012,final?'square':'triangle');if(left<=.55)tone(1960,.042,.010,'sine',.014);}
-function playCorrect(sec=0){tone(880,.045,.015,"sine");}
+function playCorrect(sec=0){tone(880,.045,.015,"sine");if(sec>0&&sec<=(currentTimeTargetSec||3.2))tone(1174.66,.055,.014,"triangle",.042);}
 function playWrong(){tone(220,.065,.015,"sine");}
 function playComplete(){tone(392,.075,.022,'sine');tone(523.25,.085,.024,'triangle',.070);tone(659.25,.100,.026,'sine',.145);tone(783.99,.155,.028,'sine',.230);}
 function playCountdownStep(n){tone(n===1?1046.5:783.99,.055,.018,'triangle');}
@@ -1369,7 +1369,7 @@ function nextQuestion(){
   quizFlow.begin();clearInterval(timerHandle);timerHandle=null;deadline=0;
   QuizLearning.clear();
   clearTimeout(revealHandle);revealHandle=null;revealEarlyOnTap=null;NucleoReadFirstSkip.hide();currentPreReadMs=0;
-  locked=false;hideCorrectReveal();
+  locked=false;hideCorrectReveal();window.ClozeMobileV2?.clearLiveFeedback?.();
   if(session.index>=session.plan.length){finishSessionSafe();return;}
   current=session.plan[session.index];
   if(!current||!Array.isArray(current.display)||current.display.length!==4||!Number.isInteger(current.correctPos)||current.correctPos<0||current.correctPos>3){console.error("Skipping invalid question",current);session.index++;setTimeout(nextQuestion,0);return;}
@@ -1402,7 +1402,7 @@ function nextQuestion(){
     revealHandle=setTimeout(revealChoices,currentPreReadMs);
   }else{revealEarlyOnTap=null;NucleoReadFirstSkip.hide();startTimer();}
 }
-function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect=0,phraseWrong=0,cat="",trigger=""){/* Feedback stays on the answer tiles. */}
+function feedback(ok,type,sec,correct,appearance,patternAppearance,phraseCorrect=0,phraseWrong=0,cat="",trigger=""){window.ClozeMobileV2?.showLiveFeedback?.({ok,type,sec,correct,appearance,patternAppearance,phraseCorrect,phraseWrong,cat,trigger,rule:current?.rule||""});}
 function answer(pos,timeout=false){
   if(locked||!session||session.finishing||$("answers").classList.contains("read-first-hidden"))return;
   // A throttled browser timer may not fire before a late tap: the deadline still wins.
@@ -1432,7 +1432,7 @@ function answer(pos,timeout=false){
     advance:()=>{session.index++;nextQuestion();},
     retry:{render:()=>nextQuestion(),isCurrent:()=>session===answeredSession&&session.index===answeredIndex+1&&session.records.length===answeredCount&&!session.finishing}});
 
-  try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect();else playWrong();}catch(e){console.warn("Answer cue unavailable",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat,current.trigger);}catch(e){console.error("Feedback failed",e);}
+  try{save();}catch(e){console.error("Progress save failed",e);}try{applyRatingTheme(overallStats().rating);}catch(e){console.error(e);}try{if(ok)playCorrect(sec);else playWrong();}catch(e){console.warn("Answer cue unavailable",e);}try{haptic(ok);pulseFeedback(ok);if(ok&&pos>=0)burstParticles(buttons[pos]);}catch(e){console.error("Tactile feedback failed",e);}try{feedback(ok,type,sec,rec.correctAnswer,appearance,patternAppearance,phraseCorrect,phraseWrong,current.cat,current.trigger);}catch(e){console.error("Feedback failed",e);}
 }
 function finishSessionSafe(){
  quizFlow.cancel();if(!session||session.finishing)return;session.finishing=true;locked=true;Promise.resolve().then(()=>finishSession()).catch(e=>{console.error("Session finish recovered",e);try{missionOverlay(false);}catch(_){}try{const total=session?.records?.length||SESSION_SIZE,score=session?.correct||0;if($("endKicker"))$("endKicker").textContent=`LEVEL ${state?.level||""} COMPLETE`;if($("endScore"))$("endScore").textContent=`${score}/${total}`;if($("endSub"))$("endSub").textContent="Cierre recuperado automáticamente";showScreen("endScreen");}catch(_){}locked=false;});}

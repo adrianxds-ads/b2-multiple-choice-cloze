@@ -1,0 +1,284 @@
+/* CLOZE ARENA / MISSION DECK · Gemini Mobile First v2
+   Adapted to VERIFIED Cloze HTML structure: .question, .answers, .playfield.
+   Isolated pilot; no changes to progress/state data. */
+:root{
+  --cmv2-dark-bg:#0b1015;--cmv2-dark-panel:#141e26;--cmv2-dark-elev:#1c2934;
+  --cmv2-dark-line:#2e404f;--cmv2-dark-text:#f1f6f9;--cmv2-dark-muted:#9fb2c0;
+  --cmv2-brand:#37bfb5;--cmv2-play-bg:#ebf1f5;--cmv2-play-card:#fff;
+  --cmv2-play-ink:#13202b;--cmv2-play-muted:#526677;--cmv2-play-line:#cbd7e1;
+  --cmv2-opt-a:#ba8264;--cmv2-opt-b:#329688;--cmv2-opt-c:#5b78c7;--cmv2-opt-d:#9c67b0;
+  --cmv2-ok-bg:#dcfce7;--cmv2-ok-border:#10b981;
+  --cmv2-bad-bg:#fee2e2;--cmv2-bad-border:#ef4444;
+}
+html,body{max-width:100%;-webkit-font-smoothing:antialiased}
+body[data-nucleo-game="cloze"] #startScreen:not(.hidden){
+ background:radial-gradient(120% 55% at 50% 0%,rgba(55,191,181,.14),transparent 60%),var(--cmv2-dark-bg)!important;
+ color:var(--cmv2-dark-text);padding:12px 12px calc(24px + env(safe-area-inset-bottom))!important;min-height:100dvh!important;
+}
+body[data-nucleo-game="cloze"] #startScreen>.panel{
+ background:var(--cmv2-dark-panel)!important;border:1px solid var(--cmv2-dark-line)!important;
+ border-top:4px solid var(--cmv2-brand)!important;border-radius:22px!important;
+ padding:18px 16px 20px!important;box-shadow:0 18px 42px #0007!important;
+ max-width:540px!important;margin:0 auto!important;
+}
+.cmv2-home-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 12px}
+.cmv2-brand-pill{display:inline-flex;align-items:center;gap:7px;padding:5px 9px 5px 5px;
+ border:1px solid #37bfb559;border-radius:99px;background:#37bfb51c;color:#9ef2ea;
+ font:800 11px/1.2 Roboto,system-ui,sans-serif;letter-spacing:.04em}
+.cmv2-brand-monogram{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;
+ background:var(--cmv2-brand);color:#06211f;font-weight:900}
+.cmv2-home-audio-btn{appearance:none;min-height:42px!important;border-radius:99px!important;
+ border:1px solid var(--cmv2-dark-line)!important;background:var(--cmv2-dark-elev)!important;
+ color:white!important;font:700 12px Roboto,sans-serif!important;padding:0 11px!important}
+body[data-nucleo-game="cloze"] #startScreen #startKicker{font:750 12px/1.3 Roboto,sans-serif!important;
+ color:#8adcd5!important;letter-spacing:.05em!important;text-align:center!important;margin:3px 0!important}
+body[data-nucleo-game="cloze"] #startScreen .level-title-row{justify-content:center!important;margin:0!important}
+body[data-nucleo-game="cloze"] #startScreen h1#startLevel{font:900 clamp(35px,9.5vw,46px)/1.05 Roboto,system-ui!important;
+ color:white!important;letter-spacing:-.03em!important;margin:0!important}
+body[data-nucleo-game="cloze"] #startScreen :is(.subtitle,.meta){text-align:center!important;color:#bbcbd5!important;line-height:1.4!important}
+body[data-nucleo-game="cloze"] #startScreen .meta{font-size:12px!important;margin-bottom:12px!important}
+.cmv2-hero-snapshot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0 14px}
+.cmv2-snap-tile{min-width:0;padding:10px 7px;border:1px solid var(--cmv2-dark-line);border-radius:14px;
+ background:var(--cmv2-dark-elev);text-align:center}
+.cmv2-snap-tile b{display:block;color:white;font:850 clamp(15px,5vw,20px)/1.15 Roboto,sans-serif;font-variant-numeric:tabular-nums}
+.cmv2-snap-tile span{display:block;margin-top:4px;color:var(--cmv2-dark-muted);
+ font:750 10px/1.25 Roboto,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+body[data-nucleo-game="cloze"] #startScreen #startBtn{
+ width:100%!important;min-height:60px!important;border:1px solid #6feae1!important;
+ background:linear-gradient(180deg,#3fd0c6,#249e95)!important;color:#041f1d!important;
+ font:900 19px/1.2 Roboto,sans-serif!important;border-radius:16px!important;
+ box-shadow:0 6px 20px #37bfb547!important;padding:12px 18px!important;
+}
+body[data-nucleo-game="cloze"] #startScreen #startBtn:active{transform:scale(.985)}
+.cmv2-deck-controls{padding:12px;background:var(--cmv2-dark-elev);border:1px solid var(--cmv2-dark-line);
+ border-radius:16px;margin:12px 0 10px;display:grid;gap:9px}
+.cmv2-control-label{color:var(--cmv2-dark-muted);font:750 12px Roboto,sans-serif;letter-spacing:.035em;text-transform:uppercase}
+.cmv2-segmented{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.cmv2-seg-btn{appearance:none;min-height:44px!important;min-width:0;padding:6px 5px!important;
+ background:#121a21!important;color:#c4d3dc!important;border:1px solid #536472!important;
+ border-radius:10px!important;font:750 12px/1.2 Roboto,sans-serif!important;white-space:normal!important}
+.cmv2-seg-btn[aria-pressed="true"]{background:#37bfb52d!important;color:#fff!important;
+ border-color:var(--cmv2-brand)!important;box-shadow:inset 0 0 0 1px var(--cmv2-brand)!important}
+body[data-nucleo-game="cloze"] #startScreen .read-first-row{margin:10px 0!important;
+ background:var(--cmv2-dark-elev)!important;border:1px solid var(--cmv2-dark-line)!important;
+ padding:10px!important;border-radius:14px!important}
+body[data-nucleo-game="cloze"] #startScreen .dashboard-menu{display:grid!important;
+ grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;margin-top:12px!important}
+body[data-nucleo-game="cloze"] #startScreen .dashboard-menu .menu-btn{
+ min-height:68px!important;background:var(--cmv2-dark-elev)!important;border:1px solid var(--cmv2-dark-line)!important;
+ border-radius:14px!important;padding:11px!important;white-space:normal!important
+}
+/* Match existing .game and .playfield elements; do not override .hidden display. */
+body[data-nucleo-game="cloze"]:has(#gameScreen:not(.hidden)){background:var(--cmv2-play-bg)!important}
+body[data-nucleo-game="cloze"]:has(#gameScreen:not(.hidden))>.adrian-tools{display:none!important}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden){
+ box-sizing:border-box!important;background:var(--cmv2-play-bg)!important;color:var(--cmv2-play-ink)!important;
+ min-height:100dvh!important;height:auto!important;width:100%!important;max-width:650px!important;
+ margin:0 auto!important;padding:max(8px,env(safe-area-inset-top)) 12px max(14px,env(safe-area-inset-bottom))!important;
+ display:flex!important;flex-direction:column!important;gap:10px!important;justify-content:flex-start!important
+}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden)>.top,
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden)>#segments,
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) .quiz-game-footer{display:none!important}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden)>#abortSessionBtn{
+ /* Keep original exit reachable for keyboard/legacy code but not duplicate visually. */
+ position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;padding:0!important;overflow:hidden!important
+}
+.cmv2-arena-header{display:flex;flex-direction:column;gap:7px;width:100%;flex-shrink:0}
+.cmv2-hud-bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:center;min-height:44px}
+.cmv2-exit-btn{appearance:none;min-height:44px!important;padding:0 10px!important;
+ background:white!important;border:1px solid #b8c7d4!important;border-radius:10px!important;
+ color:#243746!important;font:750 13px Roboto,sans-serif!important}
+.cmv2-hud-center{display:flex;min-width:0;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}
+.cmv2-part-badge{display:inline-flex;align-items:center;padding:5px 7px;border-radius:8px;
+ background:#dce7ef;color:#1b3a4b;font:850 11px/1.15 Roboto,sans-serif;white-space:normal;text-align:center}
+body[data-question-part="1"] .cmv2-part-badge{background:#d1fae5;color:#065f46}
+body[data-question-part="2"] .cmv2-part-badge{background:#dbeafe;color:#1e40af}
+body[data-question-part="3"] .cmv2-part-badge{background:#fef3c7;color:#92400e}
+body[data-question-part="4"] .cmv2-part-badge{background:#f3e8ff;color:#6b21a8}
+.cmv2-q-counter{font:900 15px Roboto,sans-serif;color:var(--cmv2-play-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cmv2-combo-pill{display:inline-flex;align-items:center;border-radius:99px;padding:4px 7px;
+ border:1px solid #f59e0b;background:#fef3c7;color:#92400e;font:850 12px Roboto,sans-serif}
+.cmv2-combo-pill.hidden{display:none!important}
+.cmv2-combo-pill.pop{animation:cmv2-pop .23s ease}
+@keyframes cmv2-pop{50%{transform:scale(1.16)}}
+.cmv2-sound-btn{width:44px!important;height:44px!important;min-height:44px!important;
+ border:1px solid #b8c7d4!important;border-radius:10px!important;background:#fff!important;color:#13202b!important;
+ font:18px Roboto,sans-serif!important;padding:0!important}
+.cmv2-progress-track{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:3px;margin:0;width:100%}
+.cmv2-progress-pill{display:block;height:6px;background:#cbd5e1;border-radius:99px}
+.cmv2-progress-pill.current{background:#0d9488;transform:scaleY(1.3)}
+.cmv2-progress-pill.correct{background:#10b981}
+.cmv2-progress-pill.wrong{background:#ef4444}
+.cmv2-timer-card{background:#fff;border:1px solid var(--cmv2-play-line);padding:8px 11px;border-radius:12px}
+.cmv2-timer-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.cmv2-timer-status{font:750 11px/1.25 Roboto,sans-serif;color:var(--cmv2-play-muted);letter-spacing:.03em;text-transform:uppercase}
+.cmv2-timer-digits{font:900 18px Roboto,sans-serif;color:var(--cmv2-play-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cmv2-timer-track{position:relative;width:100%;height:9px;background:#e2e8f0;border-radius:99px;overflow:hidden}
+.cmv2-timer-fill{height:100%;width:100%;background:linear-gradient(90deg,#0d9488,#37bfb5);border-radius:99px;transition:width .075s linear}
+.cmv2-timer-card[data-phase="preread"] .cmv2-timer-fill{background:linear-gradient(90deg,#2563eb,#60a5fa)}
+.cmv2-timer-card[data-state="warn"] .cmv2-timer-fill{background:linear-gradient(90deg,#d97706,#f59e0b)}
+.cmv2-timer-card[data-state="urgent"]{border-color:#fca5a5;background:#fef2f2}
+.cmv2-timer-card[data-state="urgent"] .cmv2-timer-digits{color:#dc2626}
+.cmv2-timer-card[data-state="urgent"] .cmv2-timer-fill{background:linear-gradient(90deg,#dc2626,#ef4444)}
+.cmv2-timer-target-mark{position:absolute;top:-1px;bottom:-1px;width:2px;background:#0f172a;opacity:.5;z-index:2}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden)>.playfield{
+ box-sizing:border-box!important;display:flex!important;flex:1 1 auto!important;flex-direction:column!important;
+ justify-content:flex-start!important;gap:10px!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important;
+}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) .question{
+ min-height:0!important;height:auto!important;background:#fff!important;border:1.5px solid var(--cmv2-play-line)!important;
+ border-radius:18px!important;padding:15px 16px!important;display:flex!important;flex-direction:column!important;
+ justify-content:center!important;box-shadow:0 4px 14px #0f172a0d!important;overflow:visible!important
+}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #questionText{
+ color:var(--cmv2-play-ink)!important;font:600 clamp(18.5px,4.7vw,22px)/1.42 Roboto,system-ui,sans-serif!important;
+ text-align:left!important;margin:0!important;overflow-wrap:anywhere!important
+}
+.gap-slot{display:inline-block;min-width:54px;padding:0 7px;margin:0 3px;background:#ccfbf1;
+ border-bottom:3px solid #0d9488;border-radius:6px 6px 2px 2px;color:transparent;vertical-align:baseline}
+.cmv2-root-word-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;
+ padding:7px 10px;border:1px solid #f59e0b;border-radius:10px;background:#fef3c7}
+.cmv2-root-word-bar span{font:800 10px Roboto,sans-serif;color:#92400e}
+.cmv2-root-word-bar strong{font:900 15px Roboto,sans-serif;color:#78350f}
+.cmv2-p4-layout{display:flex;flex-direction:column;gap:7px}
+.cmv2-p4-lead{font:500 clamp(16px,4.1vw,18.5px)/1.34 Roboto,sans-serif;color:#334155;padding-bottom:7px;border-bottom:1px dashed #cbd5e1}
+.cmv2-p4-keybar{display:inline-flex;align-items:center;align-self:flex-start;gap:7px;
+ background:#ede9fe;border:1px solid #c4b5fd;border-radius:8px;padding:5px 10px}
+.cmv2-p4-keybar small{font:800 10px Roboto,sans-serif;color:#5b21b6}
+.cmv2-p4-keybar b{font:900 15px Roboto,sans-serif;color:#4c1d95}
+.cmv2-p4-target{font:650 clamp(17px,4.3vw,20px)/1.34 Roboto,sans-serif;color:#0f172a}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers{
+ box-sizing:border-box!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:9px!important;width:100%!important;margin:0!important;min-width:0!important
+}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers.read-first-hidden{
+ /* Respect original pre-read visibility and disabled answers; no forced reveal. */
+ opacity:0!important;pointer-events:none!important
+}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers>button.answer{
+ box-sizing:border-box!important;min-width:0!important;min-height:clamp(80px,12.3dvh,112px)!important;height:auto!important;
+ display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:space-between!important;
+ text-align:left!important;gap:7px!important;padding:11px!important;border-radius:15px!important;
+ background:#fff!important;border:2px solid var(--cmv2-edge,#cbd5e1)!important;
+ color:var(--cmv2-play-ink)!important;box-shadow:0 2px 6px #0f172a0d!important;
+ overflow-wrap:anywhere!important;white-space:normal!important;
+}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers>button.answer:nth-child(1){--cmv2-edge:var(--cmv2-opt-a)}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers>button.answer:nth-child(2){--cmv2-edge:var(--cmv2-opt-b)}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers>button.answer:nth-child(3){--cmv2-edge:var(--cmv2-opt-c)}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers>button.answer:nth-child(4){--cmv2-edge:var(--cmv2-opt-d)}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers>button.answer{
+ font:700 clamp(17px,4.5vw,20px)/1.25 Roboto,system-ui,sans-serif!important
+}
+body[data-nucleo-game="cloze"][data-question-part="4"] #gameScreen:not(.hidden) #answers>button.answer{
+ min-height:78px!important;padding:9px 10px!important;font-size:clamp(14px,3.85vw,17px)!important;line-height:1.2!important
+}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers>button.answer.good{
+ background:var(--cmv2-ok-bg)!important;border-color:var(--cmv2-ok-border)!important}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers>button.answer.bad{
+ background:var(--cmv2-bad-bg)!important;border-color:var(--cmv2-bad-border)!important}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #answers>button.answer.dim{opacity:.48!important}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #feedback.cmv2-live-feedback{
+ box-sizing:border-box!important;position:static!important;display:none!important;width:100%!important;
+ min-height:54px!important;margin:8px 0 0!important;padding:10px 12px!important;
+ background:white!important;border:1.5px solid var(--cmv2-play-line)!important;border-radius:13px!important;
+ box-shadow:0 2px 8px #0f172a0d!important;color:var(--cmv2-play-ink)!important
+}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #feedback.cmv2-live-feedback.show{display:block!important}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #feedback.cmv2-live-feedback.ok{background:#ecfdf5!important;border-color:#10b981!important}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) #feedback.cmv2-live-feedback.no{background:#fef2f2!important;border-color:#ef4444!important}
+.cmv2-fb-head{display:flex;justify-content:space-between;gap:7px;color:#13202b;font:850 13px/1.2 Roboto,sans-serif}
+.cmv2-fb-head span{font-size:11px;max-width:50%;overflow-wrap:anywhere}
+.cmv2-fb-rule{color:#334155;font:550 12px/1.35 Roboto,sans-serif;margin-top:4px}
+body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) .playfield>#segments{display:none!important}
+/* Dark results podium and prominent next action. */
+body[data-nucleo-game="cloze"] #endScreen:not(.hidden){background:var(--cmv2-dark-bg)!important;padding:12px 12px calc(28px + env(safe-area-inset-bottom))!important}
+body[data-nucleo-game="cloze"] #endScreen>.panel{max-width:540px!important;background:var(--cmv2-dark-panel)!important;
+ border:1px solid var(--cmv2-dark-line)!important;border-top:4px solid var(--cmv2-brand)!important;
+ border-radius:22px!important;margin:0 auto!important;padding:20px 16px!important}
+body[data-nucleo-game="cloze"] #endScreen .end-quick-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;margin:14px 0!important}
+body[data-nucleo-game="cloze"] #endScreen #topContinueBtn{grid-column:1/-1!important;min-height:56px!important;
+ border:1px solid #6feae1!important;background:linear-gradient(180deg,#3fd0c6,#249e95)!important;
+ color:#041f1d!important;font:900 18px/1.2 Roboto,sans-serif!important;border-radius:14px!important}
+.cmv2-end-fold{margin:14px 0;border:1px solid var(--cmv2-dark-line);border-radius:16px;
+ padding:0 14px;background:var(--cmv2-dark-elev)}
+.cmv2-end-fold>summary{cursor:pointer;display:flex;align-items:center;min-height:52px;color:white;font:800 14px Roboto,sans-serif}
+.cmv2-end-fold[open]{padding-bottom:14px}
+@media(max-width:375px){
+ .cmv2-brand-pill{font-size:10px}.cmv2-part-badge{font-size:10px;padding:4px}
+ .cmv2-q-counter{font-size:13px}
+ body[data-nucleo-game="cloze"] #gameScreen:not(.hidden){padding-inline:8px!important}
+ body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) .question{padding:12px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .cmv2-timer-fill,.cmv2-combo-pill{transition:none!important;animation:none!important}
+}
+
+/* Cloze v2 · VERIFIED compatibility overrides against quiz-ergonomics.css.
+   These specific selectors match the original 2x2 game DOM. */
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden){
+  padding:max(8px,env(safe-area-inset-top)) 12px max(14px,env(safe-area-inset-bottom))!important;
+  height:auto!important;min-height:100dvh!important;max-width:650px!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .playfield{
+  flex:1 1 auto!important;min-height:0!important;gap:10px!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .prompt-card.question{
+  min-height:0!important;height:auto!important;padding:14px 15px!important;
+  border-radius:18px!important;justify-content:center!important;flex-shrink:0!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .prompt-card .prompt-text#questionText{
+  font:600 clamp(18.5px,4.7vw,22px)/1.42 Roboto,"Segoe UI",sans-serif!important;
+  color:var(--cmv2-play-ink)!important;margin:0!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) #answers#answers.options-list{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  flex-direction:unset!important;gap:9px!important;min-height:0!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) #answers#answers>button.answer.option-btn{
+  min-width:0!important;width:100%!important;min-height:clamp(81px,12.5dvh,112px)!important;
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  justify-content:space-between!important;gap:7px!important;padding:11px!important;
+  border:2px solid var(--cmv2-edge,#cbd5e1)!important;border-radius:15px!important;
+  background:#fff!important;font:700 clamp(16.5px,4.45vw,20px)/1.23 Roboto,sans-serif!important;
+  overflow-wrap:anywhere!important;white-space:normal!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics][data-question-part="4"] #gameScreen#gameScreen:not(.hidden) #answers#answers>button.answer.option-btn{
+  min-height:84px!important;font-size:clamp(14px,3.8vw,17px)!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) #answers#answers>button.answer.option-btn.good{
+  background:var(--cmv2-ok-bg)!important;border-color:var(--cmv2-ok-border)!important;opacity:1!important
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) #answers#answers>button.answer.option-btn.bad{
+  background:var(--cmv2-bad-bg)!important;border-color:var(--cmv2-bad-border)!important;opacity:1!important
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .timer-footer,
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .playfield>.progress-track,
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .prompt-meta{
+ display:none!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) #feedback.cmv2-live-feedback.show{
+  display:block!important;min-height:0!important;max-height:none!important;
+}
+
+
+/* Thumb-first positioning: answers sit lower when text is short, while long Part 4
+   is free to grow and scroll; never clip the fourth answer. */
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .playfield{
+  justify-content:space-between!important;
+  padding-bottom:clamp(8px,2.5dvh,24px)!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .answer-stage{
+  margin-top:auto!important;
+  margin-bottom:clamp(8px,2.5dvh,22px)!important;
+}
+/* Keep feedback readable for short-lived answer transition and prevent line overflow. */
+html:root body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) .cmv2-fb-rule{
+  line-height:1.35!important;
+  overflow-wrap:anywhere!important;
+}
+
+/* Accessible contrast for the real Part 4 key-word badge. */
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) #questionText#questionText .cmv2-p4-keybar b {color:#4c1d95!important;text-shadow:none!important;opacity:1!important}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) #questionText#questionText .cmv2-p4-keybar small {color:#5b21b6!important;opacity:1!important}

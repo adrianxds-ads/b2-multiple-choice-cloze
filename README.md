@@ -149,3 +149,15 @@ Evidencia reproducible en el entorno Windows: `C:\Users\adria\AppData\Local\Temp
 - **Prueba offline física:** se simuló la pérdida de conexión solo en la pestaña mediante Chrome DevTools (sin apagar Wi‑Fi ni datos móviles). Recarga sin red correcta, interfaz cargada, service worker activo y mismos contadores antes/después. Después se restauró la red de la pestaña y se verificó el arranque online (**PASS**).
 - **Protección:** antes de la primera recarga se verificó una copia de seguridad local del almacenamiento. La posterior compresión GZIP de las claves de estudio se decodificó y comparó con los contadores e historiales originales; Classroom también se comprobó con registro IndexedDB respaldado y SHA-256 válido. Estas copias permanecen solo en el ordenador autorizado, fuera de Git; no se han publicado los contenidos de las copias locales.
 - **Resultado:** versión publicada y funcionamiento **comprobados en el dispositivo objetivo**. Se devolvió ChatGPT al primer plano del Pixel y se retiró el túnel temporal de depuración. Sin bloqueos técnicos pendientes de esta reparación.
+
+
+### 26/10/2026 · Cloze Arena / Mission Deck v2 · Mobile First (rama de revisión)
+
+- Origen: implementación de Gemini Mobile First v2, adaptada a selectores reales de Cloze. La primera prueba reveló que quiz-ergonomics.css forzaba respuestas en una sola columna y duplicaba el cronómetro; se ajustó la especificidad únicamente donde había colisión.
+- Estado: implementación en rama local gemini/cloze-mobile-v2-20261026, basada en c8847c0; no hay merge a main, push ni publicación.
+- Interfaz: portada OLED/teal, selector de ritmo Ágil/B2/Calma, pantalla clara 2×2, HUD y combo, barra de temporizador, feedback contextual, resultados y datos secundarios en desplegable. Part 3 raíz morfológica y Part 4 KEY WORD diferenciadas.
+- Tiempo: cloze-timing.js usa rangos de Gemini por partes y factor elegido, conservando el historial (esquema VERSION=1 y timeLimitSec real por respuesta); pendiente evaluar formalmente comparabilidad longitudinal antes de publicar.
+- PWA: service-worker.js precarga CSS y JS; build-assets.js recalculado con SHA-256; caché offline comprobada en perfil limpio.
+- QA aislada: 4/4 vistas iniciales (360×800, 390×844, 412×915, 1440×900), partida completa de 15 respuestas y resultados en 390×844; 9/9 ejemplos de partes 1/3/4 en tres tamaños móviles; PWA offline 1/1.
+- Protección: no se modificaron territory-01.json, territory-01.js, progress-storage.js ni progress-idb.js; pruebas con navegador y almacenamiento independientes.
+- Pendiente: aprobación visual, ensayo en Pixel 10 físico, prueba de actualización sobre PWA instalada, validación de tiempos y autorización separada antes de publicar.
