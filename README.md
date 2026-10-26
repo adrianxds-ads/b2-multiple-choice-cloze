@@ -161,3 +161,12 @@ Evidencia reproducible en el entorno Windows: `C:\Users\adria\AppData\Local\Temp
 - QA aislada: 4/4 vistas iniciales (360×800, 390×844, 412×915, 1440×900), partida completa de 15 respuestas y resultados en 390×844; 9/9 ejemplos de partes 1/3/4 en tres tamaños móviles; PWA offline 1/1.
 - Protección: no se modificaron territory-01.json, territory-01.js, progress-storage.js ni progress-idb.js; pruebas con navegador y almacenamiento independientes.
 - Pendiente: aprobación visual, ensayo en Pixel 10 físico, prueba de actualización sobre PWA instalada, validación de tiempos y autorización separada antes de publicar.
+
+### 26/10/2026 · Cloze Arena v2 · publicación verificada
+
+- **Estado:** publicado en GitHub Pages desde main. Implementación móvil Gemini v2 en commit e513aff; corrección de huellas de la PWA en commit 4a36e96. La nota de rama candidata anterior es histórica y queda superada por este cierre.
+- **URL de producción:** https://adrianxds-ads.github.io/b2-multiple-choice-cloze/ (misma identidad y scope de la PWA).
+- **Verificación:** siete archivos públicos con HTTP 200 y SHA-256 idéntico al contenido de main y al manifiesto; Edge aislado confirma controlador v2.0.1 y ClozeMobileV2 v2.0.0. Después de actualización online y segunda apertura, prueba pública offline superada con cuatro respuestas en 2×2.
+- **Datos y compatibilidad:** no se cambiaron bancos de 900 preguntas, claves localStorage/IndexedDB, ni directorios de progreso; no se ejecutó limpieza de datos. Cronómetros Mobile First con modos Ágil/B2/Calma y Leer primero.
+- **Pendiente:** validar uso real y actualización de PWA en Pixel 10. No confundir pruebas de navegador aislado con verificación física del dispositivo.
+- **Restauración:** etiqueta local safe-before-cloze-arena-v2-20261026 apunta a c8847c0 (previa a la intervención).
