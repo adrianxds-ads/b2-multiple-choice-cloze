@@ -1387,6 +1387,15 @@ function nextQuestion(){
   current.display.forEach((txt,i)=>{const b=document.createElement("button");b.className="answer "+answerColors[i];b.textContent=view.options[i];b.disabled=readFirstMode;b.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"){e.preventDefault();answer(i,false);}});b.addEventListener("click",()=>answer(i,false));wrap.appendChild(b);});
   $("timerText").textContent=currentTimeLimitSec.toFixed(1);$("timer").classList.remove("urgent");renderSegments(currentTimeLimitSec,currentTimeLimitSec);
   if([2,3].includes(Number(current.sourcePart))&&(state.seen[current.fingerprint]?.count||0)>=2&&Math.random()<.35){QuizLearning.production(current,wrap,pos=>answer(pos,false));}
+  // Keep the same Arena position when Chrome retained a scroll from the previous question.
+  const viewportOwner=session,viewportIndex=session.index;
+  const resetViewport=()=>{
+    if(session!==viewportOwner||session.index!==viewportIndex||$("gameScreen").classList.contains("hidden"))return;
+    if(document.activeElement?.closest?.("#answers"))document.activeElement.blur();
+    if(document.scrollingElement?.scrollTop>0)document.scrollingElement.scrollTop=0;
+    if(window.scrollY>0)window.scrollTo(0,0);
+  };
+  resetViewport();requestAnimationFrame(resetViewport);setTimeout(resetViewport,120);
   if(readFirstMode){
     currentPreReadMs=readFirstDelayMs(view.question,current.sourcePart);wrap.dataset.nucleoReadSeconds=String(currentPreReadMs/1000);window.NucleoQuizBars?.refresh?.();
     const expectedSession=session,expectedIndex=session.index,readingStartedAt=performance.now();

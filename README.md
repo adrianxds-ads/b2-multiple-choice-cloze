@@ -208,3 +208,12 @@ Evidencia reproducible en el entorno Windows: `C:\Users\adria\AppData\Local\Temp
 - QA local Playwright: 12/12 combinaciones de Parts 1–4 × 390×650/412×740/412×915, con Part 4 artificialmente larga y HUD visible al desplazarse; 4/4 geometrías normales adicionales, 15/15 preguntas completas con guardado y pantalla final, PWA offline operativo y hashes SHA-256 de build verificables.
 - Efecto sobre aprendizaje/uso: las cuatro tarjetas, el marcador compacto, el cronómetro y el encabezado se mantienen visibles o accesibles sin ocultarse por el contenedor anterior. Sin cambios en preguntas, soluciones, puntos ni progreso.
 - Evidencias: `C:\Users\adria\Documents\HUB_CLOZE_ARENA_QA_20261028`. Pixel 10 conectado por ADB pero bloqueado durante la comprobación: no se desbloqueó; la verificación perceptiva en Android Chrome queda pendiente.
+
+
+## 28/10/2026 · Cloze · continuidad entre preguntas (viewport4)
+
+- Base preservada: `a5d74d9` (HUD sticky con scroll raíz), que conserva la geometría de Grammar/Phrasal/Classroom y las correcciones móviles existentes.
+- `nextQuestion()` restablece el scroll superior al cambiar de pregunta incluso si Android Chrome había mantenido desplazamiento anterior; ejecuta alineación inmediata, siguiente frame y una comprobación breve de 120 ms sin tocar el reloj, las opciones ni los datos educativos.
+- Versiones `app.js` y service worker renovadas; SHA-256 y caché PWA regenerados (`3101a7757ff172e8`).
+- Prueba realista forzada en Edge móvil: scroll 230 px, HUD sticky a 0 px; después de responder, scroll 0 px, HUD en 8 px y marcador ✓ 1 · ✕ 0. Sesión completa 15/15, pantalla final e historial correctos; carga offline desde el nuevo service worker verificada. Servidor exclusivo 127.0.0.1:18944 con versión comprobada.
+- No se modifican bancos, explicaciones, temporizador adaptativo, almacenamiento ni ninguna otra aplicación. Experiencia física en Pixel 10 pendiente de confirmación directa.
