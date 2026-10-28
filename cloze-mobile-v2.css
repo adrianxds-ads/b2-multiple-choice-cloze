@@ -262,16 +262,19 @@ html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonom
 }
 
 
-/* Arcade: keep the whole question, 2x2 grid and tally in one readable field.
-   Never push the buttons to the viewport edge with an expanding spacer.
-   Long Part 4 prompts may still grow and scroll without clipping. */
+/* Same Arena geometry as Grammar Quest / Phrasal Sprint.
+   The prompt is top-anchored and the 2x2 answer stage is bottom-anchored;
+   fixed-height tally sits directly underneath. Long prompts expand/scroll. */
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden){
+  gap:10px!important;min-height:100dvh!important;height:auto!important;
+}
 html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .playfield{
-  justify-content:flex-start!important;
-  padding-bottom:clamp(8px,2dvh,18px)!important;
+  justify-content:space-between!important;flex:1 1 auto!important;
+  padding:0 0 10px!important;min-height:0!important;
 }
 html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .answer-stage{
-  margin-top:clamp(20px,4.5dvh,38px)!important;
-  margin-bottom:clamp(8px,2dvh,18px)!important;
+  flex:0 0 auto!important;margin-top:auto!important;margin-bottom:0!important;
+  gap:16px!important;
 }
 /* Keep feedback readable for short-lived answer transition and prevent line overflow. */
 html:root body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) .cmv2-fb-rule{

@@ -189,3 +189,12 @@ Evidencia reproducible en el entorno Windows: `C:\Users\adria\AppData\Local\Temp
 - No se alteran puntuaciones, banco de 900 ejercicios, historial, lectura previa, sonido, temporizador adaptativo ni almacenamiento. Cache PWA SHA-256 renovada.
 - QA de rama: tamaños 360×800, 390×844, 412×760 y 412×915 (4/4), cambio de respuesta sin desplazamiento vertical (0 px), 15 preguntas completas (15/15, persistencia correcta), arranque offline válido, restauración de encabezado tras `scrollY=320` simulada y `node --check` correcto.
 - Evidencia local: `layout_qa.json`, `cloze_full15_fix.json`, `cloze_offline_fix.json`, capturas del candidato en la carpeta de trabajo. Validación física en Pixel 10 pendiente.
+
+
+### 2026-10-28 · Cloze Arena: equivalencia visual con Grammar / Phrasal / Classroom
+
+- Corregida la regresión visual reportada en Pixel 10: Cloze no debe desplazar la zona de respuestas hacia el centro ni perder HUD y marcador durante el juego.
+- La geometría de `#gameScreen`, `.playfield` y `.answer-stage` replica el contrato **ya verificado en Grammar Quest**: HUD de 127 px en la cabecera, enunciado superior, respuestas 2×2 ancladas abajo y marcador compacto (30 px) inmediatamente después. La variante Part 4 conserva texto expandible y sin recorte.
+- Se conserva el restablecimiento de desplazamiento de Cloze introducido en 35e3e18, y el motor original de audio, tiempos adaptativos, corrección y progreso.
+- Validación Playwright móvil en cuatro dimensiones: 360×800, 390×844, 412×800 y 412×915; 15 preguntas completas por tamaño (60 en total), Parts 1–4, pantalla de resultados 15/15, desplazamiento `scrollY=0` al iniciar cada pregunta y marcador visible. Prueba offline y verificaciones de hashes PWA superadas.
+- Evidencia local: `C:\Users\adria\Documents\HUB_CLOZE_MATCH_ARENA_EVIDENCE_20261028\qa\comparison_full15.json` y `..\cloze_offline_match2.json`. Sin prueba física aún en el Pixel 10.
