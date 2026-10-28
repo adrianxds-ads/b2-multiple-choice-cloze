@@ -262,19 +262,31 @@ html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonom
 }
 
 
-/* Same Arena geometry as Grammar Quest / Phrasal Sprint.
-   The prompt is top-anchored and the 2x2 answer stage is bottom-anchored;
-   fixed-height tally sits directly underneath. Long prompts expand/scroll. */
+/* A preexisting body overflow rule created a non-scrolling sticky ancestor.
+   While playing, only the document root scrolls, allowing the HUD to stick.
+   Keep the start screen and all persistent data untouched. */
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics]:has(#gameScreen:not(.hidden)){
+  overflow:visible!important;
+}
+
+/* Match Grammar/Phrasal Arena geometry exactly: prompt at top and
+   four thumb-reachable answers at the bottom with a fixed-height tally.
+   Unlike the former Cloze layout, the sticky HUD stays visible in long
+   Part 4 questions thanks to the single root scroller above. */
 html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden){
   gap:10px!important;min-height:100dvh!important;height:auto!important;
+}
+html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden)>.cmv2-arena-header{
+  position:sticky!important;top:0!important;z-index:20!important;
+  padding:2px 0 4px!important;background:var(--cmv2-play-bg)!important;
 }
 html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .playfield{
   justify-content:space-between!important;flex:1 1 auto!important;
   padding:0 0 10px!important;min-height:0!important;
 }
 html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .answer-stage{
-  flex:0 0 auto!important;margin-top:auto!important;margin-bottom:0!important;
-  gap:16px!important;
+  flex:0 0 auto!important;margin-top:auto!important;
+  margin-bottom:0!important;gap:16px!important;
 }
 /* Keep feedback readable for short-lived answer transition and prevent line overflow. */
 html:root body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) .cmv2-fb-rule{

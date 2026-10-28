@@ -198,3 +198,13 @@ Evidencia reproducible en el entorno Windows: `C:\Users\adria\AppData\Local\Temp
 - Se conserva el restablecimiento de desplazamiento de Cloze introducido en 35e3e18, y el motor original de audio, tiempos adaptativos, corrección y progreso.
 - Validación Playwright móvil en cuatro dimensiones: 360×800, 390×844, 412×800 y 412×915; 15 preguntas completas por tamaño (60 en total), Parts 1–4, pantalla de resultados 15/15, desplazamiento `scrollY=0` al iniciar cada pregunta y marcador visible. Prueba offline y verificaciones de hashes PWA superadas.
 - Evidencia local: `C:\Users\adria\Documents\HUB_CLOZE_MATCH_ARENA_EVIDENCE_20261028\qa\comparison_full15.json` y `..\cloze_offline_match2.json`. Sin prueba física aún en el Pixel 10.
+
+
+## 28/10/2026 · Cloze / Pixel · corrección de pantalla arcade
+
+- Incidencia observada en captura del Pixel 10: encabezado/cronómetro fuera del área visible, espacio aparente entre pregunta y cuatro tarjetas, contador ✓/✕ inaccesible.
+- La comparación con Grammar/Phrasal confirmó que el layout correcto utiliza `justify-content:space-between` en `.playfield` y `margin-top:auto` en `.answer-stage`; se conserva, sin rediseño ni desplazamiento artificial.
+- Causa técnica hallada: una regla anterior otorgaba al `body` un `overflow:auto` que impedía que el HUD `position:sticky` siguiera al desplazamiento raíz. En partida, `body` pasa a `overflow:visible`, el HUD se fija a `top:0` y el contenedor raíz conserva el desplazamiento; la pantalla de inicio no cambia.
+- QA local Playwright: 12/12 combinaciones de Parts 1–4 × 390×650/412×740/412×915, con Part 4 artificialmente larga y HUD visible al desplazarse; 4/4 geometrías normales adicionales, 15/15 preguntas completas con guardado y pantalla final, PWA offline operativo y hashes SHA-256 de build verificables.
+- Efecto sobre aprendizaje/uso: las cuatro tarjetas, el marcador compacto, el cronómetro y el encabezado se mantienen visibles o accesibles sin ocultarse por el contenedor anterior. Sin cambios en preguntas, soluciones, puntos ni progreso.
+- Evidencias: `C:\Users\adria\Documents\HUB_CLOZE_ARENA_QA_20261028`. Pixel 10 conectado por ADB pero bloqueado durante la comprobación: no se desbloqueó; la verificación perceptiva en Android Chrome queda pendiente.
