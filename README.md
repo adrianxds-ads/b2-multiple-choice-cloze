@@ -181,3 +181,11 @@ Evidencia reproducible en el entorno Windows: `C:\Users\adria\AppData\Local\Temp
 - Los recursos modificados tienen nuevas consultas `?v=arcade-20261028`; manifiesto SHA-256 `build-assets.js` regenerado y caché PWA nueva.
 - QA en PC/Edge: 4/4 arranques y avance automático con error, 4/4 con acierto, 4/4 activación/silencio/reactivación del audio (medición de presencia, no calidad acústica), 4/4 arranques offline, 12/12 layouts a 360×800, 390×844 y 412×915; movimiento de tarjetas tras respuesta = 0 px en las 4 pruebas base; `node --check` y `git diff --check` correctos.
 - Evidencias en `C:\Users\adria\Documents\HUB_ARCADE_REFINEMENT_20261028\QA`. Pendiente validación perceptiva en Pixel 10 y autorización expresa antes de publicar.
+
+
+### 28/10/2026 · Cloze Arcade · recuperación visual en Pixel 10
+- Se corrige el hueco excesivo entre enunciado y tarjetas 2×2: la pantalla deja de distribuirlas con `space-between` y `margin-top:auto`; separación controlada de unos 44–48 px en cuatro tamaños móviles.
+- Se conserva el HUD (progreso y cronómetro) al cambiar de pregunta tras desplazamientos de páginas largas y permanece visible el contador `✓ aciertos · ✕ fallos` bajo las cuatro opciones.
+- No se alteran puntuaciones, banco de 900 ejercicios, historial, lectura previa, sonido, temporizador adaptativo ni almacenamiento. Cache PWA SHA-256 renovada.
+- QA de rama: tamaños 360×800, 390×844, 412×760 y 412×915 (4/4), cambio de respuesta sin desplazamiento vertical (0 px), 15 preguntas completas (15/15, persistencia correcta), arranque offline válido, restauración de encabezado tras `scrollY=320` simulada y `node --check` correcto.
+- Evidencia local: `layout_qa.json`, `cloze_full15_fix.json`, `cloze_offline_fix.json`, capturas del candidato en la carpeta de trabajo. Validación física en Pixel 10 pendiente.

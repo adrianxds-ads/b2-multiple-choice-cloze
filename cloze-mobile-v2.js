@@ -114,10 +114,16 @@ function ensureArenaHud(){
  for(let i=0;i<15;i++){const pill=document.createElement("i");pill.className="cmv2-progress-pill";el("cmv2Progress").append(pill)}
 }
 let lastCombo=0,preReadAt=0,preReadIndex=-1,preReadTotal=3500;
+let lastVisibleSession=null,lastVisibleQuestion=-1;
 function tickArenaUi(){
  const game=el("gameScreen"),s=getSession(),q=getCurrent();
  if(!game||game.classList.contains("hidden")||!s||!q)return;
  ensureArenaHud();
+ // A previous long question must not leave the HUD offscreen on the next one.
+ if(s!==lastVisibleSession||s.index!==lastVisibleQuestion){
+  lastVisibleSession=s;lastVisibleQuestion=s.index;
+  if(window.scrollY>0)window.scrollTo({top:0,behavior:"instant"});
+ }
  formatPromptForPart();
  const part=Number(q.sourcePart)||1,exam=String(q.sourceExam||"1");
  if(el("cmv2PartBadge"))el("cmv2PartBadge").textContent="EX "+(exam.length<=2?exam.padStart(2,"0"):exam)+" · P"+part;

@@ -262,15 +262,16 @@ html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonom
 }
 
 
-/* Thumb-first positioning: answers sit lower when text is short, while long Part 4
-   is free to grow and scroll; never clip the fourth answer. */
+/* Arcade: keep the whole question, 2x2 grid and tally in one readable field.
+   Never push the buttons to the viewport edge with an expanding spacer.
+   Long Part 4 prompts may still grow and scroll without clipping. */
 html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .playfield{
-  justify-content:space-between!important;
-  padding-bottom:clamp(8px,2.5dvh,24px)!important;
+  justify-content:flex-start!important;
+  padding-bottom:clamp(8px,2dvh,18px)!important;
 }
 html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) .answer-stage{
-  margin-top:auto!important;
-  margin-bottom:clamp(8px,2.5dvh,22px)!important;
+  margin-top:clamp(20px,4.5dvh,38px)!important;
+  margin-bottom:clamp(8px,2dvh,18px)!important;
 }
 /* Keep feedback readable for short-lived answer transition and prevent line overflow. */
 html:root body[data-nucleo-game="cloze"] #gameScreen:not(.hidden) .cmv2-fb-rule{
