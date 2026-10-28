@@ -170,3 +170,14 @@ Evidencia reproducible en el entorno Windows: `C:\Users\adria\AppData\Local\Temp
 - **Datos y compatibilidad:** no se cambiaron bancos de 900 preguntas, claves localStorage/IndexedDB, ni directorios de progreso; no se ejecutó limpieza de datos. Cronómetros Mobile First con modos Ágil/B2/Calma y Leer primero.
 - **Pendiente:** validar uso real y actualización de PWA en Pixel 10. No confundir pruebas de navegador aislado con verificación física del dispositivo.
 - **Restauración:** etiqueta local safe-before-cloze-arena-v2-20261026 apunta a c8847c0 (previa a la intervención).
+
+
+### 2026-10-28 · Arcade · candidato aislado (Gemini → Docs → Hub)
+
+- Rama: `feature/arcade-flow-20261028`, derivada del `main` estable. Sin despliegue, merge ni cambio en los datos del usuario.
+- Se acorta el feedback temporizado a 320/420 ms + 60 ms de relevo, sin botones de avance; se elimina `translateY(6px)` y se impide insertar explicaciones sobre el enunciado durante las respuestas.
+- Marcador compacto fijo `✓ aciertos · ✕ fallos` de 30 px; segmentos completados uniformes; explicaciones y registros conservados para la revisión al final.
+- Recuperado tic por segundo, urgencia al acabar, señales de respuesta diferenciadas, silencio persistente, vibración desactivada por defecto. Se mantienen los relojes y reglas de puntuación originales.
+- Los recursos modificados tienen nuevas consultas `?v=arcade-20261028`; manifiesto SHA-256 `build-assets.js` regenerado y caché PWA nueva.
+- QA en PC/Edge: 4/4 arranques y avance automático con error, 4/4 con acierto, 4/4 activación/silencio/reactivación del audio (medición de presencia, no calidad acústica), 4/4 arranques offline, 12/12 layouts a 360×800, 390×844 y 412×915; movimiento de tarjetas tras respuesta = 0 px en las 4 pruebas base; `node --check` y `git diff --check` correctos.
+- Evidencias en `C:\Users\adria\Documents\HUB_ARCADE_REFINEMENT_20261028\QA`. Pendiente validación perceptiva en Pixel 10 y autorización expresa antes de publicar.

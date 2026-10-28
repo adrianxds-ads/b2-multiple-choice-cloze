@@ -177,7 +177,7 @@ function showReward(r){
       tone(1318,.055,0,.018,"sine");tone(1760,.07,.055,.015,"sine");
       setTimeout(()=>{document.getElementById("lpDiceCaption").textContent="TIRANDO DADO…";document.getElementById("lpMove").textContent="BASE +"+r.baseMoves;die.classList.add("spin");},90);
       setTimeout(()=>{die.classList.remove("spin");die.setAttribute("data-v",String(r.die));document.getElementById("lpDiceCaption").textContent="DADO "+r.die+" · BONUS +"+r.diceBonus;document.getElementById("lpMove").textContent="AVANCE +"+r.moves+" CASILLAS";tone(740+r.die*55,.07,0,.016,"triangle");},930);
-      setTimeout(()=>{token.style.left=(7.1+r.moves*10.72)+"%";try{navigator.vibrate&&navigator.vibrate([18,25,28]);}catch(e){}},1110);
+      setTimeout(()=>{token.style.left=(7.1+r.moves*10.72)+"%";try{localStorage.getItem('adrian_hub_haptics_v1')==='1'&&navigator.vibrate&&navigator.vibrate([18,25,28]);}catch(e){}},1110);
       setTimeout(()=>o.classList.remove("show"),2300);
       setTimeout(()=>{o.style.display="none";o.setAttribute("aria-hidden","true");resolve(r);},2490);
     },220);

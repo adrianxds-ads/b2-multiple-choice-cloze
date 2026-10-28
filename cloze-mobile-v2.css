@@ -108,8 +108,7 @@ body[data-question-part="4"] .cmv2-part-badge{background:#f3e8ff;color:#6b21a8}
 .cmv2-progress-track{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:3px;margin:0;width:100%}
 .cmv2-progress-pill{display:block;height:6px;background:#cbd5e1;border-radius:99px}
 .cmv2-progress-pill.current{background:#0d9488;transform:scaleY(1.3)}
-.cmv2-progress-pill.correct{background:#10b981}
-.cmv2-progress-pill.wrong{background:#ef4444}
+.cmv2-progress-pill.done{background:#32A48F}
 .cmv2-timer-card{background:#fff;border:1px solid var(--cmv2-play-line);padding:8px 11px;border-radius:12px}
 .cmv2-timer-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
 .cmv2-timer-status{font:750 11px/1.25 Roboto,sans-serif;color:var(--cmv2-play-muted);letter-spacing:.03em;text-transform:uppercase}
@@ -259,7 +258,7 @@ html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonom
  display:none!important;
 }
 html:root body[data-nucleo-game="cloze"][data-quiz-ergonomics][data-quiz-ergonomics] #gameScreen#gameScreen:not(.hidden) #feedback.cmv2-live-feedback.show{
-  display:block!important;min-height:0!important;max-height:none!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;height:30px!important;min-height:30px!important;max-height:30px!important;overflow:hidden!important;margin:5px 0 0!important;padding:0 6px!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;white-space:nowrap!important;font:650 15px/1.3 Roboto,sans-serif!important;
 }
 
 

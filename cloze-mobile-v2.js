@@ -131,7 +131,7 @@ function tickArenaUi(){
  const progress=el("cmv2Progress"),children=progress?.children||[];
  if(progress){progress.setAttribute("aria-valuemax",String(s.plan.length));progress.setAttribute("aria-valuenow",String(s.index));
   if(children.length!==s.plan.length){progress.replaceChildren();for(let i=0;i<s.plan.length;i++){const n=document.createElement("i");n.className="cmv2-progress-pill";progress.append(n)}}
-  [...progress.children].forEach((p,i)=>{const rec=s.records?.[i];p.className="cmv2-progress-pill"+(i===s.index?" current":rec?(rec.correct?" correct":" wrong"):"")});
+  [...progress.children].forEach((p,i)=>{const rec=s.records?.[i];p.className="cmv2-progress-pill"+(i===s.index?" current":rec?" done":"")});
  }
  const limit=Math.max(1,Number(typeof currentTimeLimitSec!=="undefined"?currentTimeLimitSec:15)||15);
  const target=Number(typeof currentTimeTargetSec!=="undefined"?currentTimeTargetSec:8.5)||8.5;
@@ -159,16 +159,13 @@ function tickArenaUi(){
 }
 function showLiveFeedback(payload){
  const box=el("feedback");if(!box||!payload)return;
- const {ok,type,sec,correct,rule}=payload;
- const badge={automatic:"⚡ AUTOMATIC",secure:"✓ SECURE","slow-correct":"✓ CORRECT",
- "fast-wrong":"✕ IMPULSIVE MISS","slow-wrong":"✕ REVIEW",timeout:"⏱ TIME OUT"}[type]||(ok?"✓ CORRECT":"✕ REVIEW");
- const r=String(rule||"").replace(/^[A-D]\s*-\s*[^.]+\.\s*/i,"");
- const bonus=ok?(getSession()?.lastReward||"COMBO ×"+(getSession()?.combo||1)):"CLAVE: "+String(correct??"");
- box.className="feedback cmv2-live-feedback show "+(ok?"ok":"no");
- box.innerHTML='<div class="cmv2-fb-head"><b>'+escapeHtml(badge)+" · "+Number(sec||0).toFixed(1)+'s</b><span>'+escapeHtml(bonus)+'</span></div><div class="cmv2-fb-rule">'+escapeHtml(r||"Revisa la respuesta resaltada.")+"</div>";
+ box.className="feedback cmv2-live-feedback show cmv2-arcade-tally";
+ const s=getSession(),records=Array.isArray(s?.records)?s.records:[],hits=Number(s?.correct)||0;
+ const tally="✓ "+hits+"   ✕ "+Math.max(0,records.length-hits);
+ if(box.textContent!==tally)box.textContent=tally;
 }
 function clearLiveFeedback(){
- const box=el("feedback");if(box){box.className="feedback cmv2-live-feedback";box.replaceChildren()}
+ showLiveFeedback({});
 }
 function compactEndScreen(){
  const panel=document.querySelector("#endScreen>.panel");
