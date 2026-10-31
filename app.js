@@ -171,8 +171,15 @@ function tone(freq,dur=.035,gain=.018,type='sine',delay=0){
 }
 function playTick(strong=false,step=0){const f=strong?(step%2?1540:1260):(step%2?1280:980);tone(f,strong?.034:.026,strong?.026:.016,'square');}
 function playUrgentTimerPulse(left,beat=0){const final=left<=2,f=final?(beat%2?1660:1450):(beat%2?1360:1160);tone(f,final?.034:.028,final?.016:.012,final?'square':'triangle');if(left<=.55)tone(1960,.042,.010,'sine',.014);}
-function playCorrect(sec=0){tone(880,.045,.015,"sine");if(sec>0&&sec<=(currentTimeTargetSec||3.2))tone(1174.66,.055,.014,"triangle",.042);}
-function playWrong(timeout=false){if(timeout){tone(311.13,.055,.016,"triangle");tone(207.65,.080,.015,"sine",.055);}else tone(220,.065,.015,"sine");}
+function playCorrect(sec=0){
+ tone(659.25,.14,.023,"triangle");
+ tone(880,.16,.023,"sine",.080);
+ tone(1174.66,.19,.020,"sine",.155);
+}
+function playWrong(timeout=false){
+ tone(timeout?392:329.63,.16,.022,"triangle");
+ tone(timeout?246.94:220,.22,.021,"sine",.108);
+}
 function playComplete(){tone(392,.075,.022,'sine');tone(523.25,.085,.024,'triangle',.070);tone(659.25,.100,.026,'sine',.145);tone(783.99,.155,.028,'sine',.230);}
 function playCountdownStep(n){tone(n===1?1046.5:783.99,.055,.018,'triangle');}
 const LEVEL_SCORE_ROOTS=[146.83,155.56,164.81,174.61,196.00,220.00,246.94,261.63,293.66,329.63,349.23,392.00,440.00,493.88,523.25];
