@@ -31,3 +31,4 @@ self.addEventListener('fetch',e=>{
 
 // PWA cache release 1.12.7 - answer deadline fix (isolated candidate).
 // Study-level display era release 1.12.8 · 2026-10-31. Progress storage unchanged.
+// Accumulated completed-game level 1.12.9; no progress migration (2026-10-31).
