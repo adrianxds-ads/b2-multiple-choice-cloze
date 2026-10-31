@@ -1,6 +1,6 @@
 
 const INITIAL_PRIORS = {};
-const APP_VERSION = "1.12.10";
+const APP_VERSION = "1.12.11";
 const quizFlow=new window.QuizFlowController();
 const STORAGE_KEY = "adaptive_b2_cloze_campaign1_v1";
 const GLOBAL_LEVEL_KEY = "adaptive_b2_cloze_global_level_v1";
@@ -1322,6 +1322,10 @@ function adaptiveLevelTarget(plan){
 let sessionStarting=false;
 function secondaryEffect(run){try{Promise.resolve(run()).catch(e=>console.warn("Secondary effect recovered",e));}catch(e){console.warn("Secondary effect recovered",e);}}
 async function startSession(finalMode=false){
+  if((Number(state?.sessions)||0)===0&&!window.AdrianSync?.baselineChecked?.()){
+    window.AdrianSync?.status?.('⚠ Progreso sin recuperar: conecta Tailscale antes de jugar','blocked');
+    alert('La partida no se iniciará con el progreso a cero y Sync sin verificar. Conecta Tailscale y vuelve a abrir el juego.');return;
+  }
   quizFlow.cancel();
 if(sessionStarting)return;sessionStarting=true;try{
   applyRatingTheme(overallStats().rating);
