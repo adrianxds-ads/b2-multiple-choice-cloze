@@ -33,3 +33,4 @@ self.addEventListener('fetch',e=>{
 // Study-level display era release 1.12.8 · 2026-10-31. Progress storage unchanged.
 // Accumulated completed-game level 1.12.9; no progress migration (2026-10-31).
 // Safe offline recovery for study progress, v1.12.10 (2026-10-31).
+// Canonical Git snapshot integrity rebuilt for 1.12.10 (2026-10-31).
