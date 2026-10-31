@@ -30,3 +30,4 @@ self.addEventListener('fetch',e=>{
 // Cloze durable fallback release 2026-10-11: preserve previous progress snapshots.
 
 // PWA cache release 1.12.7 - answer deadline fix (isolated candidate).
+// Study-level display era release 1.12.8 · 2026-10-31. Progress storage unchanged.
